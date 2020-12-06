@@ -6,10 +6,10 @@ const routes: Routes = [
   { path: '', redirectTo: '/tabs/tab1', pathMatch: 'full' },
   { path: 'tabs', component: TabsPage, children: [
       { path: '', redirectTo: '/tabs/tab1', pathMatch: 'full' },
-      { path: 'tab1', loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule) },
-      { path: 'tab2', loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule) },
-      { path: 'tab3', loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule) },
-      { path: 'tab-map', loadChildren: () => import('../tab-map/tab-map.module').then(m => m.TabMapPageModule) },
+      { path: 'home', loadChildren: () => import('../pages/home/home.module').then(m => m.HomePageModule) },
+      { path: 'themes', loadChildren: () => import('../pages/themes/themes.module').then(m => m.ThemesPageModule) },
+      { path: 'dahsboard', loadChildren: () => import('../pages/dashboard/dashboard.module').then(m => m.DashboardPageModule) },
+      { path: 'map', loadChildren: () => import('../pages/map/map.module').then(m => m.MapPageModule) },
     ]
   },
 ];
