@@ -113,7 +113,7 @@ export class TabsPage {
           (state) => {
             this.connecting = false;
             if ( ! state.errors) {
-              this.navCtrl.navigateForward(['/tabs/tab3']); // dahsboard
+              this.navCtrl.navigateForward(['/tabs/dashboard']); // dahsboard
             } else {
               this.UITooling.fireAlert('Login has failed! Please check your credentials', 'failed' );
             }
