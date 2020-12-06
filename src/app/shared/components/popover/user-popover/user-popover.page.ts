@@ -4,8 +4,7 @@ import { NavParams, PopoverController } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
 import { AuthService, selectUserState, State } from 'koa-services';
 import { Subscription } from 'rxjs';
-import { filter, map, skip, take } from 'rxjs/operators';
-import { UItoolingService } from 'src/app/shared/services/UITooling.service';
+import { skip, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-popover',
@@ -26,9 +25,7 @@ export class UserPopoverPage implements OnDestroy {
     private store: Store<State>,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private UITooling: UItoolingService,
     public popper: PopoverController,
-    // public modalCtrl: ModalController
   ) {
     const message = `UserModalComponent()`;
     console.log(message, this.form);
@@ -65,24 +62,6 @@ export class UserPopoverPage implements OnDestroy {
       email: this.form.email? this.form.email:'',
       password: this.form.password? this.form.password:'',
     });
-
-    // Handle errors received by the backend if registering user
-    // if (this.form.formType === 'register') {
-    //   this.subscriptions.push( this.store.pipe(
-    //     select(selectUserState),
-    //     filter( (s) => !!s.errors && s.errors.error.error),
-    //     map( (s) => s.errors.error.error))
-    //   .subscribe( (errors) => {
-    //     errors.forEach( (error) => {
-    //       console.log(`--> error.path: ${error.path}, error.type ${error.type}`);
-    //       // todo : validate eror type from api .... 
-    //       if (error.path === 'email' && error.type === 'unique violation') {
-    //         this.userForm.get('email').setErrors({notUnique: true});
-    //       }
-    //       // this.cdr.markForCheck();
-    //     });
-    //   }));
-    // }
   }
 
   onSubmit() {
@@ -105,7 +84,7 @@ export class UserPopoverPage implements OnDestroy {
             // console.log(state.errors);
             let dismiss = true;
             state.errors.error.forEach( (error) => {
-              console.log(`--> error: `, error);
+              // console.log(`--> error: `, error);
               // todo : validate eror type from api .... 
               if (error.property === 'email' && error.constraints.IsUniqueCustom) {
                 console.log(`--> constraints.IsUniqueCustom: `, error.constraints.IsUniqueCustom);

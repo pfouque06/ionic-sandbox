@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { KoaServicesModule, serverAddress, serverProtocol, SERVER_ADDRESS, SERVER_PROTOCOL } from 'koa-services'
 import { UserPopoverPage } from './components/popover/user-popover/user-popover.page'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { IonicModule } from '@ionic/angular'
 
 const SHARED_MODALS = [
     UserPopoverPage,
@@ -34,6 +35,7 @@ const SHARED_PROVIDED_MODULES = [
     ],
     imports: [
         CommonModule,
+        IonicModule,
         ...REACTIVE_FORM_DIRECTIVES,
         ...SHARED_MODULES,
         ...SHARED_IMPORTED_MODULES,
