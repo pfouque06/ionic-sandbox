@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { KoaServicesModule, serverAddress, serverProtocol, SERVER_ADDRESS, SERVER_PROTOCOL } from 'koa-services'
+import { UserPopoverPage } from './components/popover/user-popover/user-popover.page'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 const SHARED_MODALS = [
+    UserPopoverPage,
 ]
 
 const SHARED_ENTITIES = [
 ]
 
 const REACTIVE_FORM_DIRECTIVES = [
+    FormsModule,
+    ReactiveFormsModule
 ]
 
 const SHARED_MODULES = [

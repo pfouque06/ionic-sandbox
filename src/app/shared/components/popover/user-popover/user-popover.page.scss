@@ -1,0 +1,12 @@
+ion-content {
+    div.form-error {
+        height: 20px;
+        overflow: hidden;
+        p {
+            margin: 5px;
+            padding-left: 5px;
+            font-size: x-small;
+            color: red;
+        }
+    }
+}

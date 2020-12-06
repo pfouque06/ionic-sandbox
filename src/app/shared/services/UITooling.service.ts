@@ -1,37 +1,50 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController, PopoverController, ToastController } from '@ionic/angular';
 
 
 @Injectable({ providedIn: 'root' })
 export class UItoolingService {
 
-  // public authSnackBar: MatSnackBarRef<any>;
+  constructor(
+    private toaster: ToastController, 
+    private popper: PopoverController,
+    private navCtrl: NavController,
+    private router: Router) {}
 
-  // constructor(private snackBarService: MatSnackBar, public dialog: MatDialog, private router: Router) {
-  constructor(private router: Router) {}
-
-  public fireGlobalAlertSnackBar(message: string, style: string) {
-    // this.authSnackBar = this.snackBarService.openFromComponent(GlobalAlertComponent, {
-    //   duration: 2000,
-    //   horizontalPosition: 'center',
-    //   verticalPosition: 'top',
-    //   panelClass: [style],
-    //   data: message // provided message
-    // });
-  }
-
-  public fireLoggedGuardAlertSnackBar() {
-    // this.authSnackBar =  this.snackBarService.openFromComponent(IsLoggedGuardAlertComponent, {
-    //   duration: 2000, // 2 seconds
-    //   horizontalPosition: 'center',
-    //   verticalPosition: 'bottom',
-    //   panelClass: ['snack-bar-error'], // style
-    // });
+  public async fireAlert(message: string, style?: 'success'|'failed'|'warning'|'dark'|'medium') {
+    const cssStyle = `UITooling-toaster-${style ? style:'default'}`
+    const toast = await this.toaster.create({
+      message: message,
+      duration: 2000,
+      position: 'bottom',
+      cssClass: cssStyle,
+    });
+    toast.present();
   }
 
   // public fireDialog<T, D = any, R = any>(component: ComponentType<T>, config?: MatDialogConfig<D>): MatDialogRef<T, R> {
   //   return this.dialog.open(component, config);
   // }
-  public fireDialog() {
+  public async fireDialog(component: any, data: any) {
+    const message = `UItoolingService.fireDialog()`;
+    console.log(message, component, data);
+    // this.fireAlert(message);
+    // return;
+
+    const popover = await this.popper.create({
+      component: component,
+      backdropDismiss: true,
+      showBackdrop: true,
+      // cssClass: 'popover-class',
+      componentProps: {
+        data: data,
+        modalCtrl: this.navCtrl
+      }
+    });
+    console.log('popover created');
+    await popover.present();
+    console.log('popover fired');
+    return await popover.onDidDismiss();
   }
 }

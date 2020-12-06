@@ -24,3 +24,49 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.UITooling-toaster-default{
+    --border-radius:5px;
+    --background: var(--ion-color-light);
+    --color: var(--ion-color-medium);
+    --white-space: pre-line;
+    /* --border-color:#852114;
+    --border-style:solid;
+    --border-width:4px;
+    --button-color:#FFDD00; */
+}
+
+.UITooling-toaster-success{
+    --border-radius:5px;
+    --background: var(--ion-color-success);
+    --color: var(--ion-color-light);
+    --white-space: pre-line;
+}
+
+.UITooling-toaster-failed{
+    --border-radius:5px;
+    --background: var(--ion-color-danger);
+    --color: var(--ion-color-light);
+    --white-space: pre-line;
+}
+
+.UITooling-toaster-warning{
+    --border-radius:5px;
+    --background: var(--ion-color-warning);
+    --color: var(--ion-color-light);
+    --white-space: pre-line;
+}
+
+.UITooling-toaster-medium{
+    --border-radius:5px;
+    --background: var(--ion-color-medium);
+    --color: var(--ion-color-light);
+    --white-space: pre-line;
+}
+
+.UITooling-toaster-dark{
+    --border-radius:5px;
+    --background: var(--ion-color-dark);
+    --color: var(--ion-color-light);
+    --white-space: pre-line;
+}

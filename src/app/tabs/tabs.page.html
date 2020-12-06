@@ -25,39 +25,18 @@
 </ion-tabs>
 
 <!-- <ion-fab edge="true" vertical="bottom" horizontal="center" slot="fixed"> -->
-<!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-  <ion-fab-button color="success" size="small">
-    <ion-icon name="lock-open"></ion-icon>
-  </ion-fab-button>
-  <ion-fab-list side="top">
-    <ion-fab-button color="medium">
-      <ion-icon name="log-in" color="light" size="large"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-button color="light">
-      <ion-icon name="person-add" color="medium" size="large"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-button color="light">
-      <ion-icon name="scan-circle-outline" color="medium" size="large"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-button color="light">
-      <ion-icon name="locate" color="medium" size="large"></ion-icon>
-    </ion-fab-button>
-  </ion-fab-list>
-</ion-fab> -->
-
-<!-- <ion-fab edge="true" vertical="bottom" horizontal="center" slot="fixed"> -->
 <ion-fab vertical="top" horizontal="end" slot="fixed">
-  <!-- <ion-fab-button color="danger" size="small" disabled="true"> -->
-    <!-- <ion-icon name="lock-closed"></ion-icon> -->
-  <ion-fab-button [color]="ping? 'success':'danger'" size="small" [disabled]="!ping">
-    <ion-icon [name]="isLogged? 'lock-closed':'lock-open'"></ion-icon>
+  <ion-fab-button [color]="ping? isLogged? 'medium':'light' :'danger'" size="small">
+    <ion-icon *ngIf="!connecting" [name]="isLogged? 'lock-closed':'lock-open'" [color]="ping? isLogged? 'light':'medium' :'light'" ></ion-icon>
+    <!-- <ion-spinner *ngIf="connecting" name="lines-small"></ion-spinner> -->
+    <ion-spinner *ngIf="connecting" name="lines"></ion-spinner>
   </ion-fab-button>
   <ion-fab-list side="bottom">
-    <ion-fab-button color="medium" (click)='loginToggle()'>
-      <ion-icon name="log-in" color="light" size="large"></ion-icon>
+    <ion-fab-button color="medium" (click)='loginToggle()' [disabled]="!ping">
+      <ion-icon [name]="isLogged?'log-out-outline':'log-in-outline'" color="light" size="large"></ion-icon>
     </ion-fab-button>
-    <ion-fab-button color="light" (click)='profileToggle()'>
-      <ion-icon name="person-add" color="medium" size="large"></ion-icon>
+    <ion-fab-button color="light" (click)='profileToggle()' [disabled]="!ping">
+      <ion-icon [name]="isLogged?'person-outline':'person-add-outline'" color="medium" size="large"></ion-icon>
     </ion-fab-button>
     <ion-fab-button color="light" (click)='codeBarScan()'>
       <ion-icon name="barcode-outline" color="medium" size="large"></ion-icon>
@@ -65,8 +44,8 @@
     <ion-fab-button color="light" (click)='QRCodeScan()'>
       <ion-icon name="scan-circle-outline" color="medium" size="large"></ion-icon>
     </ion-fab-button>
-    <ion-fab-button color="light" (click)='Geolocation()'>
+    <!-- <ion-fab-button color="light" (click)='Geolocation()'>
       <ion-icon name="locate" color="medium" size="large"></ion-icon>
-    </ion-fab-button>
+    </ion-fab-button> -->
   </ion-fab-list>
 </ion-fab>

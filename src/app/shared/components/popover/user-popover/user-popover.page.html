@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="userForm">
+  
+          <ion-item class="no-padding" [ngClass]="(userForm.get('email').touched && userForm.get('email').invalid) ? 'error' : ''">
+            <ion-label position="floating">Your email</ion-label>
+            <ion-input ngDefaultControl inputmode="email" type="email" spellcheck="false" required="true" name="email" formControlName="email"></ion-input>
+          </ion-item>
+          <div class="form-error">
+            <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('required'))">An email is required</p>
+            <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('maxlength'))">This password is too long (128 char maximum)</p>
+            <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('notUnique'))">This email is already referenced</p>
+            <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('email'))">This email is invalid</p>
+          </div>
+  
+          <ion-item class="no-padding" [ngClass]="(userForm.get('password').touched && userForm.get('password').invalid) ? 'error' : ''">
+            <ion-label position="floating">Your password</ion-label>
+            <ion-input ngDefaultControl inputmode="text" [type]="hidePassword ? 'password' : 'text'" spellcheck="false" required="true" name="password" formControlName="password">
+            </ion-input>
+            <ion-icon slot="end" (click)="hidePassword = !hidePassword" [name]="hidePassword? 'eye-outline':'eye-off-outline'" size="small" color="medium"></ion-icon>
+          </ion-item>
+          <div class="form-error">
+            <p *ngIf="(userForm.get('password').touched && userForm.get('password').hasError('required'))">A password is required</p>
+            <p *ngIf="(userForm.get('password').touched && userForm.get('password').hasError('minlength'))">This password is too short (5 char minimum)</p>
+            <p *ngIf="(userForm.get('password').touched && userForm.get('password').hasError('maxlength'))">This password is too long (20 char maximum)</p>
+          </div>
+          
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button size="small" color="medium" (click)="onSubmit()">{{form.formType | titlecase}}</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
