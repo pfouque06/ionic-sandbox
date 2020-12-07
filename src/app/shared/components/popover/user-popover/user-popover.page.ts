@@ -27,11 +27,7 @@ export class UserPopoverPage implements OnDestroy {
     private authService: AuthService,
     public popper: PopoverController,
   ) {
-    const message = `UserModalComponent()`;
-    console.log(message, this.form);
-    
     if (!this.form) this.form = this.navParams.get('form');
-    console.log(this.form);
     switch (this.form.formType) {
       case 'register': {
         this.title = "Register a new account";
@@ -56,7 +52,6 @@ export class UserPopoverPage implements OnDestroy {
       email: ['email', [Validators.required, Validators.email, Validators.maxLength(128)]],
       password: ['password', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
     });
-    console.log(this.form.email, this.form.password);
     
     this.userForm.setValue({
       email: this.form.email? this.form.email:'',
@@ -85,7 +80,7 @@ export class UserPopoverPage implements OnDestroy {
             let dismiss = true;
             state.errors.error.forEach( (error) => {
               // console.log(`--> error: `, error);
-              // todo : validate eror type from api .... 
+              // todo : validate eror type from api .... i.e: email validator error, etc ...
               if (error.property === 'email' && error.constraints.IsUniqueCustom) {
                 console.log(`--> constraints.IsUniqueCustom: `, error.constraints.IsUniqueCustom);
                 this.userForm.get('email').setErrors({notUnique: true});
@@ -93,14 +88,12 @@ export class UserPopoverPage implements OnDestroy {
               }
               // this.cdr.markForCheck();
             });
-            if (dismiss) {
-              console.log(`--> Register failed`);
+            if (dismiss) { // register failed
               delete this.form.email;
               delete this.form.password;
               this.popper.dismiss({ dismiss: false, form: this.form});
             }
-          } else {
-            console.log(`--> Register success`);
+          } else { // register success
             this.popper.dismiss({ dismiss: false, form: this.form});
           }
         });

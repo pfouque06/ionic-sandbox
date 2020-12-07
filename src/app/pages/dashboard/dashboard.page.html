@@ -1,7 +1,31 @@
-<ion-header [translucent]="true">
+<ion-menu side="start" menuId="koaDashboardMenu" contentId="koaDashboardIdu">
+
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Koa Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item><ion-icon name="home" slot="start"></ion-icon>Home</ion-item>
+      <ion-item><ion-icon name="newspaper" slot="start"></ion-icon>Newsfeed</ion-item>
+      <ion-item><ion-icon name="person" slot="start"></ion-icon>Profile</ion-item>
+      <ion-item><ion-icon name="people" slot="start"></ion-icon>Users...</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- <div id="main-content">
+
+</div> -->
+<ion-header [translucent]="true" id="koaDashboardIdu">
   <ion-toolbar>
-    <ion-title>
-      {{'dashboard' | titlecase}}
-    </ion-title>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button></ion-back-button> -->
+      <!-- <ion-menu-button color="medium" menu="koaDashboardMenu"></ion-menu-button> -->
+      <ion-menu-button color="medium"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'koa dashboard' | titlecase}}</ion-title>
   </ion-toolbar>
 </ion-header>

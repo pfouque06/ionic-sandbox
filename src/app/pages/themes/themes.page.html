@@ -1,7 +1,31 @@
-<ion-header [translucent]="true">
+<ion-menu side="start" menuId="themesMenu" contentId="themesId">
+
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title>Themes Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item><ion-icon name="construct" slot="start"></ion-icon>Sandbox</ion-item>
+      <ion-item><ion-icon name="construct" slot="start"></ion-icon>Emojis</ion-item>
+      <ion-item><ion-icon name="construct" slot="start"></ion-icon>Forms</ion-item>
+      <ion-item><ion-icon name="construct" slot="start"></ion-icon>Icons</ion-item>
+      <ion-item><ion-icon name="construct" slot="start"></ion-icon>Modals</ion-item>
+      <ion-item><ion-icon name="construct" slot="start"></ion-icon>Reordering</ion-item>
+      <ion-item><ion-icon name="construct" slot="start"></ion-icon>Spinner</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-header [translucent]="true" id="themesId">
   <ion-toolbar>
-    <ion-title>
-      {{'themes' | titlecase}}
-    </ion-title>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button></ion-back-button> -->
+      <!-- <ion-menu-button color="medium" menu="themesMenu"></ion-menu-button> -->
+      <ion-menu-button color="medium"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'themes' | titlecase}}</ion-title>
   </ion-toolbar>
 </ion-header>

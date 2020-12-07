@@ -46,8 +46,8 @@ export class TabsPage {
           this.connecting = false;
           if (!state.errors) {
             // reroute page if all is fine, this.router.url is route name
-            if (this.router.url.match('^\/tab3')) {
-              this.navCtrl.navigateForward(['/home']);
+            if (this.router.url.match('^\/tabs\/dashboard$')) {
+              this.navCtrl.navigateForward(['']);
             }
           } else {
             this.UITooling.fireAlert('Logout has failed! please check logs', 'failed' );
@@ -71,13 +71,10 @@ export class TabsPage {
   }
 
   async openUserFormDialog(formType: 'login' | 'register'): Promise<void> {
-    const message = `openUserFormDialog().formType: ${formType}`;
-    console.log(message);
 
     let userForm: any = { formType: formType, password: "secret"  };
     if (formType == "login")
     userForm = { ...userForm, email: "sam.va@gmail.com"};
-    console.log(userForm);
 
     // const dialogFeedback= await this.UITooling.fireDialog(UserModalComponent, userForm);
     const popover = await this.popper.create({
@@ -85,23 +82,16 @@ export class TabsPage {
       backdropDismiss: true,
       showBackdrop: true,
       // cssClass: 'popover-class',
-      componentProps: {
-        form: userForm,
-        // modalCtrl: this.navCtrl
-      }
+      componentProps: { form: userForm, }
     });
-    console.log('--> popover created');
     await popover.present();
-    console.log('--> popover fired');
     const dialogFeedback=  await popover.onDidDismiss();
-    // console.log(dialogFeedback);
     if (!dialogFeedback || !dialogFeedback.data || dialogFeedback.data.dismiss ) {
       console.log('popover dismissed ...');
       return;
     }
 
     userForm = dialogFeedback.data.form;
-    console.log(userForm);
     switch (userForm.formType) {
       case 'login': {
         this.connecting = true;
@@ -128,17 +118,6 @@ export class TabsPage {
         } else {
           this.UITooling.fireAlert('Register has failed! Please check credentials and retry', 'failed' );
         }
-      //   this.authService.register( userForm.email, userForm.password);
-      //   // handle result
-      //   this.store.pipe( select(selectUserState), skip(1), take(1))
-      //   .subscribe( (state) => {
-      //     if ( !!state.errors) {
-      //         this.UITooling.fireAlert('Register has failed! Please check credentials and retry', 'failed' );
-      //     } else {
-      //       this.UITooling.fireAlert('Registering is succefull, you can now login with your credentials', 'success');
-      //     }
-      //   });
-      //   break;
       }
     }
   }
