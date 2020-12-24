@@ -27,7 +27,7 @@
     "@ngrx/entity": "^10.1.0",
     "@ngrx/store": "^10.1.0",
     "@ngrx/store-devtools": "^10.1.0",
-    "koa-services": "0.0.4",
+    "koa-services": "0.0.5",
     "ngrx-store-localstorage": "^10.1.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
