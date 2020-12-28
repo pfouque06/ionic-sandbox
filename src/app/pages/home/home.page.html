@@ -1,13 +1,48 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <a href="http://www.pfouque.fr" target="_blank">
-        <ion-img src="../../../assets/icon/favicon.png" width="40px"></ion-img>
-      </a>
-    </ion-buttons>
-    <ion-title>
-      {{'ionic demo' | titlecase}}
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-split-pane contentId="homeId" [disabled]="!paneEnabled">
+
+  <ion-menu side="start" contentId="homeId" menuId="home">
+
+    <ion-header>
+      <ion-toolbar color="light">
+        <ion-title>Home</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" menu="home">
+          <!-- <ion-item><ion-icon name="newspaper" slot="start"></ion-icon>Welcome</ion-item> -->
+          <!-- <ion-item><ion-icon name="construct" slot="start"></ion-icon>Features</ion-item> -->
+          <ion-item routerLink="/tabs/home/welcome" routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="newspaper" slot="start"></ion-icon><ion-label>Welcome</ion-label>
+          </ion-item>
+          <ion-item routerLink="/tabs/home/features" routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="extension-puzzle-outline" slot="start"></ion-icon><ion-label>Features</ion-label>
+          </ion-item>
+          <ion-item href="http://www.pfouque.fr" target="_blank">
+            <!-- <ion-icon name="at" slot="start"></ion-icon> -->
+            <ion-img src="../../../assets/icon/favicon.png"></ion-img>
+            <!-- <ion-label color="primary">Contact</ion-label> -->
+            <ion-label>Contact</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  
+  </ion-menu>
+  
+  <!-- <ion-header [translucent]="true" id="homeId"> -->
+    <!-- <ion-back-button></ion-back-button> -->
+  <!-- <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button menu="homeMenu" color="medium"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>PWA Demo</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  
+  <ion-router-outlet id="homeId"></ion-router-outlet>
+</ion-split-pane>
+
 

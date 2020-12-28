@@ -1,6 +1,6 @@
-<ion-menu side="start" menuId="koaDashboardMenu" contentId="koaDashboardIdu">
+<!-- <ion-menu side="start" menuId="koaDashboardMenu" contentId="koaDashboardId">
 
-  <ion-header>
+    <ion-header>
     <ion-toolbar translucent>
       <ion-title>Koa Menu</ion-title>
     </ion-toolbar>
@@ -16,18 +16,15 @@
       </ion-menu-toggle>
     </ion-list>
   </ion-content>
-</ion-menu>
 
-<!-- <div id="main-content">
+  <ion-router-outlet id="koaDashboardId"></ion-router-outlet>
+</ion-menu> -->
 
-</div> -->
-<ion-header [translucent]="true" id="koaDashboardIdu">
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <!-- <ion-back-button></ion-back-button> -->
-      <!-- <ion-menu-button color="medium" menu="koaDashboardMenu"></ion-menu-button> -->
-      <ion-menu-button color="medium"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{'koa dashboard' | titlecase}}</ion-title>
+    <!-- <ion-buttons slot="start">
+      <ion-menu-button menu="koaDashboardMenu" color="medium"></ion-menu-button>
+    </ion-buttons> -->
+    <ion-title>{{'dashboard' | titlecase}}</ion-title>
   </ion-toolbar>
 </ion-header>
