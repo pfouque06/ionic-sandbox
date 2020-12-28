@@ -1,30 +1,35 @@
-<!-- <ion-menu side="start" menuId="koaDashboardMenu" contentId="koaDashboardId">
+<ion-split-pane contentId="dashboardId" [disabled]="!paneEnabled">
+
+  <ion-menu side="start" contentId="dashboardId" menuId="dashboard">
 
     <ion-header>
-    <ion-toolbar translucent>
-      <ion-title>Koa Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <ion-toolbar color="light">
+        <ion-title>Dashoard</ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" menu="dashboard">
+          <ion-item><ion-icon name="home" slot="start"></ion-icon>Home</ion-item>
+          <ion-item><ion-icon name="newspaper" slot="start"></ion-icon>Newsfeed</ion-item>
+          <ion-item><ion-icon name="person" slot="start"></ion-icon>Profile</ion-item>
+          <ion-item><ion-icon name="people" slot="start"></ion-icon>Users...</ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  
+  </ion-menu>
+  
+  <ion-router-outlet id="dashboardId"></ion-router-outlet>
+</ion-split-pane>
 
-  <ion-content>
-    <ion-list>
-      <ion-menu-toggle auto-hide="true">
-        <ion-item><ion-icon name="home" slot="start"></ion-icon>Home</ion-item>
-        <ion-item><ion-icon name="newspaper" slot="start"></ion-icon>Newsfeed</ion-item>
-        <ion-item><ion-icon name="person" slot="start"></ion-icon>Profile</ion-item>
-        <ion-item><ion-icon name="people" slot="start"></ion-icon>Users...</ion-item>
-      </ion-menu-toggle>
-    </ion-list>
-  </ion-content>
-
-  <ion-router-outlet id="koaDashboardId"></ion-router-outlet>
-</ion-menu> -->
-
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true"> -->
+<ion-header>
   <ion-toolbar>
-    <!-- <ion-buttons slot="start">
-      <ion-menu-button menu="koaDashboardMenu" color="medium"></ion-menu-button>
-    </ion-buttons> -->
-    <ion-title>{{'dashboard' | titlecase}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="dashboard" color="medium"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
   </ion-toolbar>
 </ion-header>

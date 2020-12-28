@@ -8,20 +8,26 @@ import { MenuController } from '@ionic/angular';
 })
 export class ThemesPage {
 
+
+  public paneEnabled: boolean = false;
+  
   constructor(private menuCtl: MenuController) { console.log('themes'); }
 
-  // async ionViewWillEnter() {
-  //   console.log('themes.ionViewWillEnter()');
-  //   this.menuCtl.enable(true, 'themesId');
-  //   console.log(
-  //     await this.menuCtl.getMenus(),
-  //     await this.menuCtl.get()
-  //   );
-  // }
+  async ionViewWillEnter() {
+    console.log('home.ionViewWillEnter()');
+    this.paneEnabled = true;
+    const menuId = await this.menuCtl.enable(true, 'themes');
+    console.log('menuId: ', menuId);
+    // console.log(
+    //   await this.menuCtl.getMenus(),
+    //   await this.menuCtl.get()
+    // );
+  }
 
-  // ionViewWillLeave() {
-  //   console.log('themes.ionViewWillLeave()');
-  //   // this.menuCtl.close('themesId');
-  //   this.menuCtl.close();
-  // }
+  ionViewWillLeave() {
+    console.log('home.ionViewWillLeave()');
+    this.paneEnabled = false;
+    // this.menuCtl.close('homeId');
+    // this.menuCtl.close();
+  }
 }

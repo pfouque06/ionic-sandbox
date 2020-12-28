@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { ThemesPage } from './themes.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ThemesPage,
-  }
+  { path: '', component: ThemesPage,children: [
+    // { path: 'welcome', loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule) },
+    // { path: 'features', loadChildren: () => import('./features/features.module').then( m => m.FeaturesPageModule) }
+  ]},
+  // { path: '', redirectTo: '/welcome', pathMatch: 'full' },
 ];
 
 @NgModule({
