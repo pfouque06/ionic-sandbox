@@ -4,10 +4,12 @@ import { DashboardPage } from './dashboard.page';
 
 const routes: Routes = [
   { path: '', component: DashboardPage,children: [
-    // { path: 'welcome', loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule) },
-    // { path: 'features', loadChildren: () => import('./features/features.module').then( m => m.FeaturesPageModule) }
+    { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule) },
+    { path: 'newsfeed', loadChildren: () => import('./newsfeed/newsfeed.module').then( m => m.NewsfeedPageModule) },
+    { path: 'profile', loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule) },
+    { path: 'users', loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule) },
   ]},
-  // { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

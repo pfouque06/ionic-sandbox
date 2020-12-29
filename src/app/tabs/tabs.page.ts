@@ -46,7 +46,7 @@ export class TabsPage {
           this.connecting = false;
           if (!state.errors) {
             // reroute page if all is fine, this.router.url is route name
-            if (this.router.url.match('^\/tabs\/dashboard$')) {
+            if (this.router.url.match('^\/tabs\/dashboard*')) {
               this.navCtrl.navigateForward(['']);
             }
           } else {
@@ -103,7 +103,7 @@ export class TabsPage {
           (state) => {
             this.connecting = false;
             if ( ! state.errors) {
-              this.navCtrl.navigateForward(['/tabs/dashboard']); // dahsboard
+              this.navCtrl.navigateForward(['/tabs/dashboard/home']); // dahsboard
             } else {
               this.UITooling.fireAlert('Login has failed! Please check your credentials', 'failed' );
             }
