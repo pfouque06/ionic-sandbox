@@ -13,5 +13,4 @@ export class TabHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
-
 }
