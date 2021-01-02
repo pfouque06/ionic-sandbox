@@ -1,15 +1,15 @@
 <ion-split-pane contentId="homeId" [disabled]="!paneEnabled">
 
-  <ion-menu side="start" contentId="homeId" menuId="home">
+  <ion-menu side="start" contentId="homeId" menuId="home" (ionWillClose)="menuWillClose()">
 
     <ion-header>
       <ion-toolbar color="light"><ion-title>PWA Demo</ion-title></ion-toolbar>
     </ion-header>
   
     <ion-content>
-      <menu-list [menu]="menuList" [menuId]="'home'"></menu-list>
+      <menu-list [menu]="menuList" [menuId]="'home'" [RequestReceiver]="menuRequestEmitter?.asObservable()"></menu-list>
     </ion-content>
-    
+
   </ion-menu>
   
   <ion-router-outlet id="homeId"></ion-router-outlet>

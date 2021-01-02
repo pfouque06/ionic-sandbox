@@ -1,13 +1,13 @@
 <ion-split-pane contentId="mapId" [disabled]="!paneEnabled">
 
-  <ion-menu side="start" contentId="mapId" menuId="map">
+  <ion-menu side="start" contentId="mapId" menuId="map" (ionWillClose)="menuWillClose()">
 
     <ion-header>
       <ion-toolbar color="light"><ion-title>Map</ion-title></ion-toolbar>
     </ion-header>
   
     <ion-content>
-      <menu-list [menu]="menuList" [menuId]="'map'"></menu-list>
+      <menu-list [menu]="menuList" [menuId]="'map'" [RequestReceiver]="menuRequestEmitter?.asObservable()"></menu-list>
     </ion-content>
   
   </ion-menu>

@@ -39,7 +39,8 @@
       <ion-label [class.active-parent]="item.open" >{{item?.label}}</ion-label>
       <ion-icon [name]="item.open? 'caret-down':'caret-forward'" slot="end"></ion-icon>
     </ion-item>
-    <menu-list *ngIf="item.open" [menu]="item.submenu" [menuId]="menuId" [menuLevel]="(menuLevel+1)" [multi]="multi"></menu-list>
+    <menu-list *ngIf="item.open" [menu]="item.submenu" [menuId]="menuId" [menuLevel]="(menuLevel+1)" [multi]="multi" 
+      [RequestReceiver]="item.RequestEmitter?.asObservable()"></menu-list>
 
   </div>
 </ion-list>

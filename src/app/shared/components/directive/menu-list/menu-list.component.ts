@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { Observable, Subject, Subscription } from 'rxjs';
 
 export interface IMenuList {
   label: string;
@@ -10,6 +11,7 @@ export interface IMenuList {
   img?: string;
   submenu?: IMenuList[];
   open?: boolean;
+  RequestEmitter?: Subject<any>;
 }
 
 @Component({
@@ -17,23 +19,60 @@ export interface IMenuList {
   templateUrl: './menu-list.component.html',
   styleUrls: ['./menu-list.component.scss'],
 })
-export class MenuListComponent implements OnInit {
+export class MenuListComponent implements OnInit, OnDestroy {
 
   @Input() public menu: IMenuList[];
   @Input() public menuId: string;
   @Input() public menuLevel: number = 0;
-  @Input() public multi: boolean = false; 
-  
+  @Input() public multi: boolean = false;
+
+  // closeRequestEvent from parent Menu to SubMenu
+  @Input() RequestReceiver: Observable<any> = undefined;
+
+  public subscriptions: Subscription[] = [];
+
   constructor(private menuCtl: MenuController) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    // Initiate submenus' emitter
+    this.menu.filter( (menuItem) => menuItem.submenu )
+      .forEach( (menuItem) => { menuItem.RequestEmitter = new Subject<any>();  });
+    // subscribe to parent menu emitter
+    this.subscriptions.push(this.RequestReceiver?.subscribe(() => this.ReceiveRequestEventfromParent()));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach((s) => s.unsubscribe());
+  }
 
   public subMenuToggle(item: IMenuList) {
-    // close all opened on opening except if multi attirbute is set
-    if (!this.multi && !item.open) {
-      this.menu.filter( (menuItem) => menuItem.open )
-        .forEach( (menuItem) => menuItem.open = false );
+    // debugger;
+    // if multi attribute is set, interact with openState of submenus
+    if (!this.multi) {
+      if (item.open) {
+        // recursively close all item's opened submenu on opening
+        this.emitCloseRequestEventToSubMenu(item);
+      } else {
+        // recursively close all opened submenus on opening
+        this.closeAll();
+      }
     }
     item.open = ! item.open;
+  }
+
+  public closeAll() {
+    this.menu.filter( (item) => item.open && item.RequestEmitter )
+    .forEach( (item) => {
+      this.emitCloseRequestEventToSubMenu(item);
+      item.open = false;
+    });
+  }
+
+  public emitCloseRequestEventToSubMenu(item: IMenuList) {
+    item.RequestEmitter?.next();
+  }
+
+  public ReceiveRequestEventfromParent() {
+    this.closeAll();
   }
 }

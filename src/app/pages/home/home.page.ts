@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { Subject } from 'rxjs';
 import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-list.component';
 
 @Component({
@@ -10,6 +11,7 @@ import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-li
 export class HomePage {
   
   public paneEnabled: boolean = false;
+  public menuRequestEmitter: Subject<any> = new Subject<any>();
   public menuList: IMenuList[] = [
     {
       label: 'Welcome',
@@ -39,4 +41,7 @@ export class HomePage {
     this.paneEnabled = false;
   }
 
+  public menuWillClose() {
+    this.menuRequestEmitter.next();
+  }
 }

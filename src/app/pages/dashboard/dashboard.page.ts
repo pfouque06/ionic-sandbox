@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { AuthService } from 'koa-services';
+import { Observable, Subject } from 'rxjs';
 import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-list.component';
 
 @Component({
@@ -7,9 +9,12 @@ import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-li
   templateUrl: 'dashboard.page.html',
   styleUrls: ['dashboard.page.scss']
 })
-export class DashboardPage {
+export class DashboardPage implements OnInit {
 
+  public profileType$: Observable<string>;
+  public fullName$: Observable<string>;
   public paneEnabled: boolean = false;
+  public menuRequestEmitter: Subject<any> = new Subject<any>();
   public menuList: IMenuList[] = [
     {
       label: 'Home',
@@ -33,7 +38,57 @@ export class DashboardPage {
     },
   ]
   
-  constructor(private menuCtl: MenuController) { console.log('dashboard'); }
+  public adminMenuRequestEmitter: Subject<any> = new Subject<any>();
+  public adminMenuList: IMenuList[] = [
+    {
+      label: 'Admin...',
+      icon: 'settings',
+      submenu: [
+        {
+          label: 'Users menu',
+          icon: 'people',
+          submenu: [
+            
+            {
+              label: 'Add a user',
+              data: 'true',
+              icon: 'person-add',
+            },
+            {
+              label: 'User table reset',
+              data: 'true',
+              icon: 'stopwatch-sharp',
+            },
+          ],
+        },
+        {
+          label: 'Admin menu',
+          icon: 'settings',
+          submenu: [
+            
+            {
+              label: 'Sessions list',
+              data: 'true',
+              icon: 'people',
+            },
+            {
+              label: 'Sessions reset',
+              data: 'true',
+              icon: 'stopwatch-sharp',
+            },
+          ],
+        },
+      ],
+    },
+  ]
+
+  constructor(private authService: AuthService, private menuCtl: MenuController) { console.log('dashboard'); }
+
+  ngOnInit() {
+    // define observers
+    this.profileType$ = this.authService.getCurrentUserProfileType$();
+    this.fullName$ = this.authService.getCurrentUserFullName$();
+  }
 
   async ionViewWillEnter() {
     this.paneEnabled = true;
@@ -42,5 +97,10 @@ export class DashboardPage {
 
   ionViewWillLeave() {
     this.paneEnabled = false;
+  }
+
+  public menuWillClose() {
+    this.menuRequestEmitter.next();
+    this.adminMenuRequestEmitter.next();
   }
 }

@@ -1,13 +1,13 @@
 <ion-split-pane contentId="themesId" [disabled]="!paneEnabled">
 
-  <ion-menu side="start" contentId="themesId" menuId="themes">
+  <ion-menu side="start" contentId="themesId" menuId="themes" (ionWillClose)="menuWillClose()">
 
     <ion-header>
       <ion-toolbar color="light"><ion-title>Themes</ion-title></ion-toolbar>
     </ion-header>
   
     <ion-content>
-      <menu-list [menu]="menuList" [menuId]="'themes'"></menu-list><!-- multi="true" optional-->
+      <menu-list [menu]="menuList" [menuId]="'themes'" [RequestReceiver]="menuRequestEmitter?.asObservable()"></menu-list><!-- multi="true" optional-->
     </ion-content>
   
   </ion-menu>

@@ -1,13 +1,16 @@
 <ion-split-pane contentId="dashboardId" [disabled]="!paneEnabled">
 
-  <ion-menu side="start" contentId="dashboardId" menuId="dashboard">
+  <ion-menu side="start" contentId="dashboardId" menuId="dashboard" (ionWillClose)="menuWillClose()">
 
     <ion-header>
       <ion-toolbar color="light"><ion-title>Dashoard</ion-title></ion-toolbar>
     </ion-header>
   
     <ion-content>
-      <menu-list [menu]="menuList" [menuId]="'dashboard'"></menu-list>
+      <menu-list [menu]="menuList" [menuId]="'dashboard'" 
+        [RequestReceiver]="menuRequestEmitter?.asObservable()"></menu-list>
+      <menu-list *ngIf="(profileType$ | async) === 'admin'" [menu]="adminMenuList" [menuId]="'dashboard'" 
+        [RequestReceiver]="adminMenuRequestEmitter?.asObservable()"></menu-list>
     </ion-content>
   
   </ion-menu>
