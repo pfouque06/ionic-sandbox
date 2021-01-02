@@ -20,6 +20,7 @@ ion-list {
         font-weight: 500;
     }
     .sub-item {
-        padding-left: 30px;
+        border-left: 30px solid var(--ion-color-light-shade);
+        /* padding-left: 15px; */
     }
 }

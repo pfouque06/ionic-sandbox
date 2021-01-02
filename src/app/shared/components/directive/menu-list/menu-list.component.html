@@ -35,7 +35,8 @@
     <ion-item *ngIf="item.submenu?.length > 0" (click)="subMenuToggle(item)" detail="false">
       <ion-icon *ngIf="item.icon" [name]="item.icon" slot="start"></ion-icon>
       <ion-img *ngIf="item.img" [src]="item.img"></ion-img>
-      <ion-label [class]="item.open ? '.active-parent':''" >{{item?.label}}</ion-label>
+      <!-- <ion-label [class]="item.open ? 'active-parent':''" >{{item?.label}}</ion-label> -->
+      <ion-label [class.active-parent]="item.open" >{{item?.label}}</ion-label>
       <ion-icon [name]="item.open? 'caret-down':'caret-forward'" slot="end"></ion-icon>
     </ion-item>
     <menu-list *ngIf="item.open" [menu]="item.submenu" [menuId]="menuId" [menuLevel]="(menuLevel+1)" [multi]="multi"></menu-list>
