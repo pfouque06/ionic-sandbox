@@ -18,6 +18,7 @@ ion-list {
     }
     .active-parent {
         font-weight: 500;
+        text-shadow: var(--ion-color-medium) 5px 5px 30px;
     }
     .sub-item {
         border-left: 16px solid var(--ion-color-light);

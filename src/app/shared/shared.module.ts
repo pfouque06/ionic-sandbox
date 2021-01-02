@@ -5,6 +5,10 @@ import { UserPopoverPage } from './components/popover/user-popover/user-popover.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { IonicModule } from '@ionic/angular'
 import { ComponentsModule } from './components/components.module'
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons'
 
 const SHARED_MODALS = [
     UserPopoverPage,
@@ -21,6 +25,7 @@ const REACTIVE_FORM_DIRECTIVES = [
 const SHARED_MODULES = [                                                                                                                                                                                                                                                                                                
     KoaServicesModule,
     ComponentsModule,
+    FontAwesomeModule,
 ]                                                                                                                                                                                                                               
 
 const SHARED_IMPORTED_MODULES = []                                                                                                                      
@@ -54,7 +59,11 @@ const SHARED_PROVIDED_MODULES = [
     ],
     // schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class SharedModule { }
+export class SharedModule { 
+    constructor(library: FaIconLibrary) {
+        library.addIconPacks(fas, far, fab);
+    }
+}
 
 //   export class MaterialModule {
 //       constructor(public matIconRegistry: MatIconRegistry) {

@@ -31,17 +31,17 @@ export class ThemesPage {
         {
           label: 'Emojis',
           data: 'true',
-          icon: 'construct',
+          icon: 'pizza',
         },
         {
           label: 'Icons',
           data: 'true',
-          icon: 'construct',
+          icon: 'logo-ionic',
         },
         {
           label: 'Spinner',
           data: 'true',
-          icon: 'construct',
+          icon: 'reload-outline',
         },
         {
           label: 'QR & Bar codes ...',
@@ -50,17 +50,17 @@ export class ThemesPage {
             {
               label: 'QRCode Generator',
               data: 'true',
-              icon: 'construct',
+              icon: 'qr-code-outline',
             },
             {
               label: 'QRCode Scan',
               data: 'true',
-              icon: 'construct',
+              icon: 'scan-circle-outline',
             },
             {
               label: 'BarCode Scan',
               data: 'true',
-              icon: 'construct',
+              icon: 'barcode-outline',
             },
           ],
         },
@@ -77,58 +77,58 @@ export class ThemesPage {
             {
             label: 'Badge',
             link: '/tabs/themes/badge',
-            icon: 'construct',
+            icon: 'logo-ionic',
             },
             {
               label: 'Chip',
               data: 'true',
-              icon: 'construct',
+              icon: 'logo-ionic',
             },
             {
               label: 'Grid',
               data: 'true',
-              icon: 'construct',
+              icon: 'grid',
             },
             {
               label: 'List',
               data: 'true',
-              icon: 'construct',
+              icon: 'list',
             },
             {
               label: 'Nav',
               data: 'true',
-              icon: 'construct',
+              icon: 'albums',
             },
             {
               label: 'Reordering',
               data: 'true',
-              icon: 'construct',
+              icon: 'git-compare',
             },
             {
               label: 'Infinite Scroll',
               data: 'true',
-              icon: 'construct',
+              icon: 'infinite',
             },
             {
               label: 'Modal & Popover',
               data: 'true',
-              icon: 'construct',
+              icon: 'duplicate',
             },
           ],
         },
         {
           label: 'Materials stuff ...',
-          icon: 'color-palette',
+          icon: 'logo-angular',
           submenu: [
             {
               label: 'Picker',
               data: 'true',
-              icon: 'construct',
+              icon: 'options',
             },
             {
               label: 'Collapse',
               data: 'true',
-              icon: 'construct',
+              icon: 'archive',
             },
           ],
         },
@@ -139,12 +139,12 @@ export class ThemesPage {
             {
               label: 'Forms',
               data: 'true',
-              icon: 'construct',
+              icon: 'document-text',
             },
             {
               label: 'Pickers',
               data: 'true',
-              icon: 'construct',
+              icon: 'options',
             },
           ],
         },

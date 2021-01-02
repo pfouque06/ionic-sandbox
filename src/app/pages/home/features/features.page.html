@@ -8,18 +8,52 @@
 
   <ion-card>
     <ion-list>
-      <ion-list-header>Features list:</ion-list-header>
-      <ion-item><ion-icon name="logo-nodejs"></ion-icon>Koa</ion-item>
-      <ion-item><ion-icon name="logo-npm"></ion-icon>koa-service NPM module</ion-item>
-      <ion-item>NgRx</ion-item>
-      <ion-item><ion-icon name="logo-docker"></ion-icon>Docker</ion-item>
-      <ion-item><ion-icon name="logo-pwa"></ion-icon>PWA</ion-item>
-      <ion-item>Material</ion-item>
-      <ion-item>Fontawesome</ion-item>
-      <ion-item>Emoji</ion-item>
-      <ion-item><ion-icon name="barcode-outline"></ion-icon>Bar Code scanner & Generator</ion-item>
-      <ion-item><ion-icon name="qr-code-outline"></ion-icon>QR Code scanner & Generator</ion-item>
-      <ion-item><ion-icon name="leaf-outline"></ion-icon>Leadflet</ion-item>
+      <ion-list-header lines="full"><ion-text><h1>Features</h1></ion-text></ion-list-header>
+      <ion-item>
+        <ion-icon slot="start" name="logo-nodejs"></ion-icon>
+        <ion-label>Koa</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="logo-npm"></ion-icon>
+        <ion-label>koa-service NPM module</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="logo-angular"></ion-icon>
+        <ion-label>NgRx</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="logo-docker"></ion-icon>
+        <ion-label>Docker</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="logo-pwa"></ion-icon>
+        <ion-label>PWA</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="logo-angular"></ion-icon>
+        <ion-label>Material</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-text slot="start" color="medium"><fa-icon [icon]="['fab', 'font-awesome']" size="lg"></fa-icon></ion-text>
+        <!-- <fa-icon icon="yin-yang" [spin]="true" size="lg"></fa-icon> -->
+        <ion-label>Fontawesome</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="pizza"></ion-icon>
+        <ion-label>Emoji</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="barcode-outline"></ion-icon>
+        <ion-label>Bar Code scanner & Generator</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+        <ion-label>QR Code scanner & Generator</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="leaf-outline"></ion-icon>
+        <ion-label>Leadflet</ion-label>
+      </ion-item>
     </ion-list>
   </ion-card>
 
