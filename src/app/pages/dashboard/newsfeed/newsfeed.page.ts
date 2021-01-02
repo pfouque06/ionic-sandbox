@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewsfeedPage implements OnInit {
 
-  constructor() { }
+  constructor() { console.log('dashboard/newsfeed'); }
 
   ngOnInit() {
   }

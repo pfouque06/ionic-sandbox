@@ -7,6 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WelcomePage {
 
-  constructor() { console.log('welcome'); }
+  constructor() { console.log('home/welcome'); }
 
 }

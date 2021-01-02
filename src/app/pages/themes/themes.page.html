@@ -3,49 +3,11 @@
   <ion-menu side="start" contentId="themesId" menuId="themes">
 
     <ion-header>
-      <ion-toolbar color="light">
-        <ion-title>Themes</ion-title>
-      </ion-toolbar>
+      <ion-toolbar color="light"><ion-title>Themes</ion-title></ion-toolbar>
     </ion-header>
   
     <ion-content>
-      <ion-list>
-        <ion-menu-toggle auto-hide="false" menu="themes">
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Sandbox</ion-item>
-          
-          <ion-item-divider>Goodies ...</ion-item-divider>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Emojis</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Icons</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Spinner</ion-item>
-          
-          <ion-item-divider>Modals ...</ion-item-divider>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Modals</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Popover</ion-item>
-          
-          <ion-item-divider>Ionic stuff ...</ion-item-divider>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Grid</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>List</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Nav</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Reordering</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>badge</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>chip</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Infinite Scroll</ion-item>
-          
-          <ion-item-divider>QR & Bar codes ...</ion-item-divider>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>QRCode Generator</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>QRCode Scan</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>BarCode Scan</ion-item>
-          
-          <ion-item-divider>Inputs...</ion-item-divider>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>Forms</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>datetime picker</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>picker</ion-item>
-          
-          <ion-item-divider>Materials stuff ...</ion-item-divider>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>material picker</ion-item>
-          <ion-item><ion-icon name="construct" slot="start"></ion-icon>material collapse</ion-item>
-        </ion-menu-toggle>
-      </ion-list>
+      <menu-list [menu]="menuList" [menuId]="'themes'"></menu-list><!-- multi="true" optional-->
     </ion-content>
   
   </ion-menu>

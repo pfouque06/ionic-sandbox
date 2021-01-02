@@ -1,0 +1,44 @@
+<ion-list>
+
+  <div *ngFor="let item of menu" [class]="menuLevel > 0 ? 'sub-item': ''">
+
+    <!-- routerLink item type -->
+    <ion-menu-toggle *ngIf="item.link" auto-hide="false" [menu]="menuId">
+      <ion-item [routerLink]="item.link" routerDirection="root" routerLinkActive="active-item">
+        <ion-icon *ngIf="item.icon" [name]="item.icon" slot="start"></ion-icon>
+        <ion-img *ngIf="item.img" [src]="item.img"></ion-img>
+        <ion-label>{{item?.label}}</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+    
+    <!-- href item type -->
+    <ion-menu-toggle *ngIf="item.href" auto-hide="false" [menu]="menuId">
+      <ion-item [href]="item.href" target="_blank">
+        <ion-icon *ngIf="item.icon" [name]="item.icon" slot="start"></ion-icon>
+        <ion-img *ngIf="item.img" [src]="item.img"></ion-img>
+        <ion-label>{{item?.label}}</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+    
+    <!-- data item type -->
+    <ion-menu-toggle *ngIf="item.data" auto-hide="false" [menu]="menuId">
+      <ion-item>
+        <ion-icon *ngIf="item.icon" [name]="item.icon" slot="start"></ion-icon>
+        <ion-img *ngIf="item.img" [src]="item.img"></ion-img>
+        <ion-label>{{item?.label}}</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+    
+    <!-- TODO: function item type -->
+    
+    <!-- submenu item type -->
+    <ion-item *ngIf="item.submenu?.length > 0" (click)="subMenuToggle(item)" detail="false">
+      <ion-icon *ngIf="item.icon" [name]="item.icon" slot="start"></ion-icon>
+      <ion-img *ngIf="item.img" [src]="item.img"></ion-img>
+      <ion-label [class]="item.open ? '.active-parent':''" >{{item?.label}}</ion-label>
+      <ion-icon [name]="item.open? 'caret-down':'caret-forward'" slot="end"></ion-icon>
+    </ion-item>
+    <menu-list *ngIf="item.open" [menu]="item.submenu" [menuId]="menuId" [menuLevel]="(menuLevel+1)" [multi]="multi"></menu-list>
+
+  </div>
+</ion-list>

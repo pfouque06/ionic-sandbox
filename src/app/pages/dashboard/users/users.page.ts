@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersPage implements OnInit {
 
-  constructor() { }
+  constructor() { console.log('dashboard/users'); }
 
   ngOnInit() {
   }

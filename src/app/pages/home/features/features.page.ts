@@ -7,6 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeaturesPage {
 
-  constructor() { console.log('features'); }
+  constructor() { console.log('home/features'); }
 
 }

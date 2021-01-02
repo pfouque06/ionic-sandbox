@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  constructor() { console.log('dashboard/profile'); }
 
   ngOnInit() {
   }

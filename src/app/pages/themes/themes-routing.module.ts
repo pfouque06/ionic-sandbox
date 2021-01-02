@@ -5,6 +5,8 @@ import { ThemesPage } from './themes.page';
 const routes: Routes = [
   { path: '', component: ThemesPage,children: [
     { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule) },
+    { path: 'sandbox', loadChildren: () => import('./sandbox/sandbox.module').then( m => m.SandboxPageModule) },
+    { path: 'badge', loadChildren: () => import('./badge/badge.module').then( m => m.BadgePageModule) },
   ]},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

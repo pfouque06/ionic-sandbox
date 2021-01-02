@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-list.component';
 
 @Component({
   selector: 'app-home',
@@ -9,25 +10,33 @@ import { MenuController } from '@ionic/angular';
 export class HomePage {
   
   public paneEnabled: boolean = false;
-
+  public menuList: IMenuList[] = [
+    {
+      label: 'Welcome',
+      link: '/tabs/home/welcome',
+      icon: 'newspaper',
+    },
+    {
+      label: 'Features',
+      link: '/tabs/home/features',
+      icon: 'extension-puzzle-outline',
+    },
+    {
+      label: 'Contact',
+      href: 'http://www.pfouque.fr',
+      img: '/assets/icon/favicon.png',
+    },
+  ]
+  
   constructor(private menuCtl: MenuController) { console.log('home'); }
 
   async ionViewWillEnter() {
-    console.log('home.ionViewWillEnter()');
     this.paneEnabled = true;
     const menuId = await this.menuCtl.enable(true, 'home');
-    console.log('menuId: ', menuId);
-    // console.log(
-    //   await this.menuCtl.getMenus(),
-    //   await this.menuCtl.get()
-    // );
   }
 
   ionViewWillLeave() {
-    console.log('home.ionViewWillLeave()');
     this.paneEnabled = false;
-    // this.menuCtl.close('homeId');
-    // this.menuCtl.close();
   }
 
 }

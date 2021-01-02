@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-list.component';
 
 @Component({
   selector: 'app-map',
@@ -9,24 +10,22 @@ import { MenuController } from '@ionic/angular';
 export class MapPage {
 
   public paneEnabled: boolean = false;
-  
+  public menuList: IMenuList[] = [
+    {
+      label: 'Home',
+      link: '/tabs/map/home',
+      icon: 'home',
+    },
+  ]
+
   constructor(private menuCtl: MenuController) { console.log('map'); }
 
   async ionViewWillEnter() {
-    console.log('home.ionViewWillEnter()');
     this.paneEnabled = true;
     const menuId = await this.menuCtl.enable(true, 'map');
-    console.log('menuId: ', menuId);
-    // console.log(
-    //   await this.menuCtl.getMenus(),
-    //   await this.menuCtl.get()
-    // );
   }
 
   ionViewWillLeave() {
-    console.log('home.ionViewWillLeave()');
     this.paneEnabled = false;
-    // this.menuCtl.close('homeId');
-    // this.menuCtl.close();
   }
 }

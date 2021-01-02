@@ -3,16 +3,11 @@
   <ion-menu side="start" contentId="mapId" menuId="map">
 
     <ion-header>
-      <ion-toolbar color="light">
-        <ion-title>Map</ion-title>
-      </ion-toolbar>
+      <ion-toolbar color="light"><ion-title>Map</ion-title></ion-toolbar>
     </ion-header>
   
     <ion-content>
-      <ion-list>
-        <ion-menu-toggle auto-hide="false" menu="map">
-        </ion-menu-toggle>
-      </ion-list>
+      <menu-list [menu]="menuList" [menuId]="'map'"></menu-list>
     </ion-content>
   
   </ion-menu>

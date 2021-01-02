@@ -26,6 +26,7 @@ export class TabsPage {
     public navCtrl: NavController,
     private router: Router,
   ) {
+    console.log('tabs');
     // define observers
     this.fullName$ = this.authService.getCurrentUserFullName$();
   }
