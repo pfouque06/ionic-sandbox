@@ -13,6 +13,8 @@ import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers, UserEffects } from 'koa-services';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +27,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([UserEffects, UserEffects]),
     StoreDevtoolsModule.instrument({ logOnly: true, maxAge: false, name: 'Koa front app' }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     StatusBar,

@@ -7,7 +7,7 @@
   </ion-text>
 
   <ion-card>
-    <ion-list>
+    <ion-list inset="false" lines="full">
       <ion-list-header lines="full"><ion-text><h1>Features</h1></ion-text></ion-list-header>
       <ion-item>
         <ion-icon slot="start" name="logo-nodejs"></ion-icon>
@@ -38,14 +38,10 @@
         <ion-label>Material</ion-label>
       </ion-item>
       <ion-item>
-        <!-- <ion-text slot="start" color="medium" style="margin-left: 3px; margin-right: 34px;"><fa-icon [icon]="['fab', 'font-awesome']" size="lg"></fa-icon></ion-text> -->
         <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fab', 'font-awesome']" size="lg"></fa-icon></ion-text>
-        <!-- <fa-icon icon="yin-yang" [spin]="true" size="lg"></fa-icon> -->
         <ion-label>Fontawesome</ion-label>
       </ion-item>
       <ion-item>
-        <!-- <ion-icon slot="start" name="pizza"></ion-icon> -->
-        <!-- <angular-emojis slot="start" [name]="'yum'" size="24" style="margin-right: 32px;"> </angular-emojis> -->
         <angular-emojis slot="start" [name]="'yum'" size="20" class="emojis"> </angular-emojis>
         <ion-label>Emojis</ion-label>
       </ion-item>
@@ -58,7 +54,6 @@
         <ion-label>QR Code scanner & Generator</ion-label>
       </ion-item>
       <ion-item>
-        <!-- <ion-text slot="start" color="success" class="fa-icon"><fa-icon [icon]="['fas', 'leaf']" size="lg"></fa-icon></ion-text> -->
         <ion-icon slot="start" name="leaf-outline" color="success"></ion-icon>
         <ion-label>Leadflet</ion-label>
       </ion-item>

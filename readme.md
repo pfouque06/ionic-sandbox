@@ -45,3 +45,6 @@ instructions for code level update :
 > $ ng build --prod   
 > $ sudo docker-compose restart; sudo docker-compose logs -f --tail="0"  
 
+Convert to PWA :
+> $ ng add @angular/pwa  
+and fix icon with your required icons in manifest.webmanifest json file  
