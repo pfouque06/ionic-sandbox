@@ -9,6 +9,7 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import { AngularEmojisModule } from 'angular-emojis'
 
 const SHARED_MODALS = [
     UserPopoverPage,
@@ -26,6 +27,7 @@ const SHARED_MODULES = [
     KoaServicesModule,
     ComponentsModule,
     FontAwesomeModule,
+    AngularEmojisModule,
 ]                                                                                                                                                                                                                               
 
 const SHARED_IMPORTED_MODULES = []                                                                                                                      
