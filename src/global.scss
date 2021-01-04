@@ -71,6 +71,12 @@
     --white-space: pre-line;
 }
 
+ion-card {
+    padding:  10px 10px;
+}
+ion-item-divider {
+    min-height: 0px;
+}
 /* disable ion-icon popup using CSS event blocking. You may set "title" property on parent element. */
 ion-icon {
     pointer-events: none;

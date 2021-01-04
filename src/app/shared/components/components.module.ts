@@ -7,13 +7,15 @@ import { TabFakeHeaderComponent } from './directive/tab-fake-header/tab-fake-hea
 import { TabFooterComponent } from './directive/tab-footer/tab-footer.component';
 import { MenuListComponent } from './directive/menu-list/menu-list.component';
 import { RouterModule } from '@angular/router';
+import { TeaserBetaVersionComponent } from './directive/teaser-beta-version/teaser-beta-version.component';
 
 
 const components = [
   TabHeaderComponent,
   TabFakeHeaderComponent,
   TabFooterComponent,
-  MenuListComponent
+  MenuListComponent,
+  TeaserBetaVersionComponent,
 ];
 
 @NgModule({
