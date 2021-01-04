@@ -6,6 +6,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 import { SandboxPage } from './sandbox.page';
 import { SandboxPageRoutingModule } from './sandbox-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { SandboxPageRoutingModule } from './sandbox-routing.module';
     FormsModule,
     IonicModule,
     ComponentsModule,
+    SharedModule,
     SandboxPageRoutingModule
   ],
   declarations: [SandboxPage]

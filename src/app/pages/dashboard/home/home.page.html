@@ -1,10 +1,56 @@
 <tab-fake-header></tab-fake-header>
 
 <ion-content>
+    
+    <teaser-beta-version></teaser-beta-version>
+    
+    <ion-card>
+        <h2>Koa Dashboard</h2>
+        <p>Play around without limit, the koa api server is daily restarted anyhow .....</p>
+        <p>Swagger on
+            <a [href]="swagger" target="_blank" title="Koa Swagger">
+                <mat-icon class="material-icons md-24">engineering</mat-icon>
+            </a>
+        </p>
+        <p>Repository on
+            <a href="https://github.com/pfouque06/koa-typescript-restfull-api" target="_blank" title="GitHub">
+                <ion-icon name="logo-github"></ion-icon>
+            </a>
+        </p>
+    </ion-card>
+    
+    <ion-card>
 
-    <ion-text color="warning">
-        <p class="ion-text-center"><ion-icon name="trail-sign" size="large"></ion-icon> ... Will be available very very soon ...<ion-icon name="hourglass-outline" size="large"></ion-icon></p>
-    </ion-text>
+        <ion-list inset="false" lines="full">
+            <ion-list-header lines="full">
+                <!-- <ion-icon slot="start" [name]="ping() ? 'checkmark':'close'" [color]="ping() ? 'success':'danger'"></ion-icon> -->
+                <ion-icon [name]="ping() ? 'checkmark':'close'" [color]="ping() ? 'success':'danger'" size="large"></ion-icon>
+                <h3><code>koa</code></h3>
+            </ion-list-header>
+            <ion-item>
+                <ion-icon slot="start" name="logo-nodejs" color="success"></ion-icon>
+                <ion-label>Restfull Koa server is {{ping() ? '' : 'not'}} available</ion-label>
+            </ion-item>
+        </ion-list>
+
+        <!-- <mat-accordion>
+            <mat-expansion-panel  hideToggle>
+    
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon class="check_request check_ko"  [class.check_ok]="ping()" >{{ping() ? 'done' : 'warning'}}</mat-icon>
+                        <code>koa</code>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Restfull API
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <p>Restfull Koa server is {{ping() ? '' : 'not'}} available</p>
+                
+            </mat-expansion-panel>
+        </mat-accordion> -->
+    </ion-card>
 
 </ion-content>
 
