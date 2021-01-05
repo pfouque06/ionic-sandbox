@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BadgePage implements OnInit {
 
-  constructor() { console.log('themes/badge'); }
+  constructor() { console.log('themes/font-awesome-icons'); }
 
   ngOnInit() {
   }

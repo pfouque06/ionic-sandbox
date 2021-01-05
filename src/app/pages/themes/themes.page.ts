@@ -30,17 +30,17 @@ export class ThemesPage {
       submenu: [
         {
           label: 'Emojis',
-          data: 'true',
+          link: '/tabs/themes/emojis',
           icon: 'pizza',
         },
         {
           label: 'Icons',
-          data: 'true',
+          link: '/tabs/themes/font-awesome-icons',
           icon: 'logo-ionic',
         },
         {
           label: 'Spinner',
-          data: 'true',
+          link: '/tabs/themes/spinners',
           icon: 'reload-outline',
         },
         {

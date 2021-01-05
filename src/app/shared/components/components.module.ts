@@ -8,6 +8,7 @@ import { TabFooterComponent } from './directive/tab-footer/tab-footer.component'
 import { MenuListComponent } from './directive/menu-list/menu-list.component';
 import { RouterModule } from '@angular/router';
 import { TeaserBetaVersionComponent } from './directive/teaser-beta-version/teaser-beta-version.component';
+import { TeaserComingSoonComponent } from './directive/teaser-coming-soon/teaser-coming-soon.component';
 import { FullWidthTitleComponent } from './directive/full-width-title/full-width-title.component';
 
 
@@ -17,6 +18,7 @@ const components = [
   TabFooterComponent,
   MenuListComponent,
   TeaserBetaVersionComponent,
+  TeaserComingSoonComponent,
   FullWidthTitleComponent,
 ];
 
