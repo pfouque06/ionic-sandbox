@@ -1,5 +1,20 @@
-/* mat-expansion-panel, mat-expansion-panel-header {
-    padding: 0px !important;
-    div.mat-expansion-panel-body { padding: 0px !important; }
+mat-expansion-panel {
+    margin: 10px 10px;
+    ::ng-deep .mat-expansion-panel-body {
+        padding: 10px;
+    }
 }
- */
+.check_request {
+    margin: -5px 10px 0px 0px;
+    /* height: 15px!; */
+    /* width: 15px!; */
+}
+
+.check_ok {
+    /* color: rgb(0, 100, 0) !important; /* dargreen */
+    color: var(--ion-color-success) !important;
+}
+.check_ko {
+    /* color: rgb(220,20,60); /* crimson */
+    color: var(--ion-color-danger) !important;
+}

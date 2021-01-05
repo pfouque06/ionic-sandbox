@@ -5,20 +5,42 @@
     <angular-emojis name="yum" size="20"></angular-emojis>
 </full-width-title>
 
-<ion-content>
-    <teaser-beta-version><ion-card>test 1</ion-card><ion-card>test 2</ion-card></teaser-beta-version>
-    
-    <ion-item-divider></ion-item-divider>
+<teaser-beta-version></teaser-beta-version>
 
+<ion-content>
+    
     <ion-text class="ion-text-center">Title</ion-text>
     <ion-card><ion-card-title class="ion-text-center">Sandbox !</ion-card-title></ion-card>
-    <!-- <ion-item-divider></ion-item-divider> -->
     <ion-card-title class="my-header ion-text-center">Title !</ion-card-title>
+    
     <ion-item-divider></ion-item-divider>
+    
     <full-width-title class="ion-text-center">
         new Title
         <angular-emojis name="smirk" size="20"></angular-emojis>
     </full-width-title>
+
+    <ion-item-divider></ion-item-divider>
+    
+    <mat-accordion>
+        <mat-expansion-panel  hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>An Expansion panel Title</mat-panel-title>
+                <mat-panel-description>with a desc</mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <p>Material Expansion Panel 1</p>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel  hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>Another Expansion panel Title</mat-panel-title>
+                <mat-panel-description>with a desc</mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <p>Material Expansion Panel 2</p>
+        </mat-expansion-panel>
+    </mat-accordion>
 </ion-content>
 
 <tab-footer></tab-footer>

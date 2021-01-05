@@ -47,4 +47,11 @@ instructions for code level update :
 
 Convert to PWA :
 > $ ng add @angular/pwa  
-and fix icon with your required icons in manifest.webmanifest json file  
+and fix icon with your required icons in manifest.webmanifest json file
+
+Import FontAwesome, Emojis & Materials
+> $ ng add @fortawesome/angular-fontawesome  
+> $ ng add angular-emojis  
+> $ ng add @angular/material    
+
+and replace Module into shared.module.ts

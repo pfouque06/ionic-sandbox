@@ -10,6 +10,9 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { AngularEmojisModule } from 'angular-emojis'
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
 
 const SHARED_MODALS = [
     UserPopoverPage,
@@ -28,6 +31,9 @@ const SHARED_MODULES = [
     ComponentsModule,
     FontAwesomeModule,
     AngularEmojisModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatIconModule,
 ]                                                                                                                                                                                                                               
 
 const SHARED_IMPORTED_MODULES = []                                                                                                                      

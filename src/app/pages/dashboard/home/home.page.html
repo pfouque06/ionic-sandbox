@@ -19,38 +19,26 @@
         </p>
     </ion-card>
     
-    <ion-card>
+    <mat-accordion>
+        <mat-expansion-panel  hideToggle>
 
-        <ion-list inset="false" lines="full">
-            <ion-list-header lines="full">
-                <!-- <ion-icon slot="start" [name]="ping() ? 'checkmark':'close'" [color]="ping() ? 'success':'danger'"></ion-icon> -->
-                <ion-icon [name]="ping() ? 'checkmark':'close'" [color]="ping() ? 'success':'danger'" size="large"></ion-icon>
-                <h3><code>koa</code></h3>
-            </ion-list-header>
-            <ion-item>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon class="check_request"  [class]="ping() ? 'check_ok':'check_ko'">{{ping() ? 'done' : 'warning'}}</mat-icon>
+                    <code>koa</code>
+                </mat-panel-title>
+                <mat-panel-description>
+                    Restfull API
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <ion-item lines="none">
                 <ion-icon slot="start" name="logo-nodejs" color="success"></ion-icon>
                 <ion-label>Restfull Koa server is {{ping() ? '' : 'not'}} available</ion-label>
             </ion-item>
-        </ion-list>
-
-        <!-- <mat-accordion>
-            <mat-expansion-panel  hideToggle>
-    
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        <mat-icon class="check_request check_ko"  [class.check_ok]="ping()" >{{ping() ? 'done' : 'warning'}}</mat-icon>
-                        <code>koa</code>
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        Restfull API
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-
-                <p>Restfull Koa server is {{ping() ? '' : 'not'}} available</p>
-                
-            </mat-expansion-panel>
-        </mat-accordion> -->
-    </ion-card>
+            
+        </mat-expansion-panel>
+    </mat-accordion>
 
 </ion-content>
 
