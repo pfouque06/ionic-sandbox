@@ -12,7 +12,31 @@
     </ion-card-header>
     
     <ion-card>
-      <ion-card-header>Material spinner</ion-card-header>
+      <ion-card-header>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="logo-ionic" color="secondary" size="large"></ion-icon>
+          Ionic spinners
+        </ion-item>
+      </ion-card-header>
+      <ion-item lines="none">
+        <ion-label>
+          <ion-spinner></ion-spinner>
+          <ion-spinner name="crescent" color="primary"></ion-spinner>
+          <ion-spinner name="lines" color="secondary"></ion-spinner>
+          <ion-spinner name="dots" color="success"></ion-spinner>
+          <ion-spinner name="bubbles" color="warning"></ion-spinner>
+          <ion-spinner name="circles" color="danger"></ion-spinner>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    
+    <ion-card>
+      <ion-card-header>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="logo-angular" color="danger" size="large"></ion-icon>
+          Material spinner
+        </ion-item>
+      </ion-card-header>
       <ion-item lines="none">
         <ion-label>
           <mat-spinner diameter="20" color="warn"></mat-spinner>
@@ -21,45 +45,125 @@
     </ion-card>
     
     <ion-card>
-      <ion-card-header>FontAwesome Spinners : Rotating icons</ion-card-header>
+      <ion-card-header>
+        <ion-item lines="none">
+          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fab', 'font-awesome']" size="2x"></fa-icon></ion-text>
+          FontAwesome Spinners : Rotating icons
+        </ion-item>
+      </ion-card-header>
       <ion-item lines="none">
         <ion-label><i class="fas fa-spinner"></i>
           <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'spinner']" size="lg" [spin]="true"></fa-icon></ion-text>
-          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'circle-notch']" size="lg" [spin]="true"></fa-icon></ion-text>
-          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'sync']" size="lg" [spin]="true"></fa-icon></ion-text>
-          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'cog']" size="lg" [spin]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="secondary" class="fa-icon"><fa-icon [icon]="['fas', 'circle-notch']" size="lg" [spin]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="success" class="fa-icon"><fa-icon [icon]="['fas', 'sync']" size="lg" [spin]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="danger" class="fa-icon"><fa-icon [icon]="['fas', 'cog']" size="lg" [spin]="true"></fa-icon></ion-text>
         </ion-label>
       </ion-item>
     </ion-card>
     
     <ion-card>
-      <ion-card-header>FontAwesome Pulsers : Pulsed icons</ion-card-header>
+      <ion-card-header>
+        <ion-item lines="none">
+          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fab', 'font-awesome']" size="2x"></fa-icon></ion-text>
+          FontAwesome Pulsers : Pulsed icons
+        </ion-item>
+      </ion-card-header>
       <ion-item lines="none">
         <ion-label>
           <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'spinner']" size="lg" [pulse]="true"></fa-icon></ion-text>
-          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'circle-notch']" size="lg" [pulse]="true"></fa-icon></ion-text>
-          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'sync']" size="lg" [pulse]="true"></fa-icon></ion-text>
-          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'cog']" size="lg" [pulse]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="secondary" class="fa-icon"><fa-icon [icon]="['fas', 'circle-notch']" size="lg" [pulse]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="success" class="fa-icon"><fa-icon [icon]="['fas', 'sync']" size="lg" [pulse]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="danger" class="fa-icon"><fa-icon [icon]="['fas', 'cog']" size="lg" [pulse]="true"></fa-icon></ion-text>
         </ion-label>
       </ion-item>
     </ion-card>
 
     <ion-card>
-      <ion-card-header>Material progress bars</ion-card-header>
+      <ion-card-header>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="logo-ionic" color="secondary" size="large"></ion-icon>
+          Ionic skeleton texts
+          <div slot="end" (click)="hidden = !hidden">
+            <ion-spinner name="dots" color="primary" style="transform: scale(2);" [paused]="!hidden"></ion-spinner>
+            <!-- <ion-icon [name]="hidden ? 'ellipsis-vertical-outline':'ellipsis-vertical'" size="large" color="dark"></ion-icon> -->
+          </div>
+        </ion-item>
+      </ion-card-header>
       <ion-item lines="none">
-        <ion-label>
-          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-        </ion-label>
+        ... shoot the bullets ... <angular-emojis [name]="'wink'" size="30"> </angular-emojis>
+      </ion-item>
+      <div *ngIf="hidden;else appear">
+        <ion-item lines="none">
+          <ion-thumbnail slot="start">
+            <ion-skeleton-text></ion-skeleton-text>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </div>
+      <ng-template #appear>
+        <ion-item  lines="none">
+          <ion-thumbnail slot="start">
+            <!-- <img src="/src/assets/img/thebeatles.jpeg"> -->
+            <img src="../../../../../assets/img/thebeatles.jpeg">
+          </ion-thumbnail>
+          <ion-label>
+            <h3>Abbey Road</h3>
+            <p>The Beatles</p>
+            <p>1969</p>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="logo-ionic" color="secondary" size="large"></ion-icon>
+          Ionic progress bars
+        </ion-item>
+      </ion-card-header>
+      <ion-item lines="none">
+        <ion-progress-bar value="0.3"></ion-progress-bar>
       </ion-item>
       <ion-item lines="none">
-        <ion-label>
-          <mat-progress-bar mode="buffer" color="warn"></mat-progress-bar>
-        </ion-label>
+        <ion-progress-bar value="0.2" buffer="0.5" color="secondary"></ion-progress-bar>
       </ion-item>
       <ion-item lines="none">
-        <ion-label>
-          <mat-progress-bar mode="query" color="accent"></mat-progress-bar>
-        </ion-label>
+        <ion-progress-bar buffer="0" color="success"></ion-progress-bar>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-progress-bar type="indeterminate" color="warning"></ion-progress-bar>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-progress-bar type="indeterminate" reversed="true" color="danger"></ion-progress-bar>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="logo-angular" color="danger" size="large"></ion-icon>
+          Material progress bars
+        </ion-item>
+      </ion-card-header>
+      <ion-item lines="none">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </ion-item>
+      <ion-item lines="none">
+        <mat-progress-bar mode="buffer" color="warn"></mat-progress-bar>
+      </ion-item>
+      <ion-item lines="none">
+        <mat-progress-bar mode="query" color="accent"></mat-progress-bar>
       </ion-item>
     </ion-card>
 

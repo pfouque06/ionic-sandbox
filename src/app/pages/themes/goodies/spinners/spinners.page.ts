@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpinnersPage implements OnInit {
 
+  public hidden: boolean = true;
+
   constructor() { console.log('themes/goodies/spinners'); }
 
   ngOnInit() {
