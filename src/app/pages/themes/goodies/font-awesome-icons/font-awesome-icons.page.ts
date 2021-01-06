@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FontAwesomeIconsPage implements OnInit {
 
-  constructor() { console.log('themes/goodies/emojis'); }
+  constructor() { console.log('themes/goodies/font-awesome-icons'); }
 
   ngOnInit() {
   }

@@ -13,6 +13,8 @@ import { AngularEmojisModule } from 'angular-emojis'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 const SHARED_MODALS = [
     UserPopoverPage,
@@ -34,6 +36,8 @@ const SHARED_MODULES = [
     MatExpansionModule,
     MatDividerModule,
     MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
 ]                                                                                                                                                                                                                               
 
 const SHARED_IMPORTED_MODULES = []                                                                                                                      

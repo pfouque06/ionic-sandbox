@@ -1,7 +1,69 @@
 <tab-fake-header></tab-fake-header>
 
 <ion-content>
-  <teaser-coming-soon></teaser-coming-soon>
+  <ion-card>
+
+    <ion-card-header>
+      <ion-item>
+        <ion-label>
+          Spinners & progress bars
+        </ion-label>
+      </ion-item>
+    </ion-card-header>
+    
+    <ion-card>
+      <ion-card-header>Material spinner</ion-card-header>
+      <ion-item lines="none">
+        <ion-label>
+          <mat-spinner diameter="20" color="warn"></mat-spinner>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    
+    <ion-card>
+      <ion-card-header>FontAwesome Spinners : Rotating icons</ion-card-header>
+      <ion-item lines="none">
+        <ion-label><i class="fas fa-spinner"></i>
+          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'spinner']" size="lg" [spin]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'circle-notch']" size="lg" [spin]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'sync']" size="lg" [spin]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'cog']" size="lg" [spin]="true"></fa-icon></ion-text>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+    
+    <ion-card>
+      <ion-card-header>FontAwesome Pulsers : Pulsed icons</ion-card-header>
+      <ion-item lines="none">
+        <ion-label>
+          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'spinner']" size="lg" [pulse]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'circle-notch']" size="lg" [pulse]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'sync']" size="lg" [pulse]="true"></fa-icon></ion-text>
+          <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fas', 'cog']" size="lg" [pulse]="true"></fa-icon></ion-text>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>Material progress bars</ion-card-header>
+      <ion-item lines="none">
+        <ion-label>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <mat-progress-bar mode="buffer" color="warn"></mat-progress-bar>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>
+          <mat-progress-bar mode="query" color="accent"></mat-progress-bar>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+  </ion-card>
 </ion-content>
 
 <tab-footer></tab-footer>

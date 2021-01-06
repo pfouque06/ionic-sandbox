@@ -39,7 +39,7 @@ export class ThemesPage {
           icon: 'logo-ionic',
         },
         {
-          label: 'Spinner',
+          label: 'Spinners & Bars',
           link: '/tabs/themes/spinners',
           icon: 'reload-outline',
         },
