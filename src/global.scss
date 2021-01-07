@@ -28,12 +28,19 @@
 .UITooling-toaster-default{
     --border-radius:5px;
     --background: var(--ion-color-light);
-    --color: var(--ion-color-medium);
+    --color: var(--ion-color-dark);
     --white-space: pre-line;
     /* --border-color:#852114;
     --border-style:solid;
     --border-width:4px;
     --button-color:#FFDD00; */
+}
+
+.UITooling-toaster-info{
+    --border-radius:5px;
+    --background: var(--ion-color-tertiary);
+    --color: var(--ion-color-light);
+    --white-space: pre-line;
 }
 
 .UITooling-toaster-success{

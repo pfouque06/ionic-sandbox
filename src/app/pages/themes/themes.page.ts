@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Subject } from 'rxjs';
-import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-list.component';
+import { IMenuList } from '../../shared/components/directive/menu-list/menu-list.component';
+import { UItoolingService } from '../../shared/services/UITooling.service';
 
 @Component({
   selector: 'app-themes',
@@ -25,9 +26,19 @@ export class ThemesPage {
       icon: 'construct',
     },
     {
+      label: 'callback test 1',
+      callback: 'test01',
+      icon: 'construct',
+    },
+    {
       label: 'Goodies',
       icon: 'color-palette',
       submenu: [
+        {
+          label: 'callback test 2',
+          callback: 'test02',
+          icon: 'construct',
+        },
         {
           label: 'Emojis',
           link: '/tabs/themes/emojis',
@@ -47,6 +58,11 @@ export class ThemesPage {
           label: 'QR & Bar codes ...',
           icon: 'color-palette',
           submenu: [
+            {
+              label: 'callback test 3',
+              callback: 'test03',
+              icon: 'construct',
+            },
             {
               label: 'QRCode Generator',
               data: 'true',
@@ -152,7 +168,7 @@ export class ThemesPage {
     },
   ]
   
-  constructor(private menuCtl: MenuController) { console.log('themes'); }
+  constructor(private menuCtl: MenuController, private UITooling: UItoolingService ) { console.log('themes'); }
 
   async ionViewWillEnter() {
     this.paneEnabled = true;
@@ -165,5 +181,11 @@ export class ThemesPage {
 
   public menuWillClose() {
     this.menuRequestEmitter.next();
+  }
+
+  callbackReceiverSwitch(callbackId: string) {
+    const message = `callbackReceiverSwitch( callbackId: ${callbackId} )`;
+    // console.log(message);
+    this.UITooling.fireAlert(message,'info');
   }
 }

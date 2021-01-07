@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Observable, Subject, Subscription } from 'rxjs';
 
@@ -7,6 +7,7 @@ export interface IMenuList {
   link?: string;
   href?: string;
   data?: string;
+  callback?: string;
   icon?: string;
   img?: string;
   submenu?: IMenuList[];
@@ -26,9 +27,12 @@ export class MenuListComponent implements OnInit, OnDestroy {
   @Input() public menuLevel: number = 0;
   @Input() public multi: boolean = false;
 
-  // closeRequestEvent from parent Menu to SubMenu
+  // closeRequest event receiver from parent
   @Input() RequestReceiver: Observable<any> = undefined;
 
+  // callbackRequest event emitter to parent 
+  @Output() RequestEmitter : EventEmitter<string> = new EventEmitter<string>();
+  
   public subscriptions: Subscription[] = [];
 
   constructor(private menuCtl: MenuController) { }
@@ -43,6 +47,10 @@ export class MenuListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach((s) => s.unsubscribe());
+  }
+
+  public ReceiveRequestEventfromParent() {
+    this.closeAll();
   }
 
   public subMenuToggle(item: IMenuList) {
@@ -72,7 +80,13 @@ export class MenuListComponent implements OnInit, OnDestroy {
     item.RequestEmitter?.next();
   }
 
-  public ReceiveRequestEventfromParent() {
-    this.closeAll();
+  // Emit event to parent
+  public callbackRequestInit(item: IMenuList) {
+    this.RequestEmitter.emit(item.callback);
+  }
+
+  // Forward chiuld submenu event to parent
+  public callbackReceiverPipe(callbackId: string) {
+    this.RequestEmitter.emit(callbackId);
   }
 }

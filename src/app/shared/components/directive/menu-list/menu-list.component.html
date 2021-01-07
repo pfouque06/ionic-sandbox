@@ -29,7 +29,14 @@
       </ion-item>
     </ion-menu-toggle>
     
-    <!-- TODO: function item type -->
+    <!-- callback item type -->
+    <ion-menu-toggle *ngIf="item.callback" auto-hide="false" [menu]="menuId">
+      <ion-item (click)="callbackRequestInit(item)" >
+        <ion-icon *ngIf="item.icon" [name]="item.icon" slot="start"></ion-icon>
+        <ion-img *ngIf="item.img" [src]="item.img"></ion-img>
+        <ion-label>{{item?.label}}</ion-label>
+      </ion-item>
+    </ion-menu-toggle>
     
     <!-- submenu item type -->
     <ion-item *ngIf="item.submenu?.length > 0" (click)="subMenuToggle(item)" detail="false">
@@ -40,7 +47,8 @@
       <ion-icon [name]="item.open? 'caret-down':'caret-forward'" slot="end"></ion-icon>
     </ion-item>
     <menu-list *ngIf="item.open" [menu]="item.submenu" [menuId]="menuId" [menuLevel]="(menuLevel+1)" [multi]="multi" 
-      [RequestReceiver]="item.RequestEmitter?.asObservable()"></menu-list>
+      [RequestReceiver]="item.RequestEmitter?.asObservable()"
+      (RequestEmitter)="callbackReceiverPipe($event)"></menu-list>
 
   </div>
 </ion-list>

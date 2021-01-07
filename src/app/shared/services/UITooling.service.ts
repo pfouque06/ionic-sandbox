@@ -12,7 +12,7 @@ export class UItoolingService {
     private navCtrl: NavController,
     private router: Router) {}
 
-  public async fireAlert(message: string, style?: 'success'|'failed'|'warning'|'dark'|'medium') {
+  public async fireAlert(message: string, style?: 'success'|'info'|'failed'|'warning'|'dark'|'medium') {
     const cssStyle = `UITooling-toaster-${style ? style:'default'}`
     const toast = await this.toaster.create({
       message: message,
