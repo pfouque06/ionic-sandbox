@@ -26,7 +26,7 @@ export class ThemesPage {
       icon: 'construct',
     },
     {
-      label: 'callback test 1',
+      label: 'callback test01',
       callback: 'test01',
       icon: 'construct',
     },
@@ -35,7 +35,7 @@ export class ThemesPage {
       icon: 'color-palette',
       submenu: [
         {
-          label: 'callback test 2',
+          label: 'callback test02',
           callback: 'test02',
           icon: 'construct',
         },
@@ -59,7 +59,7 @@ export class ThemesPage {
           icon: 'color-palette',
           submenu: [
             {
-              label: 'callback test 3',
+              label: 'callback test03',
               callback: 'test03',
               icon: 'construct',
             },
@@ -186,6 +186,6 @@ export class ThemesPage {
   callbackReceiverSwitch(callbackId: string) {
     const message = `callbackReceiverSwitch( callbackId: ${callbackId} )`;
     // console.log(message);
-    this.UITooling.fireAlert(message,'info');
+    this.UITooling.fireAlert(callbackId,'info');
   }
 }
