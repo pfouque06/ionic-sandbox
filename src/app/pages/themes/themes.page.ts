@@ -93,12 +93,12 @@ export class ThemesPage {
             {
             label: 'Badge',
             link: '/tabs/themes/badge',
-            icon: 'logo-ionic',
+            icon: 'pricetag',
             },
             {
               label: 'Chip',
               data: 'true',
-              icon: 'logo-ionic',
+              icon: 'hardware-chip',
             },
             {
               label: 'Grid',
@@ -137,14 +137,34 @@ export class ThemesPage {
           icon: 'logo-angular',
           submenu: [
             {
-              label: 'Picker',
+              label: 'Menu',
               data: 'true',
-              icon: 'options',
+              icon: 'ellipsis-vertical',
+            },
+            {
+              label: 'Toolbar',
+              data: 'true',
+              icon: 'menu',
+            },
+            {
+              label: 'Tabs',
+              data: 'true',
+              icon: 'albums',
             },
             {
               label: 'Collapse',
               data: 'true',
               icon: 'archive',
+            },
+            {
+              label: 'Picker',
+              data: 'true',
+              icon: 'options',
+            },
+            {
+              label: 'Ripples',
+              data: 'true',
+              icon: 'radio',
             },
           ],
         },

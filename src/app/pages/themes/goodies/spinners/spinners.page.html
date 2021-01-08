@@ -92,37 +92,28 @@
       <ion-item lines="none">
         ... shoot the bullets ... <angular-emojis [name]="'wink'" size="30"> </angular-emojis>
       </ion-item>
-      <div *ngIf="hidden;else appear">
-        <ion-item lines="none">
-          <ion-thumbnail slot="start">
-            <ion-skeleton-text></ion-skeleton-text>
-          </ion-thumbnail>
-          <ion-label>
-            <h3>
-              <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
-            </h3>
-            <p>
-              <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-            </p>
-            <p>
-              <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-            </p>
-          </ion-label>
-        </ion-item>
+      <div *ngFor="let item of skeletons">
+        <div *ngIf="hidden;else appear">
+          <ion-item lines="none">
+            <ion-thumbnail slot="start"><ion-skeleton-text></ion-skeleton-text></ion-thumbnail>
+            <ion-label>
+              <h3><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h3>
+              <p><ion-skeleton-text animated style="width: 60%"></ion-skeleton-text></p>
+              <p><ion-skeleton-text animated style="width: 30%"></ion-skeleton-text></p>
+            </ion-label>
+          </ion-item>
+        </div>
+        <ng-template #appear>
+          <ion-item  lines="none">
+            <ion-thumbnail slot="start"><img [src]="'../../../../../assets/img/' + item.img"></ion-thumbnail>
+            <ion-label>
+              <h3>{{item.label}}</h3>
+              <p>{{item.author}}</p>
+              <p>{{item.year}}</p>
+            </ion-label>
+          </ion-item>
+        </ng-template>
       </div>
-      <ng-template #appear>
-        <ion-item  lines="none">
-          <ion-thumbnail slot="start">
-            <!-- <img src="/src/assets/img/thebeatles.jpeg"> -->
-            <img src="../../../../../assets/img/thebeatles.jpeg">
-          </ion-thumbnail>
-          <ion-label>
-            <h3>Abbey Road</h3>
-            <p>The Beatles</p>
-            <p>1969</p>
-          </ion-label>
-        </ion-item>
-      </ng-template>
     </ion-card>
 
     <ion-card>
