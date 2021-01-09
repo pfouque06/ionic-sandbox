@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { KoaServicesModule, serverAddress, serverProtocol, SERVER_ADDRESS, SERVER_PROTOCOL } from 'koa-services'
-import { UserPopoverPage } from './components/popover/user-popover/user-popover.page'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { IonicModule } from '@ionic/angular'
-import { ComponentsModule } from './components/components.module'
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -16,8 +13,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
+import { KoaServicesModule, serverAddress, serverProtocol, SERVER_ADDRESS, SERVER_PROTOCOL } from 'koa-services'
+import { UserPopoverPage } from './components/popover/user-popover/user-popover.page'
+import { PasswordChangePopoverPage } from './components/popover/password-change-popover/password-change-popover.page'
+import { ComponentsModule } from './components/components.module'
+
 const SHARED_MODALS = [
     UserPopoverPage,
+    PasswordChangePopoverPage,
 ]
 
 const SHARED_ENTITIES = [

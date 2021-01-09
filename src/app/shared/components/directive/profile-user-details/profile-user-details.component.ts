@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
-import { AuthService, selectAllUsers, selectUserSetState, State, User, UserService } from 'koa-services';
+import { AuthService, selectAllUsers, selectUserSetState, selectUserState, State, User, UserService } from 'koa-services';
 import { filter, map, skip, take } from 'rxjs/operators';
 import { UItoolingService } from 'src/app/shared/services/UITooling.service';
+import { PasswordChangePopoverPage } from '../../popover/password-change-popover/password-change-popover.page';
 
 @Component({
   selector: 'profile-user-details',
@@ -28,6 +30,7 @@ export class ProfileUserDetailsComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService,
     private UITooling: UItoolingService,
+    public popper: PopoverController,
     private router: Router
     ) {}
 
@@ -199,26 +202,39 @@ export class ProfileUserDetailsComponent implements OnInit {
 
   public async changePassword() {
     console.log(`ProfileUserDetailsComponent.changePassword()`);
-    this.UITooling.fireAlert('ProfileUserDetailsComponent.changePassword()', 'info' );
+    // this.UITooling.fireAlert('ProfileUserDetailsComponent.changePassword()', 'info' );
     // // get modal with previous password and new password in 2 steps !!
     // const dialogRef = this.UITooling.fireDialog(PasswordChangeModalComponent, {
     //   width: '400px',
     //   data: {}
     // });
-    // // wait dialog close event
-    // dialogRef.afterClosed().subscribe(async data => {
-    //   console.log(`ProfileUserDetailsComponent.dialogRef.afterClosed(password: ${data.password}, newPassword: ${data.newPassword})`);
-    //   if (!data) return;
-    //   this.authService.changePassword(data.password, data.newPassword);
-    //   this.store.pipe( select(selectUserState), skip(1), take(1))
-    //   .subscribe( (state) => {
-    //     if ( !!state.errors) {
-    //       this.UITooling.fireGlobalAlertSnackBar('Password change has failed! Please check api.koa logs', 'snack-bar-error' );
-    //     } else {
-    //       this.UITooling.fireGlobalAlertSnackBar('Password change is successfull, you can now login with your new credential', 'snack-bar-success');
-    //     }
-    //   })
-    // });
+    // const dialogFeedback= await this.UITooling.fireDialog(UserModalComponent, userForm);
+    // const passwordFormGroup: FormGroup;
+    const popover = await this.popper.create({
+      component: PasswordChangePopoverPage,
+      backdropDismiss: true,
+      showBackdrop: true,
+      // cssClass: 'popover-class',
+      // componentProps: { passwordFormGroup }
+    });
+    await popover.present();
+    // wait dialog close event
+    // dialogRef.afterClosed().subscribe(async data => { .... });
+    const dialogFeedback =  await popover.onDidDismiss();
+    if (!dialogFeedback || !dialogFeedback.data || dialogFeedback.data.dismiss ) {
+      console.log('PasswordChangePopoverPage dismissed ...');
+      return;
+    }
+    console.log(`ProfileUserDetailsComponent.popover.onDidDismiss(password: ${dialogFeedback.data.password}, newPassword: ${dialogFeedback.data.newPassword})`);
+    this.authService.changePassword(dialogFeedback.data.password, dialogFeedback.data.newPassword);
+    this.store.pipe( select(selectUserState), skip(1), take(1))
+    .subscribe( (state) => {
+      if ( !!state.errors) {
+        this.UITooling.fireAlert('Password change has failed! Please check api.koa logs', 'failed' );
+      } else {
+        this.UITooling.fireAlert('Password change is successfull, you can now login with your new credential', 'success');
+      }
+    })
   }
 
   private reloadCurrentRoute() {

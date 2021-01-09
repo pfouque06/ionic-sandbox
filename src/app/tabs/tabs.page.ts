@@ -73,9 +73,9 @@ export class TabsPage {
 
   async openUserFormDialog(formType: 'login' | 'register'): Promise<void> {
 
-    let userForm: any = { formType: formType, password: "secret"  };
+    let userForm: any = { formType: formType };
     if (formType == "login")
-    userForm = { ...userForm, email: "sam.va@gmail.com"};
+    userForm = { ...userForm, email: "sam.va@gmail.com", password: "secret"};
 
     // const dialogFeedback= await this.UITooling.fireDialog(UserModalComponent, userForm);
     const popover = await this.popper.create({
@@ -88,7 +88,7 @@ export class TabsPage {
     await popover.present();
     const dialogFeedback=  await popover.onDidDismiss();
     if (!dialogFeedback || !dialogFeedback.data || dialogFeedback.data.dismiss ) {
-      console.log('popover dismissed ...');
+      console.log('UserPopoverPage dismissed ...');
       return;
     }
 
@@ -115,7 +115,7 @@ export class TabsPage {
       }
       case 'register': {
         if (userForm.email) {
-          this.UITooling.fireAlert('Registering is succefull, you can now login with your credentials', 'success');
+          this.UITooling.fireAlert('Registering is successfull, you can now login with your credentials', 'success');
         } else {
           this.UITooling.fireAlert('Register has failed! Please check credentials and retry', 'failed' );
         }
