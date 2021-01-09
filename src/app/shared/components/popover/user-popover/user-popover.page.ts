@@ -59,7 +59,7 @@ export class UserPopoverPage implements OnDestroy {
     });
   }
 
-  onSubmit() {
+  public onSubmit() {
     // check userForm is valid before proceeding to update
     if ( this.userForm.invalid ) { return; }
 
