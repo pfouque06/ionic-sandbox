@@ -39,7 +39,7 @@
       <!-- <ion-icon [name]="isLogged?'log-out-outline':'log-in-outline'" color="light" size="large"></ion-icon> -->
       <ion-icon [name]="isLogged?'log-out-outline':'log-in-outline'" [color]="ping? isLogged? 'light':'light' :'light'" size="large"></ion-icon>
     </ion-fab-button>
-    <ion-fab-button color="light" (click)='profileToggle()' [disabled]="!ping" [title]="isLogged? 'Profile':'Register'">
+    <ion-fab-button [color]="ping? isLogged? 'light':'light' :'danger'" color="light" (click)='profileToggle()' [disabled]="!ping" [title]="isLogged? 'Profile':'Register'">
       <ion-icon [name]="isLogged?'person-outline':'person-add-outline'" color="medium" size="large"></ion-icon>
     </ion-fab-button>
     <ion-fab-button color="light" (click)='codeBarScan()'>
