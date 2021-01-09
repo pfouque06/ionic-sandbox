@@ -26,21 +26,16 @@
 
 <!-- <ion-fab edge="true" vertical="top" horizontal="end" slot="fixed"> -->
 <ion-fab vertical="top" horizontal="end" slot="fixed">
-  <!-- <ion-fab-button [color]="ping? isLogged? 'medium':'light' :'danger'" size="small"> -->
   <ion-fab-button [color]="ping? isLogged? 'success':'light' :'danger'" size="small">
-    <!-- <ion-icon *ngIf="!connecting" [name]="isLogged? 'lock-closed':'lock-open'" [color]="ping? isLogged? 'light':'medium' :'light'" ></ion-icon> -->
     <ion-icon *ngIf="!connecting" [name]="isLogged? 'lock-closed':'lock-open'" [color]="ping? isLogged? 'light':'success' :'light'" ></ion-icon>
-    <!-- <ion-spinner *ngIf="connecting" name="lines-small" [color]="isLogged? 'light':'primary'"></ion-spinner> -->
     <ion-spinner *ngIf="connecting" name="lines" [color]="isLogged? 'light':'success'"></ion-spinner>
   </ion-fab-button>
   <ion-fab-list side="bottom">
-    <!-- <ion-fab-button color="medium" (click)='loginToggle()' [disabled]="!ping" [title]="isLogged? 'Logout':'Login'"> -->
     <ion-fab-button [color]="ping? isLogged? 'medium':'medium' :'danger'" (click)='loginToggle()' [disabled]="!ping" [title]="isLogged? 'Logout':'Login'">
-      <!-- <ion-icon [name]="isLogged?'log-out-outline':'log-in-outline'" color="light" size="large"></ion-icon> -->
       <ion-icon [name]="isLogged?'log-out-outline':'log-in-outline'" [color]="ping? isLogged? 'light':'light' :'light'" size="large"></ion-icon>
     </ion-fab-button>
-    <ion-fab-button [color]="ping? isLogged? 'light':'light' :'danger'" color="light" (click)='profileToggle()' [disabled]="!ping" [title]="isLogged? 'Profile':'Register'">
-      <ion-icon [name]="isLogged?'person-outline':'person-add-outline'" color="medium" size="large"></ion-icon>
+    <ion-fab-button [color]="ping? isLogged? 'light':'medium' :'danger'" (click)='profileToggle()' [disabled]="!ping" [title]="isLogged? 'Profile':'Register'">
+      <ion-icon [name]="isLogged?'person-outline':'person-add-outline'" [color]="ping? isLogged? 'medium':'light' :'light'" size="large"></ion-icon>
     </ion-fab-button>
     <ion-fab-button color="light" (click)='codeBarScan()'>
       <ion-icon name="barcode-outline" color="medium" size="large"></ion-icon>
