@@ -8,9 +8,10 @@
   
     <ion-content>
       <menu-list [menu]="menuList" [menuId]="'dashboard'" 
-        [RequestReceiver]="menuRequestEmitter?.asObservable()"></menu-list>
+        [RequestReceiver]="menuRequestEmitter?.asObservable()"></menu-list><!-- multi="true" optional-->
       <menu-list *ngIf="(profileType$ | async) === 'admin'" [menu]="adminMenuList" [menuId]="'dashboard'" 
-        [RequestReceiver]="adminMenuRequestEmitter?.asObservable()"></menu-list>
+        [RequestReceiver]="adminMenuRequestEmitter?.asObservable()"
+        (RequestEmitter)="callbackReceiverSwitch($event)"></menu-list><!-- multi="true" optional-->
     </ion-content>
   
   </ion-menu>

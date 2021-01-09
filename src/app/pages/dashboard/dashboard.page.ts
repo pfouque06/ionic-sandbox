@@ -3,6 +3,7 @@ import { MenuController } from '@ionic/angular';
 import { AuthService } from 'koa-services';
 import { Observable, Subject } from 'rxjs';
 import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-list.component';
+import { UItoolingService } from 'src/app/shared/services/UITooling.service';
 
 @Component({
   selector: 'app-dahsboard',
@@ -56,7 +57,7 @@ export class DashboardPage implements OnInit {
             },
             {
               label: 'User table reset',
-              data: 'true',
+              callback: 'user-table-reset',
               icon: 'stopwatch-sharp',
             },
           ],
@@ -73,7 +74,7 @@ export class DashboardPage implements OnInit {
             },
             {
               label: 'Sessions reset',
-              data: 'true',
+              callback: 'session-table-reset',
               icon: 'stopwatch-sharp',
             },
           ],
@@ -82,7 +83,7 @@ export class DashboardPage implements OnInit {
     },
   ]
 
-  constructor(private authService: AuthService, private menuCtl: MenuController) { console.log('dashboard'); }
+  constructor(private authService: AuthService, private menuCtl: MenuController, private UITooling: UItoolingService) { console.log('dashboard'); }
 
   ngOnInit() {
     // define observers
@@ -102,5 +103,11 @@ export class DashboardPage implements OnInit {
   public menuWillClose() {
     this.menuRequestEmitter.next();
     this.adminMenuRequestEmitter.next();
+  }
+
+  callbackReceiverSwitch(callbackId: string) {
+    const message = `callbackReceiverSwitch( callbackId: ${callbackId} )`;
+    // console.log(message);
+    this.UITooling.fireAlert(callbackId,'info');
   }
 }
