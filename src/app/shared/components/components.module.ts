@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { TeaserBetaVersionComponent } from './directive/teaser-beta-version/teaser-beta-version.component';
 import { TeaserComingSoonComponent } from './directive/teaser-coming-soon/teaser-coming-soon.component';
 import { FullWidthTitleComponent } from './directive/full-width-title/full-width-title.component';
+import { ProfileUserDetailsComponent } from './directive/profile-user-details/profile-user-details.component';
 
 
 const components = [
@@ -20,6 +21,7 @@ const components = [
   TeaserBetaVersionComponent,
   TeaserComingSoonComponent,
   FullWidthTitleComponent,
+  ProfileUserDetailsComponent,
 ];
 
 @NgModule({

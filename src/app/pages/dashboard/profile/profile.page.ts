@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { console.log('dashboard/profile'); }
+  @Input() userId: number = null;
+  
+  constructor(private route: ActivatedRoute) { console.log('dashboard/profile'); }
 
   ngOnInit() {
+    if (!this.userId) {
+      // retrieve user if id provided in incoming route
+      this.userId = this.route.snapshot.params?.id;
+    }
   }
 
 }

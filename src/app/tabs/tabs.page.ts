@@ -60,13 +60,13 @@ export class TabsPage {
 
   public profileToggle() {
     const message = `profileToggle().isLogged: ${this.isLogged}`;
-
-    if (this.isLogged) { // view Profile
-      console.log(message);
-      this.UITooling.fireAlert(message,'warning');
-      // const url = `dashboard/users/profile/`;
-      // this.navCtrl.navigateForward([url]);
-    } else { // register
+    console.log(message);
+    if (this.isLogged) {
+      // view Profile
+      const url = `tabs/dashboard/profile`;
+      this.navCtrl.navigateForward([url]);
+    } else {
+      // register
       this.openUserFormDialog('register');
     }
   }

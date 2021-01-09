@@ -1,0 +1,170 @@
+<section>
+  <ion-card>
+    <!-- <mat-card-content fxLayout="column" fxLayoutAlign="center center"> -->
+    <ion-card-content>
+
+      <div *ngIf="!readOnly; else elseUserProfile">
+    
+        <h1>User Form</h1>
+    
+        <div *ngIf="isLoading" class="progressBarDiv" fxLayout="column" fxLayoutAlign="center center">
+          <ion-spinner name="lines" color="secondary"></ion-spinner>
+        </div>
+    
+        <!-- <div *ngIf="!isLoading"> -->
+        <div *ngIf="!isLoading" class="mat-elevation-z8">
+    
+          <section id="infoFollow">
+            <ion-card>
+
+              <ion-card-header id="prezProfile">
+                <ion-card-title>
+                  <h1 *ngIf="userId; else elseUserForm">{{user.firstName | titlecase }} {{user.lastName | titlecase}}</h1>
+                  <ng-template #elseUserForm>
+                    <p>Creating a new User</p>
+                  </ng-template>
+                </ion-card-title>
+              </ion-card-header>
+    
+              <form [formGroup]="userFormGroup" novalidate >
+    
+                <ion-card-content class="details" fxLayout="column" fxLayoutAlign="center start">
+
+                  <!-- <ion-item [ngClass]="(userForm.get('email').touched && userForm.get('email').invalid) ? 'error' : ''"> -->
+                  <ion-item>
+                    <ion-label position="floating">First name</ion-label>
+                    <ion-input class="form-control" ngDefaultControl inputmode="text" type="text" spellcheck="false" required="true" name="email" formControlName="firstName"></ion-input>
+                    <ion-icon slot="end" name="person-outline" color="medium"></ion-icon>
+                  </ion-item>
+                  <!-- <div class="form-error">
+                    <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('required'))">An email is required</p>
+                    <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('maxlength'))">This password is too long (128 char maximum)</p>
+                    <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('notUnique'))">This email is already registered</p>
+                    <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('email'))">This email is invalid</p>
+                  </div> -->
+
+                  <!-- <mat-form-field>
+                    <mat-label>First name</mat-label>
+                    <input matInput formControlName="firstName" placeholder="Your firstName" class="form-control">
+                    <mat-hint align="end">First name</mat-hint>
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                  </mat-form-field> -->
+      
+                  <!-- <mat-form-field>
+                    <mat-label>Last name</mat-label>
+                    <input matInput formControlName="lastName" placeholder="Your lastName" class="form-control">
+                    <mat-hint align="end">Last name</mat-hint>
+                    <mat-icon matSuffix>account_box</mat-icon>
+                  </mat-form-field> -->
+      
+                  <!-- <mat-form-field>
+                    <mat-label>birthDate</mat-label>
+                    <input matInput [matDatepicker]="myDatepicker" [formControlName]="user.birthDate" matInput
+                    [placeholder]="birthDate" class="form-control">
+                    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #myDatepicker></mat-datepicker>
+                  </mat-form-field> -->
+      
+                  <!-- <mat-form-field>
+                    <mat-label>email</mat-label>
+                    <input matInput formControlName="email" placeholder="Your email" class="form-control">
+                    <mat-hint align="end">Email</mat-hint>
+                    <mat-icon matSuffix>email</mat-icon>
+                  </mat-form-field> -->
+      
+                  <!-- <mat-form-field>
+                    <mat-label>Mobile</mat-label>
+                    <input matInput formControlName="mobile" placeholder="Your mobile number" class="form-control">
+                    <mat-hint align="end">Mobile number</mat-hint>
+                    <mat-icon matSuffix>local_phone</mat-icon>
+                  </mat-form-field> -->
+      
+                  <!-- <mat-form-field *ngIf="isNew() || isAdmin() && !isMyself()">
+                    <mat-label>Profile type</mat-label>
+                    <mat-select formControlName="profile" value='profile' placeholder="Your profile type" class="form-control">
+                      <mat-option value="user">User</mat-option>
+                      <mat-option value="admin">Admin</mat-option>
+                    </mat-select>
+                    <mat-hint align="end">Profile type</mat-hint>
+                    <mat-icon matSuffix>business_center</mat-icon>
+                  </mat-form-field> -->
+      
+      
+                  <!-- <mat-form-field *ngIf="isNew()">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" placeholder="Your password" class="form-control">
+                    <mat-hint align="end">Password</mat-hint>
+                    <mat-icon matSuffix>vpn_key</mat-icon>
+                  </mat-form-field> -->
+                  
+                  <!-- <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-raised-button (click)="submit()" matTooltip="Submit" aria-label="Submit">
+                      Submit
+                    </button>
+                  </mat-card-actions> -->
+                  <ion-toolbar>
+                    <ion-buttons slot="end">
+                      <!-- <ion-button size="small" color="dark" (click)="submit()" [disabled]="!userForm.valid">{{form.formType}}</ion-button> -->
+                      <ion-button size="small" color="dark" (click)="submit()">Submit</ion-button>
+                    </ion-buttons>
+                  </ion-toolbar>
+
+                </ion-card-content>
+              </form>
+            </ion-card>
+    
+          </section>
+        </div>
+    
+      </div>
+    
+      <ng-template #elseUserProfile>
+    
+        <h1>User profile</h1>
+    
+        <div *ngIf="isLoading" class="progressBarDiv" fxLayout="column" fxLayoutAlign="center center">
+          <ion-spinner name="lines" color="secondary"></ion-spinner>
+        </div>
+    
+        <!-- <div *ngIf="!isLoading" class="mat-elevation-z8"> -->
+        <div *ngIf="!isLoading">
+    
+          <ion-card>
+            <ion-card-header id="prezProfile">
+              <ion-card-title><h1>{{user.firstName | titlecase }} {{user.lastName | titlecase}}</h1></ion-card-title>
+            </ion-card-header>
+            <ion-card-content id="information">
+              <!-- <div class="details" fxLayout="column" fxLayoutAlign="center start"> -->
+              <div class="details">
+                <ion-item  *ngIf="user.profile == 'admin'">
+                  <ion-icon slot="start" name="person" color="medium"></ion-icon>
+                  <ion-label><h3>Admin</h3></ion-label>
+                </ion-item>
+                <ion-item *ngIf="user.profile == 'user'">
+                  <ion-icon slot="start" name="person-outline" color="medium"></ion-icon>
+                  <ion-label><h3>User</h3></ion-label>
+                </ion-item>
+                <!-- <h3><mat-icon class="material-icons md-24" color="skillful">cake</mat-icon>{{userPick.birthDate  | date: 'dd/MM/yyyy'}}</h3> -->
+                <ion-item>
+                  <ion-icon slot="start" name="mail-outline" color="medium"></ion-icon>
+                  <ion-label><h3>{{user.email}}</h3></ion-label>
+                </ion-item>
+                <ion-item>
+                  <ion-icon slot="start" name="call-outline" color="medium"></ion-icon>
+                  <ion-label><h3>{{user.mobile}}</h3></ion-label>
+                </ion-item>
+              </div>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-toolbar>
+            <ion-buttons slot="end">
+              <ion-button *ngIf="isAdmin() || isMyself()" (click)="editProfile()">Edit Profile</ion-button>
+              <ion-button *ngIf="isAdmin() || isMyself()" (click)="changePassword()">Change password</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </div>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+</section>

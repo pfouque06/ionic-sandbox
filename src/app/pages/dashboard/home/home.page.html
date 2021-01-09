@@ -1,44 +1,41 @@
 <tab-fake-header></tab-fake-header>
 
 <ion-content>
-    
     <!-- <teaser-beta-version></teaser-beta-version> -->
-    
-    <ion-card>
-        <h2>Koa Dashboard</h2>
-        <p>Play around without limit, the koa api server is daily restarted anyhow .....</p>
-        <p>Swagger on
-            <a [href]="swagger" target="_blank" title="Koa Swagger">
-                <mat-icon class="material-icons md-24">engineering</mat-icon>
-            </a>
-        </p>
-        <p>Repository on
-            <a href="https://github.com/pfouque06/koa-typescript-restfull-api" target="_blank" title="GitHub">
-                <ion-icon name="logo-github"></ion-icon>
-            </a>
-        </p>
-    </ion-card>
-    
-    <mat-accordion>
-        <mat-expansion-panel  hideToggle>
 
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <mat-icon class="check_request"  [class]="ping() ? 'check_ok':'check_ko'">{{ping() ? 'done' : 'warning'}}</mat-icon>
-                    <code>koa</code>
-                </mat-panel-title>
-                <mat-panel-description>
-                    Restfull API
-                </mat-panel-description>
-            </mat-expansion-panel-header>
+  <mat-accordion>
+    <mat-expansion-panel  hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon class="check_request"  [class]="ping() ? 'check_ok':'check_ko'">{{ping() ? 'done' : 'warning'}}</mat-icon>
+          <code>koa</code>
+        </mat-panel-title>
+        <mat-panel-description>
+          Restfull API
+        </mat-panel-description>
+      </mat-expansion-panel-header>
 
-            <ion-item lines="none">
-                <ion-icon slot="start" name="logo-nodejs" color="success"></ion-icon>
-                <ion-label>Restfull Koa server is {{ping() ? '' : 'not'}} available</ion-label>
-            </ion-item>
-            
-        </mat-expansion-panel>
-    </mat-accordion>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="logo-nodejs" color="success"></ion-icon>
+        <ion-label>Restfull Koa server is {{ping() ? '' : 'not'}} available</ion-label>
+      </ion-item>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <ion-card>
+    <h2>Koa Dashboard</h2>
+    <p>Play around without limit, the koa api server is daily restarted anyhow .....</p>
+    <p>Swagger on
+      <a [href]="swagger" target="_blank" title="Koa Swagger">
+        <mat-icon class="material-icons md-24">engineering</mat-icon>
+      </a>
+    </p>
+    <p>Repository on
+      <a href="https://github.com/pfouque06/koa-typescript-restfull-api" target="_blank" title="GitHub">
+        <ion-icon name="logo-github"></ion-icon>
+      </a>
+    </p>
+  </ion-card>
 
 </ion-content>
 
