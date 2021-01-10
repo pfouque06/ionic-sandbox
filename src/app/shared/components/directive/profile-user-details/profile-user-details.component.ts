@@ -24,6 +24,7 @@ export class ProfileUserDetailsComponent implements OnInit {
 
   public userForm: User;
   public userFormGroup: FormGroup;
+  public profileTypes = [{value:'user', label:'User'},{value:'admin', label: 'Admin'}];
   public hidePassword: boolean = true;
   
   constructor(
@@ -97,18 +98,18 @@ export class ProfileUserDetailsComponent implements OnInit {
         this.userForm.password = data.password;
       }
 
-      if (this.userId) {
-        // initialize formGroup
+      // initialize formGroup
+      // if (this.userId) {
         this.userFormGroup.setValue({
-          lastName: this.user.lastName,
-          firstName: this.user.firstName,
+          lastName: this.user.lastName || '',
+          firstName: this.user.firstName || '',
           // birthDate: this.user.birthDate? this.user.birthDate:"",
-          email: this.user.email,
-          mobile: this.user.mobile? this.user.mobile:"",
-          profile: this.user.profile,
+          email: this.user.email || '',
+          mobile: this.user.mobile? this.user.mobile:"" || '',
+          profile: this.user.profile || 'user',
           password: ""
         });
-      }
+      // }
     }
 
     // inform view that data is ready

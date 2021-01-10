@@ -1,6 +1,5 @@
 <section>
   <ion-card>
-    <!-- <mat-card-content fxLayout="column" fxLayoutAlign="center center"> -->
     <ion-card-content>
 
       <div *ngIf="!readOnly; else elseUserProfile">
@@ -11,7 +10,6 @@
           <ion-spinner name="lines" color="secondary"></ion-spinner>
         </div>
     
-        <!-- <div *ngIf="!isLoading"> -->
         <div *ngIf="!isLoading">
     
           <section id="infoFollow">
@@ -32,11 +30,8 @@
                   <div class="details">
 
                     <ion-item>
-                      <!-- <ion-label position="stacked">First name</ion-label> -->
-                      <!-- <ion-label position="fixed">First name</ion-label> -->
-                      <!-- <ion-label position="floating">First name</ion-label> -->
                       <ion-label slot="start">First name</ion-label>
-                      <ion-input ngDefaultControl formControlName="firstName" name="firstName" placeholder="Your firstname" inputmode="text" type="text" spellcheck="false"></ion-input>
+                      <ion-input ngDefaultControl formControlName="firstName" name="firstName" placeholder="Firstname" inputmode="text" type="text" spellcheck="false"></ion-input>
                       <ion-icon slot="end" name="person-circle-outline" color="medium"></ion-icon>
                     </ion-item>
                     <div class="form-error">
@@ -46,7 +41,7 @@
   
                     <ion-item>
                       <ion-label slot="start">Last name</ion-label>
-                      <ion-input ngDefaultControl formControlName="lastName" name="lastName"  placeholder="Your lastname" inputmode="text" type="text"  spellcheck="false"></ion-input>
+                      <ion-input ngDefaultControl formControlName="lastName" name="lastName"  placeholder="lastname" inputmode="text" type="text"  spellcheck="false"></ion-input>
                       <ion-icon slot="end" name="person-circle" color="medium"></ion-icon>
                     </ion-item>
                     <div class="form-error">
@@ -64,7 +59,7 @@
         
                     <ion-item>
                       <ion-label slot="start">Email</ion-label>
-                      <ion-input ngDefaultControl formControlName="email" name="email"  placeholder="Your lastname" inputmode="email" type="email" spellcheck="false" required="true"></ion-input>
+                      <ion-input ngDefaultControl formControlName="email" name="email"  placeholder="Email" inputmode="email" type="email" spellcheck="false" required="true"></ion-input>
                       <ion-icon slot="end" name="mail-outline" color="medium"></ion-icon>
                     </ion-item>
                     <div class="form-error">
@@ -76,7 +71,7 @@
         
                     <ion-item>
                       <ion-label slot="start">Mobile/Cell</ion-label>
-                      <ion-input ngDefaultControl formControlName="mobile" name="mobile"  placeholder="Your mobile/cell number" inputmode="tel" type="tel" spellcheck="false"></ion-input>
+                      <ion-input ngDefaultControl formControlName="mobile" name="mobile"  placeholder="Mobile" inputmode="tel" type="tel" spellcheck="false"></ion-input>
                       <ion-icon slot="end" name="call-outline" color="medium"></ion-icon>
                     </ion-item>
                     <div class="form-error">
@@ -86,19 +81,20 @@
         
                     <ion-item *ngIf="isNew() || isAdmin() && !isMyself()">
                       <ion-label slot="start">Profile type</ion-label>
-                      <ion-select formControlName="profile" value='profile' placeholder="Your profile type" interface="popover">
-                        <ion-select-option value="user">User</ion-select-option>
-                        <ion-select-option value="admin">Admin</ion-select-option>
+                      <ion-select formControlName="profile" interface="popover">
+                        <ion-select-option *ngFor="let profile of profileTypes" [value]="profile.value">{{profile.label}}</ion-select-option>
                       </ion-select>
                       <ion-icon slot="end" name="document-lock-outline" color="medium"></ion-icon>
                     </ion-item>
+                    <div class="form-error"></div>
         
                       
                     <ion-item *ngIf="isNew()">
                       <ion-label slot="start">Password</ion-label>
-                      <ion-input ngDefaultControl formControlName="password" name="password"  placeholder="Your password" inputmode="text" [type]="hidePassword ? 'password' : 'text'" spellcheck="false" required="true"></ion-input>
+                      <ion-input ngDefaultControl formControlName="password" name="password" placeholder="Password" inputmode="text" [type]="hidePassword ? 'password' : 'text'" spellcheck="false" required="true"></ion-input>
+                      <!-- <ion-icon slot="end" (click)="hidePassword = ! hidePassword" [name]="hidePassword? 'eye-off-outline':'eye'" [color]="hidePassword? 'medium': 'dark'"></ion-icon> -->
                       <div slot="end" (click)="hidePassword = ! hidePassword">
-                        <ion-icon [name]="hidePassword? 'eye-off-outline':'eye'" [color]="hidePassword? 'medium': 'dark'"></ion-icon>
+                        <ion-icon [name]="hidePassword? 'eye-off-outline':'eye'" [color]="hidePassword? 'medium': 'dark'" style="font-size: 24px;"></ion-icon>
                       </div>
                     </ion-item>
                     <div class="form-error">
@@ -114,7 +110,6 @@
 
             <ion-toolbar>
               <ion-buttons slot="end">
-                <!-- <ion-button size="small" color="dark" (click)="submit()" [disabled]="!userForm.valid">{{form.formType}}</ion-button> -->
                 <ion-button size="small" color="dark" (click)="submit()" [disabled]="!userFormGroup.valid && !userId">Submit</ion-button>
               </ion-buttons>
             </ion-toolbar>
@@ -132,7 +127,6 @@
           <ion-spinner name="lines" color="secondary"></ion-spinner>
         </div>
     
-        <!-- <div *ngIf="!isLoading" class="mat-elevation-z8"> -->
         <div *ngIf="!isLoading">
     
           <ion-card>
@@ -140,7 +134,6 @@
               <ion-card-title><h1>{{user.firstName | titlecase }} {{user.lastName | titlecase}}</h1></ion-card-title>
             </ion-card-header>
             <ion-card-content id="information">
-              <!-- <div class="details" fxLayout="column" fxLayoutAlign="center start"> -->
               <div class="details">
                 <ion-item  *ngIf="user.profile == 'admin'">
                   <ion-icon slot="start" name="person" color="medium"></ion-icon>
