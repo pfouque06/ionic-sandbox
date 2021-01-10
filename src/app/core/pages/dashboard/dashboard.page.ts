@@ -52,7 +52,7 @@ export class DashboardPage implements OnInit {
             
             {
               label: 'Add a user',
-              link: '/tabs/dashboard/form',
+              link: '/tabs/dashboard/new',
               icon: 'person-add',
             },
             {
@@ -69,7 +69,7 @@ export class DashboardPage implements OnInit {
             
             {
               label: 'Sessions list',
-              data: 'true',
+              link: '/tabs/dashboard/sessions',
               icon: 'people',
             },
             {

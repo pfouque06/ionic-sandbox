@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PopoverController } from '@ionic/angular';
+import { NavController, PopoverController } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
 import { AuthService, selectAllUsers, selectCurrentUser, selectUser, selectUserSetState, selectUserState, State, User, UserService } from 'koa-services';
 import { filter, map, skip, take } from 'rxjs/operators';
@@ -32,7 +32,8 @@ export class ProfileUserDetailsComponent implements OnInit {
     private authService: AuthService,
     private userService: UserService,
     private UITooling: UItoolingService,
-    public popper: PopoverController,
+    private popper: PopoverController,
+    private nav: NavController,
     private router: Router
     ) {}
 
@@ -118,10 +119,9 @@ export class ProfileUserDetailsComponent implements OnInit {
 
   public editProfile() {
     // [routerLink]="['/users/form/${userPick.id}']" [queryParams]="{user: user}"
-    // this.router.navigate([`/users/form/${this.userPickId}`], { queryParams: { id:  this.userPickId }});
     const url = `tabs/dashboard/form/${this.user.id}`;
-    // this.UITooling.fireAlert(`ProfileU  serDetailsComponent.editProfile().url: ${url}`, 'info' );
-    this.router.navigate([url]);
+    this.nav.navigateForward([url]);
+    // this.router.navigate([url]);
   }
 
   public submit() {
@@ -254,6 +254,7 @@ export class ProfileUserDetailsComponent implements OnInit {
 
   private routeToUserForm(id: number) {
     const url = `tabs/dashboard/profile/${id}`;
-    this.router.navigate([url]);
+    this.nav.navigateForward([url]);
+    // this.router.navigate([url]);
   }
 }
