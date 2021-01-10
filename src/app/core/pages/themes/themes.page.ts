@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Subject } from 'rxjs';
-import { IMenuList } from '../../shared/components/directive/menu-list/menu-list.component';
-import { UItoolingService } from '../../shared/services/UITooling.service';
+import { IMenuList } from '../../../shared/components/directive/menu-list/menu-list.component';
+import { UItoolingService } from '../../../shared/services/UITooling.service';
 
 @Component({
   selector: 'app-themes',

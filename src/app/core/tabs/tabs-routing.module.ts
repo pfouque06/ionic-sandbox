@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IsLoggedGuard } from '../shared/guards/is-logged.guard';
+import { IsLoggedGuard } from '../../shared/guards/is-logged.guard';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [

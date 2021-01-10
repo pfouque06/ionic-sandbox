@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
+  templateUrl: './user-profile.page.html',
+  styleUrls: ['./user-profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
 
@@ -18,5 +18,4 @@ export class ProfilePage implements OnInit {
       this.userId = this.route.snapshot.params?.id;
     }
   }
-
 }

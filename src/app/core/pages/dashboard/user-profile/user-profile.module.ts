@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { ProfilePageRoutingModule } from './profile-routing.module';
-import { ProfilePage } from './profile.page';
+import { ProfilePageRoutingModule } from './user-profile-routing.module';
+import { ProfilePage } from './user-profile.page';
 
 @NgModule({
   imports: [

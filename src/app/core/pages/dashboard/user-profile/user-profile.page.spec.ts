@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePage } from './profile.page';
+import { ProfilePage } from './user-profile.page';
 
 describe('ProfilePage', () => {
   let component: ProfilePage;

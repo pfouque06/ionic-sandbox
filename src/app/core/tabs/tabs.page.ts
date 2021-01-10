@@ -4,9 +4,9 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { skip, take } from 'rxjs/operators';
 import { AuthService, selectUserState, State } from 'koa-services';
-import { UItoolingService } from '../shared/services/UITooling.service';
+import { UItoolingService } from '../../shared/services/UITooling.service';
 import { NavController, PopoverController } from '@ionic/angular';
-import { UserPopoverPage } from '../shared/components/popover/user-popover/user-popover.page';
+import { UserPopoverPage } from '../../shared/components/popover/user-popover/user-popover.page';
 
 @Component({
   selector: 'app-tabs',
