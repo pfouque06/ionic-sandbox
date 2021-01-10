@@ -52,7 +52,7 @@ export class DashboardPage implements OnInit {
             
             {
               label: 'Add a user',
-              data: 'true',
+              link: '/tabs/dashboard/form',
               icon: 'person-add',
             },
             {

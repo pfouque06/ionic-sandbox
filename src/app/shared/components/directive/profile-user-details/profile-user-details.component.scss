@@ -66,3 +66,21 @@ mat-form-field {
   padding-right: 5%;
   padding-left: 5%;
 }
+
+ion-item > ion-label{
+  min-width: 85px;
+  color:  var(--ion-color-medium) !important;
+}
+ion-item.item-has-focus > ion-label{
+  color:  var(--ion-color-dark) !important;
+}
+div.form-error {
+  height: 20px;
+  overflow: hidden;
+  p {
+      margin: 5px;
+      padding-left: 5px;
+      font-size: x-small;
+      color: red;
+  }
+}

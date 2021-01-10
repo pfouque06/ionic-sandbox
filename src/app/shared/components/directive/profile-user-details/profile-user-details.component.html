@@ -12,7 +12,7 @@
         </div>
     
         <!-- <div *ngIf="!isLoading"> -->
-        <div *ngIf="!isLoading" class="mat-elevation-z8">
+        <div *ngIf="!isLoading">
     
           <section id="infoFollow">
             <ion-card>
@@ -28,91 +28,97 @@
     
               <form [formGroup]="userFormGroup" novalidate >
     
-                <ion-card-content class="details" fxLayout="column" fxLayoutAlign="center start">
+                <ion-card-content id="information">
+                  <div class="details">
 
-                  <!-- <ion-item [ngClass]="(userForm.get('email').touched && userForm.get('email').invalid) ? 'error' : ''"> -->
-                  <ion-item>
-                    <ion-label position="floating">First name</ion-label>
-                    <ion-input class="form-control" ngDefaultControl inputmode="text" type="text" spellcheck="false" required="true" name="email" formControlName="firstName"></ion-input>
-                    <ion-icon slot="end" name="person-outline" color="medium"></ion-icon>
-                  </ion-item>
-                  <!-- <div class="form-error">
-                    <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('required'))">An email is required</p>
-                    <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('maxlength'))">This password is too long (128 char maximum)</p>
-                    <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('notUnique'))">This email is already registered</p>
-                    <p *ngIf="(userForm.get('email').touched && userForm.get('email').hasError('email'))">This email is invalid</p>
-                  </div> -->
-
-                  <!-- <mat-form-field>
-                    <mat-label>First name</mat-label>
-                    <input matInput formControlName="firstName" placeholder="Your firstName" class="form-control">
-                    <mat-hint align="end">First name</mat-hint>
-                    <mat-icon matSuffix>account_circle</mat-icon>
-                  </mat-form-field> -->
-      
-                  <!-- <mat-form-field>
-                    <mat-label>Last name</mat-label>
-                    <input matInput formControlName="lastName" placeholder="Your lastName" class="form-control">
-                    <mat-hint align="end">Last name</mat-hint>
-                    <mat-icon matSuffix>account_box</mat-icon>
-                  </mat-form-field> -->
-      
-                  <!-- <mat-form-field>
-                    <mat-label>birthDate</mat-label>
-                    <input matInput [matDatepicker]="myDatepicker" [formControlName]="user.birthDate" matInput
-                    [placeholder]="birthDate" class="form-control">
-                    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-                    <mat-datepicker #myDatepicker></mat-datepicker>
-                  </mat-form-field> -->
-      
-                  <!-- <mat-form-field>
-                    <mat-label>email</mat-label>
-                    <input matInput formControlName="email" placeholder="Your email" class="form-control">
-                    <mat-hint align="end">Email</mat-hint>
-                    <mat-icon matSuffix>email</mat-icon>
-                  </mat-form-field> -->
-      
-                  <!-- <mat-form-field>
-                    <mat-label>Mobile</mat-label>
-                    <input matInput formControlName="mobile" placeholder="Your mobile number" class="form-control">
-                    <mat-hint align="end">Mobile number</mat-hint>
-                    <mat-icon matSuffix>local_phone</mat-icon>
-                  </mat-form-field> -->
-      
-                  <!-- <mat-form-field *ngIf="isNew() || isAdmin() && !isMyself()">
-                    <mat-label>Profile type</mat-label>
-                    <mat-select formControlName="profile" value='profile' placeholder="Your profile type" class="form-control">
-                      <mat-option value="user">User</mat-option>
-                      <mat-option value="admin">Admin</mat-option>
-                    </mat-select>
-                    <mat-hint align="end">Profile type</mat-hint>
-                    <mat-icon matSuffix>business_center</mat-icon>
-                  </mat-form-field> -->
-      
-      
-                  <!-- <mat-form-field *ngIf="isNew()">
-                    <mat-label>Password</mat-label>
-                    <input matInput formControlName="password" placeholder="Your password" class="form-control">
-                    <mat-hint align="end">Password</mat-hint>
-                    <mat-icon matSuffix>vpn_key</mat-icon>
-                  </mat-form-field> -->
-                  
-                  <!-- <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
-                    <button mat-raised-button (click)="submit()" matTooltip="Submit" aria-label="Submit">
-                      Submit
-                    </button>
-                  </mat-card-actions> -->
-                  <ion-toolbar>
-                    <ion-buttons slot="end">
-                      <!-- <ion-button size="small" color="dark" (click)="submit()" [disabled]="!userForm.valid">{{form.formType}}</ion-button> -->
-                      <ion-button size="small" color="dark" (click)="submit()">Submit</ion-button>
-                    </ion-buttons>
-                  </ion-toolbar>
-
+                    <ion-item>
+                      <!-- <ion-label position="stacked">First name</ion-label> -->
+                      <!-- <ion-label position="fixed">First name</ion-label> -->
+                      <!-- <ion-label position="floating">First name</ion-label> -->
+                      <ion-label slot="start">First name</ion-label>
+                      <ion-input ngDefaultControl formControlName="firstName" name="firstName" placeholder="Your firstname" inputmode="text" type="text" spellcheck="false"></ion-input>
+                      <ion-icon slot="end" name="person-circle-outline" color="medium"></ion-icon>
+                    </ion-item>
+                    <div class="form-error">
+                      <p *ngIf="(userFormGroup.get('firstName').touched && userFormGroup.get('firstName').hasError('minlength'))">This entry is too short (2 char minimum)</p>
+                      <p *ngIf="(userFormGroup.get('firstName').touched && userFormGroup.get('firstName').hasError('maxlength'))">This entry is too long (25 char maximum)</p>
+                    </div>
+  
+                    <ion-item>
+                      <ion-label slot="start">Last name</ion-label>
+                      <ion-input ngDefaultControl formControlName="lastName" name="lastName"  placeholder="Your lastname" inputmode="text" type="text"  spellcheck="false"></ion-input>
+                      <ion-icon slot="end" name="person-circle" color="medium"></ion-icon>
+                    </ion-item>
+                    <div class="form-error">
+                      <p *ngIf="(userFormGroup.get('lastName').touched && userFormGroup.get('lastName').hasError('minlength'))">This entry is too short (2 char minimum)</p>
+                      <p *ngIf="(userFormGroup.get('lastName').touched && userFormGroup.get('lastName').hasError('maxlength'))">This entry is too long (25 char maximum)</p>
+                    </div>
+        
+                    <!-- <mat-form-field>
+                      <mat-label>birthDate</mat-label>
+                      <input matInput [matDatepicker]="myDatepicker" [formControlName]="user.birthDate" matInput
+                      [placeholder]="birthDate" class="form-control">
+                      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #myDatepicker></mat-datepicker>
+                    </mat-form-field> -->
+        
+                    <ion-item>
+                      <ion-label slot="start">Email</ion-label>
+                      <ion-input ngDefaultControl formControlName="email" name="email"  placeholder="Your lastname" inputmode="email" type="email" spellcheck="false" required="true"></ion-input>
+                      <ion-icon slot="end" name="mail-outline" color="medium"></ion-icon>
+                    </ion-item>
+                    <div class="form-error">
+                      <p *ngIf="(userFormGroup.get('email').touched && userFormGroup.get('email').hasError('required'))">An email is required</p>
+                      <p *ngIf="(userFormGroup.get('email').touched && userFormGroup.get('email').hasError('maxlength'))">This email is too long (128 char maximum)</p>
+                      <p *ngIf="(userFormGroup.get('email').touched && userFormGroup.get('email').hasError('notUnique'))">This email is already registered</p>
+                      <p *ngIf="(userFormGroup.get('email').touched && userFormGroup.get('email').hasError('email'))">This email is invalid</p>
+                    </div>
+        
+                    <ion-item>
+                      <ion-label slot="start">Mobile/Cell</ion-label>
+                      <ion-input ngDefaultControl formControlName="mobile" name="mobile"  placeholder="Your mobile/cell number" inputmode="tel" type="tel" spellcheck="false"></ion-input>
+                      <ion-icon slot="end" name="call-outline" color="medium"></ion-icon>
+                    </ion-item>
+                    <div class="form-error">
+                      <p *ngIf="(userFormGroup.get('mobile').touched && userFormGroup.get('mobile').hasError('minlength'))">This number is too short (10 digit minimum)</p>
+                      <p *ngIf="(userFormGroup.get('mobile').touched && userFormGroup.get('mobile').hasError('maxlength'))">This number is too long (20 char maximum)</p>
+                    </div>
+        
+                    <ion-item *ngIf="isNew() || isAdmin() && !isMyself()">
+                      <ion-label slot="start">Profile type</ion-label>
+                      <ion-select formControlName="profile" value='profile' placeholder="Your profile type" interface="popover">
+                        <ion-select-option value="user">User</ion-select-option>
+                        <ion-select-option value="admin">Admin</ion-select-option>
+                      </ion-select>
+                      <ion-icon slot="end" name="document-lock-outline" color="medium"></ion-icon>
+                    </ion-item>
+        
+                      
+                    <ion-item *ngIf="isNew()">
+                      <ion-label slot="start">Password</ion-label>
+                      <ion-input ngDefaultControl formControlName="password" name="password"  placeholder="Your password" inputmode="text" [type]="hidePassword ? 'password' : 'text'" spellcheck="false" required="true"></ion-input>
+                      <div slot="end" (click)="hidePassword = ! hidePassword">
+                        <ion-icon [name]="hidePassword? 'eye-off-outline':'eye'" [color]="hidePassword? 'medium': 'dark'"></ion-icon>
+                      </div>
+                    </ion-item>
+                    <div class="form-error">
+                      <p *ngIf="(userFormGroup.get('password').touched && userFormGroup.get('password').hasError('required'))">A password is required</p>
+                      <p *ngIf="(userFormGroup.get('password').touched && userFormGroup.get('password').hasError('minlength'))">This password is too short (5 char minimum)</p>
+                      <p *ngIf="(userFormGroup.get('password').touched && userFormGroup.get('password').hasError('maxlength'))">This password is too long (20 char maximum)</p>
+                    </div>
+                    
+                  </div>
                 </ion-card-content>
               </form>
             </ion-card>
-    
+
+            <ion-toolbar>
+              <ion-buttons slot="end">
+                <!-- <ion-button size="small" color="dark" (click)="submit()" [disabled]="!userForm.valid">{{form.formType}}</ion-button> -->
+                <ion-button size="small" color="dark" (click)="submit()" [disabled]="!userFormGroup.valid && !userId">Submit</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            
           </section>
         </div>
     

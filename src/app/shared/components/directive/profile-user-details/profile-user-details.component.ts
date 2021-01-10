@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
-import { AuthService, selectAllUsers, selectUserSetState, selectUserState, State, User, UserService } from 'koa-services';
+import { AuthService, selectAllUsers, selectCurrentUser, selectUser, selectUserSetState, selectUserState, State, User, UserService } from 'koa-services';
 import { filter, map, skip, take } from 'rxjs/operators';
 import { UItoolingService } from 'src/app/shared/services/UITooling.service';
 import { PasswordChangePopoverPage } from '../../popover/password-change-popover/password-change-popover.page';
@@ -24,6 +24,7 @@ export class ProfileUserDetailsComponent implements OnInit {
 
   public userForm: User;
   public userFormGroup: FormGroup;
+  public hidePassword: boolean = true;
   
   constructor(
     private store: Store<State>,
@@ -35,8 +36,13 @@ export class ProfileUserDetailsComponent implements OnInit {
     ) {}
 
   async ngOnInit(){
-    // console.log(`ProfileUserDetailsComponent.ngOninit(readOnly: ${this.readOnly}, userId: ${this.userId})`);
-    if ( this.userId ) { // retrieve user if id is provided within directive [userId]
+    console.log(`ProfileUserDetailsComponent.ngOninit(readOnly: ${this.readOnly}, userId: ${this.userId})`);
+    // retrieve user from currentUser
+    this.user = await this.authService.getCurrentUser();
+    // console.log('ngOnInit().user: ', this.user);
+    // retrieve user if id is provided within directive [userId] and differs from currentUser
+    if ( this.userId && this.userId != this.user.id ) { 
+      // debugger;
       this.userService.getById(this.userId);
       // handle error
       this.store.pipe( select(selectUserSetState), skip(1), take(1), filter( (s) => !!s.errors && s.errors.error), map( (s) => s.errors.error))
@@ -44,20 +50,21 @@ export class ProfileUserDetailsComponent implements OnInit {
         this.UITooling.fireAlert('[GetById] Operation has failed! Please check logs and retry', 'failed' );
       });
       // get user
-      this.store.pipe( select(selectAllUsers), skip(1), take(1) )
-      .subscribe( (users) => {
-        this.user  = users[0];
+      this.store.pipe( select(selectUser), skip(1), take(1) )
+      .subscribe( (user) => {
+        // console.log('selectUser().user: ', user);
+        this.user  = user;
         this.initForm();
       });
     } else { // no Id provided
-      // if read only mode, retrieve user from currentUser, else creating New User
-      if (this.readOnly) { this.user = await this.authService.getCurrentUser(); }
-      else { this.user = new User({}); }
+      // if not read only mode (form), create New User
+      if ( ! this.readOnly && ! this.userId ) { this.user = new User({}); }
       this.initForm();
     }
   }
 
   public initForm() {
+    console.log(`ProfileUserDetailsComponent.initForm(readOnly: ${this.readOnly}, userId: ${this.userId})`, this.user);
     // generating form group if needed
     if (!this.readOnly) {
       this.userForm = new User({});
@@ -65,8 +72,8 @@ export class ProfileUserDetailsComponent implements OnInit {
         firstName: new FormControl('', [Validators.minLength(2), Validators.maxLength(25)]),
         lastName: new FormControl('', [Validators.minLength(2), Validators.maxLength(25)]),
         // birthDate: new FormControl(moment(), Validators.required),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        mobile: new FormControl('', [Validators.minLength(10)]), // add numeric pattern
+        email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(128)]),
+        mobile: new FormControl('', [Validators.minLength(10), Validators.maxLength(20)]), // add numeric pattern
         profile: new FormControl('', [Validators.required, Validators.minLength(3)]), /// attention , c'est un select !!!
         password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]),
       });
@@ -112,8 +119,8 @@ export class ProfileUserDetailsComponent implements OnInit {
     // [routerLink]="['/users/form/${userPick.id}']" [queryParams]="{user: user}"
     // this.router.navigate([`/users/form/${this.userPickId}`], { queryParams: { id:  this.userPickId }});
     const url = `tabs/dashboard/form/${this.user.id}`;
-    this.UITooling.fireAlert(`ProfileUserDetailsComponent.editProfile().url: ${url}`, 'info' );
-    // this.router.navigate([url]);
+    // this.UITooling.fireAlert(`ProfileU  serDetailsComponent.editProfile().url: ${url}`, 'info' );
+    this.router.navigate([url]);
   }
 
   public submit() {
@@ -139,7 +146,7 @@ export class ProfileUserDetailsComponent implements OnInit {
           // update user
           this.userService.updateById(this.userId, newUser);
           // handle result
-          this.store.pipe( select(selectUserSetState), skip(1), take(1))
+          this.store.pipe( select(selectUserState), skip(1), take(1))
           .subscribe( (state) => {
             if (!!state.errors && state.errors.error) {
               this.UITooling.fireAlert('[UpdateById] Operation has failed! Please check logs and retry', 'failed' );
@@ -201,7 +208,7 @@ export class ProfileUserDetailsComponent implements OnInit {
   }
 
   public async changePassword() {
-    console.log(`ProfileUserDetailsComponent.changePassword()`);
+    // console.log(`ProfileUserDetailsComponent.changePassword()`);
     // this.UITooling.fireAlert('ProfileUserDetailsComponent.changePassword()', 'info' );
     // // get modal with previous password and new password in 2 steps !!
     // const dialogRef = this.UITooling.fireDialog(PasswordChangeModalComponent, {
@@ -222,10 +229,10 @@ export class ProfileUserDetailsComponent implements OnInit {
     // dialogRef.afterClosed().subscribe(async data => { .... });
     const dialogFeedback =  await popover.onDidDismiss();
     if (!dialogFeedback || !dialogFeedback.data || dialogFeedback.data.dismiss ) {
-      console.log('PasswordChangePopoverPage dismissed ...');
+      // console.log('PasswordChangePopoverPage dismissed ...');
       return;
     }
-    console.log(`ProfileUserDetailsComponent.popover.onDidDismiss(password: ${dialogFeedback.data.password}, newPassword: ${dialogFeedback.data.newPassword})`);
+    // console.log(`ProfileUserDetailsComponent.popover.onDidDismiss(password: ${dialogFeedback.data.password}, newPassword: ${dialogFeedback.data.newPassword})`);
     this.authService.changePassword(dialogFeedback.data.password, dialogFeedback.data.newPassword);
     this.store.pipe( select(selectUserState), skip(1), take(1))
     .subscribe( (state) => {
@@ -245,7 +252,7 @@ export class ProfileUserDetailsComponent implements OnInit {
   }
 
   private routeToUserForm(id: number) {
-    const url = `dashboard/users/profile/${id}`;
+    const url = `tabs/dashboard/profile/${id}`;
     this.router.navigate([url]);
   }
 }
