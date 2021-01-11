@@ -12,6 +12,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { KoaServicesModule, serverAddress, serverProtocol, SERVER_ADDRESS, SERVER_PROTOCOL } from 'koa-services'
 import { UserPopoverPage } from './components/popover/user-popover/user-popover.page'
@@ -41,6 +45,10 @@ const SHARED_MODULES = [
     MatIconModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
 ]                                                                                                                                                                                                                               
 
 const SHARED_IMPORTED_MODULES = []                                                                                                                      
