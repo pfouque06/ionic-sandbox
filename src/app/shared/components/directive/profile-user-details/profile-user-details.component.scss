@@ -52,3 +52,14 @@ div.form-error {
       color: red;
   }
 }
+ion-radio-group {
+  ion-text {
+    color: var(--ion-color-medium);
+  }
+  .radio-selected {
+    color: var(--ion-color-dark) !important;
+  }
+  ion-radio {
+    --color-checked: var(--ion-color-dark);
+  }
+}
