@@ -17,8 +17,6 @@
             </ion-card-title>
           </ion-card-header>
 
-          <teaser-beta-version></teaser-beta-version>
-
           <form [formGroup]="userFormGroup" novalidate >
             <ion-card-content id="information">
               <div class="details">
@@ -84,7 +82,6 @@
                       <ion-row>
                         <ion-item *ngFor="let profile of profileTypes">
                           <ion-radio slot="end" [value]="profile.value"></ion-radio>
-                          <!-- <ion-text color="medium" [class.radio-selected]="userFormGroup.get('profile').value === profile.label"]>{{profile.label}}</ion-text> -->
                           <ion-text [class.radio-selected]="userFormGroup.get('profile').value === profile.value">{{profile.label}}</ion-text>
                         </ion-item>
                       </ion-row>

@@ -27,21 +27,49 @@ section {
   color: gray;
 }
 
-ion-select {
-  // float: right;
-  // max-width: 100%;
-  padding-left: 10px;
+ion-item {
+  --padding-start: 0px;
+  padding-left: 0px;
 }
+
 ion-item > ion-label{
   margin-right: 10px;
   // width: 75px;
-  min-width: 76px;
-  max-width: 76px;
+  min-width: 81px;
+  max-width: 81px;
   color:  var(--ion-color-medium) !important;
 }
 ion-item.item-has-focus > ion-label{
   color:  var(--ion-color-dark) !important;
 }
+
+ion-select {
+  // float: right;
+  // max-width: 100%;
+  padding-left: 10px;
+}
+
+ion-radio-group {
+  // ion-item > .item-native {
+  //   --padding-start: 0px;
+  //   padding-left: 0px;
+  // }
+  ion-item {
+    --padding-start: 0px;
+    padding-left: 8px;
+  }
+  ion-text {
+    color: var(--ion-color-medium);
+  }
+  .radio-selected {
+    color: var(--ion-color-dark) !important;
+  }
+  ion-radio {
+    margin-left: 10px;
+    --color-checked: var(--ion-color-dark);
+  }
+}
+
 div.form-error {
   height: 20px;
   overflow: hidden;
@@ -50,16 +78,5 @@ div.form-error {
       padding-left: 5px;
       font-size: x-small;
       color: red;
-  }
-}
-ion-radio-group {
-  ion-text {
-    color: var(--ion-color-medium);
-  }
-  .radio-selected {
-    color: var(--ion-color-dark) !important;
-  }
-  ion-radio {
-    --color-checked: var(--ion-color-dark);
   }
 }
