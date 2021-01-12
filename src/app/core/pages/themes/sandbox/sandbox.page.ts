@@ -8,9 +8,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SandboxPage implements OnInit {
 
+  // Stepper demo
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+
+  // Ripple Effect
+  centered = false;
+  disabled = false;
+  unbounded = false;
+  radius: number;
+  color: string;
 
   constructor(private _formBuilder: FormBuilder) { console.log('themes/sandbox'); }
 
