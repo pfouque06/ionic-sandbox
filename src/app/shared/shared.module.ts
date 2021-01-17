@@ -19,7 +19,9 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button'
-import { MatCheckboxModule } from '@angular/material/checkbox'; 
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { KoaServicesModule, serverAddress, serverProtocol, SERVER_ADDRESS, SERVER_PROTOCOL } from 'koa-services'
 import { UserPopoverPage } from './components/popover/user-popover/user-popover.page'
@@ -58,6 +60,8 @@ const SHARED_MODULES = [
     MatMenuModule,
     MatRippleModule,
     MatCheckboxModule,
+    MatTabsModule,
+    MatSlideToggleModule,
 ]                                                                                                                                                                                                                               
 
 const SHARED_IMPORTED_MODULES = []                                                                                                                      

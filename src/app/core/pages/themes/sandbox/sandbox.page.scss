@@ -35,7 +35,12 @@ mat-expansion-panel {
 .example-ripple-checkbox {
   margin: 6px 12px 6px 0;
 }
-
 .example-ripple-form-field {
   margin: 0 12px 0 0;
+}
+
+/** Styles to make the demo look better. */
+.example-demo-input,
+.example-demo-button {
+  margin-right: 10px;
 }

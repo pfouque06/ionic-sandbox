@@ -111,6 +111,11 @@ export class ThemesPage {
               icon: 'list',
             },
             {
+              label: 'Toolbar',
+              data: 'true',
+              icon: 'menu',
+            },
+            {
               label: 'Nav',
               data: 'true',
               icon: 'albums',
@@ -142,22 +147,22 @@ export class ThemesPage {
               icon: 'ellipsis-vertical',
             },
             {
-              label: 'Toolbar',
-              data: 'true',
-              icon: 'menu',
-            },
-            {
               label: 'Tabs',
               data: 'true',
               icon: 'albums',
             },
             {
-              label: 'Collapse',
+              label: 'Espansion panel',
               data: 'true',
               icon: 'archive',
             },
             {
               label: 'Picker',
+              data: 'true',
+              icon: 'options',
+            },
+            {
+              label: 'Stepper',
               data: 'true',
               icon: 'options',
             },

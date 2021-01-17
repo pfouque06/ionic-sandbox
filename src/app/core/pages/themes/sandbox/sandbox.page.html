@@ -23,6 +23,92 @@
   <ion-item-divider></ion-item-divider>
   
   <h1 class="ion-padding-horizontal">Material bench</h1>
+
+    
+  <h4 class="ion-padding-horizontal">Menu</h4>
+  <ion-card>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+      Shoot the bullets ... to get the cake!
+    </button>
+  </ion-card>
+  
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Redial</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Check voice mail</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="submenu">
+      <mat-icon>follow_the_signs</mat-icon>
+      Sub menu
+    </button>
+  </mat-menu>
+  
+  <mat-menu #submenu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="subsubmenu">
+      <mat-icon>follow_the_signs</mat-icon>
+      Next Layer menu
+    </button>
+  </mat-menu>
+  
+  <mat-menu #subsubmenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>close</mat-icon>
+      <span>Leaf menu item</span>
+    </button>
+  </mat-menu>
+
+  <h4 class="ion-padding-horizontal">Tabs</h4>
+
+  <ion-card>
+    <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)" [animationDuration]='isAnimated ? "300":"0"'>
+    <!-- <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)"> -->
+      <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+        Contents for {{tab}} tab
+        <button mat-raised-button class="example-demo-button" [disabled]="tabs.length === 1" (click)="removeTab(index)">
+          Delete Tab
+        </button>
+      </mat-tab>
+    </mat-tab-group>
+  </ion-card>
+  <div class="ion-padding-horizontal">
+    <button mat-raised-button class="example-demo-button" (click)="addTab(selectAfterAdding.checked)">Add new tab </button>
+    <button mat-raised-button class="example-demo-button" (click)="resetTabs()">Reset tabs</button>
+  </div>
+  <div class="ion-padding">
+    <mat-slide-toggle class="example-demo-input" color="primary" [(ngModel)]="isAnimated">Animated tabs</mat-slide-toggle>
+    <mat-checkbox class="example-demo-input" color="primary" [checked]="false" #selectAfterAdding> Select tab after adding </mat-checkbox>
+    <mat-form-field class="example-demo-input">
+      <mat-label>Selected tab index</mat-label>
+      <input matInput type="number" [formControl]="selected">
+    </mat-form-field>
+  </div>
+
+  <h4 class="ion-padding-horizontal">Tabs & Nav</h4>
+
+  <ion-card>
+    <nav mat-tab-nav-bar>
+      <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link"> {{link}} </a>
+      <a mat-tab-link disabled>Disabled Link</a>
+    </nav>
+  </ion-card>
+  <div class="ion-padding-horizontal">
+    <button mat-raised-button class="example-demo-button" (click)="addLink()">
+      Add link
+    </button>
+    <button mat-raised-button class="example-demo-button" (click)="resetLinks()">
+      Reset tabs
+    </button>
+  </div>
+
   <h4 class="ion-padding-horizontal">Expansion Panel</h4>
   <mat-accordion>
       <mat-expansion-panel  hideToggle>
@@ -97,48 +183,7 @@
       </mat-step>
     </mat-vertical-stepper>
   </ion-card>
-  
-  <h4 class="ion-padding-horizontal">Menu</h4>
-  <ion-card>
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-      <mat-icon>more_vert</mat-icon>
-      Shoot the bullets ... to get the cake!
-    </button>
-  </ion-card>
-  
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span>Redial</span>
-    </button>
-    <button mat-menu-item disabled>
-      <mat-icon>voicemail</mat-icon>
-      <span>Check voice mail</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
-    </button>
-    <button mat-menu-item [matMenuTriggerFor]="submenu">
-      <mat-icon>follow_the_signs</mat-icon>
-      Sub menu
-    </button>
-  </mat-menu>
-  
-  <mat-menu #submenu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="subsubmenu">
-      <mat-icon>follow_the_signs</mat-icon>
-      Next Layer menu
-    </button>
-  </mat-menu>
-  
-  <mat-menu #subsubmenu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>close</mat-icon>
-      <span>Leaf menu item</span>
-    </button>
-  </mat-menu>
-  
+
   <h4 class="ion-padding-horizontal">Ripple effect</h4>
   <ion-card>
     <div class="ion-text-center">
