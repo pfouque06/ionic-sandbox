@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-sandbox',
@@ -7,11 +8,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./sandbox.page.scss'],
 })
 export class SandboxPage implements OnInit {
-
-  // Material Stepper
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
 
   // Material Tabs
   tabs = ['First', 'Second'];
@@ -22,6 +18,15 @@ export class SandboxPage implements OnInit {
   links = ['First', 'Second'];
   activeLink = this.links[0];
 
+  // Material expansoin panel
+  // @ViewChild(MatAccordion) accordion: MatAccordion;
+  isPanOpened = false;
+
+  // Material Stepper
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  
   // Material Ripple Effect
   centered = false;
   disabled = false;
@@ -62,4 +67,8 @@ export class SandboxPage implements OnInit {
   public resetLinks() {
     this.links = this.links.slice(0, 2);
   }
+
+  // Material Expansion Panels
+  // public openAllExpansionPanels() { this.accordion.openAll(); }
+  // public closeAllExpansionPanels() { this.accordion.closeAll(); }
 }

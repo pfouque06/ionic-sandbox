@@ -110,25 +110,41 @@
   </div>
 
   <h4 class="ion-padding-horizontal">Expansion Panel</h4>
-  <mat-accordion>
-      <mat-expansion-panel  hideToggle>
-          <mat-expansion-panel-header>
-              <mat-panel-title>An Expansion panel Title</mat-panel-title>
-              <mat-panel-description>with a desc</mat-panel-description>
-          </mat-expansion-panel-header>
-
-          <p>Material Expansion Panel 1</p>
-      </mat-expansion-panel>
-
-      <mat-expansion-panel  hideToggle>
-          <mat-expansion-panel-header>
-              <mat-panel-title>Another Expansion panel Title</mat-panel-title>
-              <mat-panel-description>with a desc</mat-panel-description>
-          </mat-expansion-panel-header>
-
-          <p>Material Expansion Panel 2</p>
-      </mat-expansion-panel>
-  </mat-accordion>
+  <div class="ion-padding-horizontal">
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>An Expansion panel Title</mat-panel-title>
+                <mat-panel-description>with a desc 1</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Material Expansion Panel 1</p>
+        </mat-expansion-panel>
+  
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>Another Expansion panel Title</mat-panel-title>
+                <mat-panel-description>with a desc 2</mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>Material Expansion Panel 2</p>
+        </mat-expansion-panel>
+  
+        <mat-expansion-panel (opened)="isPanOpened = true" (closed)="isPanOpened = false" hideToggle>
+            <mat-expansion-panel-header class="ion-justify-content-between">
+                <mat-panel-title>Yet another Expansion panel Title</mat-panel-title>
+                <mat-panel-description>
+                  Panel is {{isPanOpened ? 'expanded' : 'closed'}}
+                </mat-panel-description>
+                <mat-icon>{{isPanOpened ? 'fullscreen_exit':'fullscreen'}}</mat-icon>
+            </mat-expansion-panel-header>
+            <p>Material Expansion Panel 3</p>
+        </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+  <!-- <div class="ion-padding">
+    <button mat-raised-button class="example-demo-button" (click)="openAllExpansionPanels()">Expand All</button>
+    <button mat-raised-button class="example-demo-button" (click)="closeAllExpansionPanels()">Collapse All</button>
+    {{accordion.displayMode}}
+  </div> -->
 
   <h4 class="ion-padding-horizontal">Datepicker</h4>
   <div class="ion-text-center">
