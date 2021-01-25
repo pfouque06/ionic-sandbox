@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'koa-services';
 
 @Component({
   selector: 'app-features',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeaturesPage {
 
-  constructor() { console.log('home/features'); }
+  constructor(private authService: AuthService) { console.log('home/features'); }
 
+  public ping(): boolean {
+    return this.authService.pong;
+  }
 }
