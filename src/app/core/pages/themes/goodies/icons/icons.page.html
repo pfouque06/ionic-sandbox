@@ -1,0 +1,208 @@
+<tab-fake-header></tab-fake-header>
+
+<full-width-title class="ion-text-center">
+  Icon-ings ... 
+  <ion-icon name="logo-ionic" color="secondary" size="large"></ion-icon>
+  <ion-icon name="logo-angular" color="danger" size="large"></ion-icon>
+  <ion-text color="primary" class="fa-icon"><fa-icon [icon]="['fab', 'font-awesome']" size="2x"></fa-icon></ion-text>
+</full-width-title>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="logo-ionic" color="secondary" size="large"></ion-icon>
+        Ionicons
+      </ion-item>
+    </ion-card-header>
+    <ion-item lines="none">
+      <ion-label>
+        <ion-icon name="camera"></ion-icon>
+        <ion-icon name="camera" size="small" color="medium"></ion-icon>
+        <ion-icon name="camera" size="large" color="light"></ion-icon>
+        <ion-icon name="cube" size="large" color="primary"></ion-icon>
+        <ion-icon name="game-controller" size="large" color="secondary"></ion-icon>
+        <ion-icon name="images" style="font-size: 40px;" color="success"></ion-icon>
+        <ion-icon name="megaphone" style="font-size: 52px;" color="warning"></ion-icon>
+        <ion-icon name="pizza" style="font-size: 64px;" color="danger"></ion-icon>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="logo-angular" color="danger" size="large"></ion-icon>
+        Material Icons
+      </ion-item>
+    </ion-card-header>
+    <ion-item lines="none">
+      <ion-label>
+        <mat-icon>more_vert</mat-icon>
+        <mat-icon style="width: 20px; font-size: 20px; color: var(--ion-color-medium)">dialpad</mat-icon>
+        <mat-icon style="width: 25px; font-size: 25px; color: var(--ion-color-light)">voicemail</mat-icon>
+        <mat-icon style="width: 30px; font-size: 30px; color: var(--ion-color-primary)">notifications_off</mat-icon>
+        <mat-icon style="width: 35px; font-size: 35px; color: var(--ion-color-secondary)">follow_the_signs</mat-icon>
+        <mat-icon style="width: 40px; font-size: 40px; color: var(--ion-color-success)">engineering</mat-icon>
+        <mat-icon style="width: 50px; font-size: 50px; color: var(--ion-color-warning)">fullscreen</mat-icon>
+        <mat-icon style="width: 60px; font-size: 60px; color: var(--ion-color-danger)">fingerprint</mat-icon>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fab', 'font-awesome']" size="2x"></fa-icon></ion-text>
+        FontAwesome: Standard settings
+      </ion-item>
+    </ion-card-header>
+    <ion-item lines="none">
+      <fa-icon class="fa-icon" icon="hand-peace" size="xs"></fa-icon>
+      <ion-text color="medium"><fa-icon class="fa-icon" [icon]="['far', 'user']" size="sm"></fa-icon></ion-text>
+      <ion-text color="light"><fa-icon class="fa-icon" [icon]="['fas', 'user']"></fa-icon></ion-text>
+      <ion-text color="primary"><fa-icon class="fa-icon" [icon]="['fab', 'github']" size="lg"></fa-icon></ion-text>
+      <ion-text color="secondary"><fa-icon class="fa-icon" [icon]="['fas', 'snowman']" size="2x"></fa-icon></ion-text>
+      <ion-text color="success"><fa-icon class="fa-icon" [icon]="['fas', 'camera']" size="3x"></fa-icon></ion-text>
+      <ion-text color="warning"><fa-icon class="fa-icon" [icon]="['fas', 'camera']" size="4x"></fa-icon></ion-text>
+      <ion-text color="danger"><fa-icon class="fa-icon" [icon]="['fas', 'camera']" size="5x"></fa-icon></ion-text>
+    </ion-item>
+    <ion-item lines="none">
+      <p><fa-icon icon="quote-left" pull='left' size="2x"></fa-icon>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Donec dapibus ligula lectus, nec eleifend est malesuada id. Mauris tristique euismod odio, nec tempor massa aliquam quis.
+        Sed aliquet rutrum consectetur.
+        <!-- Phasellus viverra congue lacinia. Integer lacus sem, ullamcorper at tempor luctus, aliquam ac justo.
+        Nulla sed mauris arcu. Duis sagittis lobortis felis, sit amet interdum mauris lobortis ut. Vivamus vitae sapien justo.
+        In hac habitasse platea dictumst. Aliquam luctus augue neque. Morbi maximus facilisis placerat. -->
+      </p>
+      </ion-item>
+      <ion-item lines="none">
+        <p><fa-icon icon="arrow-right" pull='right' [border]='true' size="2x"></fa-icon>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Donec dapibus ligula lectus, nec eleifend est malesuada id. Mauris tristique euismod odio, nec tempor massa aliquam quis.
+          Sed aliquet rutrum consectetur.
+          <!-- Phasellus viverra congue lacinia. Integer lacus sem, ullamcorper at tempor luctus, aliquam ac justo.
+          Nulla sed mauris arcu. Duis sagittis lobortis felis, sit amet interdum mauris lobortis ut. Vivamus vitae sapien justo.
+          In hac habitasse platea dictumst. Aliquam luctus augue neque. Morbi maximus facilisis placerat. -->
+        </p>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fab', 'font-awesome']" size="2x"></fa-icon></ion-text>
+        FontAwesome: Stacked icons
+      </ion-item>
+    </ion-card-header>
+    <ion-item lines="none">
+      <fa-stack size="3x">
+        <fa-icon icon="square" stackItemSize="2x"></fa-icon>
+        <fa-icon icon="terminal" stackItemSize="1x" [inverse]="true"></fa-icon>
+      </fa-stack>
+      <fa-stack size="3x">
+        <fa-icon icon="camera" stackItemSize="1x"></fa-icon>
+        <fa-icon icon="ban" stackItemSize="2x" style="color: red;"></fa-icon>
+      </fa-stack>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fab', 'font-awesome']" size="2x"></fa-icon></ion-text>
+        FontAwesome: Tranformed icons
+      </ion-item>
+    </ion-card-header>
+
+    <ion-item lines="none" class="ion-margin-bottom">
+      <div class="fa-4x">
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;"></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="shrink-8"></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="grow-8"></fa-icon>
+      </div>
+    </ion-item>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <div class="fa-4x">
+        <!-- <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="shrink-8"></fa-icon> -->
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="shrink-8 up-6"></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="shrink-8 right-6"></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="shrink-8 up-6 left-6"></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="shrink-8 down-6 right-6"></fa-icon>
+      </div>
+    </ion-item>
+    <ion-item lines="none" class="ion-margin-bottom">
+      <div class="fa-4x">
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="rotate--45"></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="rotate-45"></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="rotate-90"></fa-icon>
+      </div>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="fa-4x">
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="flip-v"></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="flip-h"></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'seedling']" style="background-color: cadetblue;" transform="flip-v flip-h"></fa-icon>
+      </div>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fab', 'font-awesome']" size="2x"></fa-icon></ion-text>
+        FontAwesome: Masked icons
+      </ion-item>
+    </ion-card-header>
+    <ion-item lines="none">
+      <div class="fa-4x">
+        <fa-icon class="fa-icon" [icon]="['fas', 'pen']" transform="shrink-10 up-0.5" [mask]="['fas', 'comment']" style="background-color: cadetblue;" ></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fab', 'facebook-f']" transform="shrink-3.5 down-1.6 right-1.25" [mask]="['fas', 'circle']" style="background-color: cadetblue;" ></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'headphones']" transform="shrink-6" [mask]="['fas', 'square']" style="background-color: cadetblue;" ></fa-icon>
+        <fa-icon class="fa-icon" [icon]="['fas', 'mask']" transform="shrink-3 up-1" [mask]="['fas', 'circle']" style="background-color: cadetblue;" ></fa-icon>
+      </div>
+    </ion-item>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fab', 'font-awesome']" size="2x"></fa-icon></ion-text>
+        FontAwesome: Layered icons, text & counter
+      </ion-item>
+    </ion-card-header>
+    <ion-item lines="none">
+      <div class="fa-4x">
+        <fa-layers class="fa-icon" [fixedWidth]="true" style="background-color: cadetblue;">
+          <fa-icon [icon]="['fas', 'square']"></fa-icon>
+          <fa-icon [icon]="['fas', 'spinner']" [inverse]="true" transform="shrink-6" [spin]="true"></fa-icon>
+        </fa-layers>
+        <fa-layers class="fa-icon" [fixedWidth]="true" style="background-color: cadetblue;">
+          <fa-icon [icon]="['fas', 'square']"></fa-icon>
+          <fa-layers-text content="Yo" style="color: cadetblue;" transform="shrink-4"></fa-layers-text>
+        </fa-layers>
+        <fa-layers class="fa-icon" [fixedWidth]="true" style="background-color: cadetblue;">
+          <fa-icon [icon]="['fas', 'envelope']"></fa-icon>
+          <fa-layers-counter content="99+"></fa-layers-counter>
+        </fa-layers>
+        <fa-layers class="fa-icon" [fixedWidth]="true" style="background-color: cadetblue;">
+          <fa-icon [icon]="['fas', 'calendar']"></fa-icon>
+          <fa-layers-text content="27" [inverse]="true" class="font-weight-bold" transform="shrink-8 down-3"></fa-layers-text>
+        </fa-layers>
+        <fa-layers class="fa-icon" [fixedWidth]="true" style="background-color: cadetblue;">
+          <fa-icon [icon]="['fas', 'certificate']"></fa-icon>
+          <fa-layers-text content="NEW" [inverse]="true" class="font-weight-bold" transform="shrink-11.5 rotate--30"></fa-layers-text>
+        </fa-layers>
+        <fa-layers class="fa-icon" [fixedWidth]="true" style="background-color: cadetblue;">
+          <fa-icon [icon]="['fas', 'play']" transform="rotate--90 grow-2"></fa-icon>
+          <fa-icon [icon]="['fas', 'sun']" style="color: darkgoldenrod;" transform="shrink-10 up-2"></fa-icon>
+          <fa-icon [icon]="['fas', 'moon']" [inverse]="true" transform="shrink-11 down-4.2 left-4"></fa-icon>
+          <fa-icon [icon]="['fas', 'star']" style="color: red;" transform="shrink-11 down-4.2 right-4"></fa-icon>
+        </fa-layers>
+      </div>
+    </ion-item>
+  </ion-card>
+
+</ion-content>
+
+<tab-footer></tab-footer>

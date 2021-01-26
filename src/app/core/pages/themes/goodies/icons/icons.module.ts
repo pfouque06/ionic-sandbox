@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { FontAwesomeIconsPageRoutingModule } from './font-awesome-icons-routing.module';
-import { FontAwesomeIconsPage } from './font-awesome-icons.page';
+import { IconsPageRoutingModule } from './icons-routing.module';
+import { IconsPage } from './icons.page';
 
 @NgModule({
   imports: [
@@ -13,8 +13,8 @@ import { FontAwesomeIconsPage } from './font-awesome-icons.page';
     FormsModule,
     IonicModule,
     SharedModule,
-    FontAwesomeIconsPageRoutingModule
+    IconsPageRoutingModule
   ],
-  declarations: [FontAwesomeIconsPage]
+  declarations: [IconsPage]
 })
-export class FontAwesomeIconsPageModule {}
+export class IconsPageModule {}

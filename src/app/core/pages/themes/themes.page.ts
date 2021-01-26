@@ -26,19 +26,9 @@ export class ThemesPage {
       icon: 'construct',
     },
     {
-      label: 'callback test01',
-      callback: 'test01',
-      icon: 'construct',
-    },
-    {
       label: 'Goodies',
       icon: 'color-palette',
       submenu: [
-        {
-          label: 'callback test02',
-          callback: 'test02',
-          icon: 'construct',
-        },
         {
           label: 'Emojis',
           link: '/tabs/themes/emojis',
@@ -46,7 +36,7 @@ export class ThemesPage {
         },
         {
           label: 'Icons',
-          link: '/tabs/themes/font-awesome-icons',
+          link: '/tabs/themes/icons',
           icon: 'logo-ionic',
         },
         {
@@ -191,6 +181,33 @@ export class ThemesPage {
         },
       ],
     },
+    {
+      label: 'callback test01',
+      callback: 'test01',
+      icon: 'construct',
+    },
+    {
+      label: 'callback menu01',
+      icon: 'construct',
+      submenu: [
+        {
+          label: 'callback test02',
+          callback: 'test02',
+          icon: 'construct',
+        },
+        {
+          label: 'callback menu02',
+          icon: 'construct',
+          submenu: [
+            {
+              label: 'callback test03',
+              callback: 'test03',
+              icon: 'construct',
+            }
+          ]
+        },
+      ]
+    }
   ]
   
   constructor(private menuCtl: MenuController, private UITooling: UItoolingService ) { console.log('themes'); }

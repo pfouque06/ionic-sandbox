@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { FontAwesomeIconsPage } from './font-awesome-icons.page';
+import { IconsPage } from './icons.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FontAwesomeIconsPage
+    component: IconsPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FontAwesomeIconsPageRoutingModule {}
+export class IconsPageRoutingModule {}

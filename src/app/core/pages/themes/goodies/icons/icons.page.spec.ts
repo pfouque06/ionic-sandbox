@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { FontAwesomeIconsPage } from './font-awesome-icons.page';
+import { IconsPage } from './icons.page';
 
-describe('FontAwesomeIconsPage', () => {
-  let component: FontAwesomeIconsPage;
-  let fixture: ComponentFixture<FontAwesomeIconsPage>;
+describe('IconsPage', () => {
+  let component: IconsPage;
+  let fixture: ComponentFixture<IconsPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FontAwesomeIconsPage ],
+      declarations: [ IconsPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FontAwesomeIconsPage);
+    fixture = TestBed.createComponent(IconsPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
