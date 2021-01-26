@@ -1,6 +1,6 @@
-<ion-list>
+<ion-list [class]="menuLevel > 0 ? 'sub-item': ''">
 
-  <div *ngFor="let item of menu" [class]="menuLevel > 0 ? 'sub-item': ''">
+  <div *ngFor="let item of menu">
 
     <!-- routerLink item type -->
     <ion-menu-toggle *ngIf="item.link" auto-hide="false" [menu]="menuId">

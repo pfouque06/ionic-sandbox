@@ -49,11 +49,6 @@ export class ThemesPage {
           icon: 'color-palette',
           submenu: [
             {
-              label: 'callback test03',
-              callback: 'test03',
-              icon: 'construct',
-            },
-            {
               label: 'QRCode Generator',
               data: 'true',
               icon: 'qr-code-outline',

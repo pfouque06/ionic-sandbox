@@ -21,7 +21,11 @@ ion-list {
         text-shadow: var(--ion-color-medium) 5px 5px 30px;
     }
     .sub-item {
-        border-left: 16px solid var(--ion-color-light);
+        // border-left: 16px solid var(--ion-color-medium);
+        border-left: 1px solid var(--ion-color-medium);
+        margin-left: 15px;
+        padding-top: 0px;
+        padding-bottom: 0px;
         /* padding-left: 16px; */
     }
 }
