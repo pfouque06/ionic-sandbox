@@ -203,9 +203,9 @@
   <h4 class="ion-padding-horizontal">Ripple effect</h4>
   <ion-card>
     <div class="ion-text-center">
-      <mat-checkbox [(ngModel)]="centered" class="example-ripple-checkbox">Centered</mat-checkbox>
-      <mat-checkbox [(ngModel)]="disabled" class="example-ripple-checkbox">Disabled</mat-checkbox>
-      <mat-checkbox [(ngModel)]="unbounded" class="example-ripple-checkbox">Unbounded</mat-checkbox>
+      <mat-checkbox [(ngModel)]="centered" class="example-ripple-checkbox" color="primary">Centered</mat-checkbox>
+      <mat-checkbox [(ngModel)]="disabled" class="example-ripple-checkbox" color="primary">Disabled</mat-checkbox>
+      <mat-checkbox [(ngModel)]="unbounded" class="example-ripple-checkbox" color="primary">Unbounded</mat-checkbox>
       
       <mat-form-field class="example-ripple-form-field">
         <input matInput [(ngModel)]="radius" type="number" placeholder="Radius">
@@ -222,6 +222,36 @@
         [matRippleRadius]="radius"
         [matRippleColor]="color">
         Click me
+      </div>
+    </div>
+  </ion-card>
+
+  <h4 class="ion-padding-horizontal">Drag & Drop</h4>
+  <ion-card class="example-drag-card01">
+    <div class="ion-text-center">
+      <div class="example-drag-box01" cdkDrag>Drag me around</div>
+    </div>
+  </ion-card>
+  <ion-card class="example-drag-card02">
+    <div class="ion-text-center">
+      <mat-radio-group [(ngModel)]="LockType">
+        <mat-radio-button value="unLock" class="example-drag-radio" color="primary">Unlocked</mat-radio-button>
+        <mat-radio-button value="xLockAxis" class="example-drag-radio" color="primary">Lock X-axis</mat-radio-button>
+        <mat-radio-button value="yLockAxis" class="example-drag-radio" color="primary">Lock Y-axis</mat-radio-button>
+        <mat-radio-button value="Lock" class="example-drag-radio" color="primary">Disable drag</mat-radio-button>
+      </mat-radio-group>
+      
+      <div class="example-drag-box02" [cdkDragLockAxis]="LockType === 'unLock' ? '': LockType === 'xLockAxis' ? 'x':'y'" [cdkDragDisabled]="LockType === 'Lock'" cdkDrag>
+        Catch the handler
+        <mat-icon class="example-drag-handle02" cdkDragHandle>open_with</mat-icon>
+      </div>
+
+    </div>
+  </ion-card>
+  <ion-card>
+    <div class="ion-text-center">
+      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
       </div>
     </div>
   </ion-card>

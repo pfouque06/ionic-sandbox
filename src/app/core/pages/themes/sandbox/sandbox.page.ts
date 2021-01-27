@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatAccordion } from '@angular/material/expansion';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-sandbox',
@@ -33,6 +33,16 @@ export class SandboxPage implements OnInit {
   unbounded = false;
   radius: number;
   color: string;
+
+  // Material Drag & Drop
+  LockType : 'unLock' | 'xLockAxis' | 'yLockAxis' | 'Lock' = 'unLock';
+  items = [
+    'item 1',
+    'item 2',
+    'item 3',
+    'item 4',
+    'item 5',
+  ];
 
   constructor(private _formBuilder: FormBuilder) { console.log('themes/sandbox'); }
 
@@ -71,4 +81,13 @@ export class SandboxPage implements OnInit {
   // Material Expansion Panels
   // public openAllExpansionPanels() { this.accordion.openAll(); }
   // public closeAllExpansionPanels() { this.accordion.closeAll(); }
+
+  // Material Drag & Drop
+  drop(event: CdkDragDrop<string[]>) {
+    // move item in item from previousIndex to currentIndex);
+    // console.log('event.previousIndex, event.currentIndex : ', event.previousIndex, event.currentIndex);
+    if (event.previousIndex < 0 || event.previousIndex >= this.items.length) { return; }
+    if (event.currentIndex < 0 || event.currentIndex >= this.items.length) { return; }
+    this.items.splice(event.currentIndex, 0, this.items.splice(event.previousIndex, 1)[0]);
+  }
 }
