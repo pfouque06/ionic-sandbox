@@ -156,6 +156,11 @@ export class ThemesPage {
               data: 'true',
               icon: 'radio',
             },
+            {
+              label: 'Drag & Drop',
+              data: 'true',
+              icon: 'git-compare',
+            },
           ],
         },
         {

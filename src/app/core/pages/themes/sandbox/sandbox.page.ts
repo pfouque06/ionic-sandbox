@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { IonReorderGroup } from '@ionic/angular';
+import { ItemReorderEventDetail } from '@ionic/core';
 
 @Component({
   selector: 'app-sandbox',
@@ -37,6 +39,17 @@ export class SandboxPage implements OnInit {
   // Material Drag & Drop
   LockType : 'unLock' | 'xLockAxis' | 'yLockAxis' | 'Lock' = 'unLock';
   items = [
+    'item 1',
+    'item 2',
+    'item 3',
+    'item 4',
+    'item 5',
+  ];
+
+  // Ionic reorder group
+  @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
+  handlerEnabled = true;
+  bucket = [
     'item 1',
     'item 2',
     'item 3',
@@ -84,10 +97,19 @@ export class SandboxPage implements OnInit {
 
   // Material Drag & Drop
   drop(event: CdkDragDrop<string[]>) {
-    // move item in item from previousIndex to currentIndex);
-    // console.log('event.previousIndex, event.currentIndex : ', event.previousIndex, event.currentIndex);
     if (event.previousIndex < 0 || event.previousIndex >= this.items.length) { return; }
     if (event.currentIndex < 0 || event.currentIndex >= this.items.length) { return; }
+    console.log('Mat Drag: Before complete', this.items);
+    // move item in item from previousIndex to currentIndex);
     this.items.splice(event.currentIndex, 0, this.items.splice(event.previousIndex, 1)[0]);
+    console.log('Mat Drag: After complete', this.items);
+  }
+
+  // Ionic reorder group
+  doReorder(ev: CustomEvent<ItemReorderEventDetail>) {
+    console.log('Ionic Reorder: Before complete', this.bucket);
+    // Update the items variable to the new order of items
+    this.bucket = ev.detail.complete(this.bucket);
+    console.log('Ionic Reorder: After complete', this.bucket);
   }
 }

@@ -256,6 +256,36 @@
     </div>
   </ion-card>
 
+  
+  <h1 class="ion-padding-horizontal">Ionic bench</h1>
+
+  <h4 class="ion-padding-horizontal">Reorder</h4>
+  <ion-card>
+    <div class="ion-text-center">
+      <ion-list>
+        <div [hidden]="!handlerEnabled">
+          <ion-reorder-group id="reorder" (ionItemReorder)="doReorder($event)" disabled="false">
+            <ion-item *ngFor="let item of bucket">
+              <ion-label>{{item}}</ion-label>
+              <ion-reorder slot="end"></ion-reorder>
+            </ion-item>
+          </ion-reorder-group>
+        </div>
+        <div [hidden]="handlerEnabled">
+          <ion-reorder-group id="reorder" (ionItemReorder)="doReorder($event)" disabled="false">
+            <ion-reorder *ngFor="let item of bucket">
+              <ion-item><ion-label>{{item}}</ion-label></ion-item>
+            </ion-reorder>
+          </ion-reorder-group>
+        </div>
+      </ion-list>
+      <ion-item lines="none">
+        <ion-checkbox slot="start" [(ngModel)]="handlerEnabled" color="primary"></ion-checkbox>
+        <ion-label>Handler</ion-label>
+      </ion-item>    </div>
+  </ion-card>
+
+
 </ion-content>
 
 <tab-footer></tab-footer>
