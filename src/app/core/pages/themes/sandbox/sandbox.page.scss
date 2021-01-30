@@ -157,3 +157,11 @@ mat-expansion-panel {
 .cdk-drag-animating { 
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+
+/** Styles to make the Ionic Rename & Reorder demo look better. */
+ion-input {
+  item-label.label-action {
+    margin-left: 10px;
+  }
+}
