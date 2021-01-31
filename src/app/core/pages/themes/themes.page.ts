@@ -17,13 +17,13 @@ export class ThemesPage {
   public menuList: IMenuList[] = [
     {
       label: 'Home',
-      link: '/tabs/themes/home',
       icon: 'home',
+      link: '/tabs/themes/home',
     },
     {
       label: 'Sandbox',
-      link: '/tabs/themes/sandbox',
       icon: 'construct',
+      link: '/tabs/themes/sandbox',
     },
     {
       label: 'Goodies',
@@ -31,79 +31,90 @@ export class ThemesPage {
       submenu: [
         {
           label: 'Emojis',
-          link: '/tabs/themes/emojis',
           icon: 'pizza',
+          link: '/tabs/themes/emojis',
         },
         {
           label: 'Icons',
-          link: '/tabs/themes/icons',
           icon: 'logo-ionic',
+          link: '/tabs/themes/icons',
         },
         {
           label: 'Spinners & Bars',
-          link: '/tabs/themes/spinners',
           icon: 'reload-outline',
+          link: '/tabs/themes/spinners',
         },
         {
-          label: 'QR & Bar codes ...',
+          label: 'QR & Bar codes',
           icon: 'color-palette',
           submenu: [
             {
               label: 'QRCode Generator',
-              data: 'true',
               icon: 'qr-code-outline',
+              link: '/tabs/themes/qrcode-generator',
             },
             {
               label: 'QRCode Scan',
-              data: 'true',
               icon: 'scan-circle-outline',
+              link: '/tabs/themes/qrcode-scan',
             },
             {
               label: 'BarCode Scan',
-              data: 'true',
               icon: 'barcode-outline',
+              link: '/tabs/themes/barcode-scan',
+            },
+          ],
+        },
+        {
+          label: 'My Custom components ...',
+          icon: 'color-palette',
+          submenu: [
+            {
+              label: 'Recursive Menu',
+              icon: 'ellipsis-vertical',
+              link: '/tabs/themes/my-menu',
             },
           ],
         },
       ],
     },
     {
-      label: 'Frameworks ...',
+      label: 'Frameworks',
       icon: 'color-palette',
       submenu: [
         {
-          label: 'Ionic ...',
+          label: 'Ionic stuff ...',
           icon: 'logo-ionic',
           submenu: [
             {
             label: 'Badge',
-            link: '/tabs/themes/badge',
             icon: 'pricetag',
+            link: '/tabs/themes/badge',
             },
             {
               label: 'Chip',
-              data: 'true',
               icon: 'hardware-chip',
+              data: 'true',
             },
             {
               label: 'Grid',
-              data: 'true',
               icon: 'grid',
+              data: 'true',
             },
             {
               label: 'List',
-              data: 'true',
               icon: 'list',
+              data: 'true',
             },
             {
               label: 'Toolbar',
-              data: 'true',
               icon: 'menu',
+              data: 'true',
             },
             {
               label: 'Nav',
-              data: 'true',
               icon: 'albums',
+              data: 'true',
             },
             {
               label: 'Reordering',
@@ -117,74 +128,69 @@ export class ThemesPage {
             },
             {
               label: 'Modal & Popover',
-              data: 'true',
               icon: 'duplicate',
+              data: 'true',
+            },
+            {
+              label: 'Gesture trials',
+              icon: 'move',
+              data: 'true',
             },
           ],
         },
         {
           label: 'Materials stuff ...',
           icon: 'logo-angular',
-          submenu: [
-            {
-              label: 'Menu',
-              data: 'true',
-              icon: 'ellipsis-vertical',
-            },
-            {
-              label: 'Tabs',
-              data: 'true',
-              icon: 'albums',
-            },
-            {
-              label: 'Espansion panel',
-              data: 'true',
-              icon: 'archive',
-            },
-            {
-              label: 'Picker',
-              data: 'true',
-              icon: 'options',
-            },
-            {
-              label: 'Stepper',
-              data: 'true',
-              icon: 'options',
-            },
-            {
-              label: 'Ripples',
-              data: 'true',
-              icon: 'radio',
-            },
-            {
-              label: 'Drag & Drop',
-              data: 'true',
-              icon: 'git-compare',
-            },
-          ],
+          link: '/tabs/themes/materials',
+          // submenu: [
+          //   {
+          //     label: 'Menu',
+          //     data: 'true',
+          //     icon: 'ellipsis-vertical',
+          //   },
+          //   {
+          //     label: 'Tabs',
+          //     data: 'true',
+          //     icon: 'albums',
+          //   },
+          //   {
+          //     label: 'Espansion panel',
+          //     data: 'true',
+          //     icon: 'archive',
+          //   },
+          //   {
+          //     label: 'Picker',
+          //     data: 'true',
+          //     icon: 'options',
+          //   },
+          //   {
+          //     label: 'Stepper',
+          //     data: 'true',
+          //     icon: 'options',
+          //   },
+          //   {
+          //     label: 'Ripples',
+          //     data: 'true',
+          //     icon: 'radio',
+          //   },
+          //   {
+          //     label: 'Drag & Drop',
+          //     data: 'true',
+          //     icon: 'git-compare',
+          //   },
+          // ],
         },
         {
           label: 'Inputs stuff ...',
           icon: 'color-palette',
-          submenu: [
-            {
-              label: 'Forms',
-              data: 'true',
-              icon: 'document-text',
-            },
-            {
-              label: 'Pickers',
-              data: 'true',
-              icon: 'options',
-            },
-          ],
+          link: '/tabs/themes/inputs',
         },
       ],
     },
     {
       label: 'callback test01',
-      callback: 'test01',
       icon: 'construct',
+      callback: 'test01',
     },
     {
       label: 'callback menu01',
@@ -192,8 +198,8 @@ export class ThemesPage {
       submenu: [
         {
           label: 'callback test02',
-          callback: 'test02',
           icon: 'construct',
+          callback: 'test02',
         },
         {
           label: 'callback menu02',
@@ -201,8 +207,8 @@ export class ThemesPage {
           submenu: [
             {
               label: 'callback test03',
-              callback: 'test03',
               icon: 'construct',
+              callback: 'test03',
             }
           ]
         },
