@@ -6,7 +6,6 @@ const routes: Routes = [
   { path: '', component: ThemesPage,children: [
     { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule) },
     { path: 'sandbox', loadChildren: () => import('./sandbox/sandbox.module').then( m => m.SandboxPageModule) },
-    { path: 'badge', loadChildren: () => import('./ionic/badge/badge.module').then( m => m.BadgePageModule) },
     { path: 'emojis', loadChildren: () => import('./goodies/emojis/emojis.module').then( m => m.EmojisPageModule) },
     { path: 'icons', loadChildren: () => import('./goodies/icons/icons.module').then( m => m.IconsPageModule) },
     { path: 'spinners', loadChildren: () => import('./goodies/spinners/spinners.module').then( m => m.SpinnersPageModule) },
@@ -14,6 +13,7 @@ const routes: Routes = [
     { path: 'qrcode-scan', loadChildren: () => import('./goodies/qrcode-scan/qrcode-scan.module').then( m => m.QRcodeScanPageModule) },
     { path: 'barcode-scan', loadChildren: () => import('./goodies/barcode-scan/barcode-scan.module').then( m => m.BarcodeScanPageModule) },
     { path: 'my-menu', loadChildren: () => import('./goodies/my-menu/my-menu.module').then( m => m.MyMenuPageModule) },
+    { path: 'badge', loadChildren: () => import('./frameworks/ionic/badge/badge.module').then( m => m.BadgePageModule) },
     { path: 'materials', loadChildren: () => import('./frameworks/materials/materials.module').then( m => m.MaterialsPageModule) },
     { path: 'inputs', loadChildren: () => import('./frameworks/inputs/inputs.module').then( m => m.InputsPageModule) },
   ]},

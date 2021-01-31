@@ -1,7 +1,245 @@
 <tab-fake-header></tab-fake-header>
 
+<full-width-title class="ion-text-center">
+  <ion-item lines="none">
+    <ion-icon slot="start" name="logo-angular" size="large"></ion-icon>
+    <ion-label>
+      Material bench
+    </ion-label>
+  </ion-item>
+</full-width-title>
+
 <ion-content>
-    <teaser-coming-soon></teaser-coming-soon>
+  <h4 class="ion-padding-horizontal">Menu</h4>
+  <ion-card>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+      Shoot the bullets ... to get the cake!
+    </button>
+  </ion-card>
+  
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>dialpad</mat-icon>
+      <span>Redial</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>voicemail</mat-icon>
+      <span>Check voice mail</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>notifications_off</mat-icon>
+      <span>Disable alerts</span>
+    </button>
+    <button mat-menu-item [matMenuTriggerFor]="submenu">
+      <mat-icon>follow_the_signs</mat-icon>
+      Sub menu
+    </button>
+  </mat-menu>
+  
+  <mat-menu #submenu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="subsubmenu">
+      <mat-icon>follow_the_signs</mat-icon>
+      Next Layer menu
+    </button>
+  </mat-menu>
+  
+  <mat-menu #subsubmenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>close</mat-icon>
+      <span>Leaf menu item</span>
+    </button>
+  </mat-menu>
+  
+  <h4 class="ion-padding-horizontal">Tabs</h4>
+  
+  <ion-card>
+    <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)" [animationDuration]='isAnimated ? "300":"0"'>
+      <!-- <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)"> -->
+        <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
+          Contents for {{tab}} tab
+          <button mat-raised-button class="example-demo-button" [disabled]="tabs.length === 1" (click)="removeTab(index)">
+            Delete Tab
+          </button>
+        </mat-tab>
+      </mat-tab-group>
+    </ion-card>
+    <div class="ion-padding-horizontal">
+      <button mat-raised-button class="example-demo-button" (click)="addTab(selectAfterAdding.checked)">Add new tab </button>
+      <button mat-raised-button class="example-demo-button" (click)="resetTabs()">Reset tabs</button>
+    </div>
+    <div class="ion-padding">
+      <mat-slide-toggle class="example-demo-input" color="primary" [(ngModel)]="isAnimated">Animated tabs</mat-slide-toggle>
+      <mat-checkbox class="example-demo-input" color="primary" [checked]="false" #selectAfterAdding> Select tab after adding </mat-checkbox>
+      <mat-form-field class="example-demo-input">
+        <mat-label>Selected tab index</mat-label>
+        <input matInput type="number" [formControl]="selected">
+      </mat-form-field>
+    </div>
+    
+    <h4 class="ion-padding-horizontal">Tabs & Nav</h4>
+    
+    <ion-card>
+      <nav mat-tab-nav-bar>
+        <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link"> {{link}} </a>
+        <a mat-tab-link disabled>Disabled Link</a>
+      </nav>
+    </ion-card>
+    <div class="ion-padding-horizontal">
+      <button mat-raised-button class="example-demo-button" (click)="addLink()">
+        Add link
+      </button>
+      <button mat-raised-button class="example-demo-button" (click)="resetLinks()">
+        Reset tabs
+      </button>
+    </div>
+    
+    <h4 class="ion-padding-horizontal">Expansion Panel</h4>
+    <div class="ion-padding-horizontal">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>An Expansion panel Title</mat-panel-title>
+            <mat-panel-description>with a desc 1</mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Material Expansion Panel 1</p>
+        </mat-expansion-panel>
+        
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>Another Expansion panel Title</mat-panel-title>
+            <mat-panel-description>with a desc 2</mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>Material Expansion Panel 2</p>
+        </mat-expansion-panel>
+        
+        <mat-expansion-panel (opened)="isPanOpened = true" (closed)="isPanOpened = false" hideToggle>
+          <mat-expansion-panel-header class="ion-justify-content-between">
+            <mat-panel-title>Yet another Expansion panel Title</mat-panel-title>
+            <mat-panel-description>
+              Panel is {{isPanOpened ? 'expanded' : 'closed'}}
+            </mat-panel-description>
+            <mat-icon>{{isPanOpened ? 'fullscreen_exit':'fullscreen'}}</mat-icon>
+          </mat-expansion-panel-header>
+          <p>Material Expansion Panel 3</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <!-- <div class="ion-padding">
+      <button mat-raised-button class="example-demo-button" (click)="openAllExpansionPanels()">Expand All</button>
+      <button mat-raised-button class="example-demo-button" (click)="closeAllExpansionPanels()">Collapse All</button>
+      {{accordion.displayMode}}
+    </div> -->
+    
+    <h4 class="ion-padding-horizontal">Datepicker</h4>
+    <div class="ion-text-center">
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    
+    <h4 class="ion-padding-horizontal">Stepper</h4>
+    <div class="ion-text-center">
+      <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+        {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+      </button>
+    </div>
+    <ion-card>
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Fill out your name</ng-template>
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out your address</ng-template>
+            <mat-form-field>
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </ion-card>
+    
+    <h4 class="ion-padding-horizontal">Ripple effect</h4>
+    <ion-card>
+      <div class="ion-text-center">
+        <mat-checkbox [(ngModel)]="centered" class="example-ripple-checkbox" color="primary">Centered</mat-checkbox>
+        <mat-checkbox [(ngModel)]="disabled" class="example-ripple-checkbox" color="primary">Disabled</mat-checkbox>
+        <mat-checkbox [(ngModel)]="unbounded" class="example-ripple-checkbox" color="primary">Unbounded</mat-checkbox>
+        
+        <mat-form-field class="example-ripple-form-field">
+          <input matInput [(ngModel)]="radius" type="number" placeholder="Radius">
+        </mat-form-field>
+        <mat-form-field class="example-ripple-form-field">
+          <input matInput [(ngModel)]="color" type="text" placeholder="Color">
+        </mat-form-field>
+        
+        <div class="example-ripple-container mat-elevation-z4"
+        matRipple
+        [matRippleCentered]="centered"
+        [matRippleDisabled]="disabled"
+        [matRippleUnbounded]="unbounded"
+        [matRippleRadius]="radius"
+        [matRippleColor]="color">
+        Click me
+      </div>
+    </div>
+  </ion-card>
+  
+  <h4 class="ion-padding-horizontal">Drag & Drop</h4>
+  <ion-card class="example-drag-card01">
+    <div class="ion-text-center">
+      <div class="example-drag-box01" cdkDrag>Drag me around</div>
+    </div>
+  </ion-card>
+  <ion-card class="example-drag-card02">
+    <div class="ion-text-center">
+      <mat-radio-group [(ngModel)]="LockType">
+        <mat-radio-button value="unLock" class="example-drag-radio" color="primary">Unlocked</mat-radio-button>
+        <mat-radio-button value="xLockAxis" class="example-drag-radio" color="primary">Lock X-axis</mat-radio-button>
+        <mat-radio-button value="yLockAxis" class="example-drag-radio" color="primary">Lock Y-axis</mat-radio-button>
+        <mat-radio-button value="Lock" class="example-drag-radio" color="primary">Disable drag</mat-radio-button>
+      </mat-radio-group>
+      
+      <div class="example-drag-box02" [cdkDragLockAxis]="LockType === 'unLock' ? '': LockType === 'xLockAxis' ? 'x':'y'" [cdkDragDisabled]="LockType === 'Lock'" cdkDrag>
+        Catch the handler
+        <mat-icon class="example-drag-handle02" cdkDragHandle>open_with</mat-icon>
+      </div>
+      
+    </div>
+  </ion-card>
+  <ion-card>
+    <div class="ion-text-center">
+      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+  </ion-card>
 </ion-content>
 
 <tab-footer></tab-footer>

@@ -83,7 +83,7 @@ export class ThemesPage {
       icon: 'color-palette',
       submenu: [
         {
-          label: 'Ionic stuff ...',
+          label: 'Ionic bench',
           icon: 'logo-ionic',
           submenu: [
             {
@@ -139,7 +139,7 @@ export class ThemesPage {
           ],
         },
         {
-          label: 'Materials stuff ...',
+          label: 'Materials bench',
           icon: 'logo-angular',
           link: '/tabs/themes/materials',
           // submenu: [
@@ -181,7 +181,7 @@ export class ThemesPage {
           // ],
         },
         {
-          label: 'Inputs stuff ...',
+          label: 'Inputs bench',
           icon: 'color-palette',
           link: '/tabs/themes/inputs',
         },
