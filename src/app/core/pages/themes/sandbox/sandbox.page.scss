@@ -24,8 +24,11 @@ ion-grid.grid-demo {
 ion-item.item-base {
   --border-width: 1px !important;
   ion-input.item-input {
-    item-label.label-action {
-      margin-left: 10px;
+    ion-checkbox.checkbox-action {
+      margin: 0px 5px !important;
     }
+    // item-label.label-action {
+    //   margin-left: 10px;
+    // }
   }
 }

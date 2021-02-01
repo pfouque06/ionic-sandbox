@@ -18,11 +18,20 @@
   
   <ion-item-divider></ion-item-divider>
   
-  
+  <full-width-title class="ion-text-center">
+    <ion-item lines="none">
+      <ion-icon slot="start" name="logo-ionic" color="primary"></ion-icon>
+      <ion-label>
+        Ionic bench
+      </ion-label>
+    </ion-item>
+  </full-width-title>
   <h1 class="ion-padding-horizontal">Ionic bench</h1>
   
-  <h4 class="ion-padding-horizontal">Badges</h4>
-
+  <h4 class="ion-padding-horizontal">
+    <ion-icon name="pricetag" color="primary"></ion-icon>Badges
+  </h4>
+  
   <ion-card>
     <!-- Default -->
     <p>default : <ion-badge>99</ion-badge></p>
@@ -50,7 +59,9 @@
   </ion-card>
 
   <ion-item-divider></ion-item-divider>
-  <h4 class="ion-padding-horizontal">Chips</h4>
+  <h4 class="ion-padding-horizontal">
+    <ion-icon name="hardware-chip" color="primary"></ion-icon>Chips
+  </h4>
 
   <ion-card>
     <ion-list-header>Basic</ion-list-header>
@@ -147,7 +158,9 @@
   </ion-card>
 
   <ion-item-divider></ion-item-divider>
-  <h4 class="ion-padding-horizontal">Grids</h4>
+  <h4 class="ion-padding-horizontal">
+    <ion-icon name="grid" color="primary"></ion-icon>Grids
+  </h4>
 
   <ion-card>
     <ion-list-header>Grid With Columns set to specific sizes</ion-list-header>
@@ -188,7 +201,9 @@
   </ion-card>
 
   <ion-item-divider></ion-item-divider>
-  <h4 class="ion-padding-horizontal">Reorder</h4>
+  <h4 class="ion-padding-horizontal">
+    <ion-icon name="git-compare" color="primary"></ion-icon>Reorder
+  </h4>
   <ion-card>
     <div class="ion-text-center">
       <ion-list>
@@ -209,7 +224,7 @@
         </div>
       </ion-list>
       <ion-item lines="none">
-        <ion-checkbox [(ngModel)]="handlerEnabled01" color="primary"></ion-checkbox>
+        <ion-checkbox class="checkbox-action" [(ngModel)]="handlerEnabled01" color="primary"></ion-checkbox>
         <ion-label class="label-action">Handler</ion-label>
         <ion-checkbox [(ngModel)]="reorderDisabled01" color="primary"></ion-checkbox>
         <ion-label class="label-action">Disabled</ion-label>
@@ -217,7 +232,9 @@
     </div>
   </ion-card>
   
-  <h4 class="ion-padding-horizontal">Rename & Reorder</h4>
+  <h4 class="ion-padding-horizontal">
+    <ion-icon name="git-compare" color="primary"></ion-icon>Rename & Reorder
+  </h4>
   <ion-card>
     <div class="ion-text-center">
       <form>
