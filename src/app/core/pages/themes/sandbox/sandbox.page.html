@@ -18,19 +18,21 @@
   
   <ion-item-divider></ion-item-divider>
   
-  <full-width-title class="ion-text-center">
-    <ion-item lines="none">
-      <ion-icon slot="start" name="logo-ionic" color="primary"></ion-icon>
-      <ion-label>
-        Ionic bench
-      </ion-label>
-    </ion-item>
+  <full-width-title>
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-icon name="logo-ionic" color="primary" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>Ionic bench</ion-title>
+    </ion-toolbar>
   </full-width-title>
-  <h1 class="ion-padding-horizontal">Ionic bench</h1>
   
-  <h4 class="ion-padding-horizontal">
-    <ion-icon name="pricetag" color="primary"></ion-icon>Badges
-  </h4>
+  <ion-toolbar class="ion-padding-horizontal">
+    <ion-buttons slot="start">
+      <ion-icon name="pricetag" color="primary" size="large"></ion-icon>
+    </ion-buttons>
+    <ion-title>Badges</ion-title>
+  </ion-toolbar>
   
   <ion-card>
     <!-- Default -->
@@ -57,215 +59,226 @@
       <ion-badge slot="end">22</ion-badge>
     </ion-item>
   </ion-card>
-
-  <ion-item-divider></ion-item-divider>
-  <h4 class="ion-padding-horizontal">
-    <ion-icon name="hardware-chip" color="primary"></ion-icon>Chips
-  </h4>
-
-  <ion-card>
-    <ion-list-header>Basic</ion-list-header>
-    <p>
-      <ion-chip>
-        <ion-label>Default</ion-label>
-      </ion-chip>
-      <ion-chip>
-        <ion-icon name="checkmark-circle"></ion-icon>
-        <ion-label>Icon</ion-label>
-      </ion-chip>
-      <ion-chip>
-        <ion-avatar>
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzVkYmZmIiBkPSJNMCAwaDUxMnY1MTJIMHoiLz48cGF0aCBkPSJNMjU2IDMwNGM2MS42IDAgMTEyLTUwLjQgMTEyLTExMlMzMTcuNiA4MCAyNTYgODBzLTExMiA1MC40LTExMiAxMTIgNTAuNCAxMTIgMTEyIDExMnptMCA0MGMtNzQuMiAwLTIyNCAzNy44LTIyNCAxMTJ2NTZoNDQ4di01NmMwLTc0LjItMTQ5LjgtMTEyLTIyNC0xMTJ6IiBmaWxsPSIjODJhZWZmIi8+PC9zdmc+" />
-        </ion-avatar>
-        <ion-label>Avatar</ion-label>
-      </ion-chip>
-    </p>
-
-    <ion-list-header>Colored</ion-list-header>
-    <p>
-      <ion-chip color="primary">
-        <ion-label>Primary</ion-label>
-      </ion-chip>
-      <ion-chip color="secondary">
-        <ion-label>Secondary</ion-label>
-      </ion-chip>
-      <ion-chip color="tertiary">
-        <ion-label>Tertiary</ion-label>
-      </ion-chip>
-      <ion-chip color="success">
-        <ion-label>Success</ion-label>
-      </ion-chip>
-      <ion-chip color="warning">
-        <ion-label>Warning</ion-label>
-      </ion-chip>
-      <ion-chip color="danger">
-        <ion-label>Danger</ion-label>
-      </ion-chip>
-    </p>
-
-    <ion-list-header>Outlined</ion-list-header>
-    <p>
-      <ion-chip outline color="primary">
-        <ion-label>Primary</ion-label>
-      </ion-chip>
-      <ion-chip outline color="secondary">
-        <ion-label>Secondary</ion-label>
-      </ion-chip>
-      <ion-chip outline color="tertiary">
-        <ion-label>Tertiary</ion-label>
-      </ion-chip>
-      <ion-chip outline color="success">
-        <ion-label>Success</ion-label>
-      </ion-chip>
-      <ion-chip outline color="warning">
-        <ion-label>Warning</ion-label>
-      </ion-chip>
-      <ion-chip outline color="danger">
-        <ion-label>Danger</ion-label>
-      </ion-chip>
-    </p>
-
-    <ion-list-header>Icons</ion-list-header>
-    <p class="p-chips">
-      <ion-chip outline color="primary">
-        <ion-icon name="pin"></ion-icon>
-        <ion-label>Madison</ion-label>
-        <ion-icon name="close-circle"></ion-icon>
-      </ion-chip>
-      <ion-chip outline color="secondary">
-        <ion-icon name="wine"></ion-icon>
-        <ion-label>Nightlife</ion-label>
-        <ion-icon name="close-circle"></ion-icon>
-      </ion-chip>
-      <ion-chip outline color="tertiary">
-        <ion-icon name="restaurant"></ion-icon>
-        <ion-label>Dining</ion-label>
-        <ion-icon name="close-circle"></ion-icon>
-      </ion-chip>
-      <ion-chip outline color="dark">
-        <ion-icon name="videocam"></ion-icon>
-        <ion-label>Entertainment</ion-label>
-        <ion-icon name="close-circle"></ion-icon>
-      </ion-chip>
-      <ion-chip outline color="danger">
-        <ion-avatar>
-          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-        </ion-avatar>
-        <ion-label>John Doe</ion-label>
-        <ion-icon name="close-circle"></ion-icon>
-      </ion-chip>
-    </p>
-  </ion-card>
-
-  <ion-item-divider></ion-item-divider>
-  <h4 class="ion-padding-horizontal">
-    <ion-icon name="grid" color="primary"></ion-icon>Grids
-  </h4>
-
-  <ion-card>
-    <ion-list-header>Grid With Columns set to specific sizes</ion-list-header>
-    <ion-grid class="grid-demo">
-      <ion-row>
-        <ion-col>
-          1 of 3
-        </ion-col>
-        <ion-col size="8">
-          2 of 3 <small>(size="8")</small>
-        </ion-col>
-        <ion-col>
-          3 of 3
-        </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          1 of 6
-        </ion-col>
-        <ion-col>
-          2 of 6
-        </ion-col>
-        <ion-col size="3">
-          3 of 6 <small>(size="3")</small>
-        </ion-col>
-        <ion-col size="3">
-          4 of 6 <small>(size="3")</small>
-        </ion-col>
-        <ion-col>
-          5 of 6
-        </ion-col>
-        <ion-col>
-          6 of 6
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-
-  <ion-item-divider></ion-item-divider>
-  <h4 class="ion-padding-horizontal">
-    <ion-icon name="git-compare" color="primary"></ion-icon>Reorder
-  </h4>
-  <ion-card>
-    <div class="ion-text-center">
-      <ion-list>
-        <div [hidden]="handlerEnabled01">
-          <ion-reorder-group id="reorder01" (ionItemReorder)="doReorder01($event)" [disabled]="reorderDisabled01">
-            <ion-reorder *ngFor="let item of bucket01">
-              <ion-item class="item-base" lines="none"><ion-label>{{item}}</ion-label></ion-item>
-            </ion-reorder>
-          </ion-reorder-group>
-        </div>
-        <div [hidden]="!handlerEnabled01">
-          <ion-reorder-group id="reorder01" (ionItemReorder)="doReorder01($event)" [disabled]="reorderDisabled01">
-            <ion-item class="item-base" *ngFor="let item of bucket01" lines="none">
-              <ion-label>{{item}}</ion-label>
-              <ion-reorder slot="end"></ion-reorder>
-            </ion-item>
-          </ion-reorder-group>
-        </div>
-      </ion-list>
-      <ion-item lines="none">
-        <ion-checkbox class="checkbox-action" [(ngModel)]="handlerEnabled01" color="primary"></ion-checkbox>
-        <ion-label class="label-action">Handler</ion-label>
-        <ion-checkbox [(ngModel)]="reorderDisabled01" color="primary"></ion-checkbox>
-        <ion-label class="label-action">Disabled</ion-label>
-      </ion-item>
-    </div>
-  </ion-card>
   
-  <h4 class="ion-padding-horizontal">
-    <ion-icon name="git-compare" color="primary"></ion-icon>Rename & Reorder
-  </h4>
-  <ion-card>
-    <div class="ion-text-center">
-      <form>
-        <ion-list>
-          <ion-reorder-group #reorderGroup02 id="reorder02" (ionItemReorder)="doReorder02($event)" disabled="false">
-            <ion-item class="item-base" *ngFor="let item of tempBucket02" lines="none">
-              <ion-input class="item-input" [name]="item.name" [(ngModel)]="item.name" type="text" color="dark"
-              (ionFocus)="item.focus = true" (ionBlur)="item.focus = false; reorder02Display(item)"></ion-input>
-              <ion-reorder slot="end"><ion-icon class="item-icon" [name]="item.focus ? 'pencil' : 'reorder-three'" color="medium" size="large"></ion-icon></ion-reorder>
-            </ion-item>
-          </ion-reorder-group>
-        </ion-list>
-      </form>
-    </div>
-  </ion-card>
-  
-  <!-- <h4 class="ion-padding-horizontal"> Grid Reorder</h4>
+  <ion-item-divider></ion-item-divider>
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-icon name="hardware-chip" color="primary" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>Chips</ion-title>
+    </ion-toolbar>
+    <ion-card>
+      <ion-list-header>Basic</ion-list-header>
+      <p>
+        <ion-chip>
+          <ion-label>Default</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-icon name="checkmark-circle"></ion-icon>
+          <ion-label>Icon</ion-label>
+        </ion-chip>
+        <ion-chip>
+          <ion-avatar>
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjYzVkYmZmIiBkPSJNMCAwaDUxMnY1MTJIMHoiLz48cGF0aCBkPSJNMjU2IDMwNGM2MS42IDAgMTEyLTUwLjQgMTEyLTExMlMzMTcuNiA4MCAyNTYgODBzLTExMiA1MC40LTExMiAxMTIgNTAuNCAxMTIgMTEyIDExMnptMCA0MGMtNzQuMiAwLTIyNCAzNy44LTIyNCAxMTJ2NTZoNDQ4di01NmMwLTc0LjItMTQ5LjgtMTEyLTIyNC0xMTJ6IiBmaWxsPSIjODJhZWZmIi8+PC9zdmc+" />
+          </ion-avatar>
+          <ion-label>Avatar</ion-label>
+        </ion-chip>
+      </p>
+      
+      <ion-list-header>Colored</ion-list-header>
+      <p>
+        <ion-chip color="primary">
+          <ion-label>Primary</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary">
+          <ion-label>Secondary</ion-label>
+        </ion-chip>
+        <ion-chip color="tertiary">
+          <ion-label>Tertiary</ion-label>
+        </ion-chip>
+        <ion-chip color="success">
+          <ion-label>Success</ion-label>
+        </ion-chip>
+        <ion-chip color="warning">
+          <ion-label>Warning</ion-label>
+        </ion-chip>
+        <ion-chip color="danger">
+          <ion-label>Danger</ion-label>
+        </ion-chip>
+      </p>
+      
+      <ion-list-header>Outlined</ion-list-header>
+      <p>
+        <ion-chip outline color="primary">
+          <ion-label>Primary</ion-label>
+        </ion-chip>
+        <ion-chip outline color="secondary">
+          <ion-label>Secondary</ion-label>
+        </ion-chip>
+        <ion-chip outline color="tertiary">
+          <ion-label>Tertiary</ion-label>
+        </ion-chip>
+        <ion-chip outline color="success">
+          <ion-label>Success</ion-label>
+        </ion-chip>
+        <ion-chip outline color="warning">
+          <ion-label>Warning</ion-label>
+        </ion-chip>
+        <ion-chip outline color="danger">
+          <ion-label>Danger</ion-label>
+        </ion-chip>
+      </p>
+      
+      <ion-list-header>Icons</ion-list-header>
+      <p class="p-chips">
+        <ion-chip outline color="primary">
+          <ion-icon name="pin"></ion-icon>
+          <ion-label>Madison</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+        <ion-chip outline color="secondary">
+          <ion-icon name="wine"></ion-icon>
+          <ion-label>Nightlife</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+        <ion-chip outline color="tertiary">
+          <ion-icon name="restaurant"></ion-icon>
+          <ion-label>Dining</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+        <ion-chip outline color="dark">
+          <ion-icon name="videocam"></ion-icon>
+          <ion-label>Entertainment</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+        <ion-chip outline color="danger">
+          <ion-avatar>
+            <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+          </ion-avatar>
+          <ion-label>John Doe</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+      </p>
+    </ion-card>
     
+    <ion-item-divider></ion-item-divider>
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-icon name="grid" color="primary" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>Grids</ion-title>
+    </ion-toolbar>
+    
+    <ion-card>
+      <ion-list-header>Grid With Columns set to specific sizes</ion-list-header>
+      <ion-grid class="grid-demo">
+        <ion-row>
+          <ion-col>
+            1 of 3
+          </ion-col>
+          <ion-col size="8">
+            2 of 3 <small>(size="8")</small>
+          </ion-col>
+          <ion-col>
+            3 of 3
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col>
+            1 of 6
+          </ion-col>
+          <ion-col>
+            2 of 6
+          </ion-col>
+          <ion-col size="3">
+            3 of 6 <small>(size="3")</small>
+          </ion-col>
+          <ion-col size="3">
+            4 of 6 <small>(size="3")</small>
+          </ion-col>
+          <ion-col>
+            5 of 6
+          </ion-col>
+          <ion-col>
+            6 of 6
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    
+    <ion-item-divider></ion-item-divider>
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-icon name="git-compare" color="primary" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>Reorder</ion-title>
+    </ion-toolbar>
     <ion-card>
       <div class="ion-text-center">
         <ion-list>
-          <ion-reorder-group #reorderGroup01 id="reorder03" (ionItemReorder)="doReorder03($event)" disabled="false">
-            <ion-reorder *ngFor="let item of bucket03">
-              <ion-card>{{item}}</ion-card>
-            </ion-reorder>
-          </ion-reorder-group>
+          <div [hidden]="handlerEnabled01">
+            <ion-reorder-group id="reorder01" (ionItemReorder)="doReorder01($event)" [disabled]="reorderDisabled01">
+              <ion-reorder *ngFor="let item of bucket01">
+                <ion-item class="item-base" lines="none"><ion-label>{{item}}</ion-label></ion-item>
+              </ion-reorder>
+            </ion-reorder-group>
+          </div>
+          <div [hidden]="!handlerEnabled01">
+            <ion-reorder-group id="reorder01" (ionItemReorder)="doReorder01($event)" [disabled]="reorderDisabled01">
+              <ion-item class="item-base" *ngFor="let item of bucket01" lines="none">
+                <ion-label>{{item}}</ion-label>
+                <ion-reorder slot="end"></ion-reorder>
+              </ion-item>
+            </ion-reorder-group>
+          </div>
         </ion-list>
+        <ion-item lines="none">
+          <ion-checkbox class="checkbox-action" [(ngModel)]="handlerEnabled01" color="primary"></ion-checkbox>
+          <ion-label class="label-action">Handler</ion-label>
+          <ion-checkbox [(ngModel)]="reorderDisabled01" color="primary"></ion-checkbox>
+          <ion-label class="label-action">Disabled</ion-label>
+        </ion-item>
       </div>
     </ion-card>
-  -->
+    
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-icon name="git-compare" color="primary" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>Rename & Reorder</ion-title>
+    </ion-toolbar>
+    <ion-card>
+      <div class="ion-text-center">
+        <form>
+          <ion-list>
+            <ion-reorder-group #reorderGroup02 id="reorder02" (ionItemReorder)="doReorder02($event)" disabled="false">
+              <ion-item class="item-base" *ngFor="let item of tempBucket02" lines="none">
+                <ion-input class="item-input" [name]="item.name" [(ngModel)]="item.name" type="text" color="dark"
+                (ionFocus)="item.focus = true" (ionBlur)="item.focus = false; reorder02Display(item)"></ion-input>
+                <ion-reorder slot="end"><ion-icon class="item-icon" [name]="item.focus ? 'pencil' : 'reorder-three'" color="medium" size="large"></ion-icon></ion-reorder>
+              </ion-item>
+            </ion-reorder-group>
+          </ion-list>
+        </form>
+      </div>
+    </ion-card>
+    
+    <!-- <h4 class="ion-padding-horizontal"> Grid Reorder</h4>
+      
+      <ion-card>
+        <div class="ion-text-center">
+          <ion-list>
+            <ion-reorder-group #reorderGroup01 id="reorder03" (ionItemReorder)="doReorder03($event)" disabled="false">
+              <ion-reorder *ngFor="let item of bucket03">
+                <ion-card>{{item}}</ion-card>
+              </ion-reorder>
+            </ion-reorder-group>
+          </ion-list>
+        </div>
+      </ion-card>
+    -->
+    
+  </ion-content>
   
-</ion-content>
-
-<tab-footer></tab-footer>
+  <tab-footer></tab-footer>

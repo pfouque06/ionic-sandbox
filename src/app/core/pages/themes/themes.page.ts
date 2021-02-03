@@ -66,7 +66,7 @@ export class ThemesPage {
           ],
         },
         {
-          label: 'My Custom components ...',
+          label: 'My Customs ...',
           icon: 'color-palette',
           submenu: [
             {
@@ -86,21 +86,21 @@ export class ThemesPage {
           label: 'Ionic bench',
           icon: 'logo-ionic',
           submenu: [
-            {
-            label: 'Badge',
-            icon: 'pricetag',
-            link: '/tabs/themes/badge',
-            },
-            {
-              label: 'Chip',
-              icon: 'hardware-chip',
-              data: 'true',
-            },
-            {
-              label: 'Grid',
-              icon: 'grid',
-              data: 'true',
-            },
+            // {
+            // label: 'Badge',
+            // icon: 'pricetag',
+            // link: '/tabs/themes/badge',
+            // },
+            // {
+            //   label: 'Chip',
+            //   icon: 'hardware-chip',
+            //   data: 'true',
+            // },
+            // {
+            //   label: 'Grid',
+            //   icon: 'grid',
+            //   data: 'true',
+            // },
             {
               label: 'List',
               icon: 'list',
@@ -116,11 +116,11 @@ export class ThemesPage {
               icon: 'albums',
               data: 'true',
             },
-            {
-              label: 'Reordering',
-              data: 'true',
-              icon: 'git-compare',
-            },
+            // {
+            //   label: 'Reordering',
+            //   data: 'true',
+            //   icon: 'git-compare',
+            // },
             {
               label: 'Infinite Scroll',
               data: 'true',
@@ -142,43 +142,6 @@ export class ThemesPage {
           label: 'Materials bench',
           icon: 'logo-angular',
           link: '/tabs/themes/materials',
-          // submenu: [
-          //   {
-          //     label: 'Menu',
-          //     data: 'true',
-          //     icon: 'ellipsis-vertical',
-          //   },
-          //   {
-          //     label: 'Tabs',
-          //     data: 'true',
-          //     icon: 'albums',
-          //   },
-          //   {
-          //     label: 'Espansion panel',
-          //     data: 'true',
-          //     icon: 'archive',
-          //   },
-          //   {
-          //     label: 'Picker',
-          //     data: 'true',
-          //     icon: 'options',
-          //   },
-          //   {
-          //     label: 'Stepper',
-          //     data: 'true',
-          //     icon: 'options',
-          //   },
-          //   {
-          //     label: 'Ripples',
-          //     data: 'true',
-          //     icon: 'radio',
-          //   },
-          //   {
-          //     label: 'Drag & Drop',
-          //     data: 'true',
-          //     icon: 'git-compare',
-          //   },
-          // ],
         },
         {
           label: 'Inputs bench',

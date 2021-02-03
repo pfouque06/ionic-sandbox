@@ -1,16 +1,22 @@
 <tab-fake-header></tab-fake-header>
 
-<full-width-title class="ion-text-center">
-  <ion-item lines="none">
-    <ion-icon slot="start" name="logo-angular" size="large"></ion-icon>
-    <ion-label>
-      Material bench
-    </ion-label>
-  </ion-item>
+<full-width-title>
+  <ion-toolbar class="ion-padding-horizontal">
+    <ion-buttons slot="start">
+      <ion-icon name="logo-angular" color="medium" size="large"></ion-icon>
+    </ion-buttons>
+    <ion-title>Material bench</ion-title>
+  </ion-toolbar>
 </full-width-title>
-
+  
 <ion-content>
-  <h4 class="ion-padding-horizontal">Menu</h4>
+  <ion-toolbar class="ion-padding-horizontal">
+    <ion-buttons slot="start">
+      <ion-icon name="ellipsis-vertical" color="medium" size="large"></ion-icon>
+    </ion-buttons>
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+
   <ion-card>
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
       <mat-icon>more_vert</mat-icon>
@@ -51,7 +57,13 @@
     </button>
   </mat-menu>
   
-  <h4 class="ion-padding-horizontal">Tabs</h4>
+  <ion-item-divider class="ion-padding-top"></ion-item-divider>
+  <ion-toolbar class="ion-padding-horizontal">
+    <ion-buttons slot="start">
+      <ion-icon name="albums" color="medium" size="large"></ion-icon>
+    </ion-buttons>
+    <ion-title>Tabs</ion-title>
+  </ion-toolbar>
   
   <ion-card>
     <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)" [animationDuration]='isAnimated ? "300":"0"'>
@@ -77,7 +89,13 @@
       </mat-form-field>
     </div>
     
-    <h4 class="ion-padding-horizontal">Tabs & Nav</h4>
+    <ion-item-divider class="ion-padding-top"></ion-item-divider>
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-icon name="albums" color="medium" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>Tabs & Nav</ion-title>
+    </ion-toolbar>
     
     <ion-card>
       <nav mat-tab-nav-bar>
@@ -94,7 +112,14 @@
       </button>
     </div>
     
-    <h4 class="ion-padding-horizontal">Expansion Panel</h4>
+    <ion-item-divider class="ion-padding-top"></ion-item-divider>
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-icon name="archive" color="medium" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>Expansion Panel</ion-title>
+    </ion-toolbar>
+
     <div class="ion-padding-horizontal">
       <mat-accordion>
         <mat-expansion-panel hideToggle>
@@ -131,7 +156,14 @@
       {{accordion.displayMode}}
     </div> -->
     
-    <h4 class="ion-padding-horizontal">Datepicker</h4>
+    <ion-item-divider class="ion-padding-top"></ion-item-divider>
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-icon name="options" color="medium" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>Datepicker</ion-title>
+    </ion-toolbar>
+
     <div class="ion-text-center">
       <mat-form-field>
         <mat-label>Choose a date</mat-label>
@@ -141,7 +173,14 @@
       </mat-form-field>
     </div>
     
-    <h4 class="ion-padding-horizontal">Stepper</h4>
+    <ion-item-divider class="ion-padding-top"></ion-item-divider>
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-icon name="options" color="medium" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>Stepper</ion-title>
+    </ion-toolbar>
+
     <div class="ion-text-center">
       <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
         {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
@@ -185,7 +224,14 @@
       </mat-vertical-stepper>
     </ion-card>
     
-    <h4 class="ion-padding-horizontal">Ripple effect</h4>
+    <ion-item-divider class="ion-padding-top"></ion-item-divider>
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-icon name="radio" color="medium" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>Ripple effect</ion-title>
+    </ion-toolbar>
+
     <ion-card>
       <div class="ion-text-center">
         <mat-checkbox [(ngModel)]="centered" class="example-ripple-checkbox" color="primary">Centered</mat-checkbox>
@@ -211,7 +257,14 @@
     </div>
   </ion-card>
   
-  <h4 class="ion-padding-horizontal">Drag & Drop</h4>
+  <ion-item-divider class="ion-padding-top"></ion-item-divider>
+  <ion-toolbar class="ion-padding-horizontal">
+    <ion-buttons slot="start">
+      <ion-icon name="git-compare" color="medium" size="large"></ion-icon>
+    </ion-buttons>
+    <ion-title>Drag & Drop</ion-title>
+  </ion-toolbar>
+
   <ion-card class="example-drag-card01">
     <div class="ion-text-center">
       <div class="example-drag-box01" cdkDrag>Drag me around</div>
