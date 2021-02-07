@@ -1,7 +1,34 @@
 <tab-fake-header></tab-fake-header>
 
+<full-width-title class="ion-text-center">
+  <ion-item lines="none">
+    <ion-icon slot="start" name="logo-npm" color="danger" size="large"></ion-icon>
+    <ion-title><code>angularx-qrcode</code></ion-title>
+  </ion-item>
+</full-width-title>
+
 <ion-content>
-    <teaser-coming-soon></teaser-coming-soon>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          QR Code Generator for Angular based on <code>node-qrcode</code>
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form>
+          <ion-item lines="none">
+            <ion-label position="floating" color="dark">Data for QR code:</ion-label>
+            <ion-input [(ngModel)]="QRCode" name="QRCode" type="text" placeholder="Enter Input" clearInput></ion-input>
+          </ion-item>
+        </form>
+        <div class="qrcode">
+          <qrcode *ngIf="QRCode" [qrdata]="QRCode" [scale]="4" [width]="200" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
 </ion-content>
 
 <tab-footer></tab-footer>

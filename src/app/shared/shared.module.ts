@@ -24,6 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { QRCodeModule } from 'angularx-qrcode'
 
 import { KoaServicesModule, serverAddress, serverProtocol, SERVER_ADDRESS, SERVER_PROTOCOL } from 'koa-services'
 import { UserPopoverPage } from './components/popover/user-popover/user-popover.page'
@@ -66,6 +67,7 @@ const SHARED_MODULES = [
     MatSlideToggleModule,
     MatRadioModule,
     DragDropModule,
+    QRCodeModule,
 ]                                                                                                                                                                                                                               
 
 const SHARED_IMPORTED_MODULES = []                                                                                                                      

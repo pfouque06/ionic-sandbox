@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QRcodeGeneratorPage implements OnInit {
 
+  public QRCode: string;
+
   constructor() { }
 
   ngOnInit() {
