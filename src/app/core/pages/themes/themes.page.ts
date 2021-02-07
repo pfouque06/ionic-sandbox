@@ -45,36 +45,19 @@ export class ThemesPage {
           link: '/tabs/themes/spinners',
         },
         {
-          label: 'QR & Bar codes',
-          icon: 'color-palette',
-          submenu: [
-            {
-              label: 'QRCode Generator',
-              icon: 'qr-code-outline',
-              link: '/tabs/themes/qrcode-generator',
-            },
-            {
-              label: 'QRCode Scan',
-              icon: 'scan-circle-outline',
-              link: '/tabs/themes/qrcode-scan',
-            },
-            {
-              label: 'BarCode Scan',
-              icon: 'barcode-outline',
-              link: '/tabs/themes/barcode-scan',
-            },
-          ],
+          label: 'QRCode Generator',
+          icon: 'qr-code-outline',
+          link: '/tabs/themes/qrcode-generator',
         },
         {
-          label: 'My Customs ...',
-          icon: 'color-palette',
-          submenu: [
-            {
-              label: 'Recursive Menu',
-              icon: 'ellipsis-vertical',
-              link: '/tabs/themes/my-menu',
-            },
-          ],
+          label: 'QRCode Scan',
+          icon: 'scan-circle-outline',
+          link: '/tabs/themes/qrcode-scan',
+        },
+        {
+          label: 'BarCode Scan',
+          icon: 'barcode-outline',
+          link: '/tabs/themes/barcode-scan',
         },
       ],
     },
@@ -86,28 +69,6 @@ export class ThemesPage {
           label: 'Ionic bench',
           icon: 'logo-ionic',
           link: '/tabs/themes/ionic'
-          // submenu: [
-          //   {
-          //     label: 'Nav',
-          //     icon: 'albums',
-          //     data: 'true',
-          //   },
-          //   {
-          //     label: 'Infinite Scroll',
-          //     data: 'true',
-          //     icon: 'infinite',
-          //   },
-          //   {
-          //     label: 'Modal & Popover',
-          //     icon: 'duplicate',
-          //     data: 'true',
-          //   },
-          //   {
-          //     label: 'Gesture trials',
-          //     icon: 'move',
-          //     data: 'true',
-          //   },
-          // ],
         },
         {
           label: 'Materials bench',
@@ -118,6 +79,17 @@ export class ThemesPage {
           label: 'Inputs bench',
           icon: 'color-palette',
           link: '/tabs/themes/inputs',
+        },
+      ],
+    },
+    {
+      label: 'My Customs ...',
+      icon: 'color-palette',
+      submenu: [
+        {
+          label: 'Recursive Menu',
+          icon: 'ellipsis-vertical',
+          link: '/tabs/themes/my-menu',
         },
       ],
     },
