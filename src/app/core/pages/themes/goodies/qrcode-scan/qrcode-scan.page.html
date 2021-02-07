@@ -1,7 +1,71 @@
 <tab-fake-header></tab-fake-header>
 
+<full-width-title class="ion-text-center">
+  <ion-item lines="none">
+    <ion-icon slot="start" name="logo-npm" color="danger" size="large"></ion-icon>
+    <ion-title><code>jsqr</code></ion-title>
+  </ion-item>
+</full-width-title>
+
 <ion-content>
     <teaser-coming-soon></teaser-coming-soon>
+
+    <ion-card>
+
+      <ion-card-header>
+        <ion-card-title>
+          QR Code simple Scanner
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-content>
+
+        <h1 *ngIf="!scanFound">Merci de présenter un QR code</h1>
+    
+        <div class="scan" [hidden]="!scanActive">
+          <video #video class="stream"></video>
+          <canvas #canvas hidden></canvas>
+        </div>
+        <h1 *ngIf="scanActive && !scanFound">
+          Scan en cours
+          <ion-spinner name="dots" color="white"></ion-spinner>
+        </h1>
+    
+        <div class="search-content">
+          <!-- <div class="notfound" *ngIf="notFound">
+            <span>{{'userqrscanpage.no_user_found' }}</span>
+            <br>
+            <span class="small">{{'userqrscanpage.no_user_found_hint'}}</span>
+          </div>
+          <div class="timeout" *ngIf="timeout">
+            <span>{{'userqrscanpage.qrcode_timed_out' }}</span>
+            <br>
+            <span class="small">{{'userqrscanpage.qrcode_timed_out_hint'}}</span>
+          </div>
+          <div class="wrong" *ngIf="wrong">
+            <span>{{'userqrscanpage.wrong' }}</span>
+            <br>
+            <span class="small">{{'userqrscanpage.wrong_hint'}}</span>
+          </div>
+          <div class="failed" *ngIf="failed">
+            <span>{{'userqrscanpage.failed' }}</span>
+            <br>
+            <span class="small">{{'userqrscanpage.failed_hint'}}</span>
+          </div> -->
+
+          <!-- <user-list *ngIf="customers.length > 0" [customers]="customers" (selectCustomer)="selectCustomer($event)"></user-list> -->
+
+        </div>
+    
+        <div class="actions">
+          <button  *ngIf="!scanActive && scanFound" class="start-button" (click)="startScan()">
+            <ion-icon name="play"></ion-icon>
+            Rescan
+          </button>
+        </div>
+
+      </ion-content>
+    </ion-card>
 </ion-content>
 
 <tab-footer></tab-footer>
