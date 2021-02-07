@@ -85,58 +85,29 @@ export class ThemesPage {
         {
           label: 'Ionic bench',
           icon: 'logo-ionic',
-          submenu: [
-            // {
-            // label: 'Badge',
-            // icon: 'pricetag',
-            // link: '/tabs/themes/badge',
-            // },
-            // {
-            //   label: 'Chip',
-            //   icon: 'hardware-chip',
-            //   data: 'true',
-            // },
-            // {
-            //   label: 'Grid',
-            //   icon: 'grid',
-            //   data: 'true',
-            // },
-            {
-              label: 'List',
-              icon: 'list',
-              data: 'true',
-            },
-            {
-              label: 'Toolbar',
-              icon: 'menu',
-              data: 'true',
-            },
-            {
-              label: 'Nav',
-              icon: 'albums',
-              data: 'true',
-            },
-            // {
-            //   label: 'Reordering',
-            //   data: 'true',
-            //   icon: 'git-compare',
-            // },
-            {
-              label: 'Infinite Scroll',
-              data: 'true',
-              icon: 'infinite',
-            },
-            {
-              label: 'Modal & Popover',
-              icon: 'duplicate',
-              data: 'true',
-            },
-            {
-              label: 'Gesture trials',
-              icon: 'move',
-              data: 'true',
-            },
-          ],
+          link: '/tabs/themes/ionic'
+          // submenu: [
+          //   {
+          //     label: 'Nav',
+          //     icon: 'albums',
+          //     data: 'true',
+          //   },
+          //   {
+          //     label: 'Infinite Scroll',
+          //     data: 'true',
+          //     icon: 'infinite',
+          //   },
+          //   {
+          //     label: 'Modal & Popover',
+          //     icon: 'duplicate',
+          //     data: 'true',
+          //   },
+          //   {
+          //     label: 'Gesture trials',
+          //     icon: 'move',
+          //     data: 'true',
+          //   },
+          // ],
         },
         {
           label: 'Materials bench',

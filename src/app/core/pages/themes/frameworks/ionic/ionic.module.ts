@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { BadgePage } from './badge.page';
-import { BadgePageRoutingModule } from './badge-routing.module';
+import { IonicPageRoutingModule } from './ionic-routing.module';
+import { IonicPage } from './ionic.page';
+
 
 @NgModule({
   imports: [
@@ -13,8 +14,8 @@ import { BadgePageRoutingModule } from './badge-routing.module';
     FormsModule,
     IonicModule,
     SharedModule,
-    BadgePageRoutingModule
+    IonicPageRoutingModule
   ],
-  declarations: [BadgePage]
+  declarations: [IonicPage]
 })
-export class BadgePageModule {}
+export class IonicPageModule {}

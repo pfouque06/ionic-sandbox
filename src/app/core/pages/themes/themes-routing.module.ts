@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'qrcode-scan', loadChildren: () => import('./goodies/qrcode-scan/qrcode-scan.module').then( m => m.QRcodeScanPageModule) },
     { path: 'barcode-scan', loadChildren: () => import('./goodies/barcode-scan/barcode-scan.module').then( m => m.BarcodeScanPageModule) },
     { path: 'my-menu', loadChildren: () => import('./goodies/my-menu/my-menu.module').then( m => m.MyMenuPageModule) },
-    { path: 'badge', loadChildren: () => import('./frameworks/ionic/badge/badge.module').then( m => m.BadgePageModule) },
+    { path: 'ionic', loadChildren: () => import('./frameworks/ionic/ionic.module').then( m => m.IonicPageModule) },
     { path: 'materials', loadChildren: () => import('./frameworks/materials/materials.module').then( m => m.MaterialsPageModule) },
     { path: 'inputs', loadChildren: () => import('./frameworks/inputs/inputs.module').then( m => m.InputsPageModule) },
   ]},
