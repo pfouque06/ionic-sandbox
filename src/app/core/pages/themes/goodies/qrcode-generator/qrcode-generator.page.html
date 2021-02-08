@@ -22,21 +22,27 @@
         <mat-tab-group animationDuration="250">
 
           <mat-tab label="Example">
-            <ion-label color="dark">example: https://ionic.demo.pfouque.fr</ion-label>
-            <div class="qrcode">
-              <qrcode qrdata="https://ionic.demo.pfouque.fr" [scale]="4" [width]="200" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+            <div class="tab-content">
+              <ion-item lines="none">
+                <ion-label color="dark">Example: https://ionic.demo.pfouque.fr</ion-label>
+              </ion-item>
+              <div class="qrcode">
+                <qrcode qrdata="https://ionic.demo.pfouque.fr" [scale]="4" [width]="200" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+              </div>
             </div>
           </mat-tab>
-
+          
           <mat-tab label="Generator">
-            <form>
-              <ion-item lines="none">
-                <ion-label position="floating" color="dark">Data for QR code:</ion-label>
-                <ion-input [(ngModel)]="QRCode" name="QRCode" type="text" placeholder="Enter Input" clearInput></ion-input>
-              </ion-item>
-            </form>
-            <div class="qrcode">
-              <qrcode *ngIf="QRCode" [qrdata]="QRCode" [scale]="4" [width]="200" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+            <div class="tab-content">
+              <form>
+                <ion-item lines="none">
+                  <ion-label position="fixed" color="dark">Data :</ion-label>
+                  <ion-input [(ngModel)]="QRCode" name="QRCode" type="text" placeholder="Enter Input" clearInput></ion-input>
+                </ion-item>
+              </form>
+              <div class="qrcode">
+                <qrcode *ngIf="QRCode" [qrdata]="QRCode" [scale]="4" [width]="200" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
+              </div>
             </div>
           </mat-tab>
 
