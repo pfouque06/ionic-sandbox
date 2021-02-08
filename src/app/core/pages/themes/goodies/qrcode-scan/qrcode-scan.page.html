@@ -8,63 +8,45 @@
 </full-width-title>
 
 <ion-content>
-    <teaser-coming-soon></teaser-coming-soon>
-
     <ion-card>
 
       <ion-card-header>
-        <ion-card-title>
+        <ion-item lines="none">
+          <ion-icon slot="start" name="scan-circle-outline" color="medium" size="large"></ion-icon>
           QR Code simple Scanner
-        </ion-card-title>
+        </ion-item>
       </ion-card-header>
 
-      <ion-content>
+      <ion-card-content>
 
-        <h1 *ngIf="!scanFound">Merci de présenter un QR code</h1>
-    
+        <!-- <p *ngIf="!scanFound">Present a QR code</p> -->
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button *ngIf="!scanActive" (click)="startScan()" outline color="dark" shape="round">
+              <ion-icon name="play"></ion-icon>
+              {{scanFound ? 'Rescan':'Scan'}}
+            </ion-button>
+            <ion-button *ngIf="scanActive" (click)="stopScan()" outline color="danger" shape="round">
+              <ion-icon name="stop"></ion-icon>
+              Stop
+            </ion-button>
+          </ion-buttons>
+          <ion-label *ngIf="scanActive && !scanFound" slot="end">
+            <!-- Scan in progress -->
+            <ion-spinner name="dots" color="danger"></ion-spinner>
+          </ion-label>
+        </ion-toolbar>
+
         <div class="scan" [hidden]="!scanActive">
           <video #video class="stream"></video>
           <canvas #canvas hidden></canvas>
         </div>
-        <h1 *ngIf="scanActive && !scanFound">
-          Scan en cours
-          <ion-spinner name="dots" color="white"></ion-spinner>
-        </h1>
     
         <div class="search-content">
-          <!-- <div class="notfound" *ngIf="notFound">
-            <span>{{'userqrscanpage.no_user_found' }}</span>
-            <br>
-            <span class="small">{{'userqrscanpage.no_user_found_hint'}}</span>
-          </div>
-          <div class="timeout" *ngIf="timeout">
-            <span>{{'userqrscanpage.qrcode_timed_out' }}</span>
-            <br>
-            <span class="small">{{'userqrscanpage.qrcode_timed_out_hint'}}</span>
-          </div>
-          <div class="wrong" *ngIf="wrong">
-            <span>{{'userqrscanpage.wrong' }}</span>
-            <br>
-            <span class="small">{{'userqrscanpage.wrong_hint'}}</span>
-          </div>
-          <div class="failed" *ngIf="failed">
-            <span>{{'userqrscanpage.failed' }}</span>
-            <br>
-            <span class="small">{{'userqrscanpage.failed_hint'}}</span>
-          </div> -->
-
-          <!-- <user-list *ngIf="customers.length > 0" [customers]="customers" (selectCustomer)="selectCustomer($event)"></user-list> -->
-          <ion-text *ngIf="qrCode">{{qrCode}}</ion-text>
-        </div>
-    
-        <div class="actions">
-          <button  *ngIf="!scanActive && scanFound" class="start-button" (click)="startScan()">
-            <ion-icon name="play"></ion-icon>
-            Rescan
-          </button>
+          <ion-text *ngIf="!scanActive && scanFound && qrCode">{{qrCode}}</ion-text>
         </div>
 
-      </ion-content>
+      </ion-card-content>
     </ion-card>
 </ion-content>
 

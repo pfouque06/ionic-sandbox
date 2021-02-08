@@ -1,49 +1,45 @@
-.search-content {
-  padding-top: 10px;
-  height: 500px;
-}
+ion-card {
+  height: 430px;
+  // min-height: 800px;
 
-ion-item {
-  --highlight-color-valid: white;
-  --highlight-color-focused: white;
-  --highlight-height: 0px;
-  --inner-border-width: 0;
-  --border-width: 0 0 1px 0;
-  --border-color: white;
-  --ion-color-primary: white;
-  color: white;
-  ion-label {
-      --ion-color-primary: white;
+  .scan {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    margin-top: 5px;
+    
+    .stream {
+      // border: ridge;
+      border: 1px solid var(--ion-color-medium);
+      border-radius: 5px;
+      box-shadow: 0px 0px 2px 2px var(--ion-color-medium);
+      // width: 50%;
+    }
   }
-}
-
-.scan {
-  display: flex;
-  justify-content: center;
   
-  .stream {
-      border: ridge;
-      width: 50%;
+  .search-content {
+    padding-top: 10px;
+    height: 50px;
   }
-}
-
-.notfound, .timeout, .wrong, .failed {
-  text-align: center;
-  padding: 8rem 0;
-  background-color: rgba(255,255,255,0.1);
-  border-radius: 2px;
-  font-size: 2rem;
-  color: #ffffff;
-  font-weight: 200;
-  display: block;
-  text-transform: uppercase;
-  .small { font-size: 1.2rem; }
-}
-
-.actions {
-  display: flex;
-  justify-content: space-between;
-  // .reset-button { @include button(--ion-color-primary); }
-  // .start-button { @include button(--ion-color-secondary); }
-  // .stop-button { @include button(--ion-color-tertiary); }
+  
+  .notfound, .timeout, .wrong, .failed {
+    text-align: center;
+    padding: 8rem 0;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    font-size: 2rem;
+    color: #ffffff;
+    font-weight: 200;
+    display: block;
+    text-transform: uppercase;
+    .small { font-size: 1.2rem; }
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    // .start-button { @include button(--ion-color-secondary); }
+    // .reset-button { @include button(--ion-color-primary); }
+    // .stop-button { @include button(--ion-color-tertiary); }
+  }
 }
