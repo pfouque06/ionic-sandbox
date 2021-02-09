@@ -23,15 +23,9 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
   public canvasElement: any;
   public canvasContext: any;
 
-  constructor(
-    private platform: Platform, private ref: ChangeDetectorRef, private router: Router,
-  ) {
-    // TODO: throw this code to parent page :
-    // - if Ios : disable scan button and enable photo capture image check https://morioh.com/p/454e2934c0ac#google_vignette at 21'
+  constructor( private platform: Platform, private router: Router, private ref: ChangeDetectorRef ) {
     const isInStandAloneMode = () => 'standalone' in window.navigator && window.navigator['standalone'];
-    if (this.platform.is('ios') && isInStandAloneMode()) {
-      console.log('I am a PWA iOS !');
-    }
+    if (this.platform.is('ios') && isInStandAloneMode()) { console.log('I am a PWA iOS !'); }
   }
   
   public ngOnInit() {
@@ -63,11 +57,11 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
       this.videoElement.setAttribute('playsinline', true);
     }
     this.videoElement.play();
-    this.scanActive = true;
     // refresh page
     // this.ref.markForCheck();
     // start scanning process
     requestAnimationFrame(this.scan.bind(this));
+    this.scanActive = true;
   }
   
   public async scan() {
@@ -84,21 +78,21 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
         this.canvasElement.width = this.videoElement.videoWidth;
         this.canvasContext.drawImage(this.videoElement, 0, 0, this.canvasElement.height, this.canvasElement.width);
         const imageData = this.canvasContext.getImageData(0, 0, this.canvasElement.height, this.canvasElement.width);
-        console.log('scan() - process Image scanning');
+        // console.log('scan() - process Image scanning');
         // scan captured image
         const scanResult = jsQR( imageData.data, imageData.width, imageData.height, { inversionAttempts: 'dontInvert'} );
           
         if (! scanResult) {
-          console.log('scan() - no result yet');
+          // console.log('scan() - no result yet');
           // restart image capture
           requestAnimationFrame(this.scan.bind(this));
         } else {
-          console.log('scan() --> QR code found!');
+          // console.log('scan() --> QR code found!');
           this.stopScan();
           this.getScanResult(scanResult.data);
         }
       } else {
-        console.log('scan() - video stream not ready yet');
+        // console.log('scan() - video stream not ready yet');
         requestAnimationFrame(this.scan.bind(this));
       }
     }
@@ -117,11 +111,6 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
   public resetScan() {
     console.log('resetScan()');
     this.scanFound = false;
-    // this.notFound = false;
-    // this.timeout = false;
-    // this.failed = false;
-    // this.wrong = false;
-    
     // refresh page
     // this.ref.markForCheck();
   }

@@ -24,7 +24,8 @@
           <ion-buttons slot="start">
             <ion-button *ngIf="!scanActive" (click)="startScan()" outline color="dark" shape="round">
               <ion-icon name="play"></ion-icon>
-              {{scanFound ? 'Rescan':'Scan'}}
+              <!-- {{scanFound ? 'Rescan':'Scan'}} -->
+              Scan
             </ion-button>
             <ion-button *ngIf="scanActive" (click)="stopScan()" outline color="danger" shape="round">
               <ion-icon name="stop"></ion-icon>
@@ -37,14 +38,23 @@
           </ion-label>
         </ion-toolbar>
 
-        <div class="scan" [hidden]="!scanActive">
-          <video #video class="stream"></video>
-          <canvas #canvas hidden></canvas>
-        </div>
+        <ion-grid class="scan">
+          <ion-row class="ion-justify-content-center ion-align-items-center">
+            <ion-col size="auto" class="ion-text-center">
+              <div [hidden]="!scanActive && !scanFound">
+                <video #video class="stream-content"></video>
+                <canvas #canvas hidden></canvas>
+              </div>
+              <div class="search-content">
+                <ion-item *ngIf="!scanActive && scanFound && qrCode" lines="none">
+                  <ion-label position="fixed" color="dark">Data :</ion-label>
+                  <ion-text>{{qrCode}}</ion-text>
+                </ion-item>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
     
-        <div class="search-content">
-          <ion-text *ngIf="!scanActive && scanFound && qrCode">{{qrCode}}</ion-text>
-        </div>
 
       </ion-card-content>
     </ion-card>
