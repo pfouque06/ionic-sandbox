@@ -40,7 +40,7 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    console.log('ngOnDestroy() --> release Vdeo stream');
+    console.log('ngOnDestroy() --> release Video stream');
     this.releaseVideo()
   }
   
@@ -118,11 +118,13 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
 
   public releaseVideo() {
     console.log('releaseVideo()');
-    if (this.scanActive) { this.videoElement.pause(); }
-    delete this.videoElement.srcObject      // The call mentioned in other answers
-    this.videoElement.removeAttribute('srcObject'); // empty source
-    this.videoElement.load(); // empty buffer
-    this.videoElement.remove()    // Removing the video element altogether
+    if ( this.scanActive ) { this.videoElement.pause(); }
+    if ( this.videoElement.srcObject ) {
+      // stop stream's tracks
+      this.videoElement.srcObject.getTracks().forEach( (track) => track.stop() );
+      // release mediastream to navigator
+      delete this.videoElement.srcObject
+    }
   }
 
   public getScanResult(qrCode: string) {
