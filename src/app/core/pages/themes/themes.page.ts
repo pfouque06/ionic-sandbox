@@ -68,7 +68,7 @@ export class ThemesPage {
         {
           label: 'Ionic bench',
           icon: 'logo-ionic',
-          link: '/tabs/themes/ionic'
+          link: '/tabs/themes/ionic-menu'
         },
         {
           label: 'Materials bench',

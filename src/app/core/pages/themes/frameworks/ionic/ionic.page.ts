@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonReorderGroup } from '@ionic/angular';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ItemReorderEventDetail } from '@ionic/core';
+import { IonReorderGroup } from '@ionic/angular';
 
 @Component({
   selector: 'app-ionic',
@@ -8,13 +9,15 @@ import { ItemReorderEventDetail } from '@ionic/core';
   styleUrls: ['./ionic.page.scss'],
 })
 export class IonicPage implements OnInit {
+  
+  @Input() public topic: string;
 
   // Ionic reorder group
   // @ViewChild(IonReorderGroup) reorderGroup: IonReorderGroup;
-  @ViewChild('reorder01') reorderGroup01: IonReorderGroup;
-  reorderDisabled01 = false;
-  handlerEnabled01 = true;
-  bucket01 = [
+  @ViewChild('reorder01') public reorderGroup01: IonReorderGroup;
+  public reorderDisabled01 = false;
+  public handlerEnabled01 = true;
+  public bucket01 = [
     'item 1',
     'item 2',
     'item 3',
@@ -22,19 +25,22 @@ export class IonicPage implements OnInit {
     'item 5',
   ];
 
-  @ViewChild('reorderGroup02') reorderGroup02: IonReorderGroup;
-  bucket02 = [
+  @ViewChild('reorderGroup02') public reorderGroup02: IonReorderGroup;
+  public bucket02 = [
     'element 1',
     'element 2',
     'element 3',
     'element 4',
     'element 5',
   ];
-  tempBucket02: any[];
+  public tempBucket02: any[];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    if ( ! this.topic) { this.topic = this.route.snapshot.params?.topic }
+    console.log(`themes/ionic/${this.topic}`);
+  }
 
-  ngOnInit() {
+  public ngOnInit() {
     // Ionic Reorder & rename
     this.tempBucket02 = this.bucket02.map((item) => ({ name: item, focus: false }));
   }
@@ -46,7 +52,7 @@ export class IonicPage implements OnInit {
     this.bucket01 = ev.detail.complete(this.bucket01);
     console.log('Ionic Reorder01: After complete', this.bucket01);
   }
-  toggleReorderGroup01() {
+  public toggleReorderGroup01() {
     this.reorderDisabled01 = !this.reorderDisabled01;
     this.reorderGroup01.disabled = this.reorderDisabled01;
   }
