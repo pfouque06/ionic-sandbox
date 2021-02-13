@@ -29,7 +29,6 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
   }
   
   public ngOnInit() {
-    console.log('ngOnInit().url: ', this.router.url);
     this.pageUrl = this.router.url || QRSCAN_PAGE;
   }
   
@@ -40,7 +39,6 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    console.log('ngOnDestroy() --> release Video stream');
     this.releaseVideo()
   }
   
@@ -67,7 +65,7 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
   public async scan() {
     // check that active page is still this one and stop, release video if not the case
     if ( this.router.url !== this.pageUrl) {
-      console.log(`url has moved to ${this.router.url}, stopping worthless scan! --> should clear video stream onDestroy`);
+      console.log(`scan() - url has moved to ${this.router.url}, stopping worthless scan and release back media streams to navigator!`);
       this.stopScan();
     }
     
