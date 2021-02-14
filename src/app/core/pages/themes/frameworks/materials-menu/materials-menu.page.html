@@ -1,0 +1,27 @@
+<tab-fake-header></tab-fake-header>
+
+<full-width-title>
+  <ion-toolbar class="ion-padding-horizontal">
+    <ion-buttons slot="start">
+      <ion-icon name="logo-angular" color="medium" size="large"></ion-icon>
+    </ion-buttons>
+    <ion-title>Material bench</ion-title>
+  </ion-toolbar>
+</full-width-title>
+
+<ion-content>
+  <div *ngFor="let topic of topics; let index; let last = last">
+    <ion-toolbar class="ion-padding-horizontal" (click)="goTopic(topic)">
+      <ion-buttons slot="start">
+        <ion-icon [name]="topic.icon_name" [color]="topic.icon_color" size="large"></ion-icon>
+      </ion-buttons>
+      <ion-title>{{topic.title | titlecase}}</ion-title>
+      <ion-buttons slot="end">
+        <ion-icon name="chevron-forward" color="medium" size="large"></ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-item-divider *ngIf="!last"></ion-item-divider>
+  </div>
+</ion-content>
+
+<tab-footer></tab-footer>

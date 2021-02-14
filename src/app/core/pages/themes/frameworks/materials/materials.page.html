@@ -10,64 +10,69 @@
 </full-width-title>
   
 <ion-content>
-  <ion-toolbar class="ion-padding-horizontal">
-    <ion-buttons slot="start">
-      <ion-icon name="ellipsis-vertical" color="medium" size="large"></ion-icon>
-    </ion-buttons>
-    <ion-title>Menu</ion-title>
-  </ion-toolbar>
-
-  <ion-card>
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-      <mat-icon>more_vert</mat-icon>
-      Shoot the bullets ... to get the cake!
-    </button>
-  </ion-card>
+  <div *ngIf="topic === 'menu'">
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-back-button mode="ios" text="" color="medium" default-href="tabs/themes/materials-menu"></ion-back-button>
+        <!-- <ion-icon name="ellipsis-vertical" color="medium" size="large"></ion-icon> -->
+      </ion-buttons>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
   
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span>Redial</span>
-    </button>
-    <button mat-menu-item disabled>
-      <mat-icon>voicemail</mat-icon>
-      <span>Check voice mail</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
-    </button>
-    <button mat-menu-item [matMenuTriggerFor]="submenu">
-      <mat-icon>follow_the_signs</mat-icon>
-      Sub menu
-    </button>
-  </mat-menu>
+    <ion-card>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+        Shoot the bullets ... to get the cake!
+      </button>
+    </ion-card>
+    
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+      <button mat-menu-item [matMenuTriggerFor]="submenu">
+        <mat-icon>follow_the_signs</mat-icon>
+        Sub menu
+      </button>
+    </mat-menu>
+    
+    <mat-menu #submenu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="subsubmenu">
+        <mat-icon>follow_the_signs</mat-icon>
+        Next Layer menu
+      </button>
+    </mat-menu>
+    
+    <mat-menu #subsubmenu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>close</mat-icon>
+        <span>Leaf menu item</span>
+      </button>
+    </mat-menu>
+    <ion-item-divider class="ion-padding-top"></ion-item-divider>
+  </div>
   
-  <mat-menu #submenu="matMenu">
-    <button mat-menu-item [matMenuTriggerFor]="subsubmenu">
-      <mat-icon>follow_the_signs</mat-icon>
-      Next Layer menu
-    </button>
-  </mat-menu>
-  
-  <mat-menu #subsubmenu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>close</mat-icon>
-      <span>Leaf menu item</span>
-    </button>
-  </mat-menu>
-  
-  <ion-item-divider class="ion-padding-top"></ion-item-divider>
-  <ion-toolbar class="ion-padding-horizontal">
-    <ion-buttons slot="start">
-      <ion-icon name="albums" color="medium" size="large"></ion-icon>
-    </ion-buttons>
-    <ion-title>Tabs</ion-title>
-  </ion-toolbar>
-  
-  <ion-card>
-    <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)" [animationDuration]='isAnimated ? "300":"0"'>
-      <!-- <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)"> -->
+  <div *ngIf="topic === 'tabs'">
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-back-button mode="ios" text="" color="medium" default-href="tabs/themes/materials-menu"></ion-back-button>
+        <!-- <ion-icon name="albums" color="medium" size="large"></ion-icon> -->
+      </ion-buttons>
+      <ion-title>Tabs</ion-title>
+    </ion-toolbar>
+    
+    <ion-card>
+      <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)" [animationDuration]='isAnimated ? "300":"0"'>
+        <!-- <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)"> -->
         <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab">
           Contents for {{tab}} tab
           <button mat-raised-button class="example-demo-button" [disabled]="tabs.length === 1" (click)="removeTab(index)">
@@ -88,7 +93,7 @@
         <input matInput type="number" [formControl]="selected">
       </mat-form-field>
     </div>
-    
+      
     <ion-item-divider class="ion-padding-top"></ion-item-divider>
     <ion-toolbar class="ion-padding-horizontal">
       <ion-buttons slot="start">
@@ -96,7 +101,7 @@
       </ion-buttons>
       <ion-title>Tabs & Nav</ion-title>
     </ion-toolbar>
-    
+      
     <ion-card>
       <nav mat-tab-nav-bar>
         <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link"> {{link}} </a>
@@ -111,15 +116,18 @@
         Reset tabs
       </button>
     </div>
-    
     <ion-item-divider class="ion-padding-top"></ion-item-divider>
+  </div>
+  
+  <div *ngIf="topic === 'expansion'">
     <ion-toolbar class="ion-padding-horizontal">
       <ion-buttons slot="start">
-        <ion-icon name="archive" color="medium" size="large"></ion-icon>
+        <ion-back-button mode="ios" text="" color="medium" default-href="tabs/themes/materials-menu"></ion-back-button>
+        <!-- <ion-icon name="archive" color="medium" size="large"></ion-icon> -->
       </ion-buttons>
       <ion-title>Expansion Panel</ion-title>
     </ion-toolbar>
-
+    
     <div class="ion-padding-horizontal">
       <mat-accordion>
         <mat-expansion-panel hideToggle>
@@ -155,15 +163,18 @@
       <button mat-raised-button class="example-demo-button" (click)="closeAllExpansionPanels()">Collapse All</button>
       {{accordion.displayMode}}
     </div> -->
-    
     <ion-item-divider class="ion-padding-top"></ion-item-divider>
+  </div>
+    
+  <div *ngIf="topic === 'date'">
     <ion-toolbar class="ion-padding-horizontal">
       <ion-buttons slot="start">
-        <ion-icon name="options" color="medium" size="large"></ion-icon>
+        <ion-back-button mode="ios" text="" color="medium" default-href="tabs/themes/materials-menu"></ion-back-button>
+        <!-- <ion-icon name="options" color="medium" size="large"></ion-icon> -->
       </ion-buttons>
-      <ion-title>Datepicker</ion-title>
+      <ion-title>Date Picker</ion-title>
     </ion-toolbar>
-
+  
     <div class="ion-text-center">
       <mat-form-field>
         <mat-label>Choose a date</mat-label>
@@ -172,15 +183,18 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
-    
     <ion-item-divider class="ion-padding-top"></ion-item-divider>
+  </div>
+    
+  <div *ngIf="topic === 'stepper'">
     <ion-toolbar class="ion-padding-horizontal">
       <ion-buttons slot="start">
-        <ion-icon name="options" color="medium" size="large"></ion-icon>
+        <ion-back-button mode="ios" text="" color="medium" default-href="tabs/themes/materials-menu"></ion-back-button>
+        <!-- <ion-icon name="options" color="medium" size="large"></ion-icon> -->
       </ion-buttons>
       <ion-title>Stepper</ion-title>
     </ion-toolbar>
-
+    
     <div class="ion-text-center">
       <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
         {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
@@ -223,15 +237,18 @@
         </mat-step>
       </mat-vertical-stepper>
     </ion-card>
-    
     <ion-item-divider class="ion-padding-top"></ion-item-divider>
+  </div>
+    
+  <div *ngIf="topic === 'ripple'">
     <ion-toolbar class="ion-padding-horizontal">
       <ion-buttons slot="start">
-        <ion-icon name="radio" color="medium" size="large"></ion-icon>
+        <ion-back-button mode="ios" text="" color="medium" default-href="tabs/themes/materials-menu"></ion-back-button>
+        <!-- <ion-icon name="radio" color="medium" size="large"></ion-icon> -->
       </ion-buttons>
       <ion-title>Ripple effect</ion-title>
     </ion-toolbar>
-
+  
     <ion-card>
       <div class="ion-text-center">
         <mat-checkbox [(ngModel)]="centered" class="example-ripple-checkbox" color="primary">Centered</mat-checkbox>
@@ -246,53 +263,57 @@
         </mat-form-field>
         
         <div class="example-ripple-container mat-elevation-z4"
-        matRipple
-        [matRippleCentered]="centered"
-        [matRippleDisabled]="disabled"
-        [matRippleUnbounded]="unbounded"
-        [matRippleRadius]="radius"
-        [matRippleColor]="color">
-        Click me
+          matRipple
+          [matRippleCentered]="centered"
+          [matRippleDisabled]="disabled"
+          [matRippleUnbounded]="unbounded"
+          [matRippleRadius]="radius"
+          [matRippleColor]="color">
+          Click me
+        </div>
       </div>
-    </div>
-  </ion-card>
+    </ion-card>
+    <ion-item-divider class="ion-padding-top"></ion-item-divider>
+  </div>
   
-  <ion-item-divider class="ion-padding-top"></ion-item-divider>
-  <ion-toolbar class="ion-padding-horizontal">
-    <ion-buttons slot="start">
-      <ion-icon name="git-compare" color="medium" size="large"></ion-icon>
-    </ion-buttons>
-    <ion-title>Drag & Drop</ion-title>
-  </ion-toolbar>
-
-  <ion-card class="example-drag-card01">
-    <div class="ion-text-center">
-      <div class="example-drag-box01" cdkDrag>Drag me around</div>
-    </div>
-  </ion-card>
-  <ion-card class="example-drag-card02">
-    <div class="ion-text-center">
-      <mat-radio-group [(ngModel)]="LockType">
-        <mat-radio-button value="unLock" class="example-drag-radio" color="primary">Unlocked</mat-radio-button>
-        <mat-radio-button value="xLockAxis" class="example-drag-radio" color="primary">Lock X-axis</mat-radio-button>
-        <mat-radio-button value="yLockAxis" class="example-drag-radio" color="primary">Lock Y-axis</mat-radio-button>
-        <mat-radio-button value="Lock" class="example-drag-radio" color="primary">Disable drag</mat-radio-button>
-      </mat-radio-group>
-      
-      <div class="example-drag-box02" [cdkDragLockAxis]="LockType === 'unLock' ? '': LockType === 'xLockAxis' ? 'x':'y'" [cdkDragDisabled]="LockType === 'Lock'" cdkDrag>
-        Catch the handler
-        <mat-icon class="example-drag-handle02" cdkDragHandle>open_with</mat-icon>
+  <div *ngIf="topic === 'drag'">
+    <ion-toolbar class="ion-padding-horizontal">
+      <ion-buttons slot="start">
+        <ion-back-button mode="ios" text="" color="medium" default-href="tabs/themes/materials-menu"></ion-back-button>
+        <!-- <ion-icon name="git-compare" color="medium" size="large"></ion-icon> -->
+      </ion-buttons>
+      <ion-title>Drag & Drop</ion-title>
+    </ion-toolbar>
+  
+    <ion-card class="example-drag-card01">
+      <div class="ion-text-center">
+        <div class="example-drag-box01" cdkDrag>Drag me around</div>
       </div>
-      
-    </div>
-  </ion-card>
-  <ion-card>
-    <div class="ion-text-center">
-      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
+    </ion-card>
+    <ion-card class="example-drag-card02">
+      <div class="ion-text-center">
+        <mat-radio-group [(ngModel)]="LockType">
+          <mat-radio-button value="unLock" class="example-drag-radio" color="primary">Unlocked</mat-radio-button>
+          <mat-radio-button value="xLockAxis" class="example-drag-radio" color="primary">Lock X-axis</mat-radio-button>
+          <mat-radio-button value="yLockAxis" class="example-drag-radio" color="primary">Lock Y-axis</mat-radio-button>
+          <mat-radio-button value="Lock" class="example-drag-radio" color="primary">Disable drag</mat-radio-button>
+        </mat-radio-group>
+        
+        <div class="example-drag-box02" [cdkDragLockAxis]="LockType === 'unLock' ? '': LockType === 'xLockAxis' ? 'x':'y'" [cdkDragDisabled]="LockType === 'Lock'" cdkDrag>
+          Catch the handler
+          <mat-icon class="example-drag-handle02" cdkDragHandle>open_with</mat-icon>
+        </div>
+        
       </div>
-    </div>
-  </ion-card>
+    </ion-card>
+    <ion-card>
+      <div class="ion-text-center">
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of items" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+    </ion-card>
+  </div>
 </ion-content>
 
 <tab-footer></tab-footer>

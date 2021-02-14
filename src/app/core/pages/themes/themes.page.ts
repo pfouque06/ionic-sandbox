@@ -73,7 +73,7 @@ export class ThemesPage {
         {
           label: 'Materials bench',
           icon: 'logo-angular',
-          link: '/tabs/themes/materials',
+          link: '/tabs/themes/materials-menu',
         },
         {
           label: 'Inputs bench',

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-materials',
@@ -8,6 +9,8 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
   styleUrls: ['./materials.page.scss'],
 })
 export class MaterialsPage implements OnInit {
+  
+  @Input() public topic: string;
   
   // Material Tabs
   tabs = ['First', 'Second'];
@@ -44,8 +47,11 @@ export class MaterialsPage implements OnInit {
     'item 5',
   ];
   
-  constructor(private _formBuilder: FormBuilder) { console.log('themes/frameworks/materials'); }
-  
+  constructor(private route: ActivatedRoute, private _formBuilder: FormBuilder) {
+    if ( ! this.topic) { this.topic = this.route.snapshot.params?.topic }
+    console.log(`themes/materials/${this.topic}`);
+  }
+
   ngOnInit() {
     // Material Stepper
     this.firstFormGroup = this._formBuilder.group({

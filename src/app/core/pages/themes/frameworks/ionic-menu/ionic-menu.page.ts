@@ -89,8 +89,6 @@ export class IonicMenuPage implements OnInit {
   }
 
   public goTopic(topic: any) {
-    console.log('topic', topic.topic);
-    // this.nav.navigateForward(`/tabs/themes/ionic`);
     this.nav.navigateForward(`/tabs/themes/ionic/${topic.topic}`);
   }
 
