@@ -101,8 +101,8 @@ export class DashboardPage implements OnInit {
   }
 
   public menuWillClose() {
-    this.menuRequestEmitter.next();
-    this.adminMenuRequestEmitter.next();
+    this.menuRequestEmitter.next('close');
+    this.adminMenuRequestEmitter.next('close');
   }
 
   callbackReceiverSwitch(callbackId: string) {

@@ -42,6 +42,6 @@ export class HomePage {
   }
 
   public menuWillClose() {
-    this.menuRequestEmitter.next();
+    this.menuRequestEmitter.next('close');
   }
 }

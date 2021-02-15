@@ -7,7 +7,7 @@
     </ion-header>
   
     <ion-content>
-      <menu-list [menu]="menuList" [menuId]="'map'" [RequestReceiver]="menuRequestEmitter?.asObservable()"></menu-list>
+      <menu-list [menu]="menuList" [menuId]="'map'" [transmitter]="menuRequestEmitter"></menu-list>
     </ion-content>
   
   </ion-menu>
