@@ -13,7 +13,7 @@ export class ThemesPage {
 
 
   public paneEnabled: boolean = false;
-  public menuRequestEmitter: Subject<any> = new Subject<any>();
+  public menuListTransmitter: Subject<any> = new Subject<any>();
   public menuList: IMenuList[] = [
     {
       label: 'Home',
@@ -134,7 +134,7 @@ export class ThemesPage {
   }
 
   public menuWillClose() {
-    this.menuRequestEmitter.next();
+    this.menuListTransmitter.next('close');
   }
 
   callbackReceiverSwitch(callbackId: string) {

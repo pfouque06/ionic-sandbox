@@ -12,7 +12,7 @@ export interface IMenuList {
   img?: string;
   submenu?: IMenuList[];
   open?: boolean;
-  RequestEmitter?: Subject<any>;
+  transmitter?: Subject<string>;
 }
 
 @Component({
@@ -26,12 +26,13 @@ export class MenuListComponent implements OnInit, OnDestroy {
   @Input() public menuId: string;
   @Input() public menuLevel: number = 0;
   @Input() public multi: boolean = false;
+  @Input() public closeOnExit: boolean = false;
 
-  // closeRequest event receiver from parent
-  @Input() RequestReceiver: Observable<any> = undefined;
+  // Event receiver from parent
+  @Input() transmitter: Subject<string> = undefined;
 
-  // callbackRequest event emitter to parent 
-  @Output() RequestEmitter : EventEmitter<string> = new EventEmitter<string>();
+  // Event emitter to parent 
+  @Output() menuListEvent : EventEmitter<string> = new EventEmitter<string>();
   
   public subscriptions: Subscription[] = [];
 
@@ -40,17 +41,24 @@ export class MenuListComponent implements OnInit, OnDestroy {
   ngOnInit() { 
     // Initiate submenus' emitter
     this.menu.filter( (menuItem) => menuItem.submenu )
-      .forEach( (menuItem) => { menuItem.RequestEmitter = new Subject<any>();  });
+      .forEach( (menuItem) => { menuItem.transmitter = new Subject<string>();  });
     // subscribe to parent menu emitter
-    this.subscriptions.push(this.RequestReceiver?.subscribe(() => this.ReceiveRequestEventfromParent()));
+    this.subscriptions.push(this.transmitter?.subscribe((message) => this.parentMessageResolver(message)));
   }
 
   ngOnDestroy() {
     this.subscriptions.forEach((s) => s.unsubscribe());
   }
 
-  public ReceiveRequestEventfromParent() {
-    this.closeAll();
+  public parentMessageResolver(message: string) {
+    // console.log('parentMessageResolver', message, this.menuLevel);
+    switch (message) {
+      case 'close':
+        if (this.closeOnExit) { this.closeAll(); }
+        break;
+      default:
+        this.emitAll(message);
+    }
   }
 
   public subMenuToggle(item: IMenuList) {
@@ -59,9 +67,9 @@ export class MenuListComponent implements OnInit, OnDestroy {
     if (!this.multi) {
       if (item.open) {
         // recursively close all item's opened submenu on opening
-        this.emitCloseRequestEventToSubMenu(item);
+        this.emitToSubmenu(item, 'close');
       } else {
-        // recursively close all opened submenus on opening
+        // recursively close any other opened submenus on opening this submenu
         this.closeAll();
       }
     }
@@ -69,24 +77,35 @@ export class MenuListComponent implements OnInit, OnDestroy {
   }
 
   public closeAll() {
-    this.menu.filter( (item) => item.open && item.RequestEmitter )
+    this.menu.filter( (item) => item.open && item.transmitter )
     .forEach( (item) => {
-      this.emitCloseRequestEventToSubMenu(item);
+      this.emitToSubmenu(item, 'close');
       item.open = false;
     });
   }
 
-  public emitCloseRequestEventToSubMenu(item: IMenuList) {
-    item.RequestEmitter?.next();
+  public emitAll(message: string) {
+    this.menu.filter( (item) => item.open && item.transmitter )
+    .forEach( (item) => { this.emitToSubmenu(item, message); });
+  }
+
+  public emitToSubmenu(item: IMenuList, message: string) {
+    item.transmitter?.next(message);
+  }
+
+  // resolve event from submenu
+  public submenuEventResolver(event: string) {
+    // console.log('submenuEventResolver', event, this.menuLevel);
+    switch (event) {
+      default:
+        // Forward child submenu event to parent
+        this.menuListEvent.emit(event);
+    }
   }
 
   // Emit event to parent
   public callbackRequestInit(item: IMenuList) {
-    this.RequestEmitter.emit(item.callback);
-  }
-
-  // Forward chiuld submenu event to parent
-  public callbackReceiverPipe(callbackId: string) {
-    this.RequestEmitter.emit(callbackId);
+    // console.log('callbackRequestInit', item.callback, this.menuLevel);
+    this.menuListEvent.emit(item.callback);
   }
 }
