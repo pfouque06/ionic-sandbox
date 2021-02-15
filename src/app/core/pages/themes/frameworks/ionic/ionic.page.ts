@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemReorderEventDetail } from '@ionic/core';
 import { IonReorderGroup } from '@ionic/angular';
+import { UItoolingService } from 'src/app/shared/services/UITooling.service';
 
 @Component({
   selector: 'app-ionic',
@@ -35,7 +36,7 @@ export class IonicPage implements OnInit {
   ];
   public tempBucket02: any[];
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private UITooling: UItoolingService) {
     if ( ! this.topic) { this.topic = this.route.snapshot.params?.topic }
     console.log(`themes/ionic/${this.topic}`);
   }
@@ -64,5 +65,12 @@ export class IonicPage implements OnInit {
   }
   public reorder02Display(item: any) {
     console.log('item.name: ', item.name);
+  }
+
+  // Segment
+  public segmentChanged(ev: any) {
+    const message = `Segment changed: ${ev.detail.value}`;
+    this.UITooling.fireAlert(message,'info');
+    // console.log(message);
   }
 }

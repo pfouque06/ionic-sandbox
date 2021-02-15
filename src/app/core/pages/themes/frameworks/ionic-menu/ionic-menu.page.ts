@@ -28,6 +28,12 @@ export class IonicMenuPage implements OnInit {
       title: 'chips'
     },
     {
+      topic: 'segment',
+      icon_name: 'code-working',
+      icon_color: 'primary',
+      title: 'segment'
+    },
+    {
       topic: 'grids',
       icon_name: 'grid',
       icon_color: 'primary',
