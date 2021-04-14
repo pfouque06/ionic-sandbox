@@ -1,17 +1,21 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import jsQR from 'jsqr';
 
-export const QRSCAN_PAGE = '/tabs/themes/qrcode-scan';
+export const QRSCAN_PAGE = '/tabs/themes/qrcode-generator';
 
 @Component({
-  selector: 'app-qrcode-scan',
-  templateUrl: './qrcode-scan.page.html',
-  styleUrls: ['./qrcode-scan.page.scss'],
+  selector: 'app-qrcode-menu',
+  templateUrl: './qrcode-menu.page.html',
+  styleUrls: ['./qrcode-menu.page.scss'],
 })
-export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
+export class QRCodeMenuPage implements OnInit {
 
+  // Generator
+  public QRCode: string;
+  
+  // Scanner
   public pageUrl: string;
   public qrCode: string = '';
   public scanActive: boolean = false;
@@ -31,7 +35,7 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
   public ngOnInit() {
     this.pageUrl = this.router.url || QRSCAN_PAGE;
   }
-  
+
   public ngAfterViewInit() {
     this.videoElement = this.video.nativeElement;
     this.canvasElement = this.canvas.nativeElement;
@@ -44,12 +48,13 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
   
   public async startScan() {
     console.log('startScan()');
-    // debugger;
     
     // reset Scan
     this.resetScan();
+    
     // start video stream
     if ( ! this.videoElement.srcObject) {
+      console.log('fetching new video stream from Navigator');
       const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }});
       this.videoElement.srcObject = stream;
       this.videoElement.setAttribute('playsinline', true);
@@ -116,12 +121,13 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
 
   public releaseVideo() {
     console.log('releaseVideo()');
-    if ( this.scanActive ) { this.videoElement.pause(); }
+    this.stopScan();
     if ( this.videoElement.srcObject ) {
       // stop stream's tracks
       this.videoElement.srcObject.getTracks().forEach( (track) => track.stop() );
       // release mediastream to navigator
-      delete this.videoElement.srcObject
+      // delete this.videoElement.srcObject
+      this.videoElement.srcObject = null;
     }
   }
 
@@ -130,4 +136,14 @@ export class QRcodeScanPage implements OnInit, AfterViewInit, OnDestroy {
     this.scanFound = true;
     this.qrCode = qrCode
   }
+
+  public onTabChanged($event: any) {
+    const SelectedTabIndex = $event.index;
+    const SelectedTabLabel = $event.tab.textLabel;
+    console.log(`onTabChanged(${SelectedTabIndex}, ${SelectedTabLabel})`);
+    if ( SelectedTabLabel !== "Scan" && this.videoElement.srcObject ) {
+      this.releaseVideo();
+    }
+  }
+
 }

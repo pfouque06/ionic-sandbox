@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { QRcodeScanPageRoutingModule } from './qrcode-scan-routing.module';
-import { QRcodeScanPage } from './qrcode-scan.page';
+import { QRCodeMenuPageRoutingModule } from './qrcode-menu-routing.module';
+import { QRCodeMenuPage } from './qrcode-menu.page';
+
 
 @NgModule({
   imports: [
@@ -13,8 +14,8 @@ import { QRcodeScanPage } from './qrcode-scan.page';
     FormsModule,
     IonicModule,
     SharedModule,
-    QRcodeScanPageRoutingModule
+    QRCodeMenuPageRoutingModule
   ],
-  declarations: [QRcodeScanPage]
+  declarations: [QRCodeMenuPage]
 })
-export class QRcodeScanPageModule {}
+export class QRCodeMenuPageModule {}

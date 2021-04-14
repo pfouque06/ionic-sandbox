@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { QRcodeGeneratorPage } from './qrcode-generator.page';
+import { QRCodeMenuPage } from './qrcode-menu.page';
 
-describe('QRcodeGeneratorPage', () => {
-  let component: QRcodeGeneratorPage;
-  let fixture: ComponentFixture<QRcodeGeneratorPage>;
+describe('QRCodeMenuPage', () => {
+  let component: QRCodeMenuPage;
+  let fixture: ComponentFixture<QRCodeMenuPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QRcodeGeneratorPage ],
+      declarations: [ QRCodeMenuPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(QRcodeGeneratorPage);
+    fixture = TestBed.createComponent(QRCodeMenuPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

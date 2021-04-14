@@ -45,17 +45,17 @@ export class ThemesPage {
           link: '/tabs/themes/spinners',
         },
         {
-          label: 'QRCode Generator',
+          label: 'QRCode Menu',
           icon: 'qr-code-outline',
-          link: '/tabs/themes/qrcode-generator',
+          link: '/tabs/themes/qrcode-menu',
         },
+        // {
+        //   label: 'QRCode Scan',
+        //   icon: 'scan-circle-outline',
+        //   link: '/tabs/themes/qrcode-scan',
+        // },
         {
-          label: 'QRCode Scan',
-          icon: 'scan-circle-outline',
-          link: '/tabs/themes/qrcode-scan',
-        },
-        {
-          label: 'BarCode Scan',
+          label: 'BarCode Menu',
           icon: 'barcode-outline',
           link: '/tabs/themes/barcode-scan',
         },
