@@ -3,10 +3,10 @@ import { MenuController } from '@ionic/angular';
 import { AuthService } from 'koa-services';
 import { Observable, Subject } from 'rxjs';
 import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-list.component';
-import { UItoolingService } from 'src/app/shared/services/UITooling.service';
+import { UIToolingService } from 'src/app/shared/services/UITooling.service';
 
 @Component({
-  selector: 'app-dahsboard',
+  selector: 'app-dashboard',
   templateUrl: 'dashboard.page.html',
   styleUrls: ['dashboard.page.scss']
 })
@@ -83,7 +83,7 @@ export class DashboardPage implements OnInit {
     },
   ]
 
-  constructor(private authService: AuthService, private menuCtl: MenuController, private UITooling: UItoolingService) { console.log('dashboard'); }
+  constructor(private authService: AuthService, private menuCtl: MenuController, private UITooling: UIToolingService) { console.log('dashboard'); }
 
   ngOnInit() {
     // define observers

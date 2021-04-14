@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { IMenuList } from '../../../shared/components/directive/menu-list/menu-list.component';
-import { UItoolingService } from '../../../shared/services/UITooling.service';
+import { UIToolingService } from '../../../shared/services/UITooling.service';
 
 @Component({
   selector: 'app-themes',
@@ -89,40 +89,46 @@ export class ThemesPage {
         {
           label: 'Recursive Menu',
           icon: 'ellipsis-vertical',
-          link: '/tabs/themes/my-menu',
-        },
-      ],
-    },
-    {
-      label: 'callback test01',
-      icon: 'construct',
-      callback: 'test01',
-    },
-    {
-      label: 'callback menu01',
-      icon: 'construct',
-      submenu: [
-        {
-          label: 'callback test02',
-          icon: 'construct',
-          callback: 'test02',
-        },
-        {
-          label: 'callback menu02',
-          icon: 'construct',
           submenu: [
             {
-              label: 'callback test03',
+              label: 'Information',
               icon: 'construct',
-              callback: 'test03',
+              link: '/tabs/themes/my-menu',
+            },
+            {
+              label: 'callback test01',
+              icon: 'construct',
+              callback: 'test01',
+            },
+            {
+              label: 'callback menu01',
+              icon: 'construct',
+              submenu: [
+                {
+                  label: 'callback test02',
+                  icon: 'construct',
+                  callback: 'test02',
+                },
+                {
+                  label: 'callback menu02',
+                  icon: 'construct',
+                  submenu: [
+                    {
+                      label: 'callback test03',
+                      icon: 'construct',
+                      callback: 'test03',
+                    }
+                  ]
+                },
+              ]
             }
           ]
-        },
+        }
       ]
     }
   ]
   
-  constructor(private menuCtl: MenuController, private UITooling: UItoolingService ) { console.log('themes'); }
+  constructor(private menuCtl: MenuController, private UITooling: UIToolingService ) { console.log('themes'); }
 
   async ionViewWillEnter() {
     this.paneEnabled = true;

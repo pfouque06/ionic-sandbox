@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { skip, take } from 'rxjs/operators';
 import { AuthService, selectUserState, State } from 'koa-services';
-import { UItoolingService } from '../../shared/services/UITooling.service';
+import { UIToolingService } from '../../shared/services/UITooling.service';
 import { NavController, PopoverController } from '@ionic/angular';
 import { UserPopoverPage } from '../../shared/components/popover/user-popover/user-popover.page';
 
@@ -21,7 +21,7 @@ export class TabsPage {
   constructor(
     private store: Store<State>,
     private authService: AuthService,
-    private UITooling: UItoolingService,
+    private UITooling: UIToolingService,
     public popper: PopoverController,
     public navCtrl: NavController,
     private router: Router,
@@ -104,7 +104,7 @@ export class TabsPage {
           (state) => {
             this.connecting = false;
             if ( ! state.errors) {
-              this.navCtrl.navigateForward(['/tabs/dashboard/home']); // dahsboard
+              this.navCtrl.navigateForward(['/tabs/dashboard/home']); // dashboard
             } else {
               this.UITooling.fireAlert('Login has failed! Please check your credentials', 'failed' );
             }
@@ -115,7 +115,7 @@ export class TabsPage {
       }
       case 'register': {
         if (userForm.email) {
-          this.UITooling.fireAlert('Registering is successfull, you can now login with your credentials', 'success');
+          this.UITooling.fireAlert('Registering is successful, you can now login with your credentials', 'success');
         } else {
           this.UITooling.fireAlert('Register has failed! Please check credentials and retry', 'failed' );
         }

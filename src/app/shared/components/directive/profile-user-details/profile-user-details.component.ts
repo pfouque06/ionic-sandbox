@@ -5,7 +5,7 @@ import { NavController, PopoverController } from '@ionic/angular';
 import { select, Store } from '@ngrx/store';
 import { AuthService, selectAllUsers, selectCurrentUser, selectUser, selectUserSetState, selectUserState, State, User, UserService } from 'koa-services';
 import { filter, map, skip, take } from 'rxjs/operators';
-import { UItoolingService } from 'src/app/shared/services/UITooling.service';
+import { UIToolingService } from 'src/app/shared/services/UITooling.service';
 import { PasswordChangePopoverPage } from '../../popover/password-change-popover/password-change-popover.page';
 
 @Component({
@@ -31,7 +31,7 @@ export class ProfileUserDetailsComponent implements OnInit {
     private store: Store<State>,
     private authService: AuthService,
     private userService: UserService,
-    private UITooling: UItoolingService,
+    private UITooling: UIToolingService,
     private popper: PopoverController,
     private nav: NavController,
     private router: Router
@@ -175,7 +175,7 @@ export class ProfileUserDetailsComponent implements OnInit {
         this.store.pipe( select(selectAllUsers), skip(1), take(1) )
         .subscribe( (users) => {
           this.userId = users[0].id;
-          this.UITooling.fireAlert('New user creation is successfull', 'failed');
+          this.UITooling.fireAlert('New user creation is successful', 'failed');
           // finally route to user profile
           this.routeToUserForm(this.userId);
         });
@@ -240,7 +240,7 @@ export class ProfileUserDetailsComponent implements OnInit {
       if ( !!state.errors) {
         this.UITooling.fireAlert('Password change has failed! Please check api.koa logs', 'failed' );
       } else {
-        this.UITooling.fireAlert('Password change is successfull, you can now login with your new credential', 'success');
+        this.UITooling.fireAlert('Password change is successful, you can now login with your new credential', 'success');
       }
     })
   }

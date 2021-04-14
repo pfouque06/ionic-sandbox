@@ -10,18 +10,11 @@
       <ion-item>
         <ion-icon slot="start" name="logo-nodejs" color="success"></ion-icon>
         <ion-label>
-          Koa Restfull API backend -
-          <a href="https://github.com/pfouque06/koa-typescript-restfull-api" target="_blank" title="GitHub">
-            <ion-icon name="logo-github"></ion-icon>
-          </a>
+          Koa Restful API backend
         </ion-label>
-        <ion-label slot="end" >
-          Swagger -
-          <a [href]="swagger" target="_blank" title="Koa Swagger">
-            <mat-icon class="material-icons md-24">engineering</mat-icon>
-          </a>
-        </ion-label>
-        <ion-icon slot="end" [name]="ping()? 'checkmark':'warning'" [color]="ping()? 'success' :'danger'"></ion-icon>
+        <a slot="end" [href]="allo" target="_blank" title="Koa probe">
+          <ion-icon [name]="ping()? 'checkmark':'warning'" [color]="ping()? 'success' :'danger'"></ion-icon>
+        </a>
       </ion-item>
       <ion-item>
         <ion-icon slot="start" name="logo-npm" color="danger"></ion-icon>

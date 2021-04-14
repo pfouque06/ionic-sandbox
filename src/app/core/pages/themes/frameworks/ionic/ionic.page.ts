@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemReorderEventDetail } from '@ionic/core';
 import { IonReorderGroup } from '@ionic/angular';
-import { UItoolingService } from 'src/app/shared/services/UITooling.service';
+import { UIToolingService } from 'src/app/shared/services/UITooling.service';
 
 @Component({
   selector: 'app-ionic',
@@ -36,7 +36,7 @@ export class IonicPage implements OnInit {
   ];
   public tempBucket02: any[];
 
-  constructor(private route: ActivatedRoute, private UITooling: UItoolingService) {
+  constructor(private route: ActivatedRoute, private UITooling: UIToolingService) {
     if ( ! this.topic) { this.topic = this.route.snapshot.params?.topic }
     console.log(`themes/ionic/${this.topic}`);
   }

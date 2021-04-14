@@ -57,7 +57,7 @@
                   <ion-label position="fixed" color="dark">Data :</ion-label>
                   <!-- Scan in progress -->
                   <ion-spinner *ngIf="scanActive && !scanFound" name="dots" color="dark"></ion-spinner>
-                  <!-- Scan successfull -->
+                  <!-- Scan successful -->
                   <ion-text *ngIf="!scanActive && scanFound && qrCode">{{qrCode}}</ion-text>
 
                   <div slot="end">

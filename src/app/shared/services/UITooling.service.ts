@@ -4,7 +4,7 @@ import { NavController, PopoverController, ToastController } from '@ionic/angula
 
 
 @Injectable({ providedIn: 'root' })
-export class UItoolingService {
+export class UIToolingService {
 
   constructor(
     private toaster: ToastController, 

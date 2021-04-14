@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivateChild, Router } from '@angular/router';
 import { AuthService } from 'koa-services';
-import { UItoolingService } from '../services/UITooling.service';
+import { UIToolingService } from '../services/UITooling.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class IsLoggedGuard implements CanActivateChild {
 
   constructor(
     private authService: AuthService,
-    private UITooling: UItoolingService,
+    private UITooling: UIToolingService,
     private router: Router ) {}
 
   canActivateChild() {
