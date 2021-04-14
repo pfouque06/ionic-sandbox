@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Platform } from '@ionic/angular';
 import jsQR from 'jsqr';
 
@@ -141,7 +142,7 @@ export class QRCodeMenuPage implements OnInit {
     this.qrCode = qrCode
   }
   
-  public onTabChanged($event: any) {
+  public onTabChanged($event: MatTabChangeEvent) {
     const SelectedTabIndex = $event.index;
     const SelectedTabLabel = $event.tab.textLabel;
     console.log(`onTabChanged(${SelectedTabIndex}, ${SelectedTabLabel})`);
