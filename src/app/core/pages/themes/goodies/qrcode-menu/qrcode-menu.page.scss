@@ -17,36 +17,36 @@ div.tab-content {
             
             .stream-content {
                 height: 200px;
-                min-width: 150px;
+                width: 266px;
                 border: 1px solid var(--ion-color-medium);
                 border-radius: 5px;
                 box-shadow: 0px 0px 2px 2px var(--ion-color-medium);
             }
         }
         
-        .search-content {
-            // margin-top: 10px;
-        }
+        // .search-content {
+        //     // margin-top: 10px;
+        // }
         
-        .notfound, .timeout, .wrong, .failed {
-            text-align: center;
-            padding: 8rem 0;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            font-size: 2rem;
-            color: #ffffff;
-            font-weight: 200;
-            display: block;
-            text-transform: uppercase;
-            .small { font-size: 1.2rem; }
-        }
+        // .notfound, .timeout, .wrong, .failed {
+        //     text-align: center;
+        //     padding: 8rem 0;
+        //     background-color: rgba(255,255,255,0.1);
+        //     border-radius: 2px;
+        //     font-size: 2rem;
+        //     color: #ffffff;
+        //     font-weight: 200;
+        //     display: block;
+        //     text-transform: uppercase;
+        //     .small { font-size: 1.2rem; }
+        // }
         
-        .actions {
-            display: flex;
-            justify-content: space-between;
-            // .start-button { @include button(--ion-color-secondary); }
-            // .reset-button { @include button(--ion-color-primary); }
-            // .stop-button { @include button(--ion-color-tertiary); }
-        }
+        // .actions {
+        //     display: flex;
+        //     justify-content: space-between;
+        //     // .start-button { @include button(--ion-color-secondary); }
+        //     // .reset-button { @include button(--ion-color-primary); }
+        //     // .stop-button { @include button(--ion-color-tertiary); }
+        // }
     }
 }
