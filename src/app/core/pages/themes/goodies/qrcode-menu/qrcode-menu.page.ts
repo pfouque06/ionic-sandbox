@@ -54,8 +54,9 @@ export class QRCodeMenuPage implements OnInit {
     this.resetScan();
 
     // start video stream
-    if ( ! this.videoElement.srcObject) {
+    if ( ! this.videoElement?.srcObject) {
       console.log('fetching new video stream from Navigator');
+      this.videoElement = this.video.nativeElement;
       const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }});
       this.videoElement.srcObject = stream;
       this.videoElement.setAttribute('playsinline', true);
@@ -92,7 +93,7 @@ export class QRCodeMenuPage implements OnInit {
           requestAnimationFrame(this.scan.bind(this));
         } else {
           // console.log('scan() --> QR code found!');
-          this.stopScan();
+          this.pauseVideo();
           this.getScanResult(scanResult.data);
         }
       } else {
@@ -100,6 +101,14 @@ export class QRCodeMenuPage implements OnInit {
         requestAnimationFrame(this.scan.bind(this));
       }
     }
+  }
+  
+  public resetScan() {
+    console.log('resetScan()');
+    this.scanFound = false;
+    this.videoElement = null;
+    // refresh page
+    // this.ref.markForCheck();
   }
 
   public stopScan() {
@@ -111,14 +120,7 @@ export class QRCodeMenuPage implements OnInit {
       // this.ref.markForCheck();
     }
   }
-  
-  public resetScan() {
-    console.log('resetScan()');
-    this.scanFound = false;
-    // refresh page
-    // this.ref.markForCheck();
-  }
-  
+
   public pauseVideo() {
     console.log('pauseVideo()');
     this.scanActive = false;
@@ -146,7 +148,10 @@ export class QRCodeMenuPage implements OnInit {
     const SelectedTabIndex = $event.index;
     const SelectedTabLabel = $event.tab.textLabel;
     console.log(`onTabChanged(${SelectedTabIndex}, ${SelectedTabLabel})`);
-    if ( SelectedTabLabel !== "Scan" ) { this.stopScan(); }
+    if ( SelectedTabLabel !== "Scan" ) {
+      if ( this.scanFound ) { this.pauseVideo();}
+      else { this.stopScan(); } 
+    }
   }
 
 }
