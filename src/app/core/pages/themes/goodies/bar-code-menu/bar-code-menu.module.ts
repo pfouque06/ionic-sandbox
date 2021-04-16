@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { BarcodeScanPageRoutingModule } from './barcode-scan-routing.module';
-import { BarcodeScanPage } from './barcode-scan.page';
+import { BarCodeMenuPageRoutingModule } from './bar-code-menu-routing.module';
+import { BarCodeMenuPage } from './bar-code-menu.page';
 
 @NgModule({
   imports: [
@@ -13,8 +13,8 @@ import { BarcodeScanPage } from './barcode-scan.page';
     FormsModule,
     IonicModule,
     SharedModule,
-    BarcodeScanPageRoutingModule
+    BarCodeMenuPageRoutingModule
   ],
-  declarations: [BarcodeScanPage]
+  declarations: [BarCodeMenuPage]
 })
-export class BarcodeScanPageModule {}
+export class BarCodeMenuPageModule {}

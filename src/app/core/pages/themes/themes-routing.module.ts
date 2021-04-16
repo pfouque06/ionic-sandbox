@@ -10,7 +10,7 @@ const routes: Routes = [
     { path: 'icons', loadChildren: () => import('./goodies/icons/icons.module').then( m => m.IconsPageModule) },
     { path: 'spinners', loadChildren: () => import('./goodies/spinners/spinners.module').then( m => m.SpinnersPageModule) },
     { path: 'qrcode-menu', loadChildren: () => import('./goodies/qrcode-menu/qrcode-menu.module').then( m => m.QRCodeMenuPageModule) },
-    { path: 'barcode-scan', loadChildren: () => import('./goodies/barcode-scan/barcode-scan.module').then( m => m.BarcodeScanPageModule) },
+    { path: 'barcode-menu', loadChildren: () => import('./goodies/bar-code-menu/bar-code-menu.module').then( m => m.BarCodeMenuPageModule) },
     { path: 'my-menu', loadChildren: () => import('./goodies/my-menu/my-menu.module').then( m => m.MyMenuPageModule) },
     { path: 'ionic-menu', loadChildren: () => import('./frameworks/ionic-menu/ionic-menu.module').then( m => m.IonicMenuPageModule) },
     { path: 'ionic/:topic', loadChildren: () => import('./frameworks/ionic/ionic.module').then( m => m.IonicPageModule) },

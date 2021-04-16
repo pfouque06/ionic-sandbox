@@ -1,0 +1,61 @@
+<tab-fake-header></tab-fake-header>
+
+<full-width-title class="ion-text-center">
+  <ion-item lines="none">
+    <ion-icon slot="start" name="logo-npm" color="danger" size="large"></ion-icon>
+    <ion-title>
+      <code>JsBarcode Javascript-Barcode-Reader</code>
+    </ion-title>
+  </ion-item>
+</full-width-title>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="barcode-outline" color="medium" size="large"></ion-icon>
+        Bar Code Generator and Scanner for Angular
+      </ion-item>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <code><strong>JsBarcode</strong></code> generator and <code><strong>Javascript-Barcode-Reader</strong></code> scanner are pure JS Bar Code libraries.
+
+      <mat-tab-group animationDuration="250" (selectedTabChange)="onTabChanged($event);">
+
+        <mat-tab label="Example">
+          <div class="tab-content">
+            <ion-item lines="none">
+              <ion-label color="dark">Sample: {{barcodeSample}}</ion-label>
+            </ion-item>
+            <!-- <div class="barcode"></div> -->
+            <svg #barCodeSample></svg>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Generator">
+          <div class="tab-content">
+            <form>
+              <ion-item lines="none">
+                <ion-label position="fixed" color="dark">Data :</ion-label>
+                <ion-input [(ngModel)]="BarCodeInput" name="BarCodeInput" type="text" placeholder="Enter Input" clearInput (ionChange)="onInputChange($event.target.value)"></ion-input>
+              </ion-item>
+            </form>
+            <!-- <div class="barcode"></div> -->
+            <svg #barCodeInput></svg>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Scan">
+          <div class="tab-content">
+            <teaser-coming-soon></teaser-coming-soon>
+          </div>
+        </mat-tab>
+
+      </mat-tab-group>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
+
+<tab-footer></tab-footer>

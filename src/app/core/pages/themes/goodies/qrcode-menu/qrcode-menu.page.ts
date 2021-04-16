@@ -4,7 +4,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Platform } from '@ionic/angular';
 import jsQR from 'jsqr';
 
-export const QRSCAN_PAGE = '/tabs/themes/qrcode-generator';
+export const QRSCAN_PAGE = '/tabs/themes/qrcode-menu';
 
 @Component({
   selector: 'app-qrcode-menu',

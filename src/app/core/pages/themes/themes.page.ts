@@ -57,7 +57,7 @@ export class ThemesPage {
         {
           label: 'BarCode Menu',
           icon: 'barcode-outline',
-          link: '/tabs/themes/barcode-scan',
+          link: '/tabs/themes/barcode-menu',
         },
       ],
     },
