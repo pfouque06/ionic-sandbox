@@ -10,7 +10,6 @@ import * as JsBarcode from 'jsbarcode';
 })
 export class BarCodeMenuPage implements OnInit, AfterViewInit {
 
-  // public barcodeSample = 'Hello World!';
   public barcodeSample = 'https://ionic.demo.pfouque.fr';
   @ViewChild('barCodeSample') public barCodeSample: ElementRef;
   
