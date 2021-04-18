@@ -56,7 +56,7 @@
                   <!-- Scan in progress -->
                   <ion-spinner *ngIf="scanActive && !scanFound" name="dots" color="medium"></ion-spinner>
                   <!-- Scan successful -->
-                  <ion-text *ngIf="!scanActive && scanFound && barCode">Value: {{barCode}}</ion-text>
+                  <ion-text *ngIf="!scanActive && scanFound">Value: {{barCodeValue}} [ format: {{barCodeFormat}} ]</ion-text>
                 </div>
 
                 <div slot="end">
@@ -74,9 +74,11 @@
               <ion-grid class="scan">
                 <ion-row class="ion-justify-content-center ion-align-items-center">
                   <ion-col size="auto" class="ion-text-center">
-                    <div [hidden]="!scanActive && !scanFound">
-                      <video #video class="stream-content"></video>
-                      <canvas #canvas hidden></canvas>
+                    <div class="stream-content" [hidden]="!scanActive">
+                      <barcode-scanner-livestream
+                        (valueChanges)="onValueChanges($event)"
+                        (started)="onStarted($event)">
+                      </barcode-scanner-livestream>
                     </div>
                   </ion-col>
                 </ion-row>

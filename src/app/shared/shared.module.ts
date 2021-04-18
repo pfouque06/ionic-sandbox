@@ -25,6 +25,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRadioModule } from '@angular/material/radio';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { QRCodeModule } from 'angularx-qrcode'
+import { BarcodeScannerLivestreamModule } from 'ngx-barcode-scanner'
 
 import { KoaServicesModule, serverAddress, serverProtocol, SERVER_ADDRESS, SERVER_PROTOCOL } from 'koa-services'
 import { UserPopoverPage } from './components/popover/user-popover/user-popover.page'
@@ -37,14 +38,14 @@ const SHARED_MODALS = [
 ]
 
 const SHARED_ENTITIES = [
-]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+]
 
-const REACTIVE_FORM_DIRECTIVES = [                                                                                                                                                                                                                                                                                                                                                                                                                                                              
-    FormsModule,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+const REACTIVE_FORM_DIRECTIVES = [
+    FormsModule,
     ReactiveFormsModule
 ]
 
-const SHARED_MODULES = [                                                                                                                                                                                                                                                                                                
+const SHARED_MODULES = [
     KoaServicesModule,
     ComponentsModule,
     FontAwesomeModule,
@@ -68,9 +69,10 @@ const SHARED_MODULES = [
     MatRadioModule,
     DragDropModule,
     QRCodeModule,
-]                                                                                                                                                                                                                               
+    BarcodeScannerLivestreamModule,
+]
 
-const SHARED_IMPORTED_MODULES = []                                                                                                                      
+const SHARED_IMPORTED_MODULES = []
 const SHARED_PROVIDED_MODULES = [
     // MatIconRegistry,
     { provide: SERVER_ADDRESS,  useValue: serverAddress},
@@ -101,7 +103,7 @@ const SHARED_PROVIDED_MODULES = [
     ],
     // schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class SharedModule { 
+export class SharedModule {
     constructor(library: FaIconLibrary) {
         library.addIconPacks(fas, far, fab);
     }
