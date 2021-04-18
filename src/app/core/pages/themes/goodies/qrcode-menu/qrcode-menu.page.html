@@ -27,7 +27,7 @@
           <mat-tab label="Example">
             <div class="tab-content">
               <ion-item lines="none">
-                <ion-label color="dark">Example: https://ionic.demo.pfouque.fr</ion-label>
+                <ion-label color="dark">Sample: https://ionic.demo.pfouque.fr</ion-label>
               </ion-item>
               <div class="qrcode">
                 <qrcode qrdata="https://ionic.demo.pfouque.fr" [scale]="4" [width]="200" [errorCorrectionLevel]="'M'" [elementType]="'svg'"></qrcode>
@@ -39,7 +39,7 @@
             <div class="tab-content">
               <form>
                 <ion-item lines="none">
-                  <ion-label position="fixed" color="dark">Data :</ion-label>
+                  <ion-label position="fixed" color="dark">Data:</ion-label>
                   <ion-input [(ngModel)]="QRCode" name="QRCode" type="text" placeholder="Enter Input" clearInput></ion-input>
                 </ion-item>
               </form>
@@ -54,11 +54,12 @@
               <div class="scanner">
                 <ion-item lines="none">
                   <!-- <ion-label slot="start" position="fixed" color="dark">Data :</ion-label> -->
-                  <ion-label position="fixed" color="dark">Data :</ion-label>
-                  <!-- Scan in progress -->
-                  <ion-spinner *ngIf="scanActive && !scanFound" name="dots" color="dark"></ion-spinner>
-                  <!-- Scan successful -->
-                  <ion-text *ngIf="!scanActive && scanFound && qrCode">{{qrCode}}</ion-text>
+                  <div slot="start">
+                    <!-- Scan in progress -->
+                    <ion-spinner *ngIf="scanActive && !scanFound" name="dots" color="medium"></ion-spinner>
+                    <!-- Scan successful -->
+                    <ion-text *ngIf="!scanActive && scanFound && qrCode">Value: {{qrCode}}</ion-text>
+                  </div>
 
                   <div slot="end">
                     <ion-buttons>

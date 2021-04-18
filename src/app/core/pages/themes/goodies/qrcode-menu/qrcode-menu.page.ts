@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Platform } from '@ionic/angular';
@@ -11,16 +11,16 @@ export const QRSCAN_PAGE = '/tabs/themes/qrcode-menu';
   templateUrl: './qrcode-menu.page.html',
   styleUrls: ['./qrcode-menu.page.scss'],
 })
-export class QRCodeMenuPage implements OnInit {
+export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
 
   // Generator
   public QRCode: string;
-  
+
   // Scanner
   public pageUrl: string;
-  public qrCode: string = '';
-  public scanActive: boolean = false;
-  public scanFound: boolean = false;
+  public qrCode = '';
+  public scanActive = false;
+  public scanFound = false;
 
   @ViewChild('video', {static: false }) video: ElementRef;
   @ViewChild('canvas', {static: false }) canvas: ElementRef;
@@ -32,7 +32,7 @@ export class QRCodeMenuPage implements OnInit {
     const isInStandAloneMode = () => 'standalone' in window.navigator && window.navigator['standalone'];
     if (this.platform.is('ios') && isInStandAloneMode()) { console.log('I am a PWA iOS !'); }
   }
-  
+
   public ngOnInit() {
     this.pageUrl = this.router.url || QRSCAN_PAGE;
   }
@@ -44,12 +44,12 @@ export class QRCodeMenuPage implements OnInit {
   }
 
   public ngOnDestroy() {
-    this.releaseVideo()
+    this.releaseVideo();
   }
-  
+
   public async startScan() {
     console.log('startScan()');
-    
+
     // reset Scan
     this.resetScan();
 
@@ -68,14 +68,14 @@ export class QRCodeMenuPage implements OnInit {
     requestAnimationFrame(this.scan.bind(this));
     this.scanActive = true;
   }
-  
+
   public async scan() {
     // check that active page is still this one and stop, release video if not the case
     if ( this.router.url !== this.pageUrl) {
       console.log(`scan() - url has moved to ${this.router.url}, stopping worthless scan and release back media streams to navigator!`);
       this.stopScan();
     }
-    
+
     if (this.scanActive) {
       if (this.videoElement.readyState === this.videoElement.HAVE_ENOUGH_DATA) {
         // capture image from video stream
@@ -86,7 +86,7 @@ export class QRCodeMenuPage implements OnInit {
         // console.log('scan() - process Image scanning');
         // scan captured image
         const scanResult = jsQR( imageData.data, imageData.width, imageData.height, { inversionAttempts: 'dontInvert'} );
-          
+
         if (! scanResult) {
           // console.log('scan() - no result yet');
           // restart image capture
@@ -102,7 +102,7 @@ export class QRCodeMenuPage implements OnInit {
       }
     }
   }
-  
+
   public resetScan() {
     console.log('resetScan()');
     this.scanFound = false;
@@ -137,20 +137,20 @@ export class QRCodeMenuPage implements OnInit {
       this.videoElement.srcObject = null;
     }
   }
-  
+
   public getScanResult(qrCode: string) {
     console.log(`getScanResult(${qrCode})`);
     this.scanFound = true;
-    this.qrCode = qrCode
+    this.qrCode = qrCode;
   }
-  
+
   public onTabChanged($event: MatTabChangeEvent) {
     const SelectedTabIndex = $event.index;
     const SelectedTabLabel = $event.tab.textLabel;
     console.log(`onTabChanged(${SelectedTabIndex}, ${SelectedTabLabel})`);
-    if ( SelectedTabLabel !== "Scan" ) {
+    if ( SelectedTabLabel !== 'Scan' ) {
       if ( this.scanFound ) { this.pauseVideo();}
-      else { this.stopScan(); } 
+      else { this.stopScan(); }
     }
   }
 

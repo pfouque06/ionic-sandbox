@@ -26,10 +26,10 @@
         <mat-tab label="Example">
           <div class="tab-content">
             <ion-item lines="none">
-              <ion-label color="dark">Sample: {{barcodeSample}}</ion-label>
+              <ion-label color="dark">Sample: {{barCodeSample}}</ion-label>
             </ion-item>
             <!-- <div class="barcode"></div> -->
-            <svg #barCodeSample></svg>
+            <svg #barCodeSampleSVG></svg>
           </div>
         </mat-tab>
 
@@ -48,7 +48,40 @@
 
         <mat-tab label="Scan">
           <div class="tab-content">
-            <teaser-coming-soon></teaser-coming-soon>
+            <!-- <teaser-coming-soon></teaser-coming-soon> -->
+            <div class="scanner">
+              <ion-item lines="none">
+                <!-- <ion-label slot="start" position="fixed" color="dark">Data :</ion-label> -->
+                <div slot="start">
+                  <!-- Scan in progress -->
+                  <ion-spinner *ngIf="scanActive && !scanFound" name="dots" color="medium"></ion-spinner>
+                  <!-- Scan successful -->
+                  <ion-text *ngIf="!scanActive && scanFound && barCode">Value: {{barCode}}</ion-text>
+                </div>
+
+                <div slot="end">
+                  <ion-buttons>
+                    <ion-button *ngIf="!scanActive" (click)="startScan()" outline color="dark" shape="round">
+                      <ion-icon name="play"></ion-icon>Scan
+                    </ion-button>
+                    <ion-button *ngIf="scanActive" (click)="stopScan()" outline color="danger" shape="round">
+                      <ion-icon name="stop"></ion-icon>Stop
+                    </ion-button>
+                  </ion-buttons>
+                </div>
+              </ion-item>
+      
+              <ion-grid class="scan">
+                <ion-row class="ion-justify-content-center ion-align-items-center">
+                  <ion-col size="auto" class="ion-text-center">
+                    <div [hidden]="!scanActive && !scanFound">
+                      <video #video class="stream-content"></video>
+                      <canvas #canvas hidden></canvas>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
           </div>
         </mat-tab>
 
