@@ -73,9 +73,8 @@ export class TabsPage {
 
   async openUserFormDialog(formType: 'login' | 'register'): Promise<void> {
 
-    let userForm: any = { formType: formType };
-    if (formType == "login")
-    userForm = { ...userForm, email: "sam.va@gmail.com", password: "secret"};
+    let userForm: any = { formType };
+    if (formType === 'login') { userForm = { ...userForm, email: 'sam.va@gmail.com', password: 'secret'}; }
 
     // const dialogFeedback= await this.UITooling.fireDialog(UserModalComponent, userForm);
     const popover = await this.popper.create({
@@ -86,7 +85,7 @@ export class TabsPage {
       componentProps: { form: userForm, }
     });
     await popover.present();
-    const dialogFeedback=  await popover.onDidDismiss();
+    const dialogFeedback =  await popover.onDidDismiss();
     if (!dialogFeedback || !dialogFeedback.data || dialogFeedback.data.dismiss ) {
       console.log('UserPopoverPage dismissed ...');
       return;
@@ -110,7 +109,7 @@ export class TabsPage {
             }
           }
         );
-    
+
         break;
       }
       case 'register': {

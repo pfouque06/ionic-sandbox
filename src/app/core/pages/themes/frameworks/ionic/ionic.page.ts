@@ -10,7 +10,7 @@ import { UIToolingService } from 'src/app/shared/services/UITooling.service';
   styleUrls: ['./ionic.page.scss'],
 })
 export class IonicPage implements OnInit {
-  
+
   @Input() public topic: string;
 
   // Ionic reorder group
@@ -37,7 +37,7 @@ export class IonicPage implements OnInit {
   public tempBucket02: any[];
 
   constructor(private route: ActivatedRoute, private UITooling: UIToolingService) {
-    if ( ! this.topic) { this.topic = this.route.snapshot.params?.topic }
+    if ( ! this.topic) { this.topic = this.route.snapshot.params?.topic; }
     console.log(`themes/ionic/${this.topic}`);
   }
 
@@ -70,7 +70,13 @@ export class IonicPage implements OnInit {
   // Segment
   public segmentChanged(ev: any) {
     const message = `Segment changed: ${ev.detail.value}`;
-    this.UITooling.fireAlert(message,'info');
+    this.UITooling.fireAlert(message, 'info');
     // console.log(message);
+  }
+
+  // FAB
+  public addToggle() {
+    const message = `Edged FAB toggled !`;
+    this.UITooling.fireAlert(message, 'info');
   }
 }
