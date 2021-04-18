@@ -63,7 +63,7 @@
                       </ion-button>
                     </ion-buttons>
                   </div>
-                  
+
                   <div>
                     <!-- Scan in progress -->
                     <ion-spinner *ngIf="scanActive && !scanFound" name="dots" color="medium"></ion-spinner>
@@ -75,8 +75,8 @@
                 <ion-grid class="scan">
                   <ion-row class="ion-justify-content-center ion-align-items-center">
                     <ion-col size="auto" class="ion-text-center">
-                      <div [hidden]="!scanActive && !scanFound">
-                        <video #video class="stream-content"></video>
+                      <div>
+                        <video #video class="stream-content"[hidden]="!scanActive && !scanFound"></video>
                         <canvas #canvas hidden></canvas>
                       </div>
                     </ion-col>
