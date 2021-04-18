@@ -14,11 +14,11 @@ export const QRSCAN_PAGE = '/tabs/themes/qrcode-menu';
 export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
 
   // Generator
-  public QRCode: string;
+  public QRCodeInput: string;
 
   // Scanner
   public pageUrl: string;
-  public qrCode = '';
+  public QRCode: string;
   public scanActive = false;
   public scanFound = false;
 
@@ -141,7 +141,7 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   public getScanResult(qrCode: string) {
     console.log(`getScanResult(${qrCode})`);
     this.scanFound = true;
-    this.qrCode = qrCode;
+    this.QRCode = qrCode;
   }
 
   public onTabChanged($event: MatTabChangeEvent) {
