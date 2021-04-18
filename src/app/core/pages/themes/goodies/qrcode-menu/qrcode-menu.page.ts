@@ -4,7 +4,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 import { Platform } from '@ionic/angular';
 import jsQR from 'jsqr';
 
-export const QRSCAN_PAGE = '/tabs/themes/qrcode-menu';
+export const QRCODE_SCAN_PAGE = '/tabs/themes/qrcode-menu';
 
 @Component({
   selector: 'app-qrcode-menu',
@@ -34,7 +34,7 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.pageUrl = this.router.url || QRSCAN_PAGE;
+    this.pageUrl = this.router.url || QRCODE_SCAN_PAGE;
   }
 
   public ngAfterViewInit() {

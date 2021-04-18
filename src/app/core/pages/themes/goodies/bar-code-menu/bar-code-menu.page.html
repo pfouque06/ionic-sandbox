@@ -75,6 +75,7 @@
                   <ion-col size="auto" class="ion-text-center">
                     <div class="stream-content" [hidden]="!scanActive">
                       <barcode-scanner-livestream
+                        [type]="['code_128', 'ean_8', 'upc']"
                         (valueChanges)="onValueChanges($event)"
                         (started)="onStarted($event)">
                       </barcode-scanner-livestream>

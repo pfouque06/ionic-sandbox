@@ -6,7 +6,7 @@ import * as JsBarcode from 'jsbarcode';
 import { BarcodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
 import { QuaggaJSResultObject } from '@ericblade/quagga2';
 
-export const QRSCAN_PAGE = '/tabs/themes/barcode-menu';
+export const BARCODE_SCAN_PAGE = '/tabs/themes/barcode-menu';
 export const JSBARCODE_OPTIONS = { width: 1, fontSize: 12, };
 
 @Component({
@@ -40,7 +40,7 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngOnInit() {
-    this.pageUrl = this.router.url || QRSCAN_PAGE;
+    this.pageUrl = this.router.url || BARCODE_SCAN_PAGE;
   }
 
   ngAfterViewInit() {
