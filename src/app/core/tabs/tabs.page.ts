@@ -6,7 +6,7 @@ import { skip, take } from 'rxjs/operators';
 import { AuthService, selectUserState, State } from 'koa-services';
 import { UIToolingService } from '../../shared/services/UITooling.service';
 import { NavController, PopoverController } from '@ionic/angular';
-import { UserPopoverPage } from '../../shared/components/popover/user-popover/user-popover.page';
+import { UserPopoverPage } from '../../shared/templates/popover/user-popover/user-popover.page';
 
 @Component({
   selector: 'app-tabs',

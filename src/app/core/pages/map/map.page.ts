@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Subject } from 'rxjs';
-import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-list.component';
+import { IMenuList } from 'src/app/shared/templates/components/custom/menu-list/menu-list.component';
 
 @Component({
   selector: 'app-map',
@@ -10,7 +10,7 @@ import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-li
 })
 export class MapPage {
 
-  public paneEnabled: boolean = false;
+  public paneEnabled = false;
   public menuRequestEmitter: Subject<any> = new Subject<any>();
   public menuList: IMenuList[] = [
     {
@@ -18,7 +18,7 @@ export class MapPage {
       link: '/tabs/map/home',
       icon: 'home',
     },
-  ]
+  ];
 
   constructor(private menuCtl: MenuController) { console.log('map'); }
 

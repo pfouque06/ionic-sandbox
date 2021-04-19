@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from 'koa-services';
 import { Observable, Subject } from 'rxjs';
-import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-list.component';
+import { IMenuList } from 'src/app/shared/templates/components/custom/menu-list/menu-list.component';
 import { UIToolingService } from 'src/app/shared/services/UITooling.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class DashboardPage implements OnInit {
 
   public profileType$: Observable<string>;
   public fullName$: Observable<string>;
-  public paneEnabled: boolean = false;
+  public paneEnabled = false;
   public menuRequestEmitter: Subject<any> = new Subject<any>();
   public menuList: IMenuList[] = [
     {
@@ -37,8 +37,8 @@ export class DashboardPage implements OnInit {
       link: '/tabs/dashboard/users',
       icon: 'people',
     },
-  ]
-  
+  ];
+
   public adminMenuRequestEmitter: Subject<any> = new Subject<any>();
   public adminMenuList: IMenuList[] = [
     {
@@ -49,7 +49,7 @@ export class DashboardPage implements OnInit {
           label: 'Users menu',
           icon: 'people',
           submenu: [
-            
+
             {
               label: 'Add a user',
               link: '/tabs/dashboard/new',
@@ -66,7 +66,7 @@ export class DashboardPage implements OnInit {
           label: 'Admin menu',
           icon: 'settings',
           submenu: [
-            
+
             {
               label: 'Sessions list',
               link: '/tabs/dashboard/sessions',
@@ -81,7 +81,7 @@ export class DashboardPage implements OnInit {
         },
       ],
     },
-  ]
+  ];
 
   constructor(private authService: AuthService, private menuCtl: MenuController, private UITooling: UIToolingService) { console.log('dashboard'); }
 
@@ -108,6 +108,6 @@ export class DashboardPage implements OnInit {
   callbackReceiverSwitch(callbackId: string) {
     const message = `callbackReceiverSwitch( callbackId: ${callbackId} )`;
     // console.log(message);
-    this.UITooling.fireAlert(callbackId,'info');
+    this.UITooling.fireAlert(callbackId, 'info');
   }
 }

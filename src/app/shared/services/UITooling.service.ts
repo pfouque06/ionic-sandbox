@@ -7,15 +7,15 @@ import { NavController, PopoverController, ToastController } from '@ionic/angula
 export class UIToolingService {
 
   constructor(
-    private toaster: ToastController, 
+    private toaster: ToastController,
     private popper: PopoverController,
     private navCtrl: NavController,
     private router: Router) {}
 
   public async fireAlert(message: string, style?: 'success'|'info'|'failed'|'warning'|'dark'|'medium') {
-    const cssStyle = `UITooling-toaster-${style ? style:'default'}`
+    const cssStyle = `UITooling-toaster-${style ? style : 'default'}`;
     const toast = await this.toaster.create({
-      message: message,
+      message,
       duration: 2000,
       position: 'bottom',
       cssClass: cssStyle,
@@ -27,18 +27,18 @@ export class UIToolingService {
   //   return this.dialog.open(component, config);
   // }
   public async fireDialog(component: any, data: any) {
-    const message = `UItoolingService.fireDialog()`;
+    const message = `UIToolingService.fireDialog()`;
     console.log(message, component, data);
     // this.fireAlert(message);
     // return;
 
     const popover = await this.popper.create({
-      component: component,
+      component,
       backdropDismiss: true,
       showBackdrop: true,
       // cssClass: 'popover-class',
       componentProps: {
-        data: data,
+        data,
         modalCtrl: this.navCtrl
       }
     });

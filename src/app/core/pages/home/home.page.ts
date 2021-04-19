@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Subject } from 'rxjs';
-import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-list.component';
+import { IMenuList } from 'src/app/shared/templates/components/custom/menu-list/menu-list.component';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +9,8 @@ import { IMenuList } from 'src/app/shared/components/directive/menu-list/menu-li
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
-  
-  public paneEnabled: boolean = false;
+
+  public paneEnabled = false;
   public menuRequestEmitter: Subject<any> = new Subject<any>();
   public menuList: IMenuList[] = [
     {
@@ -28,8 +28,8 @@ export class HomePage {
       href: 'http://www.pfouque.fr',
       img: '/assets/icon/favicon.png',
     },
-  ]
-  
+  ];
+
   constructor(private menuCtl: MenuController) { console.log('home'); }
 
   async ionViewWillEnter() {

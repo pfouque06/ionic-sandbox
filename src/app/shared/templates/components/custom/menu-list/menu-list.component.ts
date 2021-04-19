@@ -24,21 +24,21 @@ export class MenuListComponent implements OnInit, OnDestroy {
 
   @Input() public menu: IMenuList[];
   @Input() public menuId: string;
-  @Input() public menuLevel: number = 0;
-  @Input() public multi: boolean = false;
-  @Input() public closeOnExit: boolean = false;
+  @Input() public menuLevel = 0;
+  @Input() public multi = false;
+  @Input() public closeOnExit = false;
 
   // Event receiver from parent
   @Input() transmitter: Subject<string> = undefined;
 
-  // Event emitter to parent 
-  @Output() menuListEvent : EventEmitter<string> = new EventEmitter<string>();
-  
+  // Event emitter to parent
+  @Output() menuListEvent: EventEmitter<string> = new EventEmitter<string>();
+
   public subscriptions: Subscription[] = [];
 
   constructor(private menuCtl: MenuController) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     // Initiate submenus' emitter
     this.menu.filter( (menuItem) => menuItem.submenu )
       .forEach( (menuItem) => { menuItem.transmitter = new Subject<string>();  });

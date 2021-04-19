@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Subject } from 'rxjs';
-import { IMenuList } from '../../../shared/components/directive/menu-list/menu-list.component';
+import { IMenuList } from '../../../shared/templates/components/custom/menu-list/menu-list.component';
 import { UIToolingService } from '../../../shared/services/UITooling.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { UIToolingService } from '../../../shared/services/UITooling.service';
 export class ThemesPage {
 
 
-  public paneEnabled: boolean = false;
+  public paneEnabled = false;
   public menuListTransmitter: Subject<any> = new Subject<any>();
   public menuList: IMenuList[] = [
     {
@@ -126,8 +126,8 @@ export class ThemesPage {
         }
       ]
     }
-  ]
-  
+  ];
+ 
   constructor(private menuCtl: MenuController, private UITooling: UIToolingService ) { console.log('themes'); }
 
   async ionViewWillEnter() {
@@ -146,6 +146,6 @@ export class ThemesPage {
   callbackReceiverSwitch(callbackId: string) {
     const message = `callbackReceiverSwitch( callbackId: ${callbackId} )`;
     // console.log(message);
-    this.UITooling.fireAlert(callbackId,'info');
+    this.UITooling.fireAlert(callbackId, 'info');
   }
 }
