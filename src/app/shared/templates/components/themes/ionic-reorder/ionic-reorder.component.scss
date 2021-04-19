@@ -1,0 +1,12 @@
+/** Styles to make the Ionic Rename & Reorder demo look better. */
+ion-item.item-base {
+    --border-width: 1px !important;
+    ion-input.item-input {
+        ion-checkbox.checkbox-action {
+            margin: 0px 5px !important;
+        }
+    // item-label.label-action {
+        //   margin-left: 10px;
+        // }
+    }
+}

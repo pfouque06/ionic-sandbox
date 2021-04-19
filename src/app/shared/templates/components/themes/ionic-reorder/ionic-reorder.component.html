@@ -1,0 +1,57 @@
+<ion-toolbar class="ion-padding-horizontal">
+  <ion-buttons slot="start">
+    <ion-back-button mode="ios" text="" color="primary" default-href="tabs/themes/ionic-menu"></ion-back-button>
+    <!-- <ion-icon name="git-compare" color="primary" size="large"></ion-icon> -->
+  </ion-buttons>
+  <ion-title>Reorder</ion-title>
+</ion-toolbar>
+<ion-card>
+  <div class="ion-text-center">
+    <ion-list>
+      <div [hidden]="handlerEnabled01">
+        <ion-reorder-group id="reorder01" (ionItemReorder)="doReorder01($event)" [disabled]="reorderDisabled01">
+          <ion-reorder *ngFor="let item of bucket01">
+            <ion-item class="item-base" lines="none"><ion-label>{{item}}</ion-label></ion-item>
+          </ion-reorder>
+        </ion-reorder-group>
+      </div>
+      <div [hidden]="!handlerEnabled01">
+        <ion-reorder-group id="reorder01" (ionItemReorder)="doReorder01($event)" [disabled]="reorderDisabled01">
+          <ion-item class="item-base" *ngFor="let item of bucket01" lines="none">
+            <ion-label>{{item}}</ion-label>
+            <ion-reorder slot="end"></ion-reorder>
+          </ion-item>
+        </ion-reorder-group>
+      </div>
+    </ion-list>
+    <ion-item lines="none">
+      <ion-checkbox class="checkbox-action" [(ngModel)]="handlerEnabled01" color="primary"></ion-checkbox>
+      <ion-label class="label-action">Handler</ion-label>
+      <ion-checkbox [(ngModel)]="reorderDisabled01" color="primary"></ion-checkbox>
+      <ion-label class="label-action">Disabled</ion-label>
+    </ion-item>
+  </div>
+</ion-card>
+
+<ion-toolbar class="ion-padding-horizontal">
+  <ion-buttons slot="start">
+    <!-- <ion-back-button mode="ios" text="" color="primary" default-href="tabs/themes/ionic-menu"></ion-back-button> -->
+    <ion-icon name="git-compare" color="primary" size="large"></ion-icon>
+  </ion-buttons>
+  <ion-title>Rename & Reorder</ion-title>
+</ion-toolbar>
+<ion-card>
+  <div class="ion-text-center">
+    <form>
+      <ion-list>
+        <ion-reorder-group #reorderGroup02 id="reorder02" (ionItemReorder)="doReorder02($event)" disabled="false">
+          <ion-item class="item-base" *ngFor="let item of tempBucket02" lines="none">
+            <ion-input class="item-input" [name]="item.name" [(ngModel)]="item.name" type="text" color="dark"
+            (ionFocus)="item.focus = true" (ionBlur)="item.focus = false; reorder02Display(item)"></ion-input>
+            <ion-reorder slot="end"><ion-icon class="item-icon" [name]="item.focus ? 'pencil' : 'reorder-three'" color="medium" size="large"></ion-icon></ion-reorder>
+          </ion-item>
+        </ion-reorder-group>
+      </ion-list>
+    </form>
+  </div>
+</ion-card>

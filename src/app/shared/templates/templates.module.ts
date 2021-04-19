@@ -11,6 +11,17 @@ import { TeaserBetaVersionComponent } from './components/custom/teaser-beta-vers
 import { TeaserComingSoonComponent } from './components/custom/teaser-coming-soon/teaser-coming-soon.component';
 import { FullWidthTitleComponent } from './components/custom/full-width-title/full-width-title.component';
 import { ProfileUserDetailsComponent } from './components/dashboard/profile-user-details/profile-user-details.component';
+import { IonicBadgesComponent } from './components/themes/ionic-badges/ionic-badges.component';
+import { IonicChipsComponent } from './components/themes/ionic-chips/ionic-chips.component';
+import { IonicFabsComponent } from './components/themes/ionic-fabs/ionic-fabs.component';
+import { IonicGesturesComponent } from './components/themes/ionic-gestures/ionic-gestures.component';
+import { IonicGridsComponent } from './components/themes/ionic-grids/ionic-grids.component';
+import { IonicListsComponent } from './components/themes/ionic-lists/ionic-lists.component';
+import { IonicRefresherComponent } from './components/themes/ionic-refresher/ionic-refresher.component';
+import { IonicInfiniteScrollComponent } from './components/themes/ionic-infinite-scroll/ionic-infinite-scroll.component';
+import { IonicModalsPopoversComponent } from './components/themes/ionic-modals-popovers/ionic-modals-popovers.component';
+import { IonicReorderComponent } from './components/themes/ionic-reorder/ionic-reorder.component';
+import { IonicSegmentsComponent } from './components/themes/ionic-segments/ionic-segments.component';
 
 
 const templates = [
@@ -22,6 +33,17 @@ const templates = [
   TeaserComingSoonComponent,
   FullWidthTitleComponent,
   ProfileUserDetailsComponent,
+  IonicBadgesComponent,
+  IonicChipsComponent,
+  IonicFabsComponent,
+  IonicGesturesComponent,
+  IonicGridsComponent,
+  IonicListsComponent,
+  IonicRefresherComponent,
+  IonicInfiniteScrollComponent,
+  IonicModalsPopoversComponent,
+  IonicReorderComponent,
+  IonicSegmentsComponent,
 ];
 
 @NgModule({

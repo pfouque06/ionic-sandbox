@@ -28,10 +28,16 @@ export class IonicMenuPage implements OnInit {
       title: 'chips'
     },
     {
-      topic: 'segment',
-      icon_name: 'code-working',
+      topic: 'fab',
+      icon_name: 'ellipsis-vertical-outline',
       icon_color: 'primary',
-      title: 'segment'
+      title: 'floating action button'
+    },
+    {
+      topic: 'gesture',
+      icon_name: 'move',
+      icon_color: 'primary',
+      title: 'gesture trials'
     },
     {
       topic: 'grids',
@@ -40,40 +46,22 @@ export class IonicMenuPage implements OnInit {
       title: 'grids'
     },
     {
-      topic: 'reorder',
-      icon_name: 'git-compare',
-      icon_color: 'primary',
-      title: 'reorder'
-    },
-    {
-      topic: 'fab',
-      icon_name: 'ellipsis-vertical-outline',
-      icon_color: 'primary',
-      title: 'floating action button'
-    },
-    {
       topic: 'list',
       icon_name: 'list',
       icon_color: 'primary',
       title: 'list'
     },
     {
-      topic: 'toolbar',
-      icon_name: 'menu',
+      topic: 'refresher',
+      icon_name: 'reload',
       icon_color: 'primary',
-      title: 'toolbar'
-    },
-    {
-      topic: 'nav',
-      icon_name: 'albums',
-      icon_color: 'primary',
-      title: 'nav'
+      title: 'list with Refresher'
     },
     {
       topic: 'infinite',
       icon_name: 'infinite',
       icon_color: 'primary',
-      title: 'infinite scroll'
+      title: 'list with infinite scroll'
     },
     {
       topic: 'modal',
@@ -82,10 +70,16 @@ export class IonicMenuPage implements OnInit {
       title: 'modal & popover'
     },
     {
-      topic: 'gesture',
-      icon_name: 'move',
+      topic: 'reorder',
+      icon_name: 'git-compare',
       icon_color: 'primary',
-      title: 'gesture trials'
+      title: 'reorder'
+    },
+    {
+      topic: 'segment',
+      icon_name: 'code-working',
+      icon_color: 'primary',
+      title: 'segment'
     }
   ];
 

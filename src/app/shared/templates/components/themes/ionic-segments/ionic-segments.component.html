@@ -1,0 +1,143 @@
+<ion-toolbar class="ion-padding-horizontal">
+  <ion-buttons slot="start">
+    <ion-back-button mode="ios" text="" color="primary" default-href="tabs/themes/ionic-menu"></ion-back-button>
+    <!-- <ion-icon name="code-working" color="primary" size="large"></ion-icon> -->
+  </ion-buttons>
+  <ion-title>Segment</ion-title>
+</ion-toolbar>
+<ion-grid>
+  <ion-row class="ion-justify-center">
+    <ion-col>
+      <ion-segment mode="ios" value="all">
+        <ion-segment-button value="all">
+          <ion-label>All</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="favorites">
+          <ion-label>Favorites</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+<ion-card>
+  <ion-list-header>Basic segment : Ios mode and preselection</ion-list-header>
+  <ion-segment mode="ios" (ionChange)='onSegmentChanged($event)' value="enemies">
+    <ion-segment-button value="friends">
+      <ion-label>Friends</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="enemies">
+      <ion-label>Enemies</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list-header>Disabled segment</ion-list-header>
+  <ion-segment mode="ios" (ionChange)="onSegmentChanged($event)" disabled value="sunny">
+    <ion-segment-button value="sunny">
+      <ion-label>Sunny</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="rainy">
+      <ion-label>Rainy</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <ion-list-header>Basic segment with Icons only</ion-list-header>
+  <ion-segment  mode="ios" (ionChange)="onSegmentChanged($event)" value="map">
+    <ion-segment-button value="call">
+      <ion-icon name="call"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="heart">
+      <ion-icon name="heart"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="map">
+      <ion-icon name="pin"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-segment mode="ios" (ionChange)="onSegmentChanged($event)" color="tertiary" value="favorite">
+    <ion-segment-button value="call">
+      <ion-label>Call</ion-label>
+      <ion-icon name="call"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="favorite">
+      <ion-label>Favorite</ion-label>
+      <ion-icon name="heart"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="map">
+      <ion-label>Map</ion-label>
+      <ion-icon name="pin"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-segment mode="ios" (ionChange)="onSegmentChanged($event)" color="success" value="call">
+    <ion-segment-button value="call" layout="icon-bottom">
+      <ion-icon name="call"></ion-icon>
+      <ion-label>Call</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="favorite" layout="icon-bottom">
+      <ion-icon name="heart"></ion-icon>
+      <ion-label>Favorite</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="map" layout="icon-bottom">
+      <ion-icon name="pin"></ion-icon>
+      <ion-label>Map</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list-header>Scrollable segment</ion-list-header>
+  <ion-segment mode="ios" scrollable value="heart">
+    <ion-segment-button value="home">
+      <ion-icon name="home"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="heart">
+      <ion-icon name="heart"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="pin">
+      <ion-icon name="pin"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="star">
+      <ion-icon name="star"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="call">
+      <ion-icon name="call"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="globe">
+      <ion-icon name="globe"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="basket">
+      <ion-icon name="basket"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <ion-list-header>basic segment with another color</ion-list-header>
+  <ion-segment mode="ios" (ionChange)="onSegmentChanged($event)" color="secondary" value="sat">
+    <ion-segment-button value="standard">
+      <ion-label>Standard</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="hybrid">
+      <ion-label>Hybrid</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="sat">
+      <ion-label>Satellite</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <ion-list-header>basic segment in a toolbar</ion-list-header>
+  <ion-toolbar>
+    <ion-segment mode="ios" (ionChange)="onSegmentChanged($event)" value="camera">
+      <ion-segment-button value="camera">
+        <ion-icon name="camera"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="bookmark">
+        <ion-icon name="bookmark"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  
+  <ion-list-header>Segment in Android look&feel : "md" mode</ion-list-header>
+  <ion-segment mode="md" (ionChange)="onSegmentChanged($event)" value="typescript">
+    <ion-segment-button value="typescript">
+      <ion-label>Typescript</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="j2ee">
+      <ion-label>Jave 2EE</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-card>

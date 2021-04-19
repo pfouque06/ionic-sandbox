@@ -1,0 +1,386 @@
+<ion-toolbar class="ion-padding-horizontal">
+  <ion-buttons slot="start">
+    <ion-back-button mode="ios" text="" color="primary" default-href="tabs/themes/ionic-menu"></ion-back-button>
+  </ion-buttons>
+  <ion-title>Grids</ion-title>
+</ion-toolbar>
+
+<ion-card>
+  <ion-list-header>Grid With default auto-layout Columns</ion-list-header>
+  <ion-grid class="grid-demo">
+    <ion-row>
+      <ion-col>
+        <div>
+          1 of 2
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          2 of 2
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>
+          1 of 3
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          2 of 3
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          3 of 3
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list-header>Grid With Columns set to specific sizes</ion-list-header>
+  <ion-grid class="grid-demo">
+    <ion-row>
+      <ion-col>
+        <div>
+          1 of 3
+        </div>
+      </ion-col>
+      <ion-col size="6">
+        <div>
+          2 of 3 <small>(size="6")</small>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          3 of 3
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        1 of 3
+      </ion-col>
+      <ion-col size="8">
+        2 of 3 <small>(size="8")</small>
+      </ion-col>
+      <ion-col>
+        3 of 3
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div>
+          1 of 3
+        </div>
+      </ion-col>
+      <ion-col size="10">
+        <div>
+          2 of 3 <small>(size="10")</small>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          3 of 3
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        1 of 6
+      </ion-col>
+      <ion-col>
+        2 of 6
+      </ion-col>
+      <ion-col size="3">
+        3 of 6 <small>(size="3")</small>
+      </ion-col>
+      <ion-col size="3">
+        4 of 6 <small>(size="3")</small>
+      </ion-col>
+      <ion-col>
+        5 of 6
+      </ion-col>
+      <ion-col>
+        6 of 6
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list-header>Grid With Variable-width Columns</ion-list-header>
+  <ion-grid class="grid-demo">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            1 of 3
+          </div>
+        </ion-col>
+        <ion-col size="auto">
+          <div>
+            Variable width content
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            3 of 3
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <div>
+            1 of 4
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            2 of 4
+          </div>
+        </ion-col>
+        <ion-col size="auto">
+          <div>
+            <ion-input placeholder="Variable width input"></ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div>
+            4 of 4
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-grid>
+
+  <ion-list-header>Grid With offset/moved Columns</ion-list-header>
+  <ion-grid class="grid-demo">
+    <ion-row>
+      <ion-col size="3">
+        <div>
+          A (offset 0)
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div>
+          B (offset 0)
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="3" offset="2">
+        <div>
+          A (offset 2)
+        </div>
+      </ion-col>
+      <ion-col size="3" offset="3">
+        <div>
+          B (offset 3)
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list-header>Grid With pushed/pulled reordered Columns</ion-list-header>
+  <ion-grid class="grid-demo">
+    <ion-row>
+      <ion-col size="9">
+        <div>
+          A
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div>
+          B
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="9" push="3">
+        <div>
+          A (push 3)
+        </div>
+      </ion-col>
+      <ion-col size="3" pull="9">
+        <div>
+          B (pull 3)
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list-header>Grid With Vertical aligned Columns</ion-list-header>
+  <ion-grid class="grid-demo">
+    <ion-row class="ion-align-items-start">
+      <ion-col>
+        <div>
+          1 of 4
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          2 of 4
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          3 of 4
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          4 of 4 <br>
+          # <br>
+          # <br>
+          #
+          align-items-start
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-center">
+      <ion-col>
+        <div>
+          1 of 4
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          2 of 4
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          3 of 4
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          4 of 4 <br>
+          # <br>
+          # <br>
+          #
+          align-items-center
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-align-items-end">
+      <ion-col>
+        <div>
+          1 of 4
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          2 of 4
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          3 of 4
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          4 of 4 <br>
+          # <br>
+          # <br>
+          #
+          align-items-end
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="grid-demo">
+    <ion-row>
+      <ion-col class="ion-align-self-start">
+        <div>
+          align-self-start
+        </div>
+      </ion-col>
+      <ion-col class="ion-align-self-center">
+        <div>
+          align-self-center
+        </div>
+      </ion-col>
+      <ion-col class="ion-align-self-end">
+        <div>
+          align-self-end
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          4 of 4 <br>
+          # <br>
+          # <br>
+          #
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list-header>Grid With Horizontal aligned Columns</ion-list-header>
+  <ion-grid class="grid-demo">
+    <ion-row class="ion-justify-content-start">
+      <ion-col size="3">
+        <div>
+          justify-content-start
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div>
+          2 of 2
+        </div>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3">
+        <div>
+          justify-content-center
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div>
+          2 of 2
+        </div>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row class="ion-justify-content-end">
+      <ion-col size="3">
+        <div>
+          justify-content-end
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div>
+          2 of 2
+        </div>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row class="ion-justify-content-around">
+      <ion-col size="3">
+        <div>
+          justify-content-around
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div>
+          2 of 2
+        </div>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="3">
+        <div>
+          justify-content-between
+        </div>
+      </ion-col>
+      <ion-col size="3">
+        <div>
+          2 of 2
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card>
