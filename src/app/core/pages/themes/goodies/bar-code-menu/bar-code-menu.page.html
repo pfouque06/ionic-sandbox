@@ -21,7 +21,7 @@
     <ion-card-content>
       <code><strong>JsBarcode</strong></code> generator is a are pure JS Bar Code library, while <code><strong>ngx-barcode-scanner</strong></code> is a ng component based on <code><strong>QuaggaJS</strong></code> barcode scanner.
 
-      <mat-tab-group animationDuration="250" (selectedTabChange)="onTabChanged($event);">
+      <mat-tab-group animationDuration="250" [selectedIndex]="MatTabIndex" (selectedTabChange)="onTabChanged($event);">
 
         <mat-tab label="Example">
           <div class="tab-content">

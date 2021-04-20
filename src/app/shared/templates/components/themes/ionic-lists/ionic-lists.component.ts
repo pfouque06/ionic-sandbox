@@ -56,12 +56,10 @@ export class IonicListsComponent implements OnInit {
 
   public doRefresh(event) {
     // console.log('--> Start refresh', event);
-    console.log('--> Start refresh');
     // setTimeout(() => { event.target.complete(); }, 2000);
     this.fetchRandomUsers(REFRESH_ITEMS_SIZE).subscribe({
       next: (results) => {
         this.randomUsers = [ ...results, ...this.randomUsers].slice(0, MAX_ITEMS_PER_PAGE);
-        console.log('--> Refresh has ended');
         event.target.complete();
       },
       error: _ => console.log('https://randomuser.me/api fetch error'),
@@ -84,10 +82,14 @@ export class IonicListsComponent implements OnInit {
       this.frameList.closeSlidingItems();
     }
   }
-
+  
   public trash(index: number) {
     // console.log('trash()', index);
-    if (index > -1) { this.randomUsers.splice(index, 1); }
+    if (index > -1) {
+      const user = this.randomUsers[index];
+      this.randomUsers.splice(index, 1);
+      this.UITooling.fireAlert(`Removing user:\n${user.name.title} ${user.name.first} ${user.name.last}`);
+    }
   }
 
   // public scrollUp(event) {

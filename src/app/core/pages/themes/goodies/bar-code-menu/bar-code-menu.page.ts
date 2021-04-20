@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterViewInit, Component, OnInit, ElementRef, ViewChild, ChangeDetectorRef, OnDestroy, ViewChildren, QueryList } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { MatTabChangeEvent } from '@angular/material/tabs';
+import { MatTab, MatTabChangeEvent } from '@angular/material/tabs';
 import * as JsBarcode from 'jsbarcode';
 import { BarcodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
 import { QuaggaJSResultObject } from '@ericblade/quagga2';
@@ -15,6 +15,11 @@ export const JSBARCODE_OPTIONS = { width: 1, fontSize: 12, };
   styleUrls: ['./bar-code-menu.page.scss'],
 })
 export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
+
+  // tab Index
+  public providedMatTabLabel: string;
+  public MatTabIndex: number;
+  @ViewChildren(MatTab) matTabs: QueryList<MatTab>;
 
   // Sampler
   public barCodeSample = 'https://ionic.demo.pfouque.fr';
@@ -34,8 +39,9 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   // ngx-barcode-scanner
   @ViewChild(BarcodeScannerLivestreamComponent) public barcodeScanner: BarcodeScannerLivestreamComponent;
 
-  constructor( private platform: Platform, private router: Router, private ref: ChangeDetectorRef ) {
-    console.log('themes/goodies/barcode');
+  constructor(private route: ActivatedRoute, private platform: Platform, private router: Router, private ref: ChangeDetectorRef ) {
+    this.providedMatTabLabel = this.route.snapshot.params?.tab;
+    console.log(`themes/goodies/barcode${this.providedMatTabLabel ? `/${this.providedMatTabLabel}` : ''}`);
     const isInStandAloneMode = () => 'standalone' in window.navigator && window.navigator['standalone'];
     if (this.platform.is('ios') && isInStandAloneMode()) { console.log('I am a PWA iOS !'); }
   }
@@ -51,6 +57,8 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
     JsBarcode(this.barCodeInputSVG.nativeElement, this.BarCodeInput, JSBARCODE_OPTIONS);
     // Scanner
     JsBarcode(this.barCodeScanSVG.nativeElement, this.barCodeValue, JSBARCODE_OPTIONS);
+    // Tab selector
+    this.MatTabIndex = this.matTabs.find((matTab) => this.providedMatTabLabel === matTab.textLabel)?.position;
   }
 
   public ngOnDestroy() {
@@ -105,7 +113,7 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
     this.scanFound = true;
     this.barCodeValue = barCode.codeResult.code;
     this.barCodeFormat = barCode.codeResult.format;
-    if (this.barCodeValue) { 
+    if (this.barCodeValue) {
       JsBarcode(this.barCodeScanSVG.nativeElement, this.barCodeValue, JSBARCODE_OPTIONS);
       console.log(`--> found: ${this.barCodeValue} [format: ${this.barCodeFormat}]`);
     }

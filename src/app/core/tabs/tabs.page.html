@@ -37,11 +37,11 @@
     <ion-fab-button [color]="ping? isLogged? 'light':'medium' :'danger'" (click)='profileToggle()' [disabled]="!ping" [title]="isLogged? 'Profile':'Register'">
       <ion-icon [name]="isLogged?'person-outline':'person-add-outline'" [color]="ping? isLogged? 'medium':'light' :'light'" size="large"></ion-icon>
     </ion-fab-button>
-    <ion-fab-button color="light" (click)='codeBarScan()'>
-      <ion-icon name="barcode-outline" color="medium" size="large"></ion-icon>
-    </ion-fab-button>
     <ion-fab-button color="light" (click)='QRCodeScan()'>
       <ion-icon name="scan-circle-outline" color="medium" size="large"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="light" (click)='codeBarScan()'>
+      <ion-icon name="barcode-outline" color="medium" size="large"></ion-icon>
     </ion-fab-button>
     <!-- <ion-fab-button color="light" (click)='Geolocation()'>
       <ion-icon name="locate" color="medium" size="large"></ion-icon>

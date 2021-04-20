@@ -129,21 +129,21 @@ export class TabsPage {
   //   });
   // }
 
-  public codeBarScan() {
-    const message = `codeBarScan().isLogged: ${this.isLogged}`;
-    console.log(message);
-    this.UITooling.fireAlert(message,'warning');
+  public QRCodeScan() {
+    const message = `Get Ready to Scan ...`;
+    this.UITooling.fireAlert(message, 'info');
+    this.navCtrl.navigateForward(['/tabs/themes/qrcode-menu/Scan']);
   }
 
-  public QRCodeScan() {
-    const message = `QRCodeScan().isLogged: ${this.isLogged}`;
-    console.log(message);
-    this.UITooling.fireAlert(message,'dark');
+  public codeBarScan() {
+    const message = `Get Ready to Scan ...`;
+    this.UITooling.fireAlert(message, 'info');
+    this.navCtrl.navigateForward(['/tabs/themes/barcode-menu/Scan']);
   }
 
   public Geolocation() {
     const message = `Geolocation().isLogged: ${this.isLogged}`;
     console.log(message);
-    this.UITooling.fireAlert(message,'medium');
+    this.UITooling.fireAlert(message, 'medium');
   }
 }

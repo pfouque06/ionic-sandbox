@@ -1,6 +1,6 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatTabChangeEvent } from '@angular/material/tabs';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild, OnDestroy, ViewChildren, QueryList } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatTab, MatTabChangeEvent } from '@angular/material/tabs';
 import { Platform } from '@ionic/angular';
 import jsQR from 'jsqr';
 
@@ -12,6 +12,11 @@ export const QRCODE_SCAN_PAGE = '/tabs/themes/qrcode-menu';
   styleUrls: ['./qrcode-menu.page.scss'],
 })
 export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
+
+  // tab Index
+  public providedMatTabLabel: string;
+  public MatTabIndex: number;
+  @ViewChildren(MatTab) matTabs: QueryList<MatTab>;
 
   // Generator
   public QRCodeInput: string;
@@ -28,8 +33,9 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   public canvasElement: any;
   public canvasContext: any;
 
-  constructor( private platform: Platform, private router: Router, private ref: ChangeDetectorRef ) {
-    console.log('themes/goodies/qrcode');
+  constructor(private route: ActivatedRoute, private platform: Platform, private router: Router, private ref: ChangeDetectorRef ) {
+    this.providedMatTabLabel = this.route.snapshot.params?.tab;
+    console.log(`themes/goodies/qrcode${this.providedMatTabLabel ? `/${this.providedMatTabLabel}` : ''}`);
     const isInStandAloneMode = () => 'standalone' in window.navigator && window.navigator['standalone'];
     if (this.platform.is('ios') && isInStandAloneMode()) { console.log('I am a PWA iOS !'); }
   }
@@ -39,9 +45,12 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngAfterViewInit() {
+    // Scanner
     this.videoElement = this.video.nativeElement;
     this.canvasElement = this.canvas.nativeElement;
     this.canvasContext  = this.canvasElement.getContext('2d');
+    // Tab selector
+    this.MatTabIndex = this.matTabs.find((matTab) => this.providedMatTabLabel === matTab.textLabel)?.position;
   }
 
   public ngOnDestroy() {
