@@ -12,29 +12,43 @@
       <h1>List of random users with ion-item-sliding</h1>
     </ion-list-header>
 
-    <!-- <ion-item-sliding *ngFor="let user of (randomUsers$ | async).results; last as isLast"> -->
-    <ion-item-sliding *ngFor="let user of randomUsers; index as index; last as isLast">
-      <ion-item-options side="start">
-        <ion-item-option (click)="copy(index)">
-          <ion-icon slot="icon-only" name="copy"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-      <ion-item [lines]="isLast ? 'none' : 'inset'">
-        <ion-avatar slot="start">
-          <img [src]="user.picture.large">
-        </ion-avatar>
+    <div *ngIf="! randomUsers || randomUsers.length === 0; else appear">
+      <ion-item *ngFor="let skeleton of skeletons; index as index; last as isLast" [lines]="isLast ? 'none' : 'inset'">
+        <ion-avatar slot="start"><ion-skeleton-text></ion-skeleton-text></ion-avatar>
         <ion-label>
-          <h2>{{user.name.first}} {{user.name.last}}</h2>
-          <h3>{{user.email}}</h3>
+          <h2><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h2>
+          <h3><ion-skeleton-text animated style="width: 70%"></ion-skeleton-text></h3>
         </ion-label>
-        <ion-icon slot='end' [name]="user.gender"></ion-icon>
       </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option (click)="trash(index)" color="danger">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
+    </div>
+    
+    <ng-template #appear>
+      <!-- <ion-item-sliding *ngFor="let user of (randomUsers$ | async).results; last as isLast"> -->
+      <ion-item-sliding *ngFor="let user of randomUsers; index as index; last as isLast">
+        <ion-item-options side="start">
+          <ion-item-option (click)="copy(index)">
+            <ion-icon slot="icon-only" name="copy"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+        <ion-item [lines]="isLast ? 'none' : 'inset'">
+          <ion-avatar slot="start">
+            <img [src]="user.picture.large">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{user.name.first}} {{user.name.last}}</h2>
+            <h3>{{user.email}}</h3>
+          </ion-label>
+          <ion-icon slot='end' [name]="user.gender"></ion-icon>
+        </ion-item>
+        
+        <ion-item-options side="end">
+          <ion-item-option (click)="trash(index)" color="danger">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ng-template>
 
   </ion-list>
 </ion-card>
