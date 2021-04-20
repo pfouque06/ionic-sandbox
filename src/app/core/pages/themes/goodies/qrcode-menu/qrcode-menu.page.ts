@@ -29,6 +29,7 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   public canvasContext: any;
 
   constructor( private platform: Platform, private router: Router, private ref: ChangeDetectorRef ) {
+    console.log('themes/goodies/qrcode');
     const isInStandAloneMode = () => 'standalone' in window.navigator && window.navigator['standalone'];
     if (this.platform.is('ios') && isInStandAloneMode()) { console.log('I am a PWA iOS !'); }
   }
@@ -44,18 +45,17 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    this.releaseVideo();
+    this.stopScan();
   }
 
   public async startScan() {
-    console.log('startScan()');
-
+    // console.log('--> startScan()');
     // reset Scan
     this.resetScan();
 
     // start video stream
     if ( ! this.videoElement?.srcObject) {
-      console.log('fetching new video stream from Navigator');
+      // console.log('fetching new video stream from Navigator');
       this.videoElement = this.video.nativeElement;
       const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }});
       this.videoElement.srcObject = stream;
@@ -67,12 +67,13 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
     // start scanning process
     requestAnimationFrame(this.scan.bind(this));
     this.scanActive = true;
+    console.log('--> QRCode scan started');
   }
 
   public async scan() {
-    // check that active page is still this one and stop, release video if not the case
+    // check that active page is still this one and stop, release video back media streams to navigator if not the case
     if ( this.router.url !== this.pageUrl) {
-      console.log(`scan() - url has moved to ${this.router.url}, stopping worthless scan and release back media streams to navigator!`);
+      // console.log(`scan() -> page url has moved out to ${this.router.url}!`);
       this.stopScan();
     }
 
@@ -104,7 +105,7 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public resetScan() {
-    console.log('resetScan()');
+    // console.log('--> reset Scanner');
     this.scanFound = false;
     this.videoElement = null;
     // refresh page
@@ -113,23 +114,24 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
 
   public stopScan() {
     if (this.scanActive) {
-      console.log('stopScan()');
+      // console.log('stopScan()');
       this.pauseVideo();
       this.releaseVideo();
+      console.log('--> QRCode scan stopped');
       // refresh page
       // this.ref.markForCheck();
     }
   }
 
   public pauseVideo() {
-    console.log('pauseVideo()');
+    // console.log('--> pause Video');
     this.scanActive = false;
     this.videoElement.pause();
   }
 
   public releaseVideo() {
-    console.log('releaseVideo()');
     if ( this.videoElement.srcObject ) {
+      // console.log('--> release Video');
       // stop stream's tracks
       this.videoElement.srcObject.getTracks().forEach( (track) => track.stop() );
       // release media stream to navigator
@@ -139,15 +141,16 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public getScanResult(qrCode: string) {
-    console.log(`getScanResult(${qrCode})`);
+    // console.log(`getScanResult(${qrCode})`);
     this.scanFound = true;
     this.QRCode = qrCode;
+    console.log(`--> found: ${this.QRCode}`);
   }
 
   public onTabChanged($event: MatTabChangeEvent) {
     const SelectedTabIndex = $event.index;
     const SelectedTabLabel = $event.tab.textLabel;
-    console.log(`onTabChanged(${SelectedTabIndex}, ${SelectedTabLabel})`);
+    // console.log(`onTabChanged(${SelectedTabIndex}, ${SelectedTabLabel})`);
     if ( SelectedTabLabel !== 'Scan' ) {
       if ( this.scanFound ) { this.pauseVideo();}
       else { this.stopScan(); }

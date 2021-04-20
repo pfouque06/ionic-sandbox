@@ -83,7 +83,7 @@ export class IonicMenuPage implements OnInit {
     }
   ];
 
-  constructor(public nav: NavController) { }
+  constructor(public nav: NavController) { console.log('themes/frameworks/ionic'); }
 
   ngOnInit() {
   }

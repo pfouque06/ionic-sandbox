@@ -53,7 +53,7 @@ export class MaterialsMenuPage implements OnInit {
     }
   ];
 
-  constructor(public nav: NavController) { }
+  constructor(public nav: NavController) { console.log('themes/frameworks/material'); }
 
   ngOnInit() {
   }

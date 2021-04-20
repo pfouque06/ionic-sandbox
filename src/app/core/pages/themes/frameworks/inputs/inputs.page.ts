@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputsPage implements OnInit {
 
-  constructor() { }
+  constructor() { console.log('themes/frameworks/inputs'); }
 
   ngOnInit() {
   }

@@ -35,6 +35,7 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(BarcodeScannerLivestreamComponent) public barcodeScanner: BarcodeScannerLivestreamComponent;
 
   constructor( private platform: Platform, private router: Router, private ref: ChangeDetectorRef ) {
+    console.log('themes/goodies/barcode');
     const isInStandAloneMode = () => 'standalone' in window.navigator && window.navigator['standalone'];
     if (this.platform.is('ios') && isInStandAloneMode()) { console.log('I am a PWA iOS !'); }
   }
@@ -62,18 +63,18 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public onValueChanges(result: QuaggaJSResultObject) {
-    console.log('onValueChanges():', result.codeResult.code, result.codeResult.format);
+    // console.log('onValueChanges():', result.codeResult.code, result.codeResult.format);
     this.getScanResult(result);
     this.stopScan();
   }
 
   public onStarted(isStarted: boolean) {
     this.scanActive = isStarted;
-    console.log(`--> scan ${this.scanActive ? 'started' : 'stopped'}`);
+    console.log(`--> BarCode scan ${this.scanActive ? 'started' : 'stopped'}`);
   }
 
   public async startScan() {
-    console.log('startScan()');
+    // console.log('startScan()');
     // reset Scan
     this.resetScan();
     // ngx-barcode-scanner
@@ -81,7 +82,7 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public resetScan() {
-    console.log('resetScan()');
+    // console.log('resetScan()');
     this.scanFound = false;
     this.barCodeValue = this.barCodeFormat = null;
     // refresh page
@@ -90,7 +91,7 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
 
   public stopScan() {
     if (this.scanActive) {
-      console.log('stopScan()');
+      // console.log('stopScan()');
       this.scanActive = false;
       // ngx-barcode-scanner
       this.barcodeScanner.stop();
@@ -100,7 +101,7 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public getScanResult(barCode: QuaggaJSResultObject) {
-    console.log(`getScanResult()`);
+    // console.log(`getScanResult()`);
     this.scanFound = true;
     this.barCodeValue = barCode.codeResult.code;
     this.barCodeFormat = barCode.codeResult.format;
@@ -113,7 +114,7 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   public onTabChanged($event: MatTabChangeEvent) {
     const SelectedTabIndex = $event.index;
     const SelectedTabLabel = $event.tab.textLabel;
-    console.log(`onTabChanged(${SelectedTabIndex}, ${SelectedTabLabel})`);
+    // console.log(`onTabChanged(${SelectedTabIndex}, ${SelectedTabLabel})`);
     if ( SelectedTabLabel !== 'Scan' ) { this.stopScan(); }
   }
 }
