@@ -12,6 +12,11 @@
       <h3>List of random users</h3>
     </ion-list-header>
     
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <!-- <ion-refresher-content pulling-icon="lines" refreshingSpinner="lines"></ion-refresher-content> -->
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
     <div class="list-wrapper">
       <div *ngIf="! randomUsers || randomUsers.length === 0; else appear">
         <ion-item *ngFor="let skeleton of skeletons; index as index; last as isLast" [lines]="isLast ? 'none' : 'inset'">
@@ -24,11 +29,6 @@
       </div>
       
       <ng-template #appear>
-        <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-          <!-- <ion-refresher-content pulling-icon="lines" refreshingSpinner="lines"></ion-refresher-content> -->
-          <ion-refresher-content></ion-refresher-content>
-        </ion-refresher>
-  
         <!-- <ion-infinite-scroll position = "top" threshold="50px" (ionInfinite)="scrollUp($event)">
           <ion-infinite-scroll-content
             loadingSpinner="bubbles"
