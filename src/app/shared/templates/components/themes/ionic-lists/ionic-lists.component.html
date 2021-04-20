@@ -7,48 +7,69 @@
 </ion-toolbar>
 <ion-card>
   <ion-list #frameList>
-
+  
     <ion-list-header>
-      <h1>List of random users with ion-item-sliding</h1>
+      <h3>List of random users</h3>
     </ion-list-header>
-
-    <div *ngIf="! randomUsers || randomUsers.length === 0; else appear">
-      <ion-item *ngFor="let skeleton of skeletons; index as index; last as isLast" [lines]="isLast ? 'none' : 'inset'">
-        <ion-avatar slot="start"><ion-skeleton-text></ion-skeleton-text></ion-avatar>
-        <ion-label>
-          <h2><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h2>
-          <h3><ion-skeleton-text animated style="width: 70%"></ion-skeleton-text></h3>
-        </ion-label>
-      </ion-item>
-    </div>
     
-    <ng-template #appear>
-      <!-- <ion-item-sliding *ngFor="let user of (randomUsers$ | async).results; last as isLast"> -->
-      <ion-item-sliding *ngFor="let user of randomUsers; index as index; last as isLast">
-        <ion-item-options side="start">
-          <ion-item-option (click)="copy(index)">
-            <ion-icon slot="icon-only" name="copy"></ion-icon>
-          </ion-item-option>
-        </ion-item-options>
-
-        <ion-item [lines]="isLast ? 'none' : 'inset'">
-          <ion-avatar slot="start">
-            <img [src]="user.picture.large">
-          </ion-avatar>
+    <div class="list-wrapper">
+      <div *ngIf="! randomUsers || randomUsers.length === 0; else appear">
+        <ion-item *ngFor="let skeleton of skeletons; index as index; last as isLast" [lines]="isLast ? 'none' : 'inset'">
+          <ion-avatar slot="start"><ion-skeleton-text></ion-skeleton-text></ion-avatar>
           <ion-label>
-            <h2>{{user.name.first}} {{user.name.last}}</h2>
-            <h3>{{user.email}}</h3>
+            <h2><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h2>
+            <h3><ion-skeleton-text animated style="width: 70%"></ion-skeleton-text></h3>
           </ion-label>
-          <ion-icon slot='end' [name]="user.gender"></ion-icon>
         </ion-item>
-        
-        <ion-item-options side="end">
-          <ion-item-option (click)="trash(index)" color="danger">
-            <ion-icon slot="icon-only" name="trash"></ion-icon>
-          </ion-item-option>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ng-template>
+      </div>
+      
+      <ng-template #appear>
+        <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+          <!-- <ion-refresher-content pulling-icon="lines" refreshingSpinner="lines"></ion-refresher-content> -->
+          <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
+  
+        <!-- <ion-infinite-scroll position = "top" threshold="50px" (ionInfinite)="scrollUp($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Scrolling up…">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll> -->
+
+        <!-- <ion-item-sliding *ngFor="let user of (randomUsers$ | async).results; last as isLast"> -->
+        <ion-item-sliding *ngFor="let user of randomUsers; index as index; last as isLast">
+          <ion-item-options side="start">
+            <ion-item-option (click)="copy(index)">
+              <ion-icon slot="icon-only" name="copy"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+  
+          <ion-item [lines]="isLast ? 'none' : 'inset'">
+            <ion-avatar slot="start">
+              <img [src]="user.picture.large">
+            </ion-avatar>
+            <ion-label>
+              <h2>{{user.name.first}} {{user.name.last}}</h2>
+              <h3>{{user.email}}</h3>
+            </ion-label>
+            <ion-icon slot='end' [name]="user.gender"></ion-icon>
+          </ion-item>
+  
+          <ion-item-options side="end">
+            <ion-item-option (click)="trash(index)" color="danger">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+
+        <!-- <ion-infinite-scroll threshold="50px"  (ionInfinite)="scrollDown($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Scrolling down...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll> -->
+      </ng-template>
+    </div>
 
   </ion-list>
 </ion-card>

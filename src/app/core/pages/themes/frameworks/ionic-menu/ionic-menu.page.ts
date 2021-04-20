@@ -52,18 +52,6 @@ export class IonicMenuPage implements OnInit {
       title: 'list'
     },
     {
-      topic: 'refresher',
-      icon_name: 'reload',
-      icon_color: 'primary',
-      title: 'list with Refresher'
-    },
-    {
-      topic: 'infinite',
-      icon_name: 'infinite',
-      icon_color: 'primary',
-      title: 'list with infinite scroll'
-    },
-    {
       topic: 'modal',
       icon_name: 'duplicate',
       icon_color: 'primary',

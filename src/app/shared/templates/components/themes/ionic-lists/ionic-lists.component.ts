@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IonList } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { flatMap, map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { UIToolingService } from './../../../../services/UITooling.service';
 
 export type randomUserType = {
@@ -25,6 +24,8 @@ export type randomUserTypeResult = {
   info: any
 };
 
+export const MAX_ITEMS_PER_PAGE = 10;
+export const REFRESH_ITEMS_SIZE = 5;
 @Component({
   selector: 'app-ionic-lists',
   templateUrl: './ionic-lists.component.html',
@@ -32,22 +33,40 @@ export type randomUserTypeResult = {
 })
 export class IonicListsComponent implements OnInit {
 
+  public skeletons = new Array<number>(5);
   // public randomUsers$: Observable<randomUserType[]>;
   public randomUsers: randomUserType[] = [];
   @ViewChild('frameList', { read: IonList }) public frameList: IonList;
-  public skeletons = new Array<number>(5);
 
   constructor(public http: HttpClient, private UITooling: UIToolingService) {
     // this.randomUsers$ =
-    this.http.get<randomUserTypeResult>('https://randomuser.me/api/?inc=gender,name,nat,email,picture&results=5', { responseType: 'json'})
-      .pipe(map((r) => r.results))
-      .subscribe({
-        next: (results) => this.randomUsers = results,
-        error: _ => console.log('https://randomuser.me/api fetch error')
-      });
+    this.fetchRandomUsers(MAX_ITEMS_PER_PAGE).subscribe({
+      next: (results) => this.randomUsers = results,
+      error: _ => console.log('https://randomuser.me/api fetch error')
+    });
   }
 
   ngOnInit() { }
+
+  private fetchRandomUsers(size: number) {
+    return this.http.get<randomUserTypeResult>(
+      `https://randomuser.me/api/?inc=gender,name,nat,email,picture&results=${size}`, { responseType: 'json'})
+      .pipe(map((r) => r.results));
+  }
+
+  public doRefresh(event) {
+    // console.log('--> Start refresh', event);
+    console.log('--> Start refresh');
+    // setTimeout(() => { event.target.complete(); }, 2000);
+    this.fetchRandomUsers(REFRESH_ITEMS_SIZE).subscribe({
+      next: (results) => {
+        this.randomUsers = [ ...results, ...this.randomUsers].slice(0, MAX_ITEMS_PER_PAGE);
+        console.log('--> Refresh has ended');
+        event.target.complete();
+      },
+      error: _ => console.log('https://randomuser.me/api fetch error'),
+    });
+  }
 
   public async copy(index: number) {
     // console.log('copy()', index);
@@ -70,4 +89,14 @@ export class IonicListsComponent implements OnInit {
     // console.log('trash()', index);
     if (index > -1) { this.randomUsers.splice(index, 1); }
   }
+
+  // public scrollUp(event) {
+  //   console.log('--> scrollUp()', event);
+  //   setTimeout(() => { event.target.complete(); }, 2000);
+  // }
+
+  // public scrollDown(event) {
+  //   console.log('--> scrollDown()', event);
+  //   setTimeout(() => { event.target.complete(); }, 2000);
+  // }
 }
