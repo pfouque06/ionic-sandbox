@@ -16,8 +16,8 @@ import { IonicChipsComponent } from './components/themes/ionic-chips/ionic-chips
 import { IonicFabsComponent } from './components/themes/ionic-fabs/ionic-fabs.component';
 import { IonicGesturesComponent } from './components/themes/ionic-gestures/ionic-gestures.component';
 import { IonicGridsComponent } from './components/themes/ionic-grids/ionic-grids.component';
+import { IonicInputsComponent } from './components/themes/ionic-inputs/ionic-inputs.component';
 import { IonicListsComponent } from './components/themes/ionic-lists/ionic-lists.component';
-import { IonicRefresherComponent } from './components/themes/ionic-refresher/ionic-refresher.component';
 import { IonicInfiniteScrollComponent } from './components/themes/ionic-infinite-scroll/ionic-infinite-scroll.component';
 import { IonicModalsPopoversComponent } from './components/themes/ionic-modals-popovers/ionic-modals-popovers.component';
 import { IonicReorderComponent } from './components/themes/ionic-reorder/ionic-reorder.component';
@@ -38,8 +38,8 @@ const templates = [
   IonicFabsComponent,
   IonicGesturesComponent,
   IonicGridsComponent,
+  IonicInputsComponent,
   IonicListsComponent,
-  IonicRefresherComponent,
   IonicInfiniteScrollComponent,
   IonicModalsPopoversComponent,
   IonicReorderComponent,

@@ -75,17 +75,22 @@ export class ThemesPage {
           icon: 'logo-angular',
           link: '/tabs/themes/materials-menu',
         },
-        {
-          label: 'Inputs bench',
-          icon: 'color-palette',
-          link: '/tabs/themes/inputs',
-        },
+        // {
+        //   label: 'Inputs bench',
+        //   icon: 'color-palette',
+        //   link: '/tabs/themes/inputs',
+        // },
       ],
     },
     {
-      label: 'My Customs ...',
+      label: 'My templates',
       icon: 'color-palette',
       submenu: [
+        {
+          label: 'Gesture handler',
+          icon: 'videocam',
+          link: '/tabs/themes/my-gesture-handler',
+        },
         {
           label: 'Recursive Menu',
           icon: 'ellipsis-vertical',
@@ -123,11 +128,11 @@ export class ThemesPage {
               ]
             }
           ]
-        }
+        },
       ]
     }
   ];
- 
+
   constructor(private menuCtl: MenuController, private UITooling: UIToolingService ) { console.log('themes'); }
 
   async ionViewWillEnter() {

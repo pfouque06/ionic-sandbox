@@ -161,9 +161,8 @@ export class QRCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
     const SelectedTabLabel = $event.tab.textLabel;
     // console.log(`onTabChanged(${SelectedTabIndex}, ${SelectedTabLabel})`);
     if ( SelectedTabLabel !== 'Scan' ) {
-      if ( this.scanFound ) { this.pauseVideo();}
+      if ( this.scanFound ) { this.pauseVideo(); }
       else { this.stopScan(); }
     }
   }
-
 }

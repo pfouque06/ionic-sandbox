@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { InputsPageRoutingModule } from './inputs-routing.module';
-import { InputsPage } from './inputs.page';
+import { MyGestureHandlerPageRoutingModule } from './my-gesture-handler-routing.module';
+import { MyGestureHandlerPage } from './my-gesture-handler.page';
 
 @NgModule({
   imports: [
@@ -13,8 +13,8 @@ import { InputsPage } from './inputs.page';
     FormsModule,
     IonicModule,
     SharedModule,
-    InputsPageRoutingModule
+    MyGestureHandlerPageRoutingModule
   ],
-  declarations: [InputsPage]
+  declarations: [MyGestureHandlerPage]
 })
-export class InputsPageModule {}
+export class MyGestureHandlerPageModule {}

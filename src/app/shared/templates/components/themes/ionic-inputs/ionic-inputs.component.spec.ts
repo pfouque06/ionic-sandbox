@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { IonicRefresherComponent } from './ionic-refresher.component';
+import { IonicInputsComponent } from './ionic-inputs.component';
 
-describe('IonicRefresherComponent', () => {
-  let component: IonicRefresherComponent;
-  let fixture: ComponentFixture<IonicRefresherComponent>;
+describe('IonicInputsComponent', () => {
+  let component: IonicInputsComponent;
+  let fixture: ComponentFixture<IonicInputsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IonicRefresherComponent ],
+      declarations: [ IonicInputsComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(IonicRefresherComponent);
+    fixture = TestBed.createComponent(IonicInputsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

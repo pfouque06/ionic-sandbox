@@ -34,10 +34,10 @@ export class IonicMenuPage implements OnInit {
       title: 'floating action button'
     },
     {
-      topic: 'gesture',
+      topic: 'gestures',
       icon_name: 'move',
       icon_color: 'primary',
-      title: 'gesture trials'
+      title: 'gestures'
     },
     {
       topic: 'grids',
@@ -46,17 +46,24 @@ export class IonicMenuPage implements OnInit {
       title: 'grids'
     },
     {
-      topic: 'list',
-      icon_name: 'list',
+      topic: 'inputs',
+      icon_name: 'options',
+      // icon_name: 'toggle',
       icon_color: 'primary',
-      title: 'list'
+      title: 'inputs'
     },
     {
-      topic: 'modal',
-      icon_name: 'duplicate',
+      topic: 'lists',
+      icon_name: 'list',
       icon_color: 'primary',
-      title: 'modal & popover'
+      title: 'lists'
     },
+    // {
+    //   topic: 'modal',
+    //   icon_name: 'duplicate',
+    //   icon_color: 'primary',
+    //   title: 'modal & popover'
+    // },
     {
       topic: 'reorder',
       icon_name: 'git-compare',
@@ -64,10 +71,10 @@ export class IonicMenuPage implements OnInit {
       title: 'reorder'
     },
     {
-      topic: 'segment',
+      topic: 'segments',
       icon_name: 'code-working',
       icon_color: 'primary',
-      title: 'segment'
+      title: 'segments'
     }
   ];
 

@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { InputsPage } from './inputs.page';
+import { MyGestureHandlerPage } from './my-gesture-handler.page';
 
-describe('InputsPage', () => {
-  let component: InputsPage;
-  let fixture: ComponentFixture<InputsPage>;
+describe('MyGestureHandlerPage', () => {
+  let component: MyGestureHandlerPage;
+  let fixture: ComponentFixture<MyGestureHandlerPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputsPage ],
+      declarations: [ MyGestureHandlerPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(InputsPage);
+    fixture = TestBed.createComponent(MyGestureHandlerPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

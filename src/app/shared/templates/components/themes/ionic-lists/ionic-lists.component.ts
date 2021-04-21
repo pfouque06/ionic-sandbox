@@ -40,7 +40,7 @@ export class IonicListsComponent implements OnInit {
 
   constructor(public http: HttpClient, private UITooling: UIToolingService) {
     // this.randomUsers$ =
-    this.fetchRandomUsers(MAX_ITEMS_PER_PAGE).subscribe({
+    this.fetchRandomUsers(REFRESH_ITEMS_SIZE).subscribe({
       next: (results) => this.randomUsers = results,
       error: _ => console.log('https://randomuser.me/api fetch error')
     });
