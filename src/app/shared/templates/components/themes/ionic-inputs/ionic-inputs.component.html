@@ -150,12 +150,12 @@
     </ion-list-header>
     
     <ion-item lines="full">
-      <ion-toggle #toggleID [(ngModel)]="toggleState" color="primary" (ionChange)="onToggleChange($event)"></ion-toggle>
-      <ion-label>toggle is {{toggleState? 'checked' : 'unchecked'}}</ion-label>
+      <ion-toggle slot="start" [(ngModel)]="toggleState" color="primary" (ionChange)="onToggleChange($event)"></ion-toggle>
+      <ion-label class="toggleLabel">toggle is {{toggleState? 'checked' : 'unchecked'}}</ion-label>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-checkbox #checkBoxID [(ngModel)]="checkboxState" color="primary" unchecked slot="start" (ionChange)="onCheckboxChange($event)"></ion-checkbox>
+      <ion-checkbox slot="start" [(ngModel)]="checkboxState" color="primary" (ionChange)="onCheckboxChange($event)"></ion-checkbox>
       <ion-label>checkbox is {{checkboxState? 'checked' : 'unchecked'}}</ion-label>
     </ion-item>
 

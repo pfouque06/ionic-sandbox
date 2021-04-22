@@ -41,7 +41,7 @@ export class IonicInputsComponent implements OnInit, AfterViewInit {
 // picker
   public multiColumnOptions = multiColumnOptions;
   // toggle
-  public toggleState = true;
+  public toggleState = false;
   // checkbox
   public checkboxState = true;
   // radio group
