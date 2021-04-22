@@ -11,6 +11,7 @@ import { TeaserBetaVersionComponent } from './components/custom/teaser-beta-vers
 import { TeaserComingSoonComponent } from './components/custom/teaser-coming-soon/teaser-coming-soon.component';
 import { FullWidthTitleComponent } from './components/custom/full-width-title/full-width-title.component';
 import { ProfileUserDetailsComponent } from './components/dashboard/profile-user-details/profile-user-details.component';
+import { IonicAnimationsComponent } from './components/themes/ionic-animations/ionic-animations.component';
 import { IonicBadgesComponent } from './components/themes/ionic-badges/ionic-badges.component';
 import { IonicChipsComponent } from './components/themes/ionic-chips/ionic-chips.component';
 import { IonicFabsComponent } from './components/themes/ionic-fabs/ionic-fabs.component';
@@ -33,6 +34,7 @@ const templates = [
   TeaserComingSoonComponent,
   FullWidthTitleComponent,
   ProfileUserDetailsComponent,
+  IonicAnimationsComponent,
   IonicBadgesComponent,
   IonicChipsComponent,
   IonicFabsComponent,

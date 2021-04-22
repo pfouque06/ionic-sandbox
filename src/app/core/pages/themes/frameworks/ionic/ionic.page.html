@@ -10,6 +10,9 @@
 </full-width-title>
 
 <ion-content>
+  <div *ngIf="topic === 'animations'">
+    <app-ionic-animations></app-ionic-animations>
+  </div>
   <div *ngIf="topic === 'badges'">
     <app-ionic-badges></app-ionic-badges>
   </div>

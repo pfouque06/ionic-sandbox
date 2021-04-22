@@ -16,6 +16,12 @@ export class IonicMenuPage implements OnInit {
 
   public topics: any = [
     {
+      topic: 'animations',
+      icon_name: 'videocam',
+      icon_color: 'primary',
+      title: 'animations'
+    },
+    {
       topic: 'badges',
       icon_name: 'pricetag',
       icon_color: 'primary',
@@ -35,7 +41,7 @@ export class IonicMenuPage implements OnInit {
     },
     {
       topic: 'gestures',
-      icon_name: 'move',
+      icon_name: 'speedometer',
       icon_color: 'primary',
       title: 'gestures'
     },

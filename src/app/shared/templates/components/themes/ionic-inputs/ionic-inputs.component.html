@@ -6,8 +6,6 @@
   <ion-title>Inputs</ion-title>
 </ion-toolbar>
 
-<teaser-beta-version></teaser-beta-version>
-
 <ion-card>
   <ion-list-header lines="none">
     <ion-label><h2><strong>ion-searchbar</strong></h2></ion-label>
@@ -140,8 +138,8 @@
       <ion-label>Specific DD/MMM/YYYY</ion-label>
       <ion-datetime monthValues="6,7,8" yearValues="2014,2015" dayValues="01,02,03,04,05,06,08,09,10, 11, 12, 13, 14" displayFormat="DD/MMM/YYYY"></ion-datetime>
     </ion-item>
-    <ion-button fill="outline" expand="block" (click)="openPicker()">Show Single Column Picker</ion-button>
-    <ion-button fill="outline" expand="block" (click)="openPicker(2, 5, multiColumnOptions)">Show Multi Column Picker</ion-button>
+    <ion-button expand="block" color="medium" (click)="openPicker()">Show Single Column Picker</ion-button>
+    <ion-button expand="block" color="medium" (click)="openPicker(2, 5, multiColumnOptions)">Show Multi Column Picker</ion-button>
   </ion-list>
 </ion-card>
 
@@ -152,16 +150,18 @@
     </ion-list-header>
     
     <ion-item lines="full">
-      <ion-toggle color="primary" (ionChange)="onToggleChange($event)"></ion-toggle>
+      <ion-toggle #toggleID [(ngModel)]="toggleState" color="primary" (ionChange)="onToggleChange($event)"></ion-toggle>
       <ion-label>toggle is {{toggleState? 'checked' : 'unchecked'}}</ion-label>
     </ion-item>
+
     <ion-item lines="full">
-      <ion-checkbox color="primary" unchecked slot="start" (ionChange)="onCheckboxChange($event)"></ion-checkbox>
+      <ion-checkbox #checkBoxID [(ngModel)]="checkboxState" color="primary" unchecked slot="start" (ionChange)="onCheckboxChange($event)"></ion-checkbox>
       <ion-label>checkbox is {{checkboxState? 'checked' : 'unchecked'}}</ion-label>
     </ion-item>
-    <ion-radio-group value="grape">
+
+    <ion-radio-group #radioGroupID value="grape" (ionChange)="onRadioGroupChange($event)">
       <ion-list-header>
-        <ion-label>Select a fruit</ion-label>
+        <ion-label>Selected fruit is {{radioGroupState | titlecase }}</ion-label>
       </ion-list-header>
       <ion-item>
         <ion-label>Apple</ion-label>
@@ -176,24 +176,25 @@
         <ion-radio slot="start" color="danger" value="cherry"></ion-radio>
       </ion-item>
     </ion-radio-group>
+
     <ion-item lines="none">
       <ion-label>
-        <ion-range color="dark" pin="true"></ion-range>
+        <ion-range pin="true" color="dark"></ion-range>
         <ion-range min="20" max="80" step="2">
-          <ion-icon size="small" slot="start" name="sunny"></ion-icon>
-          <ion-icon slot="end" name="sunny"></ion-icon>
+          <ion-icon slot="start" name="sunny" color="primary" size="small"></ion-icon>
+          <ion-icon slot="end" name="sunny" color="primary"></ion-icon>
         </ion-range>
         <ion-range min="-200" max="200" pin color="secondary">
-          <ion-icon slot="start" size="small" name="contrast"></ion-icon>
-          <ion-icon slot="end" name="contrast"></ion-icon>
+          <ion-icon slot="start" name="contrast" color="secondary" size="small"></ion-icon>
+          <ion-icon slot="end" name="contrast" color="secondary"></ion-icon>
         </ion-range>
-        <ion-range id="dual-range" dual-knobs pin [value]="{ lower: 33, upper: 60 }" color="dark">
-          <ion-icon slot="start" size="small" name="brush"></ion-icon>
-          <ion-icon slot="end" name="brush"></ion-icon>
+        <ion-range id="dual-range" dual-knobs pin [value]="{ lower: 33, upper: 60 }" color="medium">
+          <ion-icon slot="start" name="brush" color="medium" size="small"></ion-icon>
+          <ion-icon slot="end" name="brush" color="medium"></ion-icon>
         </ion-range>
         <ion-range min="1000" max="2000" step="100" value="1400" snaps color="danger">
-          <ion-icon slot="start" size="small" color="danger" name="thermometer"></ion-icon>
-          <ion-icon slot="end" color="danger" name="thermometer"></ion-icon>
+          <ion-icon slot="start" name="thermometer" color="danger" size="small"></ion-icon>
+          <ion-icon slot="end" name="thermometer" color="danger"></ion-icon>
         </ion-range>
       </ion-label>
     </ion-item>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { PickerController } from '@ionic/angular';
 
 // picker
@@ -34,20 +34,29 @@ export const multiColumnOptions = [
   templateUrl: './ionic-inputs.component.html',
   styleUrls: ['./ionic-inputs.component.scss'],
 })
-export class IonicInputsComponent implements OnInit {
+export class IonicInputsComponent implements OnInit, AfterViewInit {
 
   // searchbar
   public searchInput: string;
 // picker
   public multiColumnOptions = multiColumnOptions;
-  // checkbox
-  public checkboxState: any;
   // toggle
-  public toggleState: any;
+  public toggleState = true;
+  // checkbox
+  public checkboxState = true;
+  // radio group
+  public radioGroupState: string;
+  @ViewChild('radioGroupID', { read: ElementRef }) radioGroupDom: ElementRef;
 
   constructor(private pickerController: PickerController) { }
 
   ngOnInit() {}
+
+  ngAfterViewInit() {
+    this.radioGroupState = this.radioGroupDom.nativeElement.value;
+    console.log(this.toggleState, this.checkboxState, this.radioGroupState);
+  }
+
 
   // searchbar
   public onSearchBarChange(event) {
@@ -99,15 +108,19 @@ export class IonicInputsComponent implements OnInit {
     return options;
   }
 
-  // checkbox
-  public onCheckboxChange(event) {
-    console.log(`onCheckboxChange(${event.detail.checked})`);
-    this.checkboxState = event.detail.checked;
-  }
-
   // toggle
   public onToggleChange(event) {
     console.log(`onCheckboxChange(${event.detail.checked})`);
-    this.toggleState = event.detail.checked;
+  }
+
+  // checkbox
+  public onCheckboxChange(event) {
+    console.log(`onCheckboxChange(${event.detail.checked})`);
+  }
+
+  // radio group
+  public onRadioGroupChange(event) {
+    console.log(`onRadioGroupChange(${event.detail.value})`);
+    this.radioGroupState = event.detail.value;
   }
 }
