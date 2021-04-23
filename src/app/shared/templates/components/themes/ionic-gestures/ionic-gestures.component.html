@@ -5,6 +5,24 @@
   </ion-buttons>
   <ion-title>Gestures</ion-title>
 </ion-toolbar>
-<ion-card>
-  <teaser-coming-soon></teaser-coming-soon>
+<teaser-coming-soon></teaser-coming-soon>
+<ion-card #doubleTapBox class="doubleTapBox">
+  <ion-card-header>
+    <ion-label><h2>Double tap box</h2></ion-label>
+  </ion-card-header>
+</ion-card>
+<ion-card #longPressBox class="longPressBox">
+  <ion-card-header>
+    <ion-label><h2>Long Press box [{{power}}]</h2></ion-label>
+  </ion-card-header>
+</ion-card>
+<ion-card #dragBox class="dragBox">
+  <ion-card-header>
+    <ion-label><h2>Feel free to drag the box anywhere [{{deltaX}},{{deltaY}}]</h2></ion-label>
+  </ion-card-header>
+
+  <ion-card-content>
+    <!-- [ngStyle]="{'width': '50px', 'height': '50px', 'background': 'var(--ion-color-light'}"> -->
+    <div #box class="box"></div>
+  </ion-card-content>
 </ion-card>
