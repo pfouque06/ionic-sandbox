@@ -23,6 +23,9 @@ import { IonicInfiniteScrollComponent } from './components/themes/ionic-infinite
 import { IonicModalsPopoversComponent } from './components/themes/ionic-modals-popovers/ionic-modals-popovers.component';
 import { IonicReorderComponent } from './components/themes/ionic-reorder/ionic-reorder.component';
 import { IonicSegmentsComponent } from './components/themes/ionic-segments/ionic-segments.component';
+import { DoubleTapDirective } from './directives/double-tap.directive';
+import { LongPressDirective } from './directives/long-press.directive';
+import { SwipeXDirective } from './directives/swipe-x.directive';
 
 
 const templates = [
@@ -46,6 +49,9 @@ const templates = [
   IonicModalsPopoversComponent,
   IonicReorderComponent,
   IonicSegmentsComponent,
+  DoubleTapDirective,
+  LongPressDirective,
+  SwipeXDirective,
 ];
 
 @NgModule({

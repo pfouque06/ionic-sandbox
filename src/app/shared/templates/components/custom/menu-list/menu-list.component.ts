@@ -16,6 +16,7 @@ export interface IMenuList {
 }
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'menu-list',
   templateUrl: './menu-list.component.html',
   styleUrls: ['./menu-list.component.scss'],
