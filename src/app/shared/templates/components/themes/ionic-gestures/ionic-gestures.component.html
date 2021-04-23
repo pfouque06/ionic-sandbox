@@ -1,28 +1,37 @@
 <ion-toolbar class="ion-padding-horizontal">
   <ion-buttons slot="start">
     <ion-back-button mode="ios" text="" color="primary" default-href="tabs/themes/ionic-menu"></ion-back-button>
-    <!-- <ion-icon name="list" color="primary" size="large"></ion-icon> -->
   </ion-buttons>
   <ion-title>Gestures</ion-title>
 </ion-toolbar>
-<teaser-coming-soon></teaser-coming-soon>
-<ion-card #doubleTapBox class="doubleTapBox">
+
+<ion-card #doubleTapBox class="doubleTapBox" (click)="handleTap($event)">
   <ion-card-header>
-    <ion-label><h2>Double tap box</h2></ion-label>
+    <ion-label color="dark"><h2>Double tap box {{doubleTapStatus ? '... HIT' : ''}}</h2></ion-label>
   </ion-card-header>
 </ion-card>
+
 <ion-card #longPressBox class="longPressBox">
   <ion-card-header>
-    <ion-label><h2>Long Press box [{{power}}]</h2></ion-label>
+    <ion-label color="dark"><h2>Long Press box {{longPressStatus ? '... HIT' : ''}}</h2></ion-label>
   </ion-card-header>
 </ion-card>
-<ion-card #dragBox class="dragBox">
+
+<ion-card #SwipeBox class="SwipeBox">
   <ion-card-header>
-    <ion-label><h2>Feel free to drag the box anywhere [{{deltaX}},{{deltaY}}]</h2></ion-label>
+    <ion-label color="dark"><h2>Swipe box {{swipeStatus ? '... HIT' : ''}}</h2></ion-label>
   </ion-card-header>
+</ion-card>
+
+<ion-card #dragBox class="dragBox">
+  <ion-item lines="none">
+    <ion-label><h2>Drag box [{{currentPosition.x | number: '3.0-0'}}/{{currentPosition.y| number: '3.0-0'}}]</h2></ion-label>
+    <ion-button color="medium" (click)="resetBoxPosition()">Reset</ion-button>
+  </ion-item>
+  <!-- <ion-card-header>
+  </ion-card-header> -->
 
   <ion-card-content>
-    <!-- [ngStyle]="{'width': '50px', 'height': '50px', 'background': 'var(--ion-color-light'}"> -->
     <div #box class="box"></div>
   </ion-card-content>
 </ion-card>
