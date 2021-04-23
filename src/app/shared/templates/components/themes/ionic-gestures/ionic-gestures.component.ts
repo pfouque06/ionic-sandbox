@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, ElementRef, HostListener, NgZone, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { GestureController, DomController } from '@ionic/angular';
 import { timer } from 'rxjs';
-import { timeout } from 'rxjs/operators';
 
 type positionType = { x: number, y: number};
 const styleBackLight = `background: var(--ion-color-light)`;
@@ -61,17 +60,12 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
   }
 
   // tap manager
-  // @HostListener('click', ['$event'])
+  // @HostListener('click', ['$event']) --> not used since it covers full DOM
   public handleTap(ev) {
-    // console.log('--> handleTap()', ev);
     const tapTimestamp = Math.floor(ev.timeStamp);
     const isDoubleTap = (this.lastTapTimestamp + this.doubleTapInterval ) > tapTimestamp;
-    // if ((!this.tapGesture.enabled && !this.doubleTapGesture.enabled) || this.isPressing || this.isMoving) { return this.resetTaps(); }
     this.tapCount++;
     this.lastTapTimestamp = tapTimestamp;
-    // console.log('tapTimestamp: ', tapTimestamp);
-    // console.log('isDoubleTap: ', isDoubleTap);
-    // console.log('tapCount: ', this.tapCount);
     if (isDoubleTap) { this.emitTap(); }
     else if ( this.tapCount > 1 ) {this.resetTaps(); }
   }
@@ -89,7 +83,6 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
   }
 
   private handleDoubleTap() {
-    // console.log('--> handleDoubleTap');
     this.doubleTapStatus = true;
     this.doubleTapBox.nativeElement.style = styleBackLight;
     timer(400).subscribe( () => {
@@ -111,21 +104,16 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
       el: this.longPressBox.nativeElement,
       threshold: 0,
       onStart: ev => {
-        // console.log('--> longPressGesture start', ev);
         this.longPressStartTimestamp = Math.floor(ev.event.timeStamp);
         this.longPressActive = true;
         this.longPressStatus = false;
         this.power = 0;
-        // console.log('pressStartTimestamp: ', this.pressStartTimestamp);
         this.increasePower();
       },
       onEnd: ev => {
-        // console.log('--> longPressGesture end', ev);
         this.longPressActive = false;
         const pressEndTimestamp = Math.floor(ev.event.timeStamp);
         const isLongPress = (this.longPressStartTimestamp + this.longPressInterval ) < pressEndTimestamp;
-        // console.log('pressEndTimestamp: ', pressEndTimestamp);
-        // console.log('isLongPress: ', isLongPress);
         if (isLongPress) { this.handleLongPress(); }
       }
     }, true); // Run the gesture callback inside of NgZone!
@@ -142,7 +130,6 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
   }
 
   private handleLongPress() {
-    // console.log('--> handleLongPress');
     this.longPressStatus = true;
     this.longPressBox.nativeElement.style = styleBackLight;
     timer(400).subscribe( () => {
@@ -159,17 +146,12 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
       threshold: 0,
       onStart: ev => {
         this.startPosition = { ...this.currentPosition};
-        // console.log('--> dragGesture start', this.startPosition);
       },
-      onMove: ev => {
-        // this.zoneCtrl.run(() => { });
+      onMove: ev => { // this.zoneCtrl.run(() => { }); --> not needed
         this.dragBoxOnPosition({ x: this.startPosition.x + ev.deltaX, y: this.startPosition.y + ev.deltaY});
-        // console.log('--> dragGesture move', this.currentPosition);
       },
-      onEnd: ev => {
-        // this.zoneCtrl.run(() => { });
+      onEnd: ev => { // this.zoneCtrl.run(() => { }); --> not needed
         this.dragBoxOnPosition({ x: this.startPosition.x + ev.deltaX, y: this.startPosition.y + ev.deltaY});
-        // console.log('--> dragGesture end', this.currentPosition);
       }
     }, true); // Run the gesture callback inside of NgZone!
     dragGesture.enable(true);
@@ -192,14 +174,8 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
       threshold: 15,
       direction: 'x',
       onStart: ev => { },
-      onMove: ev => {
-        // console.log('--> swipeGesture move');
-        this.handleSwipeGesture(ev);
-      },
-      onEnd: ev => {
-        // console.log('--> swipeGesture end');
-        this.handleSwipeNavigate(ev);
-      }
+      onMove: ev => { this.handleSwipeGesture(ev); },
+      onEnd: ev => { this.handleSwipeNavigate(ev); }
     }, true); // Run the gesture callback inside of NgZone!
     swipeGesture.enable(true);
   }

@@ -2,12 +2,13 @@ ion-card.dragBox {
     height: 200px;
 
     .ion-item {
-        z-index: 1;
+        z-index: 0;
     }
 
     .box {
         width: 40px;
         height: 40px;
+        // margin: auto;
         background: var(--ion-color-light);
         border: 1px solid var(--ion-color-medium);
         border-radius: 4px;
