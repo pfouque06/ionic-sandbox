@@ -1,9 +1,48 @@
 <ion-toolbar class="ion-padding-horizontal">
   <ion-buttons slot="start">
     <ion-back-button mode="ios" text="" color="primary" default-href="tabs/themes/ionic-menu"></ion-back-button>
-    <!-- <ion-icon name="list" color="primary" size="large"></ion-icon> -->
   </ion-buttons>
   <ion-title>Animations</ion-title>
 </ion-toolbar>
 
-<teaser-coming-soon></teaser-coming-soon>
+<ion-card (click)="onIonicLogoToggle()">
+  <ion-item lines="none">
+    <ion-icon slot="start" [name]="ionicLogoToggle ? 'play' : 'pause'" color="medium" size="large"></ion-icon>
+    <ion-label color="medium"><h2>Infinite simple animation</h2></ion-label>
+  </ion-item>
+  <ion-card-content class="ionicLogoBox">
+    <ion-img #ionicLogo class="ionicLogo" [src]="'/assets/img/Ionic_Logo.png'"></ion-img>
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+  <ion-item lines="none">
+    <ion-icon slot="start" [name]="addCartStatus ? 'play' : 'pause'" color="medium" size="large"></ion-icon>
+    <ion-label color="medium"><strong>Parallelized</strong> animations</ion-label>
+  </ion-item>
+  <ion-card-content class="chainingBox">
+    <ion-button #addToCartButton expand="full" color="medium" (click)="addToCart()">Add to cart</ion-button>
+  
+    <ion-fab vertical="top" horizontal="end" slot="fixed" edge>
+      <ion-fab-button #cartFab color="tertiary">
+        <ion-icon name="cart"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-card-content>
+</ion-card>
+
+<ion-card>
+  <ion-item lines="none">
+    <ion-icon slot="start" [name]="addCartStatusAlt ? 'play' : 'pause'" color="medium" size="large"></ion-icon>
+    <ion-label color="medium"><strong>Chained</strong> animations</ion-label>
+  </ion-item>
+  <ion-card-content class="chainingBox">
+    <ion-button #addToCartButtonAlt expand="full" color="medium" (click)="addToCartAlt()">Add to cart</ion-button>
+  
+    <ion-fab vertical="top" horizontal="end" slot="fixed" edge>
+      <ion-fab-button #cartFabAlt color="tertiary">
+        <ion-icon name="cart"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-card-content>
+</ion-card>

@@ -28,7 +28,7 @@ export class MyGestureHandlerPage implements OnInit {
   // multi Gestures
   @ViewChild('multiBox', { read: ElementRef }) private multiBox: ElementRef;
   public multiBoxStatus = false;
-  
+
   // swipe & double Tap Gestures
   @ViewChild('swipeTapBox', { read: ElementRef }) private swipeTapBox: ElementRef;
   public swipeTapBoxStatus = false;
