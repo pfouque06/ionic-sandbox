@@ -28,6 +28,7 @@ export class MyGestureHandlerPage implements OnInit {
   // multi Gestures
   @ViewChild('multiBox', { read: ElementRef }) private multiBox: ElementRef;
   public multiBoxStatus = false;
+  public MultiBoxPower = undefined;
 
   // swipe & double Tap Gestures
   @ViewChild('swipeTapBox', { read: ElementRef }) private swipeTapBox: ElementRef;
@@ -75,6 +76,7 @@ export class MyGestureHandlerPage implements OnInit {
   }
   public multiBoxOnLongPress(power: number) {
     console.log('--> multiBoxOnLongPress()', power);
+    this.MultiBoxPower = power;
     this.multiBoxToggleStatus();
   }
   private multiBoxToggleStatus() {
@@ -82,6 +84,7 @@ export class MyGestureHandlerPage implements OnInit {
     this.multiBox.nativeElement.style = styleToggle;
     timer(400).subscribe( () => {
       this.multiBoxStatus = false;
+      this.MultiBoxPower = undefined;
       this.multiBox.nativeElement.style = styleNeutral;
     });
   }

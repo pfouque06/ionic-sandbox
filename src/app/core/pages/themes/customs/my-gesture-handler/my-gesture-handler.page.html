@@ -13,31 +13,33 @@
     
     <ion-card #doubleTapBox class="doubleTapBox" (doubleTap)="onDoubleTap()">
         <ion-card-header>
-            <ion-label color="dark"><h2>Double tap box {{doubleTapStatus ? '... HIT' : ''}}</h2></ion-label>
+            <ion-label color="dark"><h2><code>(doubleTap)</code> {{doubleTapStatus ? '... HIT' : ''}}</h2></ion-label>
         </ion-card-header>
     </ion-card>
     
     <ion-card #longPressBox class="longPressBox" (longPress)="onLongPress($event)">
         <ion-card-header>
-            <ion-label color="dark"><h2>Long Press box {{longPressStatus ? '... HIT [' + power + ']': ''}}</h2></ion-label>
+            <ion-label color="dark"><h2><code>(longPress)</code> {{longPressStatus ? '... HIT [' + power + ']' : ''}}</h2></ion-label>
         </ion-card-header>
     </ion-card>
     
     <ion-card #multiBox class="multiBox" (doubleTap)="multiBoxOnDoubleTap()" (longPress)="multiBoxOnLongPress($event)">
         <ion-card-header>
-            <ion-label color="dark"><h2>double Tap & Long Press box {{multiBoxStatus ? '... HIT' : ''}}</h2></ion-label>
+            <ion-label color="dark"><h2>
+                <code>(longPress) & (doubleTap)</code> {{multiBoxStatus ? '... HIT' + (MultiBoxPower ? ' [' + MultiBoxPower + ']':'') : ''}}
+            </h2></ion-label>
         </ion-card-header>
     </ion-card>
     
     <ion-card #swipeBox class="swipeBox" (swipeX)="onSwipeX($event)">
         <ion-card-header>
-            <ion-label color="dark"><h2>Swipe box {{swipeStatus ? '... HIT' : ''}}</h2></ion-label>
+            <ion-label color="dark"><h2><code>(swipeX)</code> {{swipeStatus ? '... HIT' : ''}}</h2></ion-label>
         </ion-card-header>
     </ion-card>
 
     <ion-card #swipeTapBox class="swipeTapBox" (doubleTap)="swipeTapBoxOnDoubleTap()" (swipeX)="swipeTapBoxOnSwipeX($event)">
         <ion-card-header>
-            <ion-label color="dark"><h2>Swipe & Double Tap box {{swipeTapBoxStatus ? '... HIT' : ''}}</h2></ion-label>
+            <ion-label color="dark"><h2><code>(swipeX) & (doubleTap)</code> {{swipeTapBoxStatus ? '... HIT' : ''}}</h2></ion-label>
         </ion-card-header>
     </ion-card>
 </ion-content>
