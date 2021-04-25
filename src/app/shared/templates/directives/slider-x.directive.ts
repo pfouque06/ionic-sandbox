@@ -2,7 +2,7 @@ import { Directive, ElementRef, EventEmitter, Input, OnInit, Output } from '@ang
 import { GestureController } from '@ionic/angular';
 
 const SLIDE_THRESHOLD = 0;
-const SLIDE_EMIT_THRESHOLD = 150;
+const SLIDE_EMIT_THRESHOLD = 100;
 
 @Directive({
   // tslint:disable-next-line: directive-selector

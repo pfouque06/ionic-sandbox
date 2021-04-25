@@ -167,7 +167,7 @@ export class MyGestureHandlerPage implements OnInit {
 
   // item box
   public onSliderX(deltaX: number) {
-    console.log('onSliderX()', deltaX);
+    // console.log('onSliderX()', deltaX);
     if (deltaX < 0) { this.user = null; }
     else { this.getRandomUser(); }
   }
