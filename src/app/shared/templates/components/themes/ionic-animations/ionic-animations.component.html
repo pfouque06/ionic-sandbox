@@ -7,7 +7,7 @@
 
 <ion-card (click)="onIonicLogoToggle()">
   <ion-item lines="none">
-    <ion-icon slot="start" [name]="ionicLogoToggle ? 'pause' : 'play'" color="medium" size="large"></ion-icon>
+    <ion-icon slot="start" [name]="ionicLogoToggle ? 'play' : 'pause'" [color]="ionicLogoToggle ? 'medium' : 'light'" size="large"></ion-icon>
     <ion-label color="medium"><h2>Infinite simple animation</h2></ion-label>
   </ion-item>
   <ion-card-content class="ionicLogoBox">
@@ -17,7 +17,7 @@
 
 <ion-card>
   <ion-item lines="none">
-    <ion-icon slot="start" name="play" [color]="addCartStatus ? 'medium' : 'light'" size="large"></ion-icon>
+    <ion-icon slot="start" [name]="addCartStatus ? 'play' : 'pause'" [color]="addCartStatus ? 'medium' : 'light'" size="large"></ion-icon>
     <ion-label color="medium"><strong>Parallelized</strong> animations</ion-label>
   </ion-item>
   <ion-card-content class="chainingBox">
@@ -33,7 +33,7 @@
 
 <ion-card>
   <ion-item lines="none">
-    <ion-icon slot="start" name="play" [color]="addCartStatusAlt ? 'medium' : 'light'" siz="large"></ion-icon>
+    <ion-icon slot="start" [name]="addCartStatusAlt ? 'play' : 'pause'" [color]="addCartStatusAlt ? 'medium' : 'light'" siz="large"></ion-icon>
     <ion-label color="medium"><strong>Chained</strong> animations</ion-label>
   </ion-item>
   <ion-card-content class="chainingBox">
