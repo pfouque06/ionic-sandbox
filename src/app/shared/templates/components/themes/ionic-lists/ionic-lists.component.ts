@@ -59,7 +59,8 @@ export class IonicListsComponent implements OnInit {
     // setTimeout(() => { event.target.complete(); }, 2000);
     this.fetchRandomUsers(REFRESH_ITEMS_SIZE).subscribe({
       next: (results) => {
-        this.randomUsers = [ ...results, ...this.randomUsers].slice(0, MAX_ITEMS_PER_PAGE);
+        // this.randomUsers = [ ...results, ...this.randomUsers].slice(0, MAX_ITEMS_PER_PAGE);
+        this.randomUsers = [ ...results, ...this.randomUsers].filter( (_, i) => i < MAX_ITEMS_PER_PAGE);
         event.target.complete();
       },
       error: _ => console.log('https://randomuser.me/api fetch error'),
@@ -87,7 +88,8 @@ export class IonicListsComponent implements OnInit {
     // console.log('trash()', index);
     if (index > -1) {
       const user = this.randomUsers[index];
-      this.randomUsers.splice(index, 1);
+      // this.randomUsers.splice(index, 1);
+      this.randomUsers = this.randomUsers.filter ((_, i) => i !== index);
       this.UITooling.fireAlert(`Removing user:\n${user.name.title} ${user.name.first} ${user.name.last}`);
     }
   }

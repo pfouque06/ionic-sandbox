@@ -54,13 +54,12 @@ export class IonicInputsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.radioGroupState = this.radioGroupDom.nativeElement.value;
-    console.log(this.toggleState, this.checkboxState, this.radioGroupState);
   }
 
 
   // searchbar
   public onSearchBarChange(event) {
-    console.log(`onSearchBarChange(${event.detail.value})`);
+    // console.log(`onSearchBarChange(${event.detail.value})`);
     this.searchInput = event.detail.value;
   }
 
@@ -110,17 +109,17 @@ export class IonicInputsComponent implements OnInit, AfterViewInit {
 
   // toggle
   public onToggleChange(event) {
-    console.log(`onCheckboxChange(${event.detail.checked})`);
+    // console.log(`onCheckboxChange(${event.detail.checked})`);
   }
 
   // checkbox
   public onCheckboxChange(event) {
-    console.log(`onCheckboxChange(${event.detail.checked})`);
+    // console.log(`onCheckboxChange(${event.detail.checked})`);
   }
 
   // radio group
   public onRadioGroupChange(event) {
-    console.log(`onRadioGroupChange(${event.detail.value})`);
+    // console.log(`onRadioGroupChange(${event.detail.value})`);
     this.radioGroupState = event.detail.value;
   }
 }

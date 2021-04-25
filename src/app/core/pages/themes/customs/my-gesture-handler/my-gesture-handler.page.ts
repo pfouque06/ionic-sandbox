@@ -39,7 +39,7 @@ export class MyGestureHandlerPage implements OnInit {
   ngOnInit() { }
 
   public onDoubleTap() {
-    console.log('--> onDoubleTap()');
+    // console.log('--> onDoubleTap()');
     this.doubleTapStatus = true;
     this.doubleTapBox.nativeElement.style = styleToggle;
 
@@ -50,7 +50,7 @@ export class MyGestureHandlerPage implements OnInit {
   }
 
   public onLongPress(power: number) {
-    console.log('--> onLongPress()', power);
+    // console.log('--> onLongPress()', power);
     this.power = power;
     this.longPressStatus = true;
     this.longPressBox.nativeElement.style = styleToggle;
@@ -61,7 +61,7 @@ export class MyGestureHandlerPage implements OnInit {
   }
 
   public onSwipeX(deltaX: number) {
-    console.log('--> onSwipeX()', deltaX);
+    // console.log('--> onSwipeX()', deltaX);
     this.swipeStatus = true;
     this.swipeBox.nativeElement.style = styleToggle;
     timer(400).subscribe( () => {
@@ -71,11 +71,11 @@ export class MyGestureHandlerPage implements OnInit {
   }
 
   public multiBoxOnDoubleTap() {
-    console.log('--> multiBoxOnDoubleTap()');
+    // console.log('--> multiBoxOnDoubleTap()');
     this.multiBoxToggleStatus();
   }
   public multiBoxOnLongPress(power: number) {
-    console.log('--> multiBoxOnLongPress()', power);
+    // console.log('--> multiBoxOnLongPress()', power);
     this.MultiBoxPower = power;
     this.multiBoxToggleStatus();
   }
@@ -90,11 +90,11 @@ export class MyGestureHandlerPage implements OnInit {
   }
 
   public swipeTapBoxOnDoubleTap() {
-    console.log('--> swipeTapBoxOnDoubleTap()');
+    // console.log('--> swipeTapBoxOnDoubleTap()');
     this.swipeTapBoxToggleStatus();
   }
   public swipeTapBoxOnSwipeX(deltaX: number) {
-    console.log('--> swipeTapBoxOnSwipeX()', deltaX);
+    // console.log('--> swipeTapBoxOnSwipeX()', deltaX);
     this.swipeTapBoxToggleStatus();
   }
   private swipeTapBoxToggleStatus() {
