@@ -26,7 +26,7 @@
     <ion-card #multiBox class="multiBox" (doubleTap)="multiBoxOnDoubleTap()" (longPress)="multiBoxOnLongPress($event)">
         <ion-card-header>
             <ion-label color="dark"><h2>
-                <code>(longPress) & (doubleTap)</code> {{multiBoxStatus ? '... HIT' + (MultiBoxPower ? ' [' + MultiBoxPower + ']':'') : ''}}
+                <code>(longPress) (doubleTap)</code> {{multiBoxStatus ? '... HIT' + (MultiBoxPower ? ' [' + MultiBoxPower + ']':'') : ''}}
             </h2></ion-label>
         </ion-card-header>
     </ion-card>
@@ -36,11 +36,56 @@
             <ion-label color="dark"><h2><code>(swipeX)</code> {{swipeStatus ? '... HIT' : ''}}</h2></ion-label>
         </ion-card-header>
     </ion-card>
-
+    
+    <ion-card #swipeAltBox class="swipeBox" (swipeX)="onSwipeAltX($event)" [swipeThreshold]="0" [swipeEmitThreshold]="200">
+        <ion-card-header>
+            <ion-label color="dark"><h2><code>(swipeX) [swipeThreshold]="0" [swipeEmitThreshold]="200"</code> {{swipeAltStatus ? '... HIT' : ''}}</h2></ion-label>
+        </ion-card-header>
+    </ion-card>
+    
     <ion-card #swipeTapBox class="swipeTapBox" (doubleTap)="swipeTapBoxOnDoubleTap()" (swipeX)="swipeTapBoxOnSwipeX($event)">
         <ion-card-header>
-            <ion-label color="dark"><h2><code>(swipeX) & (doubleTap)</code> {{swipeTapBoxStatus ? '... HIT' : ''}}</h2></ion-label>
+            <ion-label color="dark"><h2><code>(swipeX) (doubleTap)</code> {{swipeTapBoxStatus ? '... HIT' : ''}}</h2></ion-label>
         </ion-card-header>
+    </ion-card>
+    
+    <ion-card>
+        <ion-card-header>
+            <ion-label color="dark"><h2><code>(sliderX)</code></h2></ion-label>
+        </ion-card-header>
+        <ion-card-content #itemBox class="itemBox">
+            <div class="item-row" (sliderX)="onSliderX($event)">
+                <div *ngIf="! user; else appear">
+                    <ion-item lines="none">
+                        <ion-avatar slot="start"><ion-skeleton-text></ion-skeleton-text></ion-avatar>
+                        <ion-label>
+                            <h2><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h2>
+                            <h3><ion-skeleton-text animated style="width: 70%"></ion-skeleton-text></h3>
+                        </ion-label>
+                    </ion-item>
+                </div>
+                <ng-template #appear>
+                    <ion-item lines="none">
+                        <ion-avatar slot="start">
+                            <img [src]="user.picture.large">
+                        </ion-avatar>
+                        <ion-label>
+                            <h2>{{user.name.first}} {{user?.name.last}}</h2>
+                            <h3>{{user.email}}</h3>
+                        </ion-label>
+                        <ion-icon slot='end' [name]="user?.gender"></ion-icon>
+                    </ion-item>
+                </ng-template>
+            </div>
+            <div class="icon-row">
+                <div class="icon-container-start">
+                    <ion-icon name="refresh"></ion-icon>
+                </div>
+                <div class="icon-container-end">
+                    <ion-icon name="trash"></ion-icon>
+                </div>
+            </div>
+        </ion-card-content>
     </ion-card>
 </ion-content>
 

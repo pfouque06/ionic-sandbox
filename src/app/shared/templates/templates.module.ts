@@ -26,6 +26,7 @@ import { IonicSegmentsComponent } from './components/themes/ionic-segments/ionic
 import { DoubleTapDirective } from './directives/double-tap.directive';
 import { LongPressDirective } from './directives/long-press.directive';
 import { SwipeXDirective } from './directives/swipe-x.directive';
+import { SliderXDirective } from './directives/slider-x.directive';
 
 
 const templates = [
@@ -52,6 +53,7 @@ const templates = [
   DoubleTapDirective,
   LongPressDirective,
   SwipeXDirective,
+  SliderXDirective,
 ];
 
 @NgModule({

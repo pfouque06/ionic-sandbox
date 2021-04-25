@@ -1,0 +1,32 @@
+// ion-card.itemBox {
+.itemBox {
+    display: grid;
+}
+div.item-row {
+    z-index: 2;
+    grid-area: 1 / 1 / auto / auto !important;
+    border: 2px solid var(--ion-color-light);
+    ion-item {
+        --min-height : 70px;
+    }
+}
+
+div.icon-row {
+    z-index: 1;
+    grid-area: 1 / 1 / auto / auto !important;
+    height : 70px;
+    background: linear-gradient(to right, var(--ion-color-tertiary) 0%, var(--ion-color-danger) 100%);
+    padding: 10px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    // text-align: right;
+    color: #fff;
+    // margin-right: 20px;
+    .icon-container-start {
+        font-size: 30px;
+    }
+    .icon-container-end {
+        font-size: 30px;
+    }
+}

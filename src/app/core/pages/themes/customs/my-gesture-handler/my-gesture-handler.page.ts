@@ -1,9 +1,31 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { timer } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 type positionType = { x: number, y: number};
 const styleToggle = `background: var(--ion-color-light)`;
 const styleNeutral = `background:`;
+
+export type randomUserType = {
+  gender: string,
+  name: {
+    first: string,
+    last: string,
+    title: string
+  }
+  nat: string,
+  email: string,
+  picture: {
+    large: string,
+    media: string,
+    thumbnail: string,
+  }
+};
+export type randomUserTypeResult = {
+  results: randomUserType[],
+  info: any
+};
 
 @Component({
   selector: 'app-my-gesture-handler',
@@ -21,22 +43,45 @@ export class MyGestureHandlerPage implements OnInit {
   public longPressStatus = false;
   public power = 0;
 
-  // Swipe Gesture
-  @ViewChild('swipeBox', { read: ElementRef }) private swipeBox: ElementRef;
-  public swipeStatus = false;
-
   // multi Gestures
   @ViewChild('multiBox', { read: ElementRef }) private multiBox: ElementRef;
   public multiBoxStatus = false;
   public MultiBoxPower = undefined;
 
+  // Swipe Gesture
+  @ViewChild('swipeBox', { read: ElementRef }) private swipeBox: ElementRef;
+  public swipeStatus = false;
+
+  // Swipe Alt Gesture
+  @ViewChild('swipeAltBox', { read: ElementRef }) private swipeAltBox: ElementRef;
+  public swipeAltStatus = false;
+
   // swipe & double Tap Gestures
   @ViewChild('swipeTapBox', { read: ElementRef }) private swipeTapBox: ElementRef;
   public swipeTapBoxStatus = false;
 
-  constructor() { }
+  // item box
+  @ViewChild('itemBox', { read: ElementRef }) private itemBox: ElementRef;
+  public user: randomUserType;
+
+  constructor(private http: HttpClient) {
+    this.getRandomUser();
+  }
 
   ngOnInit() { }
+
+  private getRandomUser() {
+    this.fetchRandomUsers(1).subscribe({
+      next: (results) => [this.user] = results,
+      error: _ => console.log('https://randomuser.me/api fetch error')
+    });
+  }
+
+  private fetchRandomUsers(size: number) {
+    return this.http.get<randomUserTypeResult>(
+      `https://randomuser.me/api/?inc=gender,name,nat,email,picture&results=${size}`, { responseType: 'json'})
+      .pipe(map((r) => r.results));
+  }
 
   public onDoubleTap() {
     // console.log('--> onDoubleTap()');
@@ -60,6 +105,7 @@ export class MyGestureHandlerPage implements OnInit {
     } );
   }
 
+  // swipe box
   public onSwipeX(deltaX: number) {
     // console.log('--> onSwipeX()', deltaX);
     this.swipeStatus = true;
@@ -70,6 +116,18 @@ export class MyGestureHandlerPage implements OnInit {
     });
   }
 
+  // swipe Alt box
+  public onSwipeAltX(deltaX: number) {
+    // console.log('--> onSwipeX()', deltaX);
+    this.swipeAltStatus = true;
+    this.swipeAltBox.nativeElement.style = styleToggle;
+    timer(400).subscribe( () => {
+      this.swipeAltStatus = false;
+      this.swipeAltBox.nativeElement.style = styleNeutral;
+    });
+  }
+
+  // multi box
   public multiBoxOnDoubleTap() {
     // console.log('--> multiBoxOnDoubleTap()');
     this.multiBoxToggleStatus();
@@ -89,6 +147,7 @@ export class MyGestureHandlerPage implements OnInit {
     });
   }
 
+  // Swipe Tap box
   public swipeTapBoxOnDoubleTap() {
     // console.log('--> swipeTapBoxOnDoubleTap()');
     this.swipeTapBoxToggleStatus();
@@ -104,5 +163,12 @@ export class MyGestureHandlerPage implements OnInit {
       this.swipeTapBoxStatus = false;
       this.swipeTapBox.nativeElement.style = styleNeutral;
     });
+  }
+
+  // item box
+  public onSliderX(deltaX: number) {
+    console.log('onSliderX()', deltaX);
+    if (deltaX < 0) { this.user = null; }
+    else { this.getRandomUser(); }
   }
 }

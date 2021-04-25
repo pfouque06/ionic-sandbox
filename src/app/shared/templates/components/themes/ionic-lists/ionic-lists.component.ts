@@ -38,7 +38,7 @@ export class IonicListsComponent implements OnInit {
   public randomUsers: randomUserType[] = [];
   @ViewChild('frameList', { read: IonList }) public frameList: IonList;
 
-  constructor(public http: HttpClient, private UITooling: UIToolingService) {
+  constructor(private http: HttpClient, private UITooling: UIToolingService) {
     // this.randomUsers$ =
     this.fetchRandomUsers(REFRESH_ITEMS_SIZE).subscribe({
       next: (results) => this.randomUsers = results,
@@ -83,7 +83,7 @@ export class IonicListsComponent implements OnInit {
       this.frameList.closeSlidingItems();
     }
   }
-  
+
   public trash(index: number) {
     // console.log('trash()', index);
     if (index > -1) {
