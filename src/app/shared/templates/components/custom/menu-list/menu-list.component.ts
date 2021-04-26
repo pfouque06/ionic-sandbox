@@ -23,11 +23,11 @@ export interface IMenuList {
 })
 export class MenuListComponent implements OnInit, OnDestroy {
 
-  @Input() public menu: IMenuList[];    // menuList structure
-  @Input() public menuId: string;       // menuID for ion-menu-toggle interaction
-  @Input() public multi = false;        // if true, allows multiple opened submenus
-  @Input() public closeOnExit = false;  // if true, recursively close submenus
-  @Input() public menuLevel = 0;        // internal use only
+  @Input() public menu: IMenuList[];      // menuList structure
+  @Input() public menuId: string;         // menuID for ion-menu-toggle interaction
+  @Input() public multi = false;          // if true, allows multiple opened submenus
+  @Input() public recursiveClose = false; // if true, recursively close submenus
+  @Input() public menuLevel = 0;          // internal use only
 
   // Event receiver from parent
   // tslint:disable-next-line: no-input-rename
@@ -42,7 +42,7 @@ export class MenuListComponent implements OnInit, OnDestroy {
   constructor(private menuCtl: MenuController) { }
 
   ngOnInit() {
-    // console.log(this.multi, this.closeOnExit);
+    // console.log(this.multi, this.recursiveClose);
     // Initiate submenus' emitter
     this.menu.filter((menuItem) => menuItem.submenu )
     .forEach((menuItem) => menuItem.transmitter = new Subject<string>() );
@@ -55,7 +55,7 @@ export class MenuListComponent implements OnInit, OnDestroy {
   public parentMessageResolver(message: string) {
     // console.log('parentMessageResolver', message, this.menuLevel);
     switch (message) {
-      case 'close': { if (this.closeOnExit) { this.closeAll(); } break; }
+      case 'close': { if (this.recursiveClose) { this.closeAll(); } break; }
       default:
     }
     this.emitAll(message);

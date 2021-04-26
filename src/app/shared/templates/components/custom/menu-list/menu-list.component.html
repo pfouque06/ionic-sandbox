@@ -47,7 +47,7 @@
       <ion-icon [name]="item.open? 'caret-down':'caret-forward'" slot="end"></ion-icon>
     </ion-item>
     <menu-list *ngIf="item.open" [menu]="item.submenu" [menuId]="menuId"
-      [menuLevel]="(menuLevel+1)" [multi]="multi" [closeOnExit]="closeOnExit"
+      [menuLevel]="(menuLevel+1)" [multi]="multi" [recursiveClose]="recursiveClose"
       [transmitter]="item.transmitter"
       (receiver)="submenuEventResolver($event)"></menu-list>
 

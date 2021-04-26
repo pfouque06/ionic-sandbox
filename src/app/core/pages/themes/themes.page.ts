@@ -49,11 +49,6 @@ export class ThemesPage {
           icon: 'qr-code-outline',
           link: '/tabs/themes/qrcode-menu',
         },
-        // {
-        //   label: 'QRCode Scan',
-        //   icon: 'scan-circle-outline',
-        //   link: '/tabs/themes/qrcode-scan',
-        // },
         {
           label: 'BarCode Menu',
           icon: 'barcode-outline',
@@ -75,11 +70,6 @@ export class ThemesPage {
           icon: 'logo-angular',
           link: '/tabs/themes/materials-menu',
         },
-        // {
-        //   label: 'Inputs bench',
-        //   icon: 'color-palette',
-        //   link: '/tabs/themes/inputs',
-        // },
       ],
     },
     {
@@ -96,7 +86,7 @@ export class ThemesPage {
           icon: 'ellipsis-vertical',
           submenu: [
             {
-              label: 'Information',
+              label: 'Description',
               icon: 'construct',
               link: '/tabs/themes/my-menu',
             },

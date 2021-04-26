@@ -9,7 +9,7 @@
     <ion-content>
       <menu-list [menu]="menuList" [menuId]="'themes'"
         [multi]="false"
-        [closeOnExit]="false"
+        [recursiveClose]="false"
         [transmitter]="menuListTransmitter"
         (receiver)="callbackReceiverSwitch($event)"></menu-list><!-- multi="true" optional-->
     </ion-content>
