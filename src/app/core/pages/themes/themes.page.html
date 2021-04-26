@@ -8,8 +8,10 @@
   
     <ion-content>
       <menu-list [menu]="menuList" [menuId]="'themes'"
+        [multi]="false"
+        [closeOnExit]="false"
         [transmitter]="menuListTransmitter"
-        (menuListEvent)="callbackReceiverSwitch($event)"></menu-list><!-- multi="true" optional-->
+        (receiver)="callbackReceiverSwitch($event)"></menu-list><!-- multi="true" optional-->
     </ion-content>
   
   </ion-menu>

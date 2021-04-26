@@ -49,7 +49,7 @@
     <menu-list *ngIf="item.open" [menu]="item.submenu" [menuId]="menuId"
       [menuLevel]="(menuLevel+1)" [multi]="multi" [closeOnExit]="closeOnExit"
       [transmitter]="item.transmitter"
-      (menuListEvent)="submenuEventResolver($event)"></menu-list>
+      (receiver)="submenuEventResolver($event)"></menu-list>
 
   </div>
 </ion-list>

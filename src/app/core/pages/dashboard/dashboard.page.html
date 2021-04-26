@@ -11,7 +11,7 @@
         [transmitter]="menuRequestEmitter"></menu-list><!-- multi="true" optional-->
       <menu-list *ngIf="(profileType$ | async) === 'admin'" [menu]="adminMenuList" [menuId]="'dashboard'" 
         [transmitter]="adminMenuRequestEmitter"
-        (menuListEvent)="callbackReceiverSwitch($event)"></menu-list><!-- multi="true" optional-->
+        (receiver)="callbackReceiverSwitch($event)"></menu-list><!-- multi="true" optional-->
     </ion-content>
   
   </ion-menu>
