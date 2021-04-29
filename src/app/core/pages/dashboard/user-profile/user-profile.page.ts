@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfilePage implements OnInit {
 
   @Input() userId: number = null;
-  
+
   constructor(private route: ActivatedRoute) { console.log('dashboard/profile'); }
 
   ngOnInit() {

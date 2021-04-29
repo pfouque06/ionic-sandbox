@@ -136,31 +136,31 @@ export class ProfileUserDetailsComponent implements OnInit {
           throw Error(error);
           }
 
-          // remove password from data ( handled separately)
-        let { password, ...newUserData} = this.userForm;
-        let newUser = new User(newUserData);
+        // remove password from data ( handled separately)
+        const { password, ...userPasswordLess} = this.userForm;
+        let newUser = new User(userPasswordLess);
 
           // remove email if not changed because of uniqueness validator of api.koa
-        if (this.userForm.email == this.user.email) {
-            const { email, ...newUserData} = newUser;
-            newUser = new User(newUserData);
-          }
+        if (this.userForm.email === this.user.email) {
+          const { email, ...userEmailLess} = newUser;
+          newUser = new User(userEmailLess);
+        }
 
-          // update user
+        // update user
         this.userService.updateById(this.userId, newUser);
-          // handle result
+        // handle result
         this.store.pipe( select(selectUserState), skip(1), take(1))
-          .subscribe( (state) => {
-            if (!!state.errors && state.errors.error) {
-              this.UITooling.fireAlert('[UpdateById] Operation has failed! Please check logs and retry', 'failed' );
-            } else {
-              // const updatedUser = users[0];
-              // update myself if needed
-              if (this.isMyself()) { this.authService.myself(); }
-              // finally route to user profile
-              this.routeToUserForm(this.userId);
-            }
-          });
+        .subscribe( (state) => {
+          if (!!state.errors && state.errors.error) {
+            this.UITooling.fireAlert('[UpdateById] Operation has failed! Please check logs and retry', 'failed' );
+          } else {
+            // const updatedUser = users[0];
+            // update myself if needed
+            if (this.isMyself()) { this.authService.myself(); }
+            // finally route to user profile
+            this.routeToUserForm(this.userId);
+          }
+        });
 
       }
       else { /// userForm for a new User

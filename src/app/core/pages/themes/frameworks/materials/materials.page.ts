@@ -9,36 +9,36 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./materials.page.scss'],
 })
 export class MaterialsPage implements OnInit {
-  
+
   @Input() public topic: string;
-  
+
   // Material Tabs
   tabs = ['First', 'Second'];
   selected = new FormControl(0);
   isAnimated = true;
-  
+
   // Material Tabs & Nav
   links = ['First', 'Second'];
   activeLink = this.links[0];
-  
-  // Material expansoin panel
+
+  // Material expansion panel
   // @ViewChild(MatAccordion) accordion: MatAccordion;
   isPanOpened = false;
-  
+
   // Material Stepper
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  
+
   // Material Ripple Effect
   centered = false;
   disabled = false;
   unbounded = false;
   radius: number;
   color: string;
-  
+
   // Material Drag & Drop
-  LockType : 'unLock' | 'xLockAxis' | 'yLockAxis' | 'Lock' = 'unLock';
+  LockType: 'unLock' | 'xLockAxis' | 'yLockAxis' | 'Lock' = 'unLock';
   items = [
     'item 1',
     'item 2',
@@ -46,20 +46,16 @@ export class MaterialsPage implements OnInit {
     'item 4',
     'item 5',
   ];
-  
-  constructor(private route: ActivatedRoute, private _formBuilder: FormBuilder) {
-    if ( ! this.topic) { this.topic = this.route.snapshot.params?.topic }
+
+  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder) {
+    if ( !this.topic) { this.topic = this.route.snapshot.params?.topic; }
     console.log(`themes/materials/${this.topic}`);
   }
 
   ngOnInit() {
     // Material Stepper
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+    this.firstFormGroup = this.formBuilder.group({ firstCtrl: ['', Validators.required] });
+    this.secondFormGroup = this.formBuilder.group({ secondCtrl: ['', Validators.required] });
   }
 
   // Material Tabs
@@ -96,5 +92,5 @@ export class MaterialsPage implements OnInit {
     this.items.splice(event.currentIndex, 0, this.items.splice(event.previousIndex, 1)[0]);
     console.log('Mat Drag: After complete', this.items);
   }
-  
+
 }

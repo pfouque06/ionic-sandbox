@@ -29,7 +29,7 @@
   <ion-fab-button [color]="ping? isLogged? 'success':'light' :'danger'" size="small">
     <!-- <ion-icon *ngIf="!connecting" [name]="isLogged? 'link':'unlink'" [color]="ping? isLogged? 'light':'medium' :'light'" ></ion-icon> -->
     <ion-icon *ngIf="!connecting" [name]="isLogged? 'cloud-done':'cloud-offline-outline'" [color]="ping? isLogged? 'light':'medium' :'light'" ></ion-icon>
-    <ion-spinner *ngIf="connecting" name="lines" [color]="isLogged? 'light':'success'"></ion-spinner>
+    <ion-spinner *ngIf="connecting" name="lines" [color]="isLogged? 'light':'medium'"></ion-spinner>
   </ion-fab-button>
   <ion-fab-list side="bottom">
     <ion-fab-button [color]="ping? isLogged? 'medium':'medium' :'danger'" (click)='loginToggle()' [disabled]="!ping" [title]="isLogged? 'Logout':'Login'">

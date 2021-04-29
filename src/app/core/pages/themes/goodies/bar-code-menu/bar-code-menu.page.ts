@@ -42,8 +42,9 @@ export class BarCodeMenuPage implements OnInit, AfterViewInit, OnDestroy {
   constructor(private route: ActivatedRoute, private platform: Platform, private router: Router, private ref: ChangeDetectorRef ) {
     this.providedMatTabLabel = this.route.snapshot.params?.tab;
     console.log(`themes/goodies/barcode${this.providedMatTabLabel ? `/${this.providedMatTabLabel}` : ''}`);
-    const isInStandAloneMode = () => 'standalone' in window.navigator && window.navigator['standalone'];
-    if (this.platform.is('ios') && isInStandAloneMode()) { console.log('I am a PWA iOS !'); }
+    // const standalone = 'standalone';
+    // const isInStandAloneMode = () => 'standalone' in window.navigator && window.navigator[standalone];
+    // if (this.platform.is('ios') && isInStandAloneMode()) { console.log('I am a PWA iOS !'); }
   }
 
   public ngOnInit() {

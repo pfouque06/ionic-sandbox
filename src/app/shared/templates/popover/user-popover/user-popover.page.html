@@ -12,7 +12,7 @@
   
           <ion-item [ngClass]="(userForm.get('email').touched && userForm.get('email').invalid) ? 'error' : ''">
             <ion-label position="floating">Your email</ion-label>
-            <ion-input ngDefaultControl inputmode="email" type="email" spellcheck="false" required="true" name="email" formControlName="email"></ion-input>
+            <ion-input ngDefaultControl inputmode="email" type="email" spellcheck="false" required="true" name="email" formControlName="email" (ionBlur)="mailCheck()"></ion-input>
             <ion-icon slot="end" name="mail-outline" size="small" color="medium"></ion-icon>
           </ion-item>
           <div class="form-error">

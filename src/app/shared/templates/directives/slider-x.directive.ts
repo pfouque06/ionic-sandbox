@@ -1,7 +1,7 @@
 import { Directive, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GestureController } from '@ionic/angular';
 
-const SLIDE_THRESHOLD = 0;
+const SLIDE_DRAG_THRESHOLD = 0;
 const SLIDE_EMIT_THRESHOLD = 100;
 
 @Directive({
@@ -10,8 +10,7 @@ const SLIDE_EMIT_THRESHOLD = 100;
 })
 export class SliderXDirective  implements OnInit {
 
-  // @Input() slideThreshold = slide_THRESHOLD;
-  @Input() sliderThreshold: number = SLIDE_THRESHOLD;
+  @Input() sliderDragThreshold: number = SLIDE_DRAG_THRESHOLD;
   @Input() sliderEmitThreshold: number = SLIDE_EMIT_THRESHOLD;
   @Output() sliderX = new EventEmitter<number>();
 
@@ -36,19 +35,8 @@ export class SliderXDirective  implements OnInit {
     private handleSliderGesture(ev) {
       // console.log('slideGesture onMove');
       let deltaX = ev.deltaX;
-      if (this.sliderThreshold !== 0) { deltaX = Math.min(Math.max(deltaX, -this.sliderThreshold), this.sliderThreshold); }
-      // this.el.nativeElement.style.transform = `translateX(${deltaX}px)`;
-
-      // this.domCtrl.write(() => {
-      //   // Make sure the item is above the other elements
-      //   itemElement.style.zIndex = 2;
-      //   // Reposition the item
-      //   itemElement.style.transform = `translateX(${currentX}px)`;
-      // });
-
-      // Make sure the item is above the other elements
+      if (this.sliderDragThreshold !== 0) { deltaX = Math.min(Math.max(deltaX, -this.sliderDragThreshold), this.sliderDragThreshold); }
       this.el.nativeElement.style.zIndex = 2;
-      // Reposition the item
       this.el.nativeElement.style.transform = `translateX(${deltaX}px)`;
     }
 

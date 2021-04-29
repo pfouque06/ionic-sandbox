@@ -1,16 +1,16 @@
 import { Directive, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { GestureController } from '@ionic/angular';
 
-const SWIPE_THRESHOLD = 50;
-const SWIPE_EMIT_THRESHOLD = 150;
+const SWIPE_DRAG_THRESHOLD = 0;
+const SWIPE_EMIT_THRESHOLD = 100;
 @Directive({
   // tslint:disable-next-line: directive-selector
   selector: '[swipeX]'
 })
 export class SwipeXDirective  implements OnInit {
 
-  // @Input() swipeThreshold = SWIPE_THRESHOLD;
-  @Input() swipeThreshold: number = SWIPE_THRESHOLD;
+  // @Input() swipeDragThreshold = SWIPE_DRAG_THRESHOLD;
+  @Input() swipeDragThreshold: number = SWIPE_DRAG_THRESHOLD;
   @Input() swipeEmitThreshold: number = SWIPE_EMIT_THRESHOLD;
   @Output() swipeX = new EventEmitter<number>();
 
@@ -35,7 +35,7 @@ export class SwipeXDirective  implements OnInit {
     private handleSwipeGesture(ev) {
       // console.log('swipeGesture onMove');
       let deltaX = ev.deltaX;
-      if (this.swipeThreshold !== 0) { deltaX = Math.min(Math.max(deltaX, -this.swipeThreshold), this.swipeThreshold); }
+      if (this.swipeDragThreshold !== 0) { deltaX = Math.min(Math.max(deltaX, -this.swipeDragThreshold), this.swipeDragThreshold); }
       this.el.nativeElement.style.transform = `translateX(${deltaX}px)`;
     }
 

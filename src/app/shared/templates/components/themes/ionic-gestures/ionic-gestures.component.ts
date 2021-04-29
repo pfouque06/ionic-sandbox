@@ -90,12 +90,10 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
   private handleDoubleTap() {
     this.doubleTapStatus = true;
     // this.ref.markForCheck();
-    // this.doubleTapBox.nativeElement.style.backgroundColor = `var(--ion-color-light)`;
     this.doubleTapBox.nativeElement.style = styleToggle;
 
     timer(400).subscribe( () => {
       this.doubleTapStatus = false;
-      // this.doubleTapBox.nativeElement.style.backgroundColor = ``;
       this.doubleTapBox.nativeElement.style = styleNeutral;
     } );
   }
@@ -162,8 +160,8 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
   }
 
   private handleSwipeGesture(ev) {
-    let delta = ev.deltaX;
-    delta = Math.min(Math.max(delta, -30), 30);
+    const delta = ev.deltaX;
+    // delta = Math.min(Math.max(delta, -30), 30);
     this.SwipeBox.nativeElement.style.transform = `translateX(${delta}px)`;
   }
 

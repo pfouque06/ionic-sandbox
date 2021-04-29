@@ -59,8 +59,6 @@ export class TabsPage {
   }
 
   public profileToggle() {
-    const message = `profileToggle().isLogged: ${this.isLogged}`;
-    console.log(message);
     if (this.isLogged) {
       // view Profile
       const url = `tabs/dashboard/profile`;
@@ -99,25 +97,31 @@ export class TabsPage {
         // delay navigation because of guard control may  be too quick !!
         // setTimeout(()=>{ this.router.navigate(['/dashboard']); }, 500)
         this.store.pipe( select(selectUserState), skip(1), take(1) )
-        .subscribe(
-          (state) => {
-            this.connecting = false;
-            if ( ! state.errors) {
-              this.navCtrl.navigateForward(['/tabs/dashboard/home']); // dashboard
-            } else {
-              this.UITooling.fireAlert('Login has failed! Please check your credentials', 'failed' );
-            }
+        .subscribe( (state) => {
+          this.connecting = false;
+          if ( ! state.errors) {
+            this.navCtrl.navigateForward(['/tabs/dashboard/home']); // dashboard
+          } else {
+            this.UITooling.fireAlert('Login has failed! Please check your credentials', 'failed' );
           }
-        );
-
+        });
         break;
       }
       case 'register': {
-        if (userForm.email) {
-          this.UITooling.fireAlert('Registering is successful, you can now login with your credentials', 'success');
-        } else {
-          this.UITooling.fireAlert('Register has failed! Please check credentials and retry', 'failed' );
-        }
+        this.connecting = true;
+        this.authService.register( userForm.email, userForm.password);
+        // handle result
+        this.store.pipe( select(selectUserState), skip(1), take(1))
+        .subscribe( (state) => {
+          this.connecting = false;
+          if ( !!state.errors) { // register failed
+            // console.log(state.errors);
+            this.UITooling.fireAlert('Register has failed! Please check credentials and retry', 'failed' );
+          } else {
+            this.UITooling.fireAlert('Registering is successful, you can now login with your credentials', 'success');
+          }
+        });
+        break;
       }
     }
   }

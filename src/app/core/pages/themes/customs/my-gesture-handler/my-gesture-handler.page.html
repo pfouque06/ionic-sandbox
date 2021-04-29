@@ -37,9 +37,9 @@
         </ion-card-header>
     </ion-card>
     
-    <ion-card #swipeAltBox class="swipeBox" (swipeX)="onSwipeAltX($event)" [swipeThreshold]="0" [swipeEmitThreshold]="200">
+    <ion-card #swipeAltBox class="swipeBox" (swipeX)="onSwipeAltX($event)" [swipeDragThreshold]="100" [swipeEmitThreshold]="150">
         <ion-card-header>
-            <ion-label color="dark"><h2><code>(swipeX) [swipeThreshold]="0" [swipeEmitThreshold]="200"</code> {{swipeAltStatus ? '... HIT' : ''}}</h2></ion-label>
+            <ion-label color="dark"><h2><code>(swipeX) [swipeThreshold]="100" [swipeEmitThreshold]="150"</code> {{swipeAltStatus ? '... HIT' : ''}}</h2></ion-label>
         </ion-card-header>
     </ion-card>
     
