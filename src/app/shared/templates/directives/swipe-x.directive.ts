@@ -4,7 +4,6 @@ import { GestureController } from '@ionic/angular';
 const SWIPE_DRAG_THRESHOLD = 0;
 const SWIPE_EMIT_THRESHOLD = 100;
 @Directive({
-  // tslint:disable-next-line: directive-selector
   selector: '[swipeX]'
 })
 export class SwipeXDirective  implements OnInit {

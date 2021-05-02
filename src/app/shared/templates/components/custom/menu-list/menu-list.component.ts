@@ -16,7 +16,6 @@ export interface IMenuList {
 }
 
 @Component({
-  // tslint:disable-next-line: component-selector
   selector: 'menu-list',
   templateUrl: './menu-list.component.html',
   styleUrls: ['./menu-list.component.scss'],
@@ -30,11 +29,9 @@ export class MenuListComponent implements OnInit, OnDestroy {
   @Input() public menuLevel = 0;          // internal use only
 
   // Event receiver from parent
-  // tslint:disable-next-line: no-input-rename
   @Input('transmitter') receiver: Subject<string> = undefined;
 
   // Event emitter to parent
-  // tslint:disable-next-line: no-output-rename
   @Output('receiver') transmitter: EventEmitter<string> = new EventEmitter<string>();
 
   public subscriptions: Subscription[] = [];

@@ -18,6 +18,16 @@ export class MapPage {
       link: '/tabs/map/home',
       icon: 'home',
     },
+    {
+      label: 'Leaflet for raster maps',
+      link: '/tabs/map/leaflet',
+      icon: 'leaf',
+    },
+    {
+      label: 'MapLibre for Vector maps',
+      link: '/tabs/map/mapLibre',
+      icon: 'location-sharp',
+    },
   ];
 
   constructor(private menuCtl: MenuController) { console.log('map'); }

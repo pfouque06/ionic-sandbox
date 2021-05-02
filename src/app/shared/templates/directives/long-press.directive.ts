@@ -2,7 +2,6 @@ import { Directive, ElementRef, EventEmitter, OnInit, Output } from '@angular/co
 import { GestureController } from '@ionic/angular';
 
 @Directive({
-  // tslint:disable-next-line: directive-selector
   selector: '[longPress]'
 })
 export class LongPressDirective implements OnInit {

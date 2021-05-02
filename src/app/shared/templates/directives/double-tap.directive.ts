@@ -2,7 +2,6 @@ import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angu
 import { GestureController } from '@ionic/angular';
 
 @Directive({
-  // tslint:disable-next-line: directive-selector
   selector: '[doubleTap]'
 })
 export class DoubleTapDirective {

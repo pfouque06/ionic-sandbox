@@ -5,7 +5,6 @@ const SLIDE_DRAG_THRESHOLD = 0;
 const SLIDE_EMIT_THRESHOLD = 100;
 
 @Directive({
-  // tslint:disable-next-line: directive-selector
   selector: '[sliderX]'
 })
 export class SliderXDirective  implements OnInit {
