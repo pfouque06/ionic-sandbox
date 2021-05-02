@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Map } from 'maplibre-gl';
+import { GeolocateControl, Map } from 'maplibre-gl';
 
 @Component({
   selector: 'app-map-libre-for-vector-map',
@@ -32,5 +32,17 @@ export class MapLibreForVectorMapPage implements OnInit {
       center: [this.longitude, this.latitude], // starting position [lng, lat]
       zoom: this.zoom // starting zoom
       });
+    this.map.addControl(
+      new GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        showAccuracyCircle: false,
+        trackUserLocation: true,
+        fitBoundsOptions: {
+          maxZoom: 12,
+        }
+      })
+    );
   }
 }
