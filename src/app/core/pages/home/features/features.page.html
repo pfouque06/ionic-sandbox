@@ -8,19 +8,6 @@
     <ion-list inset="false" lines="full">
       <ion-list-header lines="full"><ion-text><h1>Features</h1></ion-text></ion-list-header>
       <ion-item>
-        <ion-icon slot="start" name="logo-nodejs" color="success"></ion-icon>
-        <ion-label>
-          Koa Restful API backend
-        </ion-label>
-        <a slot="end" [href]="allo" target="_blank" title="Koa probe">
-          <ion-icon [name]="ping()? 'checkmark':'warning'" [color]="ping()? 'success' :'danger'"></ion-icon>
-        </a>
-      </ion-item>
-      <ion-item>
-        <ion-icon slot="start" name="logo-npm" color="danger"></ion-icon>
-        <ion-label>koa-service NPM module</ion-label>
-      </ion-item>
-      <ion-item>
         <ion-icon slot="start" name="logo-ionic" color="secondary"></ion-icon>
         <ion-label>Ionic</ion-label>
       </ion-item>
@@ -29,16 +16,8 @@
         <ion-label>NgRx</ion-label>
       </ion-item>
       <ion-item>
-        <ion-icon slot="start" name="logo-docker" color="primary"></ion-icon>
-        <ion-label>Docker</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon slot="start" name="logo-pwa" color="secondary"></ion-icon>
-        <ion-label>PWA</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon slot="start" name="logo-angular"></ion-icon>
-        <ion-label>Material</ion-label>
+        <ion-icon slot="start" name="logo-angular" color="tertiary"></ion-icon>
+        <ion-label>Material.angular</ion-label>
       </ion-item>
       <ion-item>
         <ion-text slot="start" color="primary" class="fa-icon"><fa-icon [icon]="['fab', 'font-awesome']" size="lg"></fa-icon></ion-text>
@@ -58,7 +37,32 @@
       </ion-item>
       <ion-item>
         <ion-icon slot="start" name="leaf-outline" color="success"></ion-icon>
-        <ion-label>Leadflet</ion-label>
+        <ion-label>Leaflet GL</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="location-sharp" color="primary"></ion-icon>
+        <ion-label>MapLibre GL</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="logo-nodejs" color="success"></ion-icon>
+        <ion-label>
+          Koa Restful API backend
+        </ion-label>
+        <a slot="end" [href]="allo" target="_blank" title="Koa probe">
+          <ion-icon [name]="ping()? 'checkmark':'warning'" [color]="ping()? 'success' :'danger'"></ion-icon>
+        </a>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="logo-npm" color="danger"></ion-icon>
+        <ion-label>koa-service NPM module</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="logo-pwa" color="secondary"></ion-icon>
+        <ion-label>PWA</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="logo-docker" color="primary"></ion-icon>
+        <ion-label>Docker</ion-label>
       </ion-item>
     </ion-list>
   </ion-card>

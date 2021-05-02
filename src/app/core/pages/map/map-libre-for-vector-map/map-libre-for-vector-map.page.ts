@@ -27,8 +27,8 @@ export class MapLibreForVectorMapPage implements OnInit {
   private mapLibreSetup() {
     this.map = new Map({
       container: 'mapLibre', // container id
-      style:
-      'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL', // style URL
+      // style: 'mapbox://styles/mapbox/satellite-v9', // style URL
+      style: 'https://api.maptiler.com/maps/streets/style.json?key=get_your_own_OpIi9ZULNHzrESv6T2vL', // style URL
       center: [this.longitude, this.latitude], // starting position [lng, lat]
       zoom: this.zoom // starting zoom
       });
