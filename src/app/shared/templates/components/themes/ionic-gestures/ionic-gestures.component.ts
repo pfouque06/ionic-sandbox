@@ -1,5 +1,5 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { GestureController, DomController } from '@ionic/angular';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { GestureController } from '@ionic/angular';
 import { timer } from 'rxjs';
 
 type positionType = { x: number, y: number};
@@ -60,8 +60,8 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
     // console.log(this.box.nativeElement.getClientRects());
     // });
     this.setupLongPressGestures();
-    this.setupDragGestures();
     this.setSwipeGesture();
+    this.setupDragGesturesAndAnimation();
   }
 
   // tap manager
@@ -179,16 +179,17 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
   }
 
   // drag gesture setup
-  private setupDragGestures() {
+  private setupDragGesturesAndAnimation() {
     const dragGesture = this.gestureCtrl.create({
       gestureName: 'drag',
       el: this.box.nativeElement,
       threshold: 0,
       onStart: ev => {
         this.startPosition = { ...this.currentPosition};
+        this.dragBoxOnPosition(this.startPosition, 'start');
       },
       onMove: ev => { // this.zoneCtrl.run(() => { }); --> not needed
-        this.dragBoxOnPosition({ x: this.startPosition.x + ev.deltaX, y: this.startPosition.y + ev.deltaY});
+        this.dragBoxOnPosition({ x: this.startPosition.x + ev.deltaX, y: this.startPosition.y + ev.deltaY}, 'move');
       },
       onEnd: ev => { // this.zoneCtrl.run(() => { }); --> not needed
         this.dragBoxOnPosition({ x: this.startPosition.x + ev.deltaX, y: this.startPosition.y + ev.deltaY});
@@ -197,9 +198,11 @@ export class IonicGesturesComponent implements OnInit, AfterViewInit {
     dragGesture.enable(true);
   }
 
-  private dragBoxOnPosition(position: positionType) {
+  private dragBoxOnPosition(position: positionType, onStatus: 'start' | 'move' | 'end' = 'end') {
     this.currentPosition = { ... position};
-    this.box.nativeElement.style.transform = `translate(${position.x}px, ${position.y}px)`;
+    this.box.nativeElement.style.boxShadow = (onStatus !== 'end') ? '0px 0px 6px 3px var(--ion-color-light)' : '0px 0px 2px 2px var(--ion-color-light)';
+    const effect3D = (onStatus !== 'end') ? 'scale(1.15)' : ''; // scale3d(1.15,1.15,1.15) or perspective(10px)
+    this.box.nativeElement.style.transform = `translate(${position.x}px, ${position.y}px) ${effect3D}`;
   }
 
   public resetBoxPosition() {
