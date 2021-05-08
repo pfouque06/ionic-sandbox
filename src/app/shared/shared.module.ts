@@ -30,11 +30,13 @@ import { BarcodeScannerLivestreamModule } from 'ngx-barcode-scanner';
 import { KoaServicesModule, serverAddress, serverProtocol, SERVER_ADDRESS, SERVER_PROTOCOL } from 'koa-services';
 import { UserPopoverPage } from './templates/popover/user-popover/user-popover.page';
 import { PasswordChangePopoverPage } from './templates/popover/password-change-popover/password-change-popover.page';
+import { MapStyleMenuPopoverComponent } from './templates/popover/map-style-menu-popover/map-style-menu-popover.component';
 import { TemplatesModule } from './templates/templates.module';
 
 const SHARED_MODALS = [
     UserPopoverPage,
     PasswordChangePopoverPage,
+    MapStyleMenuPopoverComponent,
 ];
 
 const SHARED_ENTITIES = [

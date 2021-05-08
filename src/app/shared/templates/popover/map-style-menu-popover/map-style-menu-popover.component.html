@@ -1,0 +1,20 @@
+<div class="styleToggleMenu">
+  <ion-radio-group #styleToggleId [value]="style" (ionChange)="onStyleToggleChange($event)">
+    <ion-item lines="none">
+      <ion-radio slot="start" color="dark" value="streets"></ion-radio>
+      <ion-label>streets</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-radio slot="start" color="dark" value="hybrid"></ion-radio>
+      <ion-label>satellite</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-radio slot="start" color="dark" value="topo"></ion-radio>
+      <ion-label>topo</ion-label>
+    </ion-item>
+    <!-- <ion-item lines="none">
+      <ion-radio slot="start" color="dark" value="dark"></ion-radio>
+      <ion-label>dark</ion-label>
+    </ion-item> -->
+  </ion-radio-group>
+</div>
