@@ -86,6 +86,80 @@
                 </div>
             </div>
         </ion-card-content>
+
+        <ion-card-header>
+            <ion-label color="dark"><h2><code>(sliderX) sliderDirection="right"</code></h2></ion-label>
+        </ion-card-header>
+        <ion-card-content #itemBox class="itemBox">
+            <div class="item-row" (sliderX)="onSliderX($event)" sliderDirection="right">
+                <div *ngIf="! user; else appear">
+                    <ion-item lines="none">
+                        <ion-avatar slot="start"><ion-skeleton-text></ion-skeleton-text></ion-avatar>
+                        <ion-label>
+                            <h2><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h2>
+                            <h3><ion-skeleton-text animated style="width: 70%"></ion-skeleton-text></h3>
+                        </ion-label>
+                    </ion-item>
+                </div>
+                <ng-template #appear>
+                    <ion-item lines="none">
+                        <ion-avatar slot="start">
+                            <img [src]="user.picture.large">
+                        </ion-avatar>
+                        <ion-label>
+                            <h2>{{user.name.first}} {{user?.name.last}}</h2>
+                            <h3>{{user.email}}</h3>
+                        </ion-label>
+                        <ion-icon slot='end' [name]="user?.gender"></ion-icon>
+                    </ion-item>
+                </ng-template>
+            </div>
+            <div class="icon-row">
+                <div class="icon-container-start">
+                    <ion-icon name="refresh"></ion-icon>
+                </div>
+                <div class="icon-container-end">
+                    <ion-icon name="trash"></ion-icon>
+                </div>
+            </div>
+        </ion-card-content>
+
+        <ion-card-header>
+            <ion-label color="dark"><h2><code>(sliderX) sliderDirection="left"</code></h2></ion-label>
+        </ion-card-header>
+        <ion-card-content #itemBox class="itemBox">
+            <div class="item-row" (sliderX)="onSliderX($event)" sliderDirection="left">
+                <div *ngIf="! user; else appear">
+                    <ion-item lines="none">
+                        <ion-avatar slot="start"><ion-skeleton-text></ion-skeleton-text></ion-avatar>
+                        <ion-label>
+                            <h2><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h2>
+                            <h3><ion-skeleton-text animated style="width: 70%"></ion-skeleton-text></h3>
+                        </ion-label>
+                    </ion-item>
+                </div>
+                <ng-template #appear>
+                    <ion-item lines="none">
+                        <ion-avatar slot="start">
+                            <img [src]="user.picture.large">
+                        </ion-avatar>
+                        <ion-label>
+                            <h2>{{user.name.first}} {{user?.name.last}}</h2>
+                            <h3>{{user.email}}</h3>
+                        </ion-label>
+                        <ion-icon slot='end' [name]="user?.gender"></ion-icon>
+                    </ion-item>
+                </ng-template>
+            </div>
+            <div class="icon-row">
+                <div class="icon-container-start">
+                    <ion-icon name="refresh"></ion-icon>
+                </div>
+                <div class="icon-container-end">
+                    <ion-icon name="trash"></ion-icon>
+                </div>
+            </div>
+        </ion-card-content>
     </ion-card>
 </ion-content>
 
