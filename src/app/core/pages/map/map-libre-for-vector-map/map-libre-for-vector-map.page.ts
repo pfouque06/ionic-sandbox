@@ -1,13 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PickerController, PopoverController } from '@ionic/angular';
-import { FullscreenControl, GeolocateControl, IControl, Map, Marker, NavigationControl, Popup } from 'maplibre-gl';
+import { FullscreenControl, GeolocateControl, IControl, LngLatLike, Map, Marker, NavigationControl, Popup } from 'maplibre-gl';
 import { MapboxStyleDefinition, MapboxStyleSwitcherControl } from 'mapbox-gl-style-switcher';
 import { InspectControl, RulerControl } from 'mapbox-gl-controls';
 // import { MapboxTraffic } from 'mapbox-gl-traffic';
 import * as Geocoder from '@mapbox/mapbox-gl-geocoder';
 import { MapStyleMenuPopoverComponent } from 'src/app/shared/templates/popover/map-style-menu-popover/map-style-menu-popover.component';
 
-type NewType = string;
 const MAPTYLERKEY = 'get_your_own_OpIi9ZULNHzrESv6T2vL';
 const MAPBOXKEY = 'pk.eyJ1IjoicGZvdXF1ZSIsImEiOiJja29nOWVkN2YwbjIxMnVwMnNoNGowZWxmIn0.7-6PluWO1DpTocbzUvVAqQ';
 
@@ -18,8 +17,9 @@ const MAPBOXKEY = 'pk.eyJ1IjoicGZvdXF1ZSIsImEiOiJja29nOWVkN2YwbjIxMnVwMnNoNGowZW
 })
 export class MapLibreForVectorMapPage implements OnInit {
 
+  // map attributes
   private map: Map;
-  public style: NewType = 'streets';
+  public style = 'streets';
   @ViewChild('info', { read: ElementRef }) infoRef: ElementRef;
 
   // Toggles
@@ -32,10 +32,19 @@ export class MapLibreForVectorMapPage implements OnInit {
   public inspectorToggle = true;
   public infoToggle = true;
 
-    // Location coordinates : default : Nice
+  // Location coordinates and zoom, default : Nice
   public latitude: any = '43.70194';
   public longitude: any = '7.26833';
   public zoom = 11;
+
+  // long press
+  private longPressInterval = 251;
+  private longPressStartTimestamp: number;
+  private longPressActive  = false;
+
+  // markers
+  private longPressMarker = new Marker({ color: 'var(--ion-color-medium'});
+  private geoCoderMarker = new Marker({ color: 'var(--ion-color-primary'});
 
   constructor(private popper: PopoverController, private pickerCtl: PickerController) { console.log('map/mapLibre'); }
 
@@ -57,6 +66,7 @@ export class MapLibreForVectorMapPage implements OnInit {
       zoom: this.zoom, // starting zoom
       // maxPitch: 60 // starting pitch
     });
+
     // add basic controllers: fullscreen, zoom+pitch, ruler, geolocation
     this.map.addControl(new FullscreenControl(), 'top-left');
     this.map.addControl(new NavigationControl({ visualizePitch: true }), 'top-left');
@@ -73,10 +83,11 @@ export class MapLibreForVectorMapPage implements OnInit {
         }
       }), 'top-left'
     );
+
     // add traffic from mapbox plugin
     // this.map.addControl(new MapboxTraffic(), 'top-left');
 
-    // add style switch feom mapbox plugin
+    // add style switch from mapbox plugin
     const styles: MapboxStyleDefinition[] = [
       {
           title: 'Streets',
@@ -102,13 +113,9 @@ export class MapLibreForVectorMapPage implements OnInit {
       marker: false, // do not markup result
     });
     this.map.addControl(geocoder);    // add initial marker
-    const marker = new Marker({ color: 'var(--ion-color-primary'}) // Initialize a new marker
-      .setLngLat([0, 0]) // Marker [lng, lat] coordinates
-      .addTo(this.map); // Add the marker to the map
+    this.geoCoderMarker = new Marker({ color: 'var(--ion-color-primary'}); // Initialize a new marker
 
     this.map.on('load', () => {
-      // add a source layer and default styling for a single point
-
       // Listen events from the Geocoder
       geocoder.on('result', (e) => {
         const place_name = e.result.place_name;
@@ -118,26 +125,59 @@ export class MapLibreForVectorMapPage implements OnInit {
         this.latitude = coordinates[1];
         //  Add a marker at the result's coordinates
         const popup = new Popup().setText(`${place_name}\n${coordinates}`);
-        marker.setLngLat(e.result.geometry.coordinates).setPopup(popup);
+        this.geoCoderMarker.setLngLat(coordinates).setPopup(popup).addTo(this.map);
       });
       geocoder.on('clear', (e) => {
         // this.map.getSource('single-point').setData(e.result.geometry);
         console.log('geocoder input cleared');
-        marker.setLngLat([0, 0]);
+        this.geoCoderMarker.remove();
       });
     });
 
-    this.map.on('mousemove', (e) =>  {
-      // e.point is the x, y coordinates of the mousemove event relative
+    // fetch mouse coordinate for info box
+    this.map.on('mousemove', (e) =>  { // e.point is the x, y coordinates of the mousemove event relative
       this.longitude = e.lngLat.lng;
       this.latitude = e.lngLat.lat;
-      });
+    });
+
+    // handle event for longPress behavior
+    this.map.on('touchstart', (e) => { this.onLongPressStart(e.originalEvent.timeStamp); });
+    this.map.on('mousedown', (e) => { this.onLongPressStart(e.originalEvent.timeStamp); });
+    this.map.on('move', _ => { this.onLongPressCancel(); });
+    this.map.on('touchend', (e) => { this.onLongPressEnd(e); });
+    this.map.on('mouseup', (e) => { this.onLongPressEnd(e); });
   }
 
   private getStyle(styleType: string) {
     // console.log('getStyle(): ', styleType);
     const styleUrl = `https://api.maptiler.com/maps/${styleType}/style.json?key=${MAPTYLERKEY}`;
     return styleUrl;
+  }
+
+  private onLongPressStart(timeStamp: number) {
+    // console.log('longPressGesture onStart: ', timeStamp);
+    this.longPressStartTimestamp = Math.floor(timeStamp);
+    this.longPressActive = true;
+  }
+
+  private onLongPressEnd(e: any) {
+    // console.log('longPressGesture onEnd: ', e);
+    if (this.longPressActive) {
+      this.longPressActive = false;
+      const pressEndTimestamp = Math.floor(e.originalEvent.timeStamp);
+      const isLongPress = (this.longPressStartTimestamp + this.longPressInterval ) < pressEndTimestamp;
+      if (isLongPress) {
+        console.log('A longPress event occurred: ');
+        //  Add a marker at the result's coordinates
+        const coordinates: LngLatLike = [ e.lngLat.lng, e.lngLat.lat];
+        const popup = new Popup().setText(`${coordinates}`);
+        this.longPressMarker.setLngLat(coordinates).setPopup(popup).addTo(this.map);
+      }
+    }
+  }
+
+  private onLongPressCancel() {
+    if (this.longPressActive) { this.longPressActive = false; }
   }
 
   public async onPickerStyleMenuRequest(event) {
