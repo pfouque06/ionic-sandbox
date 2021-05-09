@@ -23,8 +23,8 @@ export class AppComponent {
             window.location.reload();
         }
       });
-      // Check every 30s if a new version has been released.
-      interval(30000).subscribe( () => this.swUpdate.checkForUpdate() );
+      // Check every 10s if a new version has been released.
+      interval(15000).subscribe( () => this.swUpdate.checkForUpdate() );
     }
     this.initializeApp();
   }

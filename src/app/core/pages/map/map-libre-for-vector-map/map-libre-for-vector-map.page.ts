@@ -9,6 +9,7 @@ import { MapStyleMenuPopoverComponent } from 'src/app/shared/templates/popover/m
 
 type NewType = string;
 const MAPTYLERKEY = 'get_your_own_OpIi9ZULNHzrESv6T2vL';
+const MAPBOXKEY = 'pk.eyJ1IjoicGZvdXF1ZSIsImEiOiJja29nOWVkN2YwbjIxMnVwMnNoNGowZWxmIn0.7-6PluWO1DpTocbzUvVAqQ';
 
 @Component({
   selector: 'app-map-libre-for-vector-map',
@@ -19,8 +20,17 @@ export class MapLibreForVectorMapPage implements OnInit {
 
   private map: Map;
   public style: NewType = 'streets';
-  public infoToggle = true;
   @ViewChild('info', { read: ElementRef }) infoRef: ElementRef;
+
+  // Toggles
+  public fullScreenToggle = true;
+  public controlToggle = true;
+  public rulerToggle = true;
+  public geoLocationToggle = true;
+  public styleSwitcherToggle = true;
+  public geoCoderToggle = true;
+  public inspectorToggle = true;
+  public infoToggle = true;
 
     // Location coordinates : default : Nice
   public latitude: any = '43.70194';
@@ -41,12 +51,11 @@ export class MapLibreForVectorMapPage implements OnInit {
       container: 'mapLibre', // container id
       // style: 'mapbox://styles/mapbox/satellite-v9', // style URL
       // style: `https://api.maptiler.com/maps/streets/style.json?key=${mapTilerKey}`, // style URL
-      // style: `https://api.maptiler.com/maps/hybrid/style.json?key=${mapTilerKey}`, // satellite URL
-      // style: `https://api.maptiler.com/maps/topo/style.json?key=${mapTilerKey}`, // topo URL
       style: this.getStyle('streets'),
+      attributionControl: false, // remove attribution / copyright
       center: [this.longitude, this.latitude], // starting position [lng, lat]
       zoom: this.zoom, // starting zoom
-      // maxPitch: 60
+      // maxPitch: 60 // starting pitch
     });
     // add basic controllers: fullscreen, zoom+pitch, ruler, geolocation
     this.map.addControl(new FullscreenControl(), 'top-left');
@@ -83,20 +92,19 @@ export class MapLibreForVectorMapPage implements OnInit {
       }
     ] ;
     this.map.addControl(new MapboxStyleSwitcherControl(styles, 'Streets') as IControl, 'top-left');
-    
+
     // inspect mapbox plugin
     this.map.addControl(new InspectControl() as IControl, 'bottom-right');
-    
+
       // Add geocoder controller.
     const geocoder = new Geocoder({
-      accessToken: 'pk.eyJ1IjoicGZvdXF1ZSIsImEiOiJja29nOWVkN2YwbjIxMnVwMnNoNGowZWxmIn0.7-6PluWO1DpTocbzUvVAqQ',
-      // localGeocoder: coordinatesGeocoder, zoom: 4, placeholder: 'Try: -40, 170',
-      marker: false, // mapboxgl: this.map,
-    })
+      accessToken: MAPBOXKEY, // localGeocoder: coordinatesGeocoder, zoom: 4, placeholder: 'Try: -40, 170',
+      marker: false, // do not markup result
+    });
     this.map.addControl(geocoder);    // add initial marker
-    var marker = new Marker({ color: 'var(--ion-color-primary'}) // Initialize a new marker
+    const marker = new Marker({ color: 'var(--ion-color-primary'}) // Initialize a new marker
       .setLngLat([0, 0]) // Marker [lng, lat] coordinates
-      .addTo(this.map) // Add the marker to the map
+      .addTo(this.map); // Add the marker to the map
 
     this.map.on('load', () => {
       // add a source layer and default styling for a single point
@@ -104,7 +112,7 @@ export class MapLibreForVectorMapPage implements OnInit {
       // Listen events from the Geocoder
       geocoder.on('result', (e) => {
         const place_name = e.result.place_name;
-        const coordinates = e.result.geometry.coordinates
+        const coordinates = e.result.geometry.coordinates;
         console.log('geocoder selection: ', place_name, coordinates);
         this.longitude = coordinates[0];
         this.latitude = coordinates[1];
@@ -128,7 +136,7 @@ export class MapLibreForVectorMapPage implements OnInit {
 
   private getStyle(styleType: string) {
     // console.log('getStyle(): ', styleType);
-    const styleUrl = `https://api.maptiler.com/maps/${styleType}/style.json?key=${MAPTYLERKEY}`
+    const styleUrl = `https://api.maptiler.com/maps/${styleType}/style.json?key=${MAPTYLERKEY}`;
     return styleUrl;
   }
 
