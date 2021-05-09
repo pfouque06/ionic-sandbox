@@ -35,7 +35,6 @@ export class TabsPage {
   public get isLogged() { return this.authService.isLogged; }
 
   public loginToggle() {
-
     if ( ! this.isLogged) {  // login
       this.openUserFormDialog('login');
     } else { // logout
@@ -143,6 +142,14 @@ export class TabsPage {
     const message = `Get Ready to Scan ...`;
     this.UITooling.fireAlert(message, 'info');
     this.navCtrl.navigateForward(['/tabs/themes/barcode-menu/Scan']);
+  }
+
+  public worldMap() {
+    if (!this.router.url.match('^\/tabs\/map\/mapLibre')) {
+      const message = `Initializing Map ...`;
+      this.UITooling.fireAlert(message, 'info');
+      this.navCtrl.navigateForward(['/tabs/map/mapLibre']);
+    }
   }
 
   public Geolocation() {

@@ -29,6 +29,10 @@
 @import "~leaflet/dist/leaflet.css";
 /* mapLibre GL styles imports */
 @import "~maplibre-gl/dist/maplibre-gl.css";
+/* mapbox GL controller plugins imports */
+@import "~@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+@import "~mapbox-gl-style-switcher/styles.css";
+@import "~mapbox-gl-controls/lib/controls.css";
 
 .UITooling-toaster-default{
     --border-radius:5px;
