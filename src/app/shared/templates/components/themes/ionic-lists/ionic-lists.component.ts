@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IonList } from '@ionic/angular';
+import { IonList, IonVirtualScroll } from '@ionic/angular';
 import { map } from 'rxjs/operators';
 import { UIToolingService } from './../../../../services/UITooling.service';
 
@@ -26,6 +26,7 @@ export type randomUserTypeResult = {
 
 export const MAX_ITEMS_PER_PAGE = 10;
 export const REFRESH_ITEMS_SIZE = 5;
+
 @Component({
   selector: 'app-ionic-lists',
   templateUrl: './ionic-lists.component.html',
@@ -34,14 +35,25 @@ export const REFRESH_ITEMS_SIZE = 5;
 export class IonicListsComponent implements OnInit {
 
   public skeletons = new Array<number>(5);
+
+  // list with refresher
   // public randomUsers$: Observable<randomUserType[]>;
   public randomUsers: randomUserType[] = [];
   @ViewChild('frameList', { read: IonList }) public frameList: IonList;
+
+  // list with infinite scroll and virtual scroll
+  public infiniteRandomUsers: randomUserType[] = [];
+  public infiniteRandomUserIndex = 0;
+  @ViewChild(IonVirtualScroll) virtualScroll: IonVirtualScroll;
 
   constructor(private http: HttpClient, private UITooling: UIToolingService) {
     // this.randomUsers$ =
     this.fetchRandomUsers(REFRESH_ITEMS_SIZE).subscribe({
       next: (results) => this.randomUsers = results,
+      error: _ => console.log('https://randomuser.me/api fetch error')
+    });
+    this.fetchRandomUsers(6).subscribe({
+      next: (results) => this.infiniteRandomUsers = results,
       error: _ => console.log('https://randomuser.me/api fetch error')
     });
   }
@@ -96,11 +108,42 @@ export class IonicListsComponent implements OnInit {
 
   // public scrollUp(event) {
   //   console.log('--> scrollUp()', event);
-  //   setTimeout(() => { event.target.complete(); }, 2000);
+  //   setTimeout(() => {
+  //     this.fetchRandomUsers(2).subscribe({
+  //       next: (results) => {
+  //         results.forEach((data) => {
+  //           this.infiniteRandomUsers.pop();
+  //           this.infiniteRandomUsers = [ data, ...this.infiniteRandomUsers ];
+  //         });
+  //       },
+  //       error: _ => console.log('https://randomuser.me/api fetch error')
+  //     });
+  //     event.target.complete();
+  //     this.infiniteRandomUserIndex -= 2;
+  //     if ( this.infiniteRandomUserIndex <= 0 ) {
+  //       event.target.disabled = true;
+  //       this.infiniteRandomUserIndex = 0;
+  //     }
+  //   }, 500);
   // }
 
-  // public scrollDown(event) {
-  //   console.log('--> scrollDown()', event);
-  //   setTimeout(() => { event.target.complete(); }, 2000);
-  // }
+  public scrollDown(event) {
+    // console.log('--> scrollDown()', event);
+    setTimeout(() => {
+      this.fetchRandomUsers(2).subscribe({
+        next: (results) => results.forEach((data) => this.infiniteRandomUsers.push(data)),
+        error: _ => console.log('https://randomuser.me/api fetch error')
+      });
+      event.target.complete();
+
+      // Refresh a,d render Virtual Scroll List After Adding New Data
+      this.virtualScroll.checkEnd();
+
+      this.infiniteRandomUserIndex += 2;
+      if ( this.infiniteRandomUserIndex >= 14 ) {
+        event.target.disabled = true;
+        this.infiniteRandomUserIndex = 4;
+      }
+    }, 500);
+  }
 }

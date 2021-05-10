@@ -4,7 +4,11 @@ ion-refresher {
 // ion-infinite-scroll {
 //     z-index: 10;
 // }
-ion-card {
+ion-card#frameList {
     height: 410px;
     overflow-y: auto;
+}
+ion-list.virtualList{
+    // height: 410px;
+    // overflow-y: auto;
 }

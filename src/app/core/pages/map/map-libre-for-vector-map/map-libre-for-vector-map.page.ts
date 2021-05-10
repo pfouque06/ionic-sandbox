@@ -43,7 +43,8 @@ export class MapLibreForVectorMapPage implements OnInit {
   private longPressActive  = false;
 
   // markers
-  private longPressMarker = new Marker({ color: 'var(--ion-color-medium'});
+  // private longPressMarker = new Marker({ color: 'var(--ion-color-medium', draggable: true });
+  private longPressMarker = new Marker({ color: 'var(--ion-color-medium' });
   private geoCoderMarker = new Marker({ color: 'var(--ion-color-primary'});
 
   constructor(private popper: PopoverController, private pickerCtl: PickerController) { console.log('map/mapLibre'); }
@@ -141,6 +142,7 @@ export class MapLibreForVectorMapPage implements OnInit {
     });
 
     // handle event for longPress behavior
+    // this.longPressMarker.on('dragend', this.onLongPressMarkerDragEnd);
     this.map.on('touchstart', (e) => { this.onLongPressStart(e.originalEvent.timeStamp); });
     this.map.on('mousedown', (e) => { this.onLongPressStart(e.originalEvent.timeStamp); });
     this.map.on('move', _ => { this.onLongPressCancel(); });
@@ -167,10 +169,10 @@ export class MapLibreForVectorMapPage implements OnInit {
       const pressEndTimestamp = Math.floor(e.originalEvent.timeStamp);
       const isLongPress = (this.longPressStartTimestamp + this.longPressInterval ) < pressEndTimestamp;
       if (isLongPress) {
-        console.log('A longPress event occurred: ');
+        // console.log('A longPress event occurred: ');
         //  Add a marker at the result's coordinates
         const coordinates: LngLatLike = [ e.lngLat.lng, e.lngLat.lat];
-        const popup = new Popup().setText(`${coordinates}`);
+        const popup = new Popup().setText(`${coordinates[0].toFixed(6)} ${coordinates[1].toFixed(6)}`);
         this.longPressMarker.setLngLat(coordinates).setPopup(popup).addTo(this.map);
       }
     }
@@ -179,6 +181,14 @@ export class MapLibreForVectorMapPage implements OnInit {
   private onLongPressCancel() {
     if (this.longPressActive) { this.longPressActive = false; }
   }
+
+  // private onLongPressMarkerDragEnd() {
+  //   console.log('longPressMarker onDragEnd');
+  //   const lngLat = this.longPressMarker.getLngLat();
+  //   // const popup = this.longPressMarker.getPopup();
+  //   // popup.setText(`${lngLat.lng.toFixed(6)} ${lngLat.lat.toFixed(6)}`);
+  //   // this.longPressMarker.setPopup(popup).addTo(this.map);
+  // }
 
   public async onPickerStyleMenuRequest(event) {
     // console.log('onPickerStyleMenuRequest(): ', event);
