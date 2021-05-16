@@ -1,7 +1,45 @@
 <tab-fake-header></tab-fake-header>
 
+<full-width-title  class="ion-text-center">
+    <ion-back-button></ion-back-button>
+    Users list
+</full-width-title>
+
+<teaser-coming-soon></teaser-coming-soon>
+
 <ion-content>
-    <teaser-coming-soon></teaser-coming-soon>
+    <ion-card>
+        <ion-list>
+            <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+                <ion-refresher-content pulling-icon="lines" refreshingSpinner="lines"></ion-refresher-content>
+                <ion-refresher-content></ion-refresher-content>
+            </ion-refresher>
+            <div *ngIf="! dataSource || dataSource.length === 0; else appear">
+                <ion-item *ngFor="let skeleton of skeletons; index as index; last as isLast" [lines]="isLast ? 'none' : 'inset'">
+                    <ion-avatar slot="start"><ion-skeleton-text></ion-skeleton-text></ion-avatar>
+                    <ion-label>
+                        <h2><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h2>
+                        <h3><ion-skeleton-text animated style="width: 70%"></ion-skeleton-text></h3>
+                    </ion-label>
+                </ion-item>
+            </div>
+            
+            <ng-template #appear>
+                <ion-virtual-scroll [items]="dataSource" [approxItemHeight]="'62px'">
+                    <ion-item *virtualItem="let user;let index=index" lines="none">
+                        <ion-avatar slot="start">
+                            <ion-img [src]="user.picture.large"></ion-img>
+                        </ion-avatar>
+                        <ion-label>
+                            <h2>{{index}} - {{user.name.first}} {{user.name.last}}</h2>
+                            <h3>{{user.email}}</h3>
+                        </ion-label>
+                        <ion-icon slot='end' [name]="user.gender"></ion-icon>
+                    </ion-item>
+                </ion-virtual-scroll>
+            </ng-template>
+        </ion-list>
+    </ion-card>
 </ion-content>
 
 <tab-footer></tab-footer>
