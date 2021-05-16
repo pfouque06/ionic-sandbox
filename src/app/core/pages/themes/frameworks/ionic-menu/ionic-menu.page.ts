@@ -62,8 +62,26 @@ export class IonicMenuPage implements OnInit {
       topic: 'lists',
       icon_name: 'list',
       icon_color: 'primary',
-      title: 'lists'
+      title: 'list: refresher & slider'
     },
+    {
+      topic: 'lists-infinite',
+      icon_name: 'list',
+      icon_color: 'primary',
+      title: 'list: infinite scroll'
+    },
+    {
+      topic: 'lists-virtual',
+      icon_name: 'list',
+      icon_color: 'primary',
+      title: 'list: virtual scroll'
+    },
+    // {
+    //   topic: 'lists-alt',
+    //   icon_name: 'list',
+    //   icon_color: 'primary',
+    //   title: 'list: virtual & infinite scroll'
+    // },
     // {
     //   topic: 'modal',
     //   icon_name: 'duplicate',

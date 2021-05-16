@@ -1,0 +1,48 @@
+<ion-toolbar class="ion-padding-horizontal">
+  <ion-buttons slot="start">
+    <ion-back-button mode="ios" text="" color="primary" default-href="tabs/themes/ionic-menu"></ion-back-button>
+    <!-- <ion-icon name="list" color="primary" size="large"></ion-icon> -->
+  </ion-buttons>
+  <ion-title>List</ion-title>
+</ion-toolbar>
+
+<ion-card>
+  <ion-card-header>
+    <ion-label>
+      <h2>List of random users <code><strong>ion-infinite-scroll</strong></code></h2>
+    </ion-label>
+  </ion-card-header>
+  <!-- <p>section tons of technical example of ionic and addons features</p>
+  <p>Use left side menu to visit all available showcases.</p> -->
+</ion-card>
+
+<ion-infinite-scroll position = "top" threshold="5%" (ionInfinite)="scrollUp($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Paging up…">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+<ion-list class="virtualList">
+  <!-- <ion-item-sliding *ngFor="let user of (randomUsers$ | async).results; last as isLast"> -->
+  <!-- <div *ngFor="let user of infiniteRandomUsers; index as index; last as isLast"></div> -->
+  <ion-virtual-scroll [items]="infiniteRandomUsers" approxItemHeight="62px">
+    <ion-item *virtualItem="let user" lines="none">
+      <ion-avatar slot="start">
+        <img [src]="user.picture.large">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{user.name.first}} {{user.name.last}}</h2>
+        <h3>{{user.email}}</h3>
+      </ion-label>
+      <ion-icon slot='end' [name]="user.gender"></ion-icon>
+    </ion-item>
+  </ion-virtual-scroll>
+</ion-list>
+  
+<ion-infinite-scroll threshold="5%"  (ionInfinite)="scrollDown($event)">
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Paging down...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
